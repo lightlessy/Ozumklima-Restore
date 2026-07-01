@@ -1,6 +1,5 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  <html> 
-<!--#include file='db.asp'-->
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -36,7 +35,7 @@
 %>
 
 
-<title>Bul |  <%=ayars("firma") %> </title>    
+<title>Bul | Özüm Klima</title>    
 
 
 
@@ -81,7 +80,7 @@ Arama
 <option value="#">Sýrala</option>  
 <option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=19"  <% if d="19" then %> selected <% end if %>> Ucuzdan Pahalýya</option>
 <option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=91" <% if d="91" then %> selected <% end if %>>Pahalýdan Ucuza </option>
-<option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=0" <% if d="0" then %> selected <% end if %>>Akýllý Sýralama </option>   
+<option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=0" <% if d="0" then %>>Akýllý Sýralama </option>   
 </select>
 </div> 
  
