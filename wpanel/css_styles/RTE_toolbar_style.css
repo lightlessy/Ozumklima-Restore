@@ -1,0 +1,24 @@
+/* *******************************************************
+Software: Web Wiz Rich Text Editor
+Info: http://www.richtexteditor.org
+Copyright: ©2001-2009 Web Wiz. All rights reserved
+******************************************************* */
+
+/* RTE Toolbar */
+.RTEtoolbar{
+	align:left;
+ 	background-image: url('../images/toolbar_background.gif');
+ 
+}
+
+.WebWizRTEbutton, .RTEtoolbar{
+	padding: 1px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+	
+}
+
+.WebWizRTEbuttonOver{
+	background-image: url('../images/toolbar_button_background.gif');
+	padding: 1px;
+}

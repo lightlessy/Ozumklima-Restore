@@ -1,0 +1,31 @@
+<!--#INCLUDE file="dbase.asp"-->     
+
+
+<%
+
+acik=Request.Form("giden")     
+
+a=split(acik,",")     
+
+uzunluk=uBound(a)       
+
+%> 
+
+
+
+<% for i=0 to uzunluk %>
+
+<% b=split(a(i),"-")      %>
+
+
+<%
+
+Set Rs = Server.CreateObject("Adodb.Recordset")
+rSQL = "Select * from products where AffiliateID = "& b(0)
+Rs.Open rSQL, baglanti, 1, 3 
+Rs("sira")= b(1)
+Rs.Update        
+   
+next %>
+
+

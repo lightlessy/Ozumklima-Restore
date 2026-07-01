@@ -1,0 +1,14 @@
+.env
+.env.*
+*.log
+
+logs/
+tmp/
+cache/
+
+wp-config.php
+config.php
+database.php
+
+node_modules/
+vendor/

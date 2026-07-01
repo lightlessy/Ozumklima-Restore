@@ -1,0 +1,849 @@
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap');
+
+
+a{  text-decoration:none ; outline:none}
+body{ margin:0px ;  padding:0px; }
+
+
+.siyahci{position:absolute;z-index:-1;border:0px solid #ff0000; height:180px ; width:100% ;background: rgba(0,0,0,0.2);
+background: -moz-linear-gradient(top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 98%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.2)), color-stop(97%, rgba(0,0,0,0)), color-stop(98%, rgba(0,0,0,0)));
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 98%);
+background: -o-linear-gradient(top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 98%);
+background: -ms-linear-gradient(top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 98%);
+background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 98%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );}
+ 
+.orta{  margin:0px auto;left:0px ; right:0px; }
+    
+.serit { width:100%; background:#F4F4F4 } 
+
+.menuLogoTas{ padding:0px 0px 25px 0px;  }     
+
+.logotas {  float:left;  padding:15px; max-width:240px ; }       
+
+.umenu { max-width:1270px;  ; margin:0px auto;text-align:center;   border:0px solid #FF0000  }    
+.umenu div{ display:inline-block; vertical-align:middel; text-align:center; padding:15px 15px 15px 15px;     transition: all .25s ease-in-out;   -moz-transition: all .25s ease-in-out;   -webkit-transition: all .25s ease-in-out;   }
+.umenu div:hover {color:#C0C0C0  }
+
+.menu { max-width:1270px;  ; margin:0px auto;text-align:center;   }
+.menu div{ display:inline-block; vertical-align:middel; text-align:center; padding:15px 17px 15px 17px;     transition: all .25s ease-in-out;   -moz-transition: all .25s ease-in-out;   -webkit-transition: all .25s ease-in-out;   }
+.menu div:hover {color:#C0C0C0  }
+
+.menu a{font-family: 'Source Sans Pro', sans-serif; color:#3E3E3E ; font-size:1em; font-weight:bold;   }
+
+    
+.AramaYap { float:right; font-family: 'Catamaran', serif; font-size:1.4em; color:#3B3B3B;  max-width:500px; width:100%; margin-top:15px;  }  
+
+.AramaYap input{display:inline-block; vertical-align:middle; font-family: 'Catamaran', serif; font-size:1em; }
+.searchButton {background:none !important; color:#000000 !important; margin-left:-10px ;content: "\f000";   border:none;     font-family: FontAwesome;}
+           
+ .ustsosyal {float:right; margin-top:15px;  }       
+ 
+ 
+ .whatweb { position:fixed; bottom:20px; right:20px;  z-index:9999 ;  background:#FFFFFF; border:1px solid #D7E6EA;   padding:5px; -webkit-border-radius: 5px;-moz-border-radius: 5px;    border-radius: 5px;  -moz-transition: all 0.3s; -webkit-transition: all 0.3s; transition: all 0.3s; font-family: 'Raleway', sans-serif;  font-weight:700; text-align:center;  font-size:.8em; line-height:1.7em}  
+.whatweb:hover { background:#D7E6EA;   }  
+
+
+ 
+.buyutec {
+    position: relative;
+	margin-left:15px;
+
+}
+
+.buyutec:after {
+    font-family: FontAwesome;
+    content: "\f002";
+    font-size: 1.1em;
+    position: absolute;
+    right: -5px;
+    top: 0px;
+    pointer-events: none;
+margin-top:5px
+}
+	
+	
+	
+
+.navi{ max-width:1200px;  margin:0px auto  ; left:0px ; right:0px; padding:18px 10px 10px 15px;  font-family: 'Source Sans Pro', sans-serif; font-weight:bold; letter-spacing:-1px; font-size:1.4em; color:#000000; background-color:#F4F4F4;border-top:1px solid #E4E4E4  }
+.navi a { color:#000000 }    
+.navi a:hover { color:#7f4614 } 
+
+.navi > div select{ font-family: 'Source Sans Pro', sans-serif; font-size:.8em; border:none; border:1px solid #d3d3d3; background-color:#f8f8f8 ; text-align:center; padding:5px; margin-top:-5px; width:100%;max-width:300px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;}    
+      
+.navi > div select option { font-size:1em;border:none; padding:15px;}
+	
+.tips { padding:10px 10px 0px 0px; display:inline-block; font-size:.9em; font-weight:400 }	
+	  
+.hform {cursor:pointer; background-color:#FFFFFF; padding: 7px; font-family: 'Source Sans Pro', sans-serif; color:#191919 ; font-size:.8em; display:inline-block; margin:3px ; font-weight:bold}
+.hform:hover { background-color:#FFB164; color:#191919 ;  }
+
+
+.ustSosyal{ width:100%; max-width:1218px;  border:0px solid #80FF00; margin:0px auto ; left:0px ; right:0px ; padding-top:10px ; color:#ffffff ; font-size:.8em;  text-align:right;  font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; }
+.ustSosyal a{ color:#ffffff ; opacity:.7 }
+.ustSosyal a:hover{ color:#ffffff ; opacity:1}
+
+.kutular {width:100%; margin:0px auto ; left:0px ; right:0px ;text-align:center; padding:0px 0px 40px 0px}
+
+.kutular a > div{ background-color:#F3F3F3; position:relative; display:inline-block; width:297px ; height:250px ; text-align:center ; margin:0px 12px 0px 12px; font-family: 'Source Sans Pro', sans-serif; color:#3C3C3C ; font-size:1.5em ; font-weight:400; }
+
+.siyahlik{ position:absolute; width:100%; background-color:rgba(255,255,255,0.1);transition: background-color 0.5s ease; z-index:3; height:100%}
+.iconTas{position:absolute; width:90%; z-index:4;  padding:40px 0px 10px 10px; line-height:1.3em }    
+
+.iconTas i{ font-size:1.5em  }   
+.iconTas span{ font-size:.65em ; line-height:1.3em }
+
+.kutular a > div:hover .siyahlik{ background-color:rgba(26,115,106,.85);}  
+.kutular a > div:hover { color:#FFFFFF }
+
+.Baslik{  font-family: 'Source Sans Pro', sans-serif; color:#494949 ; font-size:1.5em ; font-weight:700;   text-align:center ; padding:0px 0px 15px 0px}
+.Baslik span{ displaY:inline-block; border-bottom:1px solid #d1d1d1; padding-bottom:5px ;  }
+.anlasmali{width:100%; max-width:1205px;  margin:0px auto ; left:0px ; right:0px ;text-align:center; padding:90px 0px 0px 0px}
+      
+.yorums {width:100%; max-width:1245px;  margin:0px auto ; left:0px ; right:0px ;text-align:center; padding:10px 0px 10px 0px; }
+
+
+.slogan {position:relative;text-align:center; padding:25px 0px 60px 0px;  }    
+
+.sayfaBaslik{font-family: 'Source Sans Pro', sans-serif; color:#494949 ; font-size:2.2em ; font-weight:700; position:absolute; bottom:50px; text-align:center ; width:100% ; max-width:800px ;margin:0px auto;left:0px ; right:0px ; border-bottom:1px solid #aaaaaa }
+
+.slo1{ font-family: 'Source Sans Pro', sans-serif; color:#494949 ; font-size:2.5em ; font-weight:700;}
+.slo2{ font-family: 'Source Sans Pro', sans-serif; color:#07A6B8 ; font-size:1.1em ; font-weight:400;}
+
+ 
+ .urunicerik { font-family: 'Source Sans Pro', sans-serif; font-size:1.1em;line-height:1.5em; color:#333333 }
+  
+ 
+ .bizim {cursor:pointer; background:#5B5B5B; background-size:900px; background-repeat:no-repeat;background-position: center}
+ 
+      
+ .listsag {float:left; min-width:930px; }    
+ 
+ .kutularic {max-width:1300px ;  margin:0px  auto ; left:0px ;  right:0px; text-align:left ; margin-top:0px}   
+.kutularic > div {position:relative ; background:#ffffff;   display:inline-block;vertical-align:top;text-align:left ; width:100%;max-width:375px; margin:30px 30px 0px 0px; border:1px solid #e5e5e5 ; }
+
+.kutularic > div:nth-child(3n){  margin-right:0px} 
+.kutularic > div:hover{  background:#F8F8F8; border:1px solid #1f9bb7 } 
+
+.urRes {position:relative ;  }       
+
+
+.thumb{margin-top:5px}
+.thumb img { display:inline-block ;  height:100px ; margin-right:10px; margin-left:5px;   }
+
+
+.urAd{ font-family: 'Source Sans Pro', sans-serif; font-size:1.2em; color:#000000; font-weight:700; padding:15px; text-align:left;  line-height:1.5em }    
+
+.fiyat{ display:inline-block; vertical-align:top; text-align:left; color:#000000;  font-family: 'Source Sans Pro', sans-serif; font-size:1.4em; font-weight:700 ; padding:8px 0px 0px 0px ; margin-left:15px; width:95%; height:35px;   }
+ 
+ .detayal {float:right; vertical-align:top;  text-align:center; background-color:#1f9bb7; color:#FFFFFF;  font-family: 'Source Sans Pro', sans-serif; font-size:1.2em; font-weight:700 ; padding:10px 10px 10px 10px ; width:90px; margin-top:5px; margin-right:20px ; margin-bottom:20px;  }   
+
+.fiyat > div {display:inline-block; vertical-align:top }  
+
+.yuzde{  float:right; background-color:#df0000;  max-width:65px; text-align:center; color:#ffffff; font-family: 'Source Sans Pro', sans-serif; font-size:.8em ; font-weight:300; padding:8px 6px 8px 6px; margin-top:0px; margin-right:15px ;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}     
+
+.detayal2 {display:inline-block;vertical-align:top;  text-align:right; background-color:#1f9bb7; color:#FFFFFF;  font-family: 'Source Sans Pro', sans-serif; font-size:.8em; font-weight:300 ; margin-top:5px; padding:7px 7px 0px 0px ; height:30px; width:23%}   
+
+ 
+ .yildiz {float:left; padding:15px 15px 0px 15px; font-family: 'Source Sans Pro', sans-serif; font-size:1.2em ; color:#747474 }         
+ .yildiz div { display:inline-block; margin-right:5px; width:25px;  border:1px solid #DBDBDB; -webkit-border-radius: 30px;  -moz-border-radius: 30px; border-radius: 30px; }
+  
+
+.indirimsiz{text-decoration:line-through;display:block;font-family: 'Source Sans Pro', sans-serif; font-size:.5em ; font-weight:600; color:#8d8d8d; line-height:0em;   }
+
+.yeni{position:absolute;top:0px ; right:0px}
+  
+ .navSite{ max-width:1200px  ; margin:0px auto  ; left:0px ; right:0px; padding:25px 0px 7px 0px;  font-family: 'Source Sans Pro', sans-serif; font-size:1em; color:#3E3E3E; border-bottom:1px solid #EFEFEF; letter-spacing:-1px }
+.navSite a { color:#3E3E3E }    
+.navSite a:hover { color:#7f4614 }
+
+.navSite > div{ display:inline-block; vertical-align:middle; margin-right:35px}
+.navSite > div > div { display:inline-block  ; vertical-align:middle}
+.navSite > div > div:first-child {  border-radius: 50%; background:#ffffff ;color:#808080; width:40px ;height:40px ; text-align:center; padding-top:11px  }
+.navSite > div > div:nth-child(2) > span:nth-child(3){ font-family: 'Source Sans Pro', sans-serif; font-size:.7em }  
+
+
+.UrDetANA {max-width:1200px  ; margin:0px auto  ; left:0px ; right:0px; background-color:#FFFFFF; padding:0px   ; margin-top:15px }
+
+
+.galeri{display:inline-block; width:100%; max-width:480px ;  border:1px solid #EBEBEB; }     
+ 
+.devres{background-position:center center;   background-repeat:no-repeat ; -webkit-background-size: 100%;  -moz-background-size: 100%;  -o-background-size: 100%;  background-size: 100%;}     
+
+.urunDetay{  max-width:1300px; }    
+
+.urunOz{ float:left ; vertical-align:top;  }
+
+.fiyatsepet {display:inline-block;  vertical-align:top; margin-left:45px; max-width:650px; }
+
+
+.fiyatTarafi {   text-align:right;    } 
+
+.renksec {padding:9px; width:120px; font-size:1.3em}
+
+ .urunbaslik{ font-family: 'Source Sans Pro', sans-serif; font-size:1.4em; color:#000000; letter-spacing:-1px; font-weight:bold; border-bottom:1px solid #DBDBDB ; margin-bottom:7px ; padding-bottom:10px; text-align:left;  }
+
+
+.yuzdeic{ float:right; background-color:#df0000;  max-width:55px; text-align:center; color:#ffffff; font-family: 'Source Sans Pro', sans-serif; font-size:1.5em ; margin-left:20px;  font-weight:300; padding:6px 30px 6px 30px;  -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}  
+ 
+.fiyat2 {  font-size:2.1em ; font-family: 'Source Sans Pro', sans-serif;  margin-bottom:10px ; }
+
+.adet{float:left; font-family: 'Source Sans Pro', sans-serif; font-size:.8em;width:100px }   
+
+.sadet{width:100%; max-width:50px; font-size:1em; margin:5px 0px 15px 0px ; padding:2px ;}
+
+.urDet{ font-family: 'Source Sans Pro', sans-serif;background-color:#31649b; display:block ; float:right ;text-align:center ; font-size:.9em ; width:140px ; color:#ffffff ;  padding:8px 18px 8px 18px; margin-bottom:5px; -webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px; }
+       
+
+.whats { display:inline-block; font-family: 'Source Sans Pro', sans-serif; color:#8CAC62; max-width:220px; margin-top:25px; margin-right:20px;  border:1px solid #E2E2E2 ;-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; padding:5px;  }
+.whats div { display:inline-block; vertical-align:top; padding-left:10px; padding:15px;    }    
+.whats img {max-width:60px;  }       
+.whats:hover { background:#EFEFEF  }                 
+
+.ikonlar {margin-top:30px; color:#737373; max-width:630px }
+.ikonlar div { display:inline-block; max-width:65px;  margin-right:5px; padding:5px 10px 5px 10px; margin-bottom:5px; font-family:arial; font-size:.7em; line-height:2.2em;   }    
+.ikonlar div:hover { background-color:#F0F0F0   } 
+.ikonlar i { font-size:2.2em; float:left; padding-right:7px;   }
+
+
+
+.urunkutular {width:100%;max-width:1300px ;   margin:0px auto ; left:0px ;  right:0px; text-aligN:center; }
+.urunkutular > div {display:inline-block; vertical-align:top ; font-family: 'Source Sans Pro', sans-serif; font-weight:700;  }
+
+.solSutun {width:66%; max-with:400px ;bordeR:0px solid #b2b2b2 }
+.solSutun  a >  div{ position:relative;bordeR:0px dashed #ff0000 !important  ;display:inline-block; vertical-align:top; margin:8px ;color:#ffffff; font-size:1.7em;  text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+background-position:center center;
+background-size:cover;
+  width:100%;
+  height:100%;
+  transition: transform .3s;
+  }
+.solSutun  a:hover >  div{transform:scale(1.03)}
+
+
+.sagSutun {width:33% ;bordeR:0px solid #3f3f3f; text-align:center }
+.sagSutun  a >  div{ position:relative;bordeR:0px dashed #ff0000 !important  ;display:inline-block; vertical-align:top; margin:8px ;color:#ffffff;font-size:1.7em ; 
+background-position:center center;
+background-size:cover;
+  width:100%;
+  height:100%;
+  transition: transform .3s;  }
+  
+.sagSutun  a:hover >  div{transform:scale(1.03)}
+  
+
+     
+  
+.Absolute-Center {
+position: absolute;
+  display: table;
+  height: 100%;
+  width: 100%;
+  bordeR:0px dotted #80ff00 !important  ;
+  background-color:rgba(0,0,0,.2);
+  transition: background-color .3s;
+}
+
+.Absolute-Center:hover {background-color:rgba(0,0,0,.55);}
+
+
+.Absolute-Center span {
+  display: table-cell;
+  vertical-align: middle;
+  
+}
+
+
+    
+
+input[type=submit] {padding:7px 18px; background:#009CE8; border:0 none;
+font-family: 'arial', sans-serif;
+font-size:15px;
+color:#454545;
+    cursor:pointer;
+ }  
+           
+    
+    
+    
+                
+.hemen input[type='submit']{ cursor:pointer;font-family: 'arial', sans-serif;font-weight:700 ; font-size:1em; color:#373737 ; background:none; padding:5px 8px 5px 8px ; margin:5px 0px 5px 0px ; width:100%; width:160px; border:none;   }
+.hemen:hover input[type='submit'] {color:#7f4614}
+
+.toplamSatiri input[type='submit']{ cursor:pointer;font-family: 'arial', sans-serif; font-size:1em;background:#0080c0;color:#ffffff;padding:5px 8px 5px 8px ; margin:5px 0px 5px 0px ; width:100%; width:160px; border:none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;   }
+
+
+.fiyatTarafi input[type='submit']{ cursor:pointer;font-family: 'arial', sans-serif; font-size:1.2em;background:#0080c0;color:#ffffff;padding:7px 0px 7px 0px ; margin:5px 0px 5px 0px ; width:100%;max-width:110px; border:none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;   }
+  
+.rbtasi {font-family:arial; text-align:left; font-size:.8em;  }
+.rbtasi span { line-height:2.7em }
+   
+
+.odemeler {margin-top:20px; color:#737373; max-width:630px }
+.odemeler div { display:inline-block; margin-right:5px; padding:15px 10px 15px 10px; line-height:1.4em; margin-bottom:5px; font-family:arial; font-size:1em; text-align:left; border:1px solid #E4E4E4 ;-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;    }  
+.odemeler span { font-weight:bold; color:#8CAC62; line-height:2em; }   
+.odemeler div:hover { background-color:#000000 ; color:#FFFFFF  } 
+  
+   
+
+.beyaz{width:100%; margin:0px auto;   text-align:center; background-color:#F4F4F4; }
+.beyazicerikTas {width:100%; max-width:1200px; margin:0px auto ; left:0px;  right:0px ; text-align:center; margin-top:0px  ; margin-bottom:10px ; padding:25px 0px 40px 0px  }
+
+
+
+.beyazicerikTas div { width:100%;   text-align:left }
+.hakkimizda {float:left;font-family: 'Source Sans Pro', sans-serif; color:#4f4f4f ; font-size:.9em ; font-weight:400; line-height:1.4em}
+.hasres {float:right}
+
+.hakBas{display:block;border-bottom:1px solid #e8e8e8; margin:15px 0px 8px 0px;padding-bottom:5px;font-family: 'Source Sans Pro', sans-serif; color:#414141 ; font-size:1.8em ; font-weight:700;}
+
+.devami{display:block; padding:5px ;text-align:center;background-color:#1d8ee2; width:100px ; color:#ffffff ;transition: opacity .25s ease-in-out;   -moz-transition: opacity .25s ease-in-out;   -webkit-transition: opacity .25s ease-in-out;}
+.devami:hover{opacity:0.6}
+
+  
+.dil {display:inline-block; }  
+.dil select{ padding:2px; background:#F0F0EE ; max-width:120px; margin-bottom:0px ;outline:none;  font-family: 'Source Sans Pro', sans-serif; font-size:1em; color:#4E4E4E ; -webkit-border-radius: 4px;   -moz-border-radius: 4px;    border-radius: 4px;  }     
+
+
+
+
+.alt {width:100%; max-width:1250px; margin:0px auto ; left:0px;  right:0px ;  padding:60px 0px 70px 0px }
+.bizeulasin{ font-family: 'Source Sans Pro', sans-serif; color:#C7D0DC ; font-size:.9em ; font-weight:400;  }
+.alttel{ display:block;padding:9px 0px 0px 0px;font-family: 'Source Sans Pro', sans-serif; color:#06ABC8 ; font-size:1.5em ; font-weight:700; }
+
+
+.altmenu div { display:inline-block;vertical-align:top; margin-right:55px ; font-family: 'Source Sans Pro', sans-serif; color:#E9E9E9 ; font-size:1em ; font-weight:800; }
+.altmenu a  { font-family: 'Source Sans Pro', sans-serif; color:#E9E9E9 ; font-size:.9em ; font-weight:400;line-height:1.7em;transition: opacity .25s ease-in-out;   -moz-transition: opacity .25s ease-in-out;   -webkit-transition: opacity .25s ease-in-out;}
+.altmenu a:hover {opacity:.3}
+
+.altmenu div span {display:block; border-bottom:1px solid #7E7E7E; padding-bottom:4px ; margin-bottom:5px}
+
+.enalt{width:100%; max-width:1200px; margin:0px auto ; left:0px;  right:0px ;padding:28px 0px 32px 0px;  text-align:center ; font-family: 'Source Sans Pro', sans-serif; color:#E9E9E9 ; font-size:.8em ; font-weight:400; }
+.enalt a{font-family: 'Source Sans Pro', sans-serif; color:#E9E9E9 ; font-size:.9em ; font-weight:400;}
+.enalt i{color:#ffffff; font-size:2em}  
+
+.sosyal i:hover{ color:#6f6f6f}
+.enalt div { display:inline-block ;vertical-align:middle; margin-right:7%; text-align:center ;}
+.enalt div:last-child { margin-right:0px}
+
+
+
+.doktorlar {width:100%; max-width:1300px;  margin:0px auto ; left:0px ; right:0px ;text-align:left; }
+
+.doktorlar a > div{position:relative; display:inline-block; width:280px ; height:440px ; text-align:center ; margin:0px 12px 25px 12px; bordeR:0px solid #ff0000; background-size:cover; background-position:center center; font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; font-size:1.5em ; font-weight:400;text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.36);
+-webkit-filter: grayscale(0);filter: grayscale(0); }
+
+.doktorlar a:hover > div{ -webkit-filter: grayscale(100%);filter: grayscale(100%);}
+
+.isimTas { position:absolute;z-index:1; width:100%; bottom:0px ; padding:15px 0px 15px 0px ; text-align:center ;font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; font-size:.8em ; font-weight:400;text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.39); background: rgba(0,0,0,0);
+background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.77) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.77)));
+background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.77) 100%);
+background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.77) 100%);
+background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.77) 100%);
+background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.77) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 ); 
+transition: all 500ms;
+}
+
+
+
+
+.doktorlar a > div:hover .isimTas{ background:none;opacity:1;bottom:70px }
+
+
+
+.isimTas span{ font-size:.7em ; color:#c0c0c0 }
+
+
+
+.siyahalan{ position:absolute; width:100% ;  height:100%; background-color:rgba(0,0,0,0);z-index:0 ;opacity:0;transition: all 700ms; font-size:.6em}
+.doktorlar a > div:hover .siyahalan{ background-color:rgba(0,0,0,.6);opacity:1; }
+.siyahalan span {  display:block; padding:85px 15px 25px 15px}
+
+.siyahalan i{ color:#ffffff ; font-size:2em  ; border:1px solid #ffffff; border-radius:50%; width:40px ; height:33px ; padding-top:6px  }
+
+
+
+
+
+
+.insTak{ font-family: 'Source Sans Pro', sans-serif; color:#525252 ; font-size:1.5em ; font-weight:700; width:100%; text-align:center; margin-top:80px}
+.instagram {width:100%;   margin:0px auto ; left:0px ; right:0px ;text-align:center; margin-top:20px; margin-bottom:40px ; height:270px; overflow:hidden;}
+
+.instagramic {width:100%;   margin:0px auto ; left:0px ; right:0px ;text-align:center; margin-top:20px; margin-bottom:40px ; height:1340px; overflow:hidden;}
+
+.inssiyah{ position:absolute; width:100% ;  height:100%; background-color:rgba(0,0,0,0);z-index:0 ;opacity:0;transition: all 700ms; font-size:.6em}
+.instagram a > div:hover .inssiyah{ background-color:rgba(0,0,0,.6);opacity:1; }
+.inssiyah span {  display:block; padding:85px 15px 25px 15px}
+
+.inssiyah i{ color:#ffffff ; font-size:2em  ; border:1px solid #ffffff; border-radius:50%; width:40px ; height:33px ; padding-top:6px  }
+
+
+
+
+
+
+
+
+.tedaviler {width:100%; max-width:1300px;  margin:0px auto ; left:0px ; right:0px ;text-align:left; margin-top:0px }
+.tedaviler a > div{display:inline-block ;vertical-align:top;width:300px ;font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; font-size:.9em ; font-weight:700;margin:10px ;-webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.2); }
+
+.TedResKap{overflow:hidden; width:100%; height:200px ;  }
+.TedRes{ height: 100%;     width: 100%;     background-size: cover;     background-position: center;     transition: all 0.5s ease; }
+
+.tedaviler a:hover > div .TedRes{transform: scale(1.2); webkit-filter: grayscale(100%);     filter: grayscale(100%);}
+.TedAdi{ color:#464646; padding:15px 0px 13px 15px; font-size:1.3em; text-align:left ; transition: all 500ms;}
+.tedaviler a:hover > div .TedAdi{padding:15px 0px 13px 35px;}
+
+.basBas{ color:#464646; padding:15px 0px 13px 15px; font-size:1.1em; font-weight:400;text-align:left ;}
+
+.iletTas {  width:100%; max-width:850px;  margin:0px auto ; left:0px ; right:0px ;text-align:center; padding:0px 0px 90px 0px}
+.adresTel{ font-family: 'Source Sans Pro', sans-serif; color:#454545 ; font-size:1.1em ; font-weight:400; line-height:1.5em; }
+.adresTel a{color:#06ABC8 ;}
+.adresTel a:hover{color:#00ffff ;}
+
+
+
+
+.formTas{text-align:center ; font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; font-size:1.1em ; width:100%; max-width:500px;    }
+
+.form input[type=text]{ border:none; padding:10px; display:block; width:calc(100% - 20px); max-width:500px; margin-bottom:12px ;outline:none;    font-family: 'Source Sans Pro', sans-serif; font-size:.9em; color:#888888 ; 
+-webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2); 
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+      
+
+
+.form select{ border:none; padding:10px; display:block; width:100%; max-width:500px; margin-bottom:12px ;outline:none;  font-family: 'Source Sans Pro', sans-serif; font-size:.9em; color:#888888 ; 
+-webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2); 
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;  
+ 
+}          
+
+ 
+.isb select{ padding:10px; max-width:500px; margin-bottom:12px ;outline:none;  font-family: 'Source Sans Pro', sans-serif; font-size:.9em; color:#4E4E4E ; -webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;  
+ 
+}     
+
+
+
+
+.form input[type=email]{ border:none; padding:10px; display:block; width:calc(100% - 20px);max-width:500px; margin-bottom:12px ;outline:none;
+-webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2); 
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+	
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #c0c0c0; font-family: 'Source Sans Pro', sans-serif;
+}
+::-moz-placeholder { /* Firefox 19+ */
+ color: #c0c0c0; font-family: 'Source Sans Pro', sans-serif;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #c0c0c0; font-family: 'Source Sans Pro', sans-serif;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #c0c0c0; font-family: 'Source Sans Pro', sans-serif;
+}	
+	
+	
+	
+	
+	
+.form textarea{ border:none; padding:10px; display:block; width:calc(100% - 20px); max-width:500px; margin-bottom:12px ;outline:none;  font-family: 'Source Sans Pro', sans-serif; font-size:.9em; color:#888888 ; 
+-webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2); 
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+
+
+.btn {border:none;
+  background: #35cdf4;
+  background-image: -webkit-linear-gradient(top, #35cdf4, #29a7f5);
+  background-image: -moz-linear-gradient(top, #35cdf4, #29a7f5);
+  background-image: -ms-linear-gradient(top, #35cdf4, #29a7f5);
+  background-image: -o-linear-gradient(top, #35cdf4, #29a7f5);
+  background-image: linear-gradient(to bottom, #35cdf4, #29a7f5);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.1em;
+  color: #ffffff;
+  padding: 8px 15px 8px 15px;
+  text-decoration: none;
+  -webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}	
+	
+
+
+	
+	
+	
+	
+	
+.flexslider .slides > li div { font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; font-size:1em ;font-weight:400 ;  position:absolute; bottom:22%; right:15%; width:100%; max-width:400px ;
+ padding:30px 40px 30px 40px; background-color:rgba(0,0,0,0.5) ; text-align:justify }
+.hasBas{  font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; font-size:1.5em ;font-weight:600 ; display:block; border-bottom:1px solid #c0c0c0 ; padding-bottom:7px ; margin-bottom:9px ;}
+	
+	
+.flexslider .flex-direction-nav a.flex-prev,
+.flexslider .flex-direction-nav a.flex-next {
+    display: block;
+    opacity: 1;
+}
+.flexslider .flex-direction-nav a.flex-prev {
+    left: 0;
+}
+.flexslider .flex-direction-nav a.flex-next {
+    right: 0;
+}
+
+
+
+
+
+.isimTas2 {   font-family: 'Source Sans Pro', sans-serif; color:#000000 ; font-size:1.3em  ; font-weight:600 ; display:block; border-bottom:1px solid #dfdfdf ; padding-bottom:7px  ;  margin-bottom:9px  }
+.yaziRes div{display:inline-block; vertical-align:middle; max-width:400px; margin-right: 25px}
+
+
+
+
+.tepeRestas{position:relative; width:100%; height:420px; background-size:cover; background-position:center center;z-index:0}
+
+
+ .ziplayanOk {
+    position: absolute; 
+    z-index:100000;
+    margin: auto;
+bottom: 20px;
+    left: 0; right: 0;
+    width: 40px;
+    height: 35px;
+    font-size: 40px;
+   padding:10px 5px 5px 5px ;  
+    color:#FFFFFF   ;font-size:2em; border-radius:50%;border:1px solid #FFFFFF;text-align:center  ;
+    -webkit-animation: bounce 2s infinite ease-in-out;
+}
+
+@-webkit-keyframes bounce {
+	0%, 20%, 60%, 100%  { -webkit-transform: translateY(0); }
+    40%  { -webkit-transform: translateY(-20px); }
+	80% { -webkit-transform: translateY(-10px); }
+}
+
+
+
+ .ziplayanOkana {
+    position: absolute; 
+    z-index:100000;
+    margin: auto;
+bottom: 20px;
+    left: 0; right: 0;
+    width: 40px;
+    height: 35px;
+    font-size: 40px;
+   padding:10px 5px 5px 5px ;  
+    color:#000000   ;font-size:2em; border-radius:50%;border:1px solid #000000;text-align:center  ;
+    -webkit-animation: bounce 2s infinite ease-in-out;
+}
+
+@-webkit-keyframes bounce {
+	0%, 20%, 60%, 100%  { -webkit-transform: translateY(0); }
+    40%  { -webkit-transform: translateY(-20px); }
+	80% { -webkit-transform: translateY(-10px); }
+}
+
+
+
+
+.MenuVeicerik{width:100%;max-width:1250px;margin:0px auto;left:0px ; right:0px; margin-top:70px; margin-bottom:70px ; border:0px solid #ff0000 }
+
+.solMenu {float:left; margin-right:55px}
+.solMenu div{ font-family: 'Source Sans Pro', sans-serif; color:#808080 ; font-size:1em  ; font-weight:400 ; width:270px ;color: #8e8c7d; padding:10px 0px 10px 15px ;
+    border-bottom: 1px solid #d8d8d8;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #0489f7;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	transition: all ease 0.5s;
+	}
+	
+	.solMenu div:hover{ box-shadow: inset 280px 0 0 0 #24966d;    color: #fff;}
+
+.solMenu i{font-size:.5em  ; display:inline-block; vertical-align:middle ;color:#24966d }
+.solMenuBas{ display:block ; border-bottom:1px solid #dadada ; padding-bottom:6px ; margin-bottom:8px ; font-family: 'Source Sans Pro', sans-serif; color:#535353  ; font-size:1.2em  ; font-weight:600 ; }
+
+
+.icerik {float:left; max-width:850px; text-align:justify; line-height:1.5em; font-family: 'Source Sans Pro', sans-serif; color:#525252 ; font-size:.9em  ; font-weight:400 ;	
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+	}
+	
+	
+	
+.icerik span{display:block;  color:#1b3358; font-size:1.2em;  padding-bottom:5px ; margin-bottom:9px; text-align:left;}
+
+.icerik2 {float:left; max-width:850px; text-align:justify; line-height:1.6em; font-family: 'Source Sans Pro', sans-serif; color:#525252 ; font-size:1em  ; font-weight:400 ;		}     
+
+.icerik2 span{display:block;  color:#525252; font-size:1.2em;  padding-bottom:5px ; margin-bottom:9px}
+
+
+.ackapa {display:none}   
+.fon {display:none}
+
+
+
+.IKForm td{text-align:left ; padding:9px 9px 9px 10px   }
+.IKForm tr:nth-child(even){background-color:#f4f4f4}
+.IKForm input , textarea , select{  border:1px solid #d8d8d8; border-radius:6px; padding:5px }
+
+
+.vrfm {display:none}
+
+     
+     
+     
+     
+                          
+     
+     
+     
+
+@media (min-width:320px) and (max-width:1025px) {    
+
+
+
+ .yildiz { float:none; text-align:center; padding:10px 15px 10px 15px; font-family: 'Source Sans Pro', sans-serif; font-size:1em ; color:#747474 ; border:0px solid #FF0080}         
+ .yildiz div { display:inline-block; margin-right:5px; width:20px;  border:1px solid #DBDBDB; -webkit-border-radius: 25px;  -moz-border-radius: 25px; border-radius: 25px; }
+     
+
+.urunDetay{  padding:20px; box-sizing: border-box; max-width:1300px; }    
+
+.logotas { max-width:240px }
+
+.ziplayanOkana {display:none;}     
+
+.ustsosyal  {display:none !important}     
+
+.mobsiz  {display:none !important; }       
+
+.AramaYap { border:0px solid #00FF40; float:none;  width:90%; margin-top:1px;  }  
+
+.menuLogoTas{padding-top:0px; color:#3B3B3B; }
+.menu{display:none}
+
+.ackapa{display:block; position:absolute; right:0px; top:25px ; font-size:1.7em; z-index:9999999 }	   
+
+.fon{display:block; position:absolute; right:50px; top:25px ; color:#3B3B3B; font-size:1.7em; z-index:9999999}	
+
+	
+.ustSosyal{  padding-top:10px ; padding-bottom:10px;  font-size:.9em;  width:85%; border:0px solid #80FF00; text-align:center  }
+.ustSosyal a{ color:#FFFFFF ; opacity:.7 }
+
+     
+.formTas{text-align:center ; font-family: 'Source Sans Pro', sans-serif; color:#ffffff ; font-size:1.1em ; width:100%; }
+
+.orta{  margin:none;left:10px ; right:none; }
+
+.beyazlik{position:relative !important;   background-color:#1b3358; height:100px !important;  }        
+
+.beyaz{margin-top:300px !important; }     
+
+ .insTak{display:none}       
+ 
+ .instagram { padding-top:35px !important;  height:620px !important; overflow:hidden;}
+
+.logo{width:210px}
+.logoTas{  width:100%; text-align:left; max-width:200px; left:10px ; right:auto; margin-top:-15px; border:0px solid #ff0000 }
+
+.menu{position:absolute; z-index:9999999;  text-align:right; left:auto; right:0px;  width:70%;  top:80px;background-color:#ffffff ; padding:25px 0px 25px 0px }   
+
+.menu  div{ display:block; text-align:right ; padding:8px 0px 8px 0px !important;  margin-top:5px ; width:220px !important ; font-size:1.2em ; color:#000000  } 
+
+.genislik{displaY:none !important}
+ 
+  .bizim { background-size:100% }
+
+	
+	.sagSutun {width:95%; padding:0px ; margin:0px}
+.sagSutun  a >  div{padding:0px ; margin:0px 0px 4px 0px ; width:100%; max-height:175px !important; font-size:1em }
+
+.solSutun {width:100%;padding:0px ; margin:0px;}
+.solSutun  a >  div{padding:0px ;  margin:0px 0px 4px 0px ; max-widtH:170px !important ;max-height:175px !important;font-size:1em }
+
+.vrf {display:none}       
+.vrfm {display:block }
+
+.TedResKap{ height:100px}	
+	
+
+.flexslider .slides > li {overflow:scroll; height:180px !important}
+  
+.flexslider {height:180px !important} 
+  
+.flex-direction-nav {display:none !important }
+  
+.slogan { padding:40px 10px 30px 10px;  } 
+ 
+.slo1{font-size:1.4em} 
+.slo2{font-size:1em; color:#0080C0} 
+
+     
+.kutularic {margin-top:0px;text-align:center ; width:100%;  }           
+.kutularic > div { width:45%;  margin:0px 15px 15px 0px;  max-width:775px; }
+ 
+.kutularic > div:nth-child(3n){  margin-right:15px; } 
+.kutularic > div:nth-child(2n){  margin-right:0px; } 
+  
+
+
+.urRes2{height:250px}    
+
+.urAd { font-size:1em; padding:12px 0px 5px 8px; text-align:center; line-height:17px}     
+
+.div_a div{max-width:100px; font-size:1em}
+
+.flexslider-container, .flexslider .slides, .flex-viewport {height:141px !important; }
+ 
+.detayal {  float:none; margin-top:0px; margin-right:0px ; width:80%; margin:0px auto; text-align:center; padding:7px 8px 5px 5px; font-size:.9em; margin-bottom:10px;  }  
+ 
+
+.fiyat{  padding:12px 0px 5px 3px ; height:40px;  width:83%}
+  
+.fiyatTarafi { margin-top:5px   }  
+   
+.rbtasi {font-family:arial; margin-bottom:20px  }
+.rbtasi span { line-height:1.7em }
+  
+.tasi {width:90%; margin-top:0px ; }      
+
+.kutular a > div{ width:170px ; height:240px ;  margin:0px 0px 0px 0px;  font-size:1.3em ;  }
+
+.kutular a > div img{width:70px}
+
+.anlasmali{padding:20px 0px 30px 0px}
+
+
+.beyazicerikTas {width:90%;  margin-top:10px  ; margin-bottom:40px ; padding:25px 10px 40px 10px  }
+
+ .hakBas{font-size:1.3em}
+ 
+
+ 
+ 
+.alt{text-align:center; } 
+.altmenu{float:none !important}
+.altmenu div { display:inline-block; margin-right:0px; width:100%; max-width:300px; margin-bottom:35px  ;  font-size:1em ; }
+.altmenu a  {  font-size:.9em ; line-height:2.2em;}
+
+
+.altmenu div span {font-size:1.2em}
+
+.bizeulasin{float:none !important; width:100%; max-width:300px ;margin:0px auto ; left:0px ; right:0px;  text-align:center; }
+ 
+
+.enalt a{font-family: 'Source Sans Pro', sans-serif; color:#5e7393 ; font-size:.9em ; font-weight:400;}
+
+.enalt div { display:inline-block ;vertical-align:middle; margin-right:0px; text-align:center;width:300px;margin-bottom:25px; }
+
+
+
+.tepeRestas{height:200px}
+
+
+.MenuVeicerik{margin-top:25px; position:relative}
+
+.MenuVeicerik::before {display:block;position:absolute;right:10px;    font-family: 'Font Awesome 5 Free',Source Sans Pro; font-weight: 900; content: "Menu \f142";font-size:1.2em; color:#289f74; }
+
+.solMenu{display:none}
+.solMenu,.icerik2{float:none}
+
+
+
+.solMenu {float:none; right:5px; width:100%; text-align:right; border:0px solid #ff0000; padding-top:35px }
+.solMenu div{displaY:inline-block;padding-right:10px;	}
+ .icerik2 {floaT:none;padding:10px 10px 0px 10px}
+ .solMenuBas{padding-right:10px}
+ 
+ 
+ 
+ .icerik {float:none; max-width:850px; padding:0px 10px 0px 10px;
+	-webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -webkit-column-gap: 0px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 0px; /* Firefox */
+    column-gap: 0px;
+	}
+	
+	
+	
+.icerik span{display:block; border-bottom:1px solid #e6e6e6; color:#289f74; font-size:1.2em;  padding-bottom:5px ; margin-bottom:9px; margin-top:15px}
+ 
+ 
+ 
+ 
+ 
+.tedaviler{text-align:center}
+.tedaviler a > div{width:150px ; font-size:.9em ;  }
+.tedaviler a:hover > div .TedRes{transform: scale(1.2); webkit-filter: grayscale(100%);     filter: grayscale(100%);}
+.TedAdi{ color:#464646; padding:15px 0px 13px 15px; font-size:1.3em; text-align:left ; transition: all 500ms;}
+.tedaviler a:hover > div .TedAdi{padding:15px 0px 13px 35px;}
+ 
+ .doktorlar {text-align:center}        
+ .doktorlar a > div{position:relative; display:block; width:90% ; height:338px ; text-align:center ; margin:0px 12px 25px 12px; }
+ 
+	
+}
+
+
+
+
+
+
+
+
+
+
+
