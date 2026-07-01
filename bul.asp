@@ -80,7 +80,7 @@ Arama
 <option value="#">Sýrala</option>  
 <option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=19"  <% if d="19" then %> selected <% end if %>> Ucuzdan Pahalýya</option>
 <option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=91" <% if d="91" then %> selected <% end if %>>Pahalýdan Ucuza </option>
-<option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=0" <% if d="0" then %>>Akýllý Sýralama </option>   
+<option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=0" <% if d="0" then %> selected <% end if %>>Akýllý Sýralama </option>   
 </select>
 </div> 
  
@@ -154,7 +154,19 @@ Arama yapmak icin ustteki arama kutusunu kullanabilirsiniz.
 
 <%
 else
-Do while not object.Eof     
+Do while not object.Eof
+urunIsim = object("isim") & ""
+urunID = object("AffiliateID") & ""
+urunFoto = object("foto1") & ""
+urunLink = "#"
+
+if urunID<>"" then
+  if urunIsim<>"" then
+    urunLink = cevir(urunIsim) & "-" & urunID
+  else
+    urunLink = "detay.asp?" & urunID
+  end if
+end if
 %>      
       
       
@@ -165,14 +177,15 @@ Do while not object.Eof
                        
            
                                      
-                                 <a href="<%=cevir(object("isim"))%>-<%=object("AffiliateID")%>">  
- <div class="urRes"  style="background-image:url('urunler/<%=object("foto1")%>');">
-                                     <% if object("yeni")=1 then %><div class="yeni"><img  src="images/yeni.png"></div> <% end if %>
-                                   <% if object("ozel5")=1 then %><div class="yeni"><img  src="images/indi.png"></div>   <% end if %>
-                                     </div>  
+                                 <a href="<%=urunLink%>">  
+ <% if urunFoto<>"" then %>
+ <div class="urRes"  style="background-image:url('urunler/<%=urunFoto%>');"></div>  
+ <% else %>
+ <div class="urRes"></div>
+ <% end if %>
                                                       
                                      
-         <div  class="urAd" ><%=object("isim")%></div>   
+         <div  class="urAd" ><%=Server.HTMLEncode(urunIsim)%></div>   
                                         
                                             
 
@@ -180,19 +193,6 @@ Do while not object.Eof
      
 <div class="detayal">Ýncele </div>    
             
-<div class="yildiz">
-<%  
-set yorumcu = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From yorumlar where urun ="& object("AffiliateID")&" and rating > 3 and onay =1"
-yorumcu.open Sorgula,baglanti,1,3 
-if not yorumcu.eof then   
-%>
-<% for i=1 to  yorumcu("rating") %>
-<i class="fa fa-star" aria-hidden="true"  style="font-size:.7em; color:#F39F4B" ></i>    
-<% next %>
-<span style="font-weight:normal; font-size:.6em; letter-spacing:0px"> Yorum (<%=yorumcu.recordcount %>) </span>  
-<% end if %>    
-</div>
  
   </a>   
 
