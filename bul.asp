@@ -6,19 +6,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
      
   <%   
- t= request.querystring("t")
- s= request.querystring("s")       
-  d= request.querystring("d") 
+ t= Trim(request.querystring("t"))
+ s= Trim(request.querystring("s"))       
+ d= Trim(request.querystring("d")) 
+ bul = Trim(Request("bul"))
+ bulSQL = Replace(bul,"'","''")
+
+ if t<>"" then
+   if IsNumeric(t)=false then t=""
+ end if
+
+ if s<>"" then
+   if IsNumeric(s)=false then s=""
+ end if
    
-  if d="" then
-  diz="sira asc"  
-  elseif d="0" then    
-  diz="sira desc"    
-   elseif d="19" then    
-  diz="fiyat asc"  
-  elseif d="91" then    
-  diz="fiyat desc"
-  end if       
+ if d="" then
+   diz="sira asc"  
+ elseif d="0" then    
+   diz="sira desc"    
+ elseif d="19" then    
+   diz="fiyat asc"  
+ elseif d="91" then    
+   diz="fiyat desc"
+ else
+   diz="sira asc"
+ end if       
   
 
 %>
@@ -55,17 +67,21 @@
  <Div  class="navi" >
 
 <div style="float:left">
-<%=request("bul") %>                                                                                                                                                                                                                                                      
+<% if bul<>"" then %>
+Arama: <%=Server.HTMLEncode(bul) %>
+<% else %>
+Arama
+<% end if %>                                                                                                                                                                                                                                                      
 </div>
 
 <div style="float:right">     
 
 
 <select class="goturen"  >
-<option value="#">S˝rala</option>  
-<option value="?g=<%=g%>&t=<%=t%>&s=<%=s%>&d=19"  <% if d=19 then %> selected <% end if %>> Ucuzdan Pahal˝ya</option>
-<option value="?g=<%=g%>&t=<%=t%>&s=<%=s%>&d=91" <% if d=91 then %> selected <% end if %>>Pahal˝dan Ucuza </option>
-<option value="?g=<%=g%>&t=<%=t%>&s=<%=s%>&d=0" <% if d="0" then %> selected <% end if %>>Ak˝ll˝ S˝ralama </option>   
+<option value="#">S√Ωrala</option>  
+<option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=19"  <% if d="19" then %> selected <% end if %>> Ucuzdan Pahal√Ωya</option>
+<option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=91" <% if d="91" then %> selected <% end if %>>Pahal√Ωdan Ucuza </option>
+<option value="?bul=<%=Server.URLEncode(bul)%>&t=<%=t%>&s=<%=s%>&d=0" <% if d="0" then %> selected <% end if %>>Ak√Ωll√Ω S√Ωralama </option>   
 </select>
 </div> 
  
@@ -81,9 +97,9 @@
     $(document).ready(function(){
 
       $(".goturen").on('change', function () {
-          var url = $(this).val(); // get selected value
-          if (url) { // require a URL
-              window.location = url; // redirect
+          var url = $(this).val();
+          if (url && url !== "#") {
+              window.location = url;
           }
           return false;
       });     
@@ -105,6 +121,10 @@
       
 <%  
 
+bul1=""
+bul2=""
+bulKosul=""
+
 if t<>"" then
 bul1="and tip="&t&""    
 end if
@@ -113,11 +133,28 @@ if s<>"" then
 bul2="and surface="&s&""    
 end if
 
+if bul<>"" then
+bulKosul="and (isim LIKE '%"& bulSQL &"%' or descr LIKE '%"& bulSQL &"%' or keyw LIKE '%"& bulSQL &"%')"
+end if
+
 set object = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From products where isim LIKE '%"& request.form("bul") &"%' "& bul1 &"  "& bul2 &" and yayin=1 order by "&diz&"  "
+Sorgula = "Select * From products where yayin=1 "& bulKosul &" "& bul1 &" "& bul2 &" order by "&diz&"  "
 object.open Sorgula,baglanti,1,3       
 
 
+if object.Eof then
+%>
+
+<div style="width:100%; padding:40px; text-align:center; font-size:1.2em; color:#555;">
+<% if bul<>"" then %>
+"<%=Server.HTMLEncode(bul)%>" icin sonuc bulunamadi.
+<% else %>
+Arama yapmak icin ustteki arama kutusunu kullanabilirsiniz.
+<% end if %>
+</div>
+
+<%
+else
 Do while not object.Eof     
 %>      
       
@@ -142,7 +179,7 @@ Do while not object.Eof
 
 
      
-<div class="detayal">›ncele </div>    
+<div class="detayal">√ùncele </div>    
             
 <div class="yildiz">
 <%  
@@ -167,6 +204,7 @@ if not yorumcu.eof then
            <%  
 object.MoveNExt
 Loop
+end if
 %>                    
                        
                        
