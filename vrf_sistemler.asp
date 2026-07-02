@@ -112,7 +112,7 @@ end if
 
 <section class="aeoCevap" aria-labelledby="vrf-aeo-baslik">
   <h1 id="vrf-aeo-baslik">Antalya VRF Sistemleri ve Merkezi &#304;klimlendirme &#199;&ouml;z&uuml;mleri</h1>
-  <p><strong>K&#305;sa cevap:</strong> VRF sistemleri; otel, ofis, klinik, restoran, ma&#287;aza ve &#231;ok odal&#305; ticari yap&#305;larda farkl&#305; alanlar&#305;n tek bir merkezi sistemle verimli &#351;ekilde iklimlendirilmesini sa&#287;layan profesyonel &#231;&ouml;z&uuml;mlerdir.</p>
+  <p> VRF sistemleri; otel, ofis, klinik, restoran, ma&#287;aza ve &#231;ok odal&#305; ticari yap&#305;larda farkl&#305; alanlar&#305;n tek bir merkezi sistemle verimli &#351;ekilde iklimlendirilmesini sa&#287;layan profesyonel &#231;&ouml;z&uuml;mlerdir.</p>
   <p>Antalya'da VRF sistemi se&#231;imi, yaln&#305;zca cihaz kapasitesine bakarak yap&#305;lmamal&#305;d&#305;r. Kat plan&#305;, i&#231; &uuml;nite yerle&#351;imi, d&#305;&#351; &uuml;nite konumu, borulama mesafesi, drenaj, kullan&#305;m senaryosu ve enerji verimlili&#287;i birlikte projelendirilmelidir. Bu nedenle VRF uygulamalar&#305;nda ke&#351;if ve teknik proje a&#351;amas&#305; kritik rol oynar.</p>
   <h2>VRF sistemi kimler i&#231;in uygundur?</h2>
   <p>VRF sistemleri, birden fazla b&ouml;l&uuml;m&uuml;n ayr&#305; ayr&#305; kontrol edilmesi gereken yap&#305;lar i&#231;in uygundur. Ofis katlar&#305;, oteller, klinikler, showroomlar, restoranlar ve ma&#287;azalar bu sisteme en s&#305;k ihtiya&#231; duyan alanlard&#305;r.</p>

@@ -137,7 +137,7 @@ Loop
 
 <section class="aeoCevap" aria-labelledby="klima-aeo-baslik">
   <h1 id="klima-aeo-baslik">Antalya Klima Sat&#305;&#351;, Ke&#351;if ve Montaj Hizmeti</h1>
-  <p><strong>K&#305;sa cevap:</strong> &Ouml;z&uuml;m Klima, Antalya'da ev, ofis ve ticari alanlar i&#231;in klima se&#231;imi, Mitsubishi Electric klima &#231;&ouml;z&uuml;mleri, ke&#351;if, montaj, bak&#305;m ve teknik servis deste&#287;i sunar.</p>
+  <p> &Ouml;z&uuml;m Klima, Antalya'da ev, ofis ve ticari alanlar i&#231;in klima se&#231;imi, Mitsubishi Electric klima &#231;&ouml;z&uuml;mleri, ke&#351;if, montaj, bak&#305;m ve teknik servis deste&#287;i sunar.</p>
   <p>Antalya'da klima se&#231;erken yaln&#305;zca metrekareye bakmak yeterli de&#287;ildir. Cephe y&ouml;n&uuml;, g&uuml;ne&#351; alma s&uuml;resi, tavan y&uuml;ksekli&#287;i, cam y&uuml;zeyi, yal&#305;t&#305;m durumu, ki&#351;i say&#305;s&#305; ve cihaz&#305;n g&uuml;nl&uuml;k kullan&#305;m yo&#287;unlu&#287;u birlikte de&#287;erlendirilmelidir. Bu nedenle do&#287;ru klima tercihi genellikle yerinde ke&#351;if ile ba&#351;lar.</p>
   <h2>Klima se&#231;iminde en kritik konu nedir?</h2>
   <p>En kritik konu, mek&acirc;na uygun kapasite ve do&#287;ru montaj noktas&#305;d&#305;r. Gere&#287;inden k&uuml;&#231;&uuml;k cihaz konforu sa&#287;layamaz; gere&#287;inden b&uuml;y&uuml;k cihaz ise gereksiz enerji t&uuml;ketimi ve verimsiz &#231;al&#305;&#351;ma riski olu&#351;turabilir.</p>
