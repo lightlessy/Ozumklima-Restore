@@ -1,20 +1,21 @@
+<!--#include file='charset.asp'-->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>  
  
-<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-9"> 
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254"> 
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Antalya Klima - Mitsubishi Electric Klima Bayii | ÖZÜM KLİMA - Antalya Klima Sistemleri</title>
+<title>Antalya Klima Servisi ve Mitsubishi Electric Klima &Ccedil;&ouml;z&uuml;mleri | &Ouml;z&uuml;m Klima</title>
 
-<meta name="author" content="MEGA TASARIM"/>    
+<meta name="author" content="MEGA TASARIM">    
 
-  <meta name="description" content="Antalya Klima Mitsubishi Klima Antalya Bayii Özüm Klima. Klima Kampanya Klima Sistemleri Mitsubishi Electric VRF" />
-  
-  <meta name="keywords" content="antalya klima, Antalya Klima Sistemleri, antalya Mitsubishi klima, antalya Mitsubishi bayii" />
+  <meta name="description" content="&Ouml;z&uuml;m Klima, Antalya&#39;da Mitsubishi Electric klima, VRF ve havaland&#305;rma sistemlerinde ke&#351;if, montaj, bak&#305;m ve teknik servis &#231;&ouml;z&uuml;mleri sunar.">
+  <link rel="canonical" href="https://ozumklima.com/" />
 
 
-<meta name="author" content="Mega Tasarım"/>   
+<meta name="author" content="Mega Tasar&#305;m">   
 
     <link rel="icon" type="image/png" href="fav.png" />   
 
@@ -103,7 +104,7 @@ body {
      
    $(window).load(function() {
  
-  $("#girisssss").fadeIn(1000);
+  $("#giris").fadeIn(1000);
             $("#giris").click(    function(){  $('#beyaz').remove();  $("#giris").fadeTo(1000, 0,kaldir);    }  )   ;
             
             function kaldir (){    $('#giris').remove();   }       
@@ -115,7 +116,7 @@ body {
    
                                      
 
-<!--  #include file='ust.asp' -->
+<!--#include file='ust.asp'-->
 
 
 
@@ -173,8 +174,8 @@ $(window).load(function() {
 <!---------------------------------------------------------------------------------------------slider----------------------------------------------------------------------------------->
 
 <Div class="slogan">
- <span class="slo2">     İhtiyacınıza uygun konfor ve enerji tasarrufu sağlayan klimalar  </span><BR>
-<span class="slo1">Dört mevsim profesyonel çözümler</span>  
+ <span class="slo2">     &#304;htiyac&#305;n&#305;za uygun konfor ve enerji tasarrufu sa&#287;layan klimalar  </span><BR>
+<span class="slo1">D&ouml;rt mevsim profesyonel &#231;&ouml;z&uuml;mler</span>  
 </Div>
 
 
@@ -190,7 +191,7 @@ $(window).load(function() {
              <i class="fas fa-asterisk"></i>        <BR>   <BR>   
 Klima Modelleri   <BR>   <BR>  
              <span>
-Yüksek teknoloji, tasaruflu ve verimli klima modellerimizi incelemek için tıklayın.
+Y&uuml;ksek teknoloji, tasarruflu ve verimli klima modellerimizi incelemek i&#231;in t&#305;klay&#305;n.
 </span>
                   </div>
                
@@ -208,7 +209,7 @@ Yüksek teknoloji, tasaruflu ve verimli klima modellerimizi incelemek için tıklay
                 <i class="fas fa-cubes"></i> <BR> <BR>  
    VRF Sistemler      <BR> <BR>  
                 <span>
-                Bir dış ünite ve iç mekan sıcaklığını düzenleyen birden fazla iç üniteden oluşmaktadır. 
+                Bir d&#305;&#351; &uuml;nite ve i&#231; mekan s&#305;cakl&#305;&#287;&#305;n&#305; d&uuml;zenleyen birden fazla i&#231; &uuml;niteden olu&#351;maktad&#305;r. 
 </span>
                   </div>
                
@@ -223,9 +224,9 @@ Yüksek teknoloji, tasaruflu ve verimli klima modellerimizi incelemek için tıklay
                  <div class="siyahlik" >&nbsp;</div>       
                 <div class="iconTas" >   
 <i class="fas fa-street-view"></i> <BR>   <BR>  
- Keşfetteam     <BR> <BR>     
+ Ke&#351;fetteam     <BR> <BR>     
               <span>
-Yanlış tercih tadınızı kaçırır. Keşfetteam'i çağırın uzman ekibimizle birlikte keşfedelim.
+Yanl&#305;&#351; tercih tad&#305;n&#305;z&#305; ka&#231;&#305;r&#305;r. Ke&#351;fetteam'i &#231;a&#287;&#305;r&#305;n uzman ekibimizle birlikte ke&#351;fedelim.
 </span>
                   </div>
                
@@ -242,9 +243,9 @@ Yanlış tercih tadınızı kaçırır. Keşfetteam'i çağırın uzman ekibimizle birlikte k
                  <div class="siyahlik" >&nbsp;</div>       
                 <div class="iconTas" >
     <i class="fas fa-street-view"></i><BR>   <BR>  
-        Satış & Servis <BR> <BR>  
+        Sat&#305;&#351; &amp; Servis <BR> <BR>  
                        <span>
-İklimlendirme sistemleri ile ilgili satış ve servis hizmetlerimizle sizinleyiz.
+&#304;klimlendirme sistemleri ile ilgili sat&#305;&#351; ve servis hizmetlerimizle sizinleyiz.
 </span>
                   </div>
                
@@ -258,7 +259,7 @@ Yanlış tercih tadınızı kaçırır. Keşfetteam'i çağırın uzman ekibimizle birlikte k
 
 <Div  class="yorums">
 
-   <Div class="slo1"  style="border-bottom:1px solid #E9E9E9"> <span>Müşteri Yorumları </span> </div>   <BR>
+   <Div class="slo1"  style="border-bottom:1px solid #E9E9E9"> <span>M&uuml;&#351;teri Yorumlar&#305; </span> </div>   <BR>
   
     
  <div  class="beyaz"  >     
@@ -319,16 +320,27 @@ function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+
+  if (slides.length === 0) {
+    return;
   }
+
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+
+  slides[slideIndex-1].style.display = "block";
+
+  if (dots.length > 0 && dots[slideIndex-1]) {
+    dots[slideIndex-1].className += " active";
+  }
 }
 window.onload= function () {
  setInterval(function(){ 
@@ -342,10 +354,10 @@ window.onload= function () {
                     
                           
                  <br>
-<a href="kurumsal.asp?id=20" style="color:#DE0303; font-size:1.2em; "> <B>TÜM YORUMLAR » &nbsp;  | &nbsp;  Bizi Değerlendirin »</B></a>      
+<a href="kurumsal.asp?id=20" style="color:#DE0303; font-size:1.2em; "> <B>T&Uuml;M YORUMLAR &raquo; &nbsp; | &nbsp; Bizi De&#287;erlendirin &raquo;</B></a>      
             
 
-                 <BR><B>Antalya Klima</B> - Mitsubishi Klima Antalya Bayii Özüm Klima sosyal medya hesaplarımızı takip edin, yeni ürünler, Antalya klima kampanyaları, sürpriz indirimler ve yaşam alanlarınıza konfor katacak sınırsız seçenekleri keşfedin.
+                 <BR><B>Antalya Klima</B> - Mitsubishi Klima Antalya Bayii &Ouml;z&uuml;m Klima sosyal medya hesaplar&#305;m&#305;z&#305; takip edin, yeni &uuml;r&uuml;nler, Antalya klima kampanyalar&#305;, s&uuml;rpriz indirimler ve ya&#351;am alanlar&#305;n&#305;za konfor katacak s&#305;n&#305;rs&#305;z se&#231;enekleri ke&#351;fedin.
                  <BR><BR>
                  
               
@@ -394,7 +406,7 @@ Loop
           
 
         <Div  class="anlasmali">
-<a href="referanslar.asp" title="Klima Sistemleri Antalya ve Fazlası">              <Div class="slo1"  style="border-bottom:1px solid #E9E9E9"> <span>Referanslar </span> </Div>
+<a href="referanslar.asp" title="Klima Sistemleri Antalya ve Fazlas&#305;">              <Div class="slo1"  style="border-bottom:1px solid #E9E9E9"> <span>Referanslar </span> </Div>
                 
 <BR><BR>
 <div class="owl-carousel">  
@@ -455,7 +467,7 @@ Loop
                         <Div class="solSutun">
                                  <a href="klima.asp?t=36" title="Antalya Mitsubishi Klima">
                                  <div style=" width:100%;max-widtH:411px ;  height:345px;background-image:url('images/evofis.jpg') " >
-                                      <div class="Absolute-Center "><span>Ev Ofis Klimaları</span></div>
+                                      <div class="Absolute-Center "><span>Ev Ofis Klimalar&#305;</span></div>
                                  </div>
                                  </a>   
                                  
@@ -488,7 +500,7 @@ Loop
                          
                            <a href="havalandirma.asp">
                                  <div  style=" width:100%;max-widtH:410px ;  height:706px; background-image:url('images/hava.jpg')" >
-                                      <div class="Absolute-Center "><span>Havalandırma Sistemleri</span></div>
+                                      <div class="Absolute-Center "><span>Havaland&#305;rma Sistemleri</span></div>
                                  </div>
                                  </a>   
                                  
@@ -503,7 +515,7 @@ Loop
 
       
       
-    <!--  #include file='alt.asp' -->      
+    <!--#include file='alt.asp'-->      
 
    
 

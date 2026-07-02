@@ -11,17 +11,38 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
  
  <!--#include file='db.asp'-->
-     
-    <%
-    set icerisi2 = Server.CreateObJect("ADODB.RecordSet")
+<%
+id = request.querystring("id")
+if id = "" or isnumeric(id)=false then
+   set varsayilanSayfa = Server.CreateObJect("ADODB.RecordSet")
+   Sorgu = "Select top 1 * From sayfalar where ana=2 and yayin=1 order by sira asc"
+   varsayilanSayfa.open Sorgu,baglanti,1,3
+   if not varsayilanSayfa.eof then
+      id = varsayilanSayfa("id")
+   else
+      id = 1
+   end if
+end if
+
+set icerisi2 = Server.CreateObJect("ADODB.RecordSet")
 Sorgu = "Select * From sayfalar where id="& id  &" and yayin=1"
-icerisi2.open Sorgu,baglanti,1,3   
-%>      
+icerisi2.open Sorgu,baglanti,1,3
 
+if not icerisi2.eof then
+   seoTitle = icerisi2("isim") & " Hizmetleri | Ozum Klima Antalya"
+   seoDescription = "Ozum Klima'nin Antalya'da sundugu " & icerisi2("isim") & " hizmetleri ile kesif, uygulama, montaj ve teknik servis sureclerinde profesyonel destek alin."
+else
+   seoTitle = "Hizmetler | Ozum Klima Antalya"
+   seoDescription = "Ozum Klima, Antalya'da iklimlendirme hizmetlerinde kesif, uygulama, montaj ve teknik servis destegi sunar."
+end if
+%>
+     
+<title><%=Server.HTMLEncode(seoTitle)%></title>
 
-<title><%=icerisi2("isim") %> Antalya   | Antalya Klima - Özüm Klima Mitsubishi Klima Antalya</title>    
+<meta name="description" content="<%=Server.HTMLEncode(seoDescription)%>" />
+<link rel="canonical" href="https://ozumklima.com/h.asp?id=<%=id%>" />
 
-<meta name="author" content="Mega Tasarým"/>   
+<meta name="author" content="Mega Tasarï¿½m"/>   
 
 <link rel="icon" type="image/png" href="fav.png" />   
 
@@ -77,7 +98,13 @@ end if
 
                          
   <Div  class="icerik2"  style="white-space: pre-line ; "><span><B>  <%=icerisi2("isim") %>  </B> </span>  
-       <%=icerisi2("icerik") %>  <a href="http://www.ozumklima.com">Antalya klima </a> &nbsp;&nbsp;&nbsp; <a href="http://www.ozumklima.com/h.asp">Antalya klima fiyatlarý</a>  &nbsp;&nbsp;&nbsp; <a href="http://www.ozumklima.com/h.asp?h=mitsubishi-elektrik-klima-yetkili-bayii&id=12">Mitsubishi Antalya klima </a>  &nbsp;&nbsp;&nbsp;  <a href="http://www.ozumklima.com">Antalya Mitsubishi Klima Bayii Servis </a>   &nbsp;&nbsp;&nbsp; <a href="http://www.ozumklima.com/h.asp?h=mitsubishi-elektrik-klima-yetkili-servisi&id=13">Antalya klima servisi </a>   &nbsp;&nbsp;&nbsp;  <a href="http://www.ozumklima.com/vrf_sistemler.asp">Antalya havalandýrma  </a>
+     <%=icerisi2("icerik") %>
+
+   <div style="margin-top:22px; padding:14px; border:1px solid #E1E1E1; background:#F8F8F8; white-space:normal;">
+      <b>Uygulama Ornekleri:</b> Antalya'da tamamladigimiz gercek saha uygulamalarini inceleyin.
+      <br>
+      <a href="uygulama-ornekleri.asp" style="display:inline-block; margin-top:8px; font-weight:bold; color:#3F3F3F;" onclick="analyticsTrack('case_study_cta_click', {page: 'hizmet', cta: 'uygulama_ornekleri_link'});">Uygulama orneklerini goruntule</a>
+   </div>
   </Div>
        
        

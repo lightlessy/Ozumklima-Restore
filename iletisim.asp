@@ -6,9 +6,12 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Ýletiþim  | Antalya Klima - Özüm Klima Mitsubishi Klima Antalya</title>   
+<title>Iletisim | Antalya Klima Servisi ve Mitsubishi Electric Cozumleri | Ozum Klima</title>   
 
-<meta name="author" content="Mega Tasarým"/>   
+<meta name="description" content="Ozum Klima iletisime gecin. Antalya'da klima, VRF ve havalandirma sistemleri icin kesif, teklif, montaj ve servis destegi alin." />
+<link rel="canonical" href="https://ozumklima.com/iletisim.asp" />
+
+<meta name="author" content="Mega Tasarï¿½m"/>   
 
 <link rel="icon" type="image/png" href="fav.png" />   
 
@@ -26,8 +29,7 @@
 <body> 
 
   
-<!--  #include file='ust.asp' -->
-
+<!--#include file='ust.asp'-->
 
 <DIV >
                
@@ -39,7 +41,7 @@
 
    <Div  style="float:left; max-width:300px"    class="adresTel"  > 
    
-                   <font style="font-size:1.3em; color:#FEAD41 ;">Alo Konfor Hattý<BR></font>
+                   <font style="font-size:1.3em; color:#FEAD41 ;">Alo Konfor Hattï¿½<BR></font>
                   <span class="alttel"><i class="fas fa-phone"></i>  <%=ayars("tel") %>  <BR><BR></span>
                   
                    <B>Adres: </B><BR>
@@ -70,11 +72,11 @@
  <form method="post" name="cic"  action="iletisim-send.asp"      class="form">          
                           
 
-<input name="isim" type="text"  placeholder="Ýsim"  size="26" maxlength="60" required >
+<input name="isim" type="text"  placeholder="ï¿½sim"  size="26" maxlength="60" required >
 <input name="mail" type="email"      placeholder="E-Posta Adresiniz"  size="26" maxlength="60"  required>  
-<input name="tel" type="text"   placeholder="Telefon Numaranýz "  size="10"   maxlength="11" onkeypress="return numbersonly(this, event)"> 
-<textarea name="mes" cols="25" rows="6"  placeholder=" Mesajýnýz"  required  ></textarea>	 
-  <input type="submit"  name="submit" value="Gönder"   class=btn  style="color:#FFFFFF"> 	 	 
+<input name="tel" type="text"   placeholder="Telefon NumaranÄ±z "  size="10"   maxlength="11" onkeypress="return numbersonly(this, event)"> 
+<textarea name="mes" cols="25" rows="6"  placeholder=" Mesajï¿½nï¿½z"  required  ></textarea>	 
+  <input type="submit"  name="submit" value="Gï¿½nder"   class=btn  style="color:#FFFFFF"> 	 	 
 
       </form>         
       

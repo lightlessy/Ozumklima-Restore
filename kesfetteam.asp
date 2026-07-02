@@ -11,9 +11,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
   
 
-<title>Kurumsal | Antalya Klima - Özüm Klima Mitsubishi Klima Antalya</title>    
+<title>Kurumsal | Antalya Klima - ï¿½zï¿½m Klima Mitsubishi Klima Antalya</title>    
 
-<meta name="author" content="Mega Tasarým"/>   
+<meta name="author" content="Mega Tasarï¿½m"/>   
 
 <link rel="icon" type="image/png" href="fav.png" />   
 
@@ -54,38 +54,38 @@
  <Div class="solMenu"> <!--  #include file='sol-kurumsal.asp' --> </Div>
       
 
-  <Div  class="icerik2"  style="white-space: pre-line ;"><span><B>  Keþfetteam  </B> </span>   <div style=" width:100%; margin:0px auto; left:0px; right:0px; text-align:center" class="yazilar"><img src="images/kesif3.jpg" width=100%>
+  <Div  class="icerik2"  style="white-space: pre-line ;"><span><B>  Keï¿½fetteam  </B> </span>   <div style=" width:100%; margin:0px auto; left:0px; right:0px; text-align:center" class="yazilar"><img src="images/kesif3.jpg" width=100%>
       <img src="images/kesif1.jpg" width=100%>
    <img src="images/kesif2.jpg" width=100%>
      
  
  <div style="max-width:800px; margin:0px auto; font-size:19px">  
-<span style="font-size:34px; font-weight:bold">   Keþfetteam Nedir? </span>Keþfetteam, Mitsubishi Electric’in müþteri memnuniyetini en üst seviyede tutarak oluþturduðu,  sektörde daha önce hiç karþýlaþýlmamýþ bir keþif süreci hizmetidir.
+<span style="font-size:34px; font-weight:bold">   Keï¿½fetteam Nedir? </span>Keï¿½fetteam, Mitsubishi Electricï¿½in mï¿½ï¿½teri memnuniyetini en ï¿½st seviyede tutarak oluï¿½turduï¿½u,  sektï¿½rde daha ï¿½nce hiï¿½ karï¿½ï¿½laï¿½ï¿½lmamï¿½ï¿½ bir keï¿½if sï¿½reci hizmetidir.
 
-Keþfetteam ekipleri özel geliþtirilmiþ Keþfetteam uygulamasý ile en doðru analizi yaparak, beklentilerinizi ve mekanýnýzýn ihtiyacýný karþýlayacak en uygun klimayý seçmenizde size yol gösterir.
+Keï¿½fetteam ekipleri ï¿½zel geliï¿½tirilmiï¿½ Keï¿½fetteam uygulamasï¿½ ile en doï¿½ru analizi yaparak, beklentilerinizi ve mekanï¿½nï¿½zï¿½n ihtiyacï¿½nï¿½ karï¿½ï¿½layacak en uygun klimayï¿½ seï¿½menizde size yol gï¿½sterir.
 </div>
 
  <img src="images/kesif4.jpg" width=100%>
  
     <div style="max-width:800px; margin:0px auto; font-size:19px">  
 <span style="font-size:34px; font-weight:bold"> Hedefimiz Nedir?</span>
-Mitsubishi Electric olarak, biliyoruz ki artýk en yüksek katma deðer sadece mükemmel ürün ve hizmeti sunmakla deðil kusursuz deneyimi yaþatmakla ortaya çýkarýlabiliyor. Bu farkýndalýkla müþterilerimizin ihtiyacýný kendi beklentileri çerçevesinde karþýlayacak inovatif çözümler üretmeye odaklanýyoruz. Bunun için teknik uzmanlýðýmýzý, müþterilerimizden gelen geribildirimler ile birleþtiriyor ve sürdürülebilir stratejiler benimsiyoruz. Böylelikle bir yandan sektöre katký saðlarken diðer yandan müþterilerimize kiþiselleþtirilebilen hizmetler sunuyoruz.
+Mitsubishi Electric olarak, biliyoruz ki artï¿½k en yï¿½ksek katma deï¿½er sadece mï¿½kemmel ï¿½rï¿½n ve hizmeti sunmakla deï¿½il kusursuz deneyimi yaï¿½atmakla ortaya ï¿½ï¿½karï¿½labiliyor. Bu farkï¿½ndalï¿½kla mï¿½ï¿½terilerimizin ihtiyacï¿½nï¿½ kendi beklentileri ï¿½erï¿½evesinde karï¿½ï¿½layacak inovatif ï¿½ï¿½zï¿½mler ï¿½retmeye odaklanï¿½yoruz. Bunun iï¿½in teknik uzmanlï¿½ï¿½ï¿½mï¿½zï¿½, mï¿½ï¿½terilerimizden gelen geribildirimler ile birleï¿½tiriyor ve sï¿½rdï¿½rï¿½lebilir stratejiler benimsiyoruz. Bï¿½ylelikle bir yandan sektï¿½re katkï¿½ saï¿½larken diï¿½er yandan mï¿½ï¿½terilerimize kiï¿½iselleï¿½tirilebilen hizmetler sunuyoruz.
 
-Nihai hedefimiz, yaptýðýmýz iþe müþterimizin gözünden bakarak hizmet kalitemizi en üst seviyeye çýkarmaktýr.
+Nihai hedefimiz, yaptï¿½ï¿½ï¿½mï¿½z iï¿½e mï¿½ï¿½terimizin gï¿½zï¿½nden bakarak hizmet kalitemizi en ï¿½st seviyeye ï¿½ï¿½karmaktï¿½r.
 
-Bu amaçla geliþtirdiðimiz keþfetteam hizmetimizle müþterilerimizi rahat ettirecek, yaþamlarýný kolaylaþtýracak çözümler sunuyor ve sektörde daha önce hiç karþýlaþmadýklarý farklý bir keþif süreci deneyimletiyoruz.     
+Bu amaï¿½la geliï¿½tirdiï¿½imiz keï¿½fetteam hizmetimizle mï¿½ï¿½terilerimizi rahat ettirecek, yaï¿½amlarï¿½nï¿½ kolaylaï¿½tï¿½racak ï¿½ï¿½zï¿½mler sunuyor ve sektï¿½rde daha ï¿½nce hiï¿½ karï¿½ï¿½laï¿½madï¿½klarï¿½ farklï¿½ bir keï¿½if sï¿½reci deneyimletiyoruz.     
 
-<span style="font-size:34px; font-weight:bold">Keþfetteam Size Ne Kazandýrýr?</span><li> Konforlu bir yaþam alaný yaratýlmasý için en doðru klima seçimi     </li>
-<li> Yüksek enerji tasarrufu ile hem bütçenize hem de ülke ekonomisine katký   </li>
-<li> Kaliteli ürüne yaraþýr hizmet mükemmelliði  </li>
+<span style="font-size:34px; font-weight:bold">Keï¿½fetteam Size Ne Kazandï¿½rï¿½r?</span><li> Konforlu bir yaï¿½am alanï¿½ yaratï¿½lmasï¿½ iï¿½in en doï¿½ru klima seï¿½imi     </li>
+<li> Yï¿½ksek enerji tasarrufu ile hem bï¿½tï¿½enize hem de ï¿½lke ekonomisine katkï¿½   </li>
+<li> Kaliteli ï¿½rï¿½ne yaraï¿½ï¿½r hizmet mï¿½kemmelliï¿½i  </li>
 </div>  
 
    <img src="images/kesif7.jpg" width=100%>
 
-     <span style="font-size:39px; font-weight:bold; color:#ff7146"> Keþfetteam Ayrýcalýklarý</span>  <BR>
+     <span style="font-size:39px; font-weight:bold; color:#ff7146"> Keï¿½fetteam Ayrï¿½calï¿½klarï¿½</span>  <BR>
    <img src="images/kesif6.jpg" width=100%>
    
-<a href="iletisim.asp">   <img src="images/kesif5.jpg" width=100%>   </a> 
+<a href="iletisim.asp" onclick="analyticsTrack('case_study_cta_click', {page: 'kesfetteam', cta: 'iletisim'});">   <img src="images/kesif5.jpg" width=100%>   </a> 
    
    
 

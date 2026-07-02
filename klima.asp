@@ -38,13 +38,31 @@ set sorf = Server.CreateObJect("ADODB.RecordSet")
 Sorgula = "Select * From surface where id= " & s &" "
 sorf.open Sorgula,baglanti,1,3   
 end if 
+
+seoTitle = anas("isim") & " Cozumleri | Ozum Klima Antalya"
+seoDescription = "Antalya'da " & anas("isim") & " cozumleri icin Ozum Klima'dan kesif, montaj ve teknik servis destegi alin."
+
+if t<>"" then
+seoTitle = tipi("isim") & " " & anas("isim") & " | Ozum Klima Antalya"
+seoDescription = "Antalya'da " & tipi("isim") & " " & anas("isim") & " cozumleri icin profesyonel kesif, uygulama ve servis destegi sunuyoruz."
+end if
+
+canonicalUrl = "https://ozumklima.com/klima.asp"
+if t<>"" then
+canonicalUrl = canonicalUrl & "?t=" & Server.URLEncode(t)
+if s<>"" then
+canonicalUrl = canonicalUrl & "&s=" & Server.URLEncode(s)
+end if
+elseif s<>"" then
+canonicalUrl = canonicalUrl & "?s=" & Server.URLEncode(s)
+end if
 %>
 
 
-<title><%=anas("isim") %> - <% if t<>"" then %> <%=tipi("isim") %><% end if %>  <% if s<>"" then %> - <%=sorf("isim") %> <% end if %> <%=ayars("firma") %> </title>    
+<title><%=Server.HTMLEncode(seoTitle)%></title>
 
-  <meta name="keywords" content="<%=anas("keyw") %> " />
-  <meta name="description" content="<%=anas("descr") %>  " />
+  <meta name="description" content="<%=Server.HTMLEncode(seoDescription)%>" />
+  <link rel="canonical" href="<%=canonicalUrl%>" />
 
 
  <META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-9"> 
@@ -181,7 +199,7 @@ Do while not object.Eof
 </div>
 
      
-<div class="detayal">Ýncele </div>    
+<div class="detayal">ï¿½ncele </div>    
             
 
  

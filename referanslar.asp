@@ -11,9 +11,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
   
 
-<title>Kurumsal | Antalya Klima - Özüm Klima Mitsubishi Klima Antalya</title>    
+<title>Kurumsal | Antalya Klima - ï¿½zï¿½m Klima Mitsubishi Klima Antalya</title>    
 
-<meta name="author" content="Mega Tasarým"/>   
+<meta name="author" content="Mega Tasarï¿½m"/>   
 
 <link rel="icon" type="image/png" href="fav.png" />   
 
@@ -59,7 +59,13 @@ Sorgu = "Select * From sayfalar where id=11 and yayin=1"
 icerisi.open Sorgu,baglanti,1,3   
 %>          
 
-  <Div  class="icerik2"  ><span><B>  <%=icerisi("isim") %>   </B> </span> <%=icerisi("icerik") %>      </Div> 
+   <Div  class="icerik2"  ><span><B>  <%=icerisi("isim") %>   </B> </span> <%=icerisi("icerik") %>
+      <div style="margin-top:20px; padding:14px; border:1px solid #E1E1E1; background:#F8F8F8;">
+         <b>Uygulama Ornekleri:</b> Referanslarin yani sira detayli case study ozetlerini inceleyebilirsiniz.
+         <br>
+         <a href="uygulama-ornekleri.asp" style="display:inline-block; margin-top:8px; font-weight:bold; color:#3F3F3F;" onclick="analyticsTrack('case_study_cta_click', {page: 'referanslar', cta: 'uygulama_ornekleri_link'});">Uygulama orneklerine git</a>
+      </div>
+   </Div> 
 <Div  class="tedaviler">    
 
  

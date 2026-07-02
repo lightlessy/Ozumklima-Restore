@@ -1,5 +1,5 @@
   <div class="whatweb">
-<a href="https://api.whatsapp.com/send?phone=9<%=replace(ayars("gsm")," ","")%>&text=https://www.ozumklima.com" target=_Blank style="color:#4D4D4D;"> <img src="images/what2.png" width=60> <BR>WhatsApp Destek   </a>    
+  <a href="https://api.whatsapp.com/send?phone=9<%=replace(ayars("gsm")," ","")%>&text=https://www.ozumklima.com" target=_Blank style="color:#4D4D4D;" onclick="analyticsTrack('whatsapp_click', {location: 'footer', method: 'api.whatsapp.com'});"> <img src="images/what2.png" width=60> <BR>WhatsApp Destek   </a>    
 </div>
 
 
@@ -13,7 +13,7 @@
             <Div style="float:left"  class="altmenu"   >
                        
                        <Div>
-                                <a href="klima.asp?t=36">      <span> Ev Ofis Klimalarý </span>    </a>
+                                <a href="klima.asp?t=36">      <span> Ev Ofis Klimalarï¿½ </span>    </a>
 
           
  <%  
@@ -84,7 +84,7 @@ Loop
                        
                        
                        <Div>
-                             <a href="havalandirma.asp">       <span> Havalandýrma Sistemleri  </span> </a> 
+                             <a href="havalandirma.asp">       <span> Havalandï¿½rma Sistemleri  </span> </a> 
 
  <%  
 
@@ -112,7 +112,7 @@ Loop
               
               
             <Div style="float:right; max-width:200px"  class="bizeulasin" >
-                   <font style="font-size:1.2em">Bize Ulaþýn<BR></font>
+                   <font style="font-size:1.2em">Bize Ulaï¿½ï¿½n<BR></font>
                   <span class="alttel"><i class="fas fa-phone"></i>       <%=ayars("tel") %> <BR><BR></span>
                   
                    <B>Adres: </B><BR>
@@ -144,7 +144,7 @@ Loop
                    
                   
 
-                   <Div>© 2025 <a href="http://www.ozumlkila.com" title="Antalya Klima">Özüm Klima </a> - Tüm Haklarý Saklýdýr. &nbsp;  | &nbsp;  <a  href="http://www.megatasarim.com"   target="_blank" >Mega Tasarým </a></Div>
+                   <Div>ï¿½ 2025 <a href="http://www.ozumlkila.com" title="Antalya Klima">ï¿½zï¿½m Klima </a> - Tï¿½m Haklarï¿½ Saklï¿½dï¿½r. &nbsp;  | &nbsp;  <a  href="http://www.megatasarim.com"   target="_blank" >Mega Tasarï¿½m </a></Div>
        
                    
 
@@ -153,15 +153,6 @@ Loop
                       
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-3539522-10', 'auto');
-  ga('send', 'pageview');
-
-</script>
+<!--#include file='analytics.asp'-->
              
 

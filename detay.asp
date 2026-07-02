@@ -35,15 +35,15 @@
            <%   
   txt=Request.ServerVariables("QUERY_STRING")
 
-sonYeri=InStrRev(txt,"/") 'son / iþaretini yeri  
+sonYeri=InStrRev(txt,"/") 'son / iï¿½aretini yeri  
 
-sonuc=Mid(txt,sonYeri+1,Len(txt) )  'son / iþretinden kalan yazýnýn tamamý   
+sonuc=Mid(txt,sonYeri+1,Len(txt) )  'son / iï¿½retinden kalan yazï¿½nï¿½n tamamï¿½   
 
 
 
-istekbolum = Split(sonuc,"-")  'tirelerden bölerek dizi oluþtu  
+istekbolum = Split(sonuc,"-")  'tirelerden bï¿½lerek dizi oluï¿½tu  
 
-uzunluk=uBound(istekbolum)     'tirelerden bölerek oluþturduðumuz dizinin uzunluðu    
+uzunluk=uBound(istekbolum)     'tirelerden bï¿½lerek oluï¿½turduï¿½umuz dizinin uzunluï¿½u    
   
 pidi=istekbolum(uzunluk)  
 ad= request.querystring("ad")            
@@ -80,17 +80,46 @@ Sorgula = "Select * From products where AffiliateID= "& pidi
 Yonlendir.Open Sorgula,baglanti,1,3
 Yonlendir("hit") = Yonlendir("hit")+1
 Yonlendir.Update  
+
+seoTitle = uruns("isim") & " | " & anas("isim") & " Cozumu | Ozum Klima"
+
+seoDescription = uruns("descr") & ""
+seoDescription = Replace(seoDescription, vbCrLf, " ")
+seoDescription = Replace(seoDescription, vbCr, " ")
+seoDescription = Replace(seoDescription, vbLf, " ")
+seoDescription = Replace(seoDescription, "&nbsp;", " ")
+
+do while InStr(seoDescription, "<") > 0 and InStr(seoDescription, ">") > InStr(seoDescription, "<")
+  basla = InStr(seoDescription, "<")
+  bitir = InStr(basla, seoDescription, ">")
+  seoDescription = Left(seoDescription, basla - 1) & " " & Mid(seoDescription, bitir + 1)
+loop
+
+seoDescription = Trim(seoDescription)
+do while InStr(seoDescription, "  ") > 0
+  seoDescription = Replace(seoDescription, "  ", " ")
+loop
+
+if seoDescription = "" then
+  seoDescription = uruns("isim") & " icin Ozum Klima'dan Antalya'da kesif, montaj ve teknik servis destegi alin."
+end if
+
+if Len(seoDescription) > 160 then
+  seoDescription = Left(seoDescription, 157) & "..."
+end if
+
+canonicalUrl = "https://ozumklima.com/" & cevir(uruns("isim")) & "-" & uruns("AffiliateID")
  
 
 
 %>   
 
 
-<title><%=uruns("isim")%> - <%=anas("isim")%> | <%=ayars("firma") %> </title>   
+<title><%=Server.HTMLEncode(seoTitle)%></title>
                                                            
  
-  <meta name="keywords" content="<%=uruns("keyw")%>" />
-  <meta name="description" content="<%=uruns("keyw")%> " />
+  <meta name="description" content="<%=Server.HTMLEncode(seoDescription)%>" />
+  <link rel="canonical" href="<%=canonicalUrl%>" />
 
 
 </head>
@@ -154,15 +183,15 @@ Yonlendir.Update
  <input type="hidden" name="product"    value="<%=uruns("AffiliateID")%>">      
 
 <% if   uruns.fields("uretici")&"" <> "" then  %>   
-<a href="http://www.ozumklima.com/urunler/<%=uruns("uretici") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon8.png" >  <div><b>Teknik Özellikler</B></div> </div></a>  
+<a href="http://www.ozumklima.com/urunler/<%=uruns("uretici") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon8.png" >  <div><b>Teknik ï¿½zellikler</B></div> </div></a>  
 <% end if %>
                           
 <% if   uruns.fields("dokuman")&"" <> "" then  %>   
-<a href="http://www.ozumklima.com/urunler/<%=uruns("dokuman") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon5.png" >  <div><b>Broþür Ýndir</B></div> </div></a> 
+<a href="http://www.ozumklima.com/urunler/<%=uruns("dokuman") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon5.png" >  <div><b>Broï¿½ï¿½r ï¿½ndir</B></div> </div></a> 
 <% end if %>
 
 <BR><BR><BR>  
-  <input  type="submit" value="Ücretsiz Keþif" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  ">    
+  <input  type="submit" value="ï¿½cretsiz Keï¿½if" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  " onclick="analyticsTrack('product_interest_click', {cta: 'ucretsiz_kesif', product_id: '<%=uruns("AffiliateID")%>'});">    
 </form>
 
 </div>    
@@ -193,7 +222,7 @@ Yonlendir.Update
 <div style="text-align:center">
 
   <form method="POST" action="iletisim.asp" name="myForm"  >   
-            <input  type="submit" value="BU ÜRÜNLE ÝLGÝLENÝYORUM" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  ">    
+            <input  type="submit" value="BU ï¿½Rï¿½NLE ï¿½LGï¿½LENï¿½YORUM" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  " onclick="analyticsTrack('product_interest_click', {cta: 'bu_urunle_ilgileniyorum', product_id: '<%=uruns("AffiliateID")%>'});">    
 </form>   
 <BR><BR>&nbsp;                          
 </div>
@@ -245,7 +274,7 @@ i = 1 %>
  
     <DIV   class="Box" >
 
-     <span class="baslik"  style="border:none; ">Benzer Ürünler</span>
+     <span class="baslik"  style="border:none; ">Benzer ï¿½rï¿½nler</span>
       
   <BR><BR>
  <div id="owl-demo" class="owl-carousel" >
