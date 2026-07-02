@@ -13,7 +13,7 @@
             <Div style="float:left"  class="altmenu"   >
                        
                        <Div>
-                                <a href="klima.asp?t=36">      <span> Ev Ofis Klimalar� </span>    </a>
+                                <a href="klima.asp?t=36">      <span> Ev Ofis Klimalar&#305; </span>    </a>
 
           
  <%  
@@ -84,7 +84,7 @@ Loop
                        
                        
                        <Div>
-                             <a href="havalandirma.asp">       <span> Havaland�rma Sistemleri  </span> </a> 
+                             <a href="havalandirma.asp">       <span> Havaland&#305;rma Sistemleri  </span> </a> 
 
  <%  
 
@@ -112,7 +112,7 @@ Loop
               
               
             <Div style="float:right; max-width:200px"  class="bizeulasin" >
-                   <font style="font-size:1.2em">Bize Ula��n<BR></font>
+                   <font style="font-size:1.2em">Bize Ula&#351;&#305;n<BR></font>
                   <span class="alttel"><i class="fas fa-phone"></i>       <%=ayars("tel") %> <BR><BR></span>
                   
                    <B>Adres: </B><BR>
@@ -144,7 +144,7 @@ Loop
                    
                   
 
-                   <Div>� 2025 <a href="http://www.ozumlkila.com" title="Antalya Klima">�z�m Klima </a> - T�m Haklar� Sakl�d�r. &nbsp;  | &nbsp;  <a  href="http://www.megatasarim.com"   target="_blank" >Mega Tasar�m </a></Div>
+                   <Div>&copy; 2025 <a href="http://www.ozumlkila.com" title="Antalya Klima">&Ouml;z&uuml;m Klima </a> - T&uuml;m Haklar&#305; Sakl&#305;d&#305;r. &nbsp;  | &nbsp;  <a  href="http://www.megatasarim.com"   target="_blank" >Mega Tasar&#305;m </a></Div>
        
                    
 
@@ -154,5 +154,3 @@ Loop
 
 
 <!--#include file='analytics.asp'-->
-             
-
