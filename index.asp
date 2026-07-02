@@ -72,6 +72,19 @@ body {
 .flexslider {margin: 0; padding: 0; margin:0px auto; max-width: 1270px; height: 600px; border: 0px solid; overflow: hidden; }
 .flexslider .slides img {width: auto; height: 100%; display: block;}
 .flex-pauseplay span {text-transform: capitalize;}     
+.hizmetGovdesi {width:92%; max-width:1120px; margin:35px auto 45px auto; padding:35px 4%; background:#FFFFFF; border-top:1px solid #E9E9E9; border-bottom:1px solid #E9E9E9; color:#222222; font-family:Arial, Helvetica, sans-serif; box-sizing:border-box;}
+.hizmetGovdesi h1 {margin:0 0 12px 0; padding:0; font-size:1.7em; line-height:1.35em; font-weight:700; color:#171717; text-align:center;}
+.hizmetGovdesi .hizmetAltBaslik {display:block; margin:0 auto 24px auto; max-width:760px; color:#777777; font-size:1em; line-height:1.65em; text-align:center;}
+.hizmetGovdesi .hizmetMetin {max-width:900px; margin:0 auto; column-count:2; column-gap:42px;}
+.hizmetGovdesi p {margin:0 0 18px 0; padding:0; font-size:1em; line-height:1.75em; color:#333333;}
+.hizmetGovdesi a {color:#DE0303; text-decoration:none; font-weight:700;}
+.hizmetGovdesi a:hover {text-decoration:underline;}
+.hizmetGovdesi .hizmetAksiyon {max-width:900px; margin:12px auto 0 auto; padding-top:18px; border-top:1px solid #EFEFEF; text-align:center; color:#555555; font-size:1em; line-height:1.65em;}
+@media only screen and (max-width: 760px) {
+.hizmetGovdesi {width:92%; margin:24px auto 32px auto; padding:26px 5%;}
+.hizmetGovdesi h1 {font-size:1.35em;}
+.hizmetGovdesi .hizmetMetin {column-count:1;}
+}
 </style>  
 
 
@@ -254,6 +267,21 @@ Yanl&#305;&#351; tercih tad&#305;n&#305;z&#305; ka&#231;&#305;r&#305;r. Ke&#351;
            </a>          
            
 </Div>            
+
+<section class="hizmetGovdesi" aria-labelledby="hizmet-baslik">
+  <h1 id="hizmet-baslik">Antalya Klima Servisi, VRF ve Havaland&#305;rma &#199;&ouml;z&uuml;mleri</h1>
+  <span class="hizmetAltBaslik">Ev, ofis ve ticari alanlar i&#231;in do&#287;ru ke&#351;if, verimli cihaz se&#231;imi, profesyonel montaj ve sat&#305;&#351; sonras&#305; teknik servis.</span>
+  <div class="hizmetMetin">
+    <p>Antalya'n&#305;n s&#305;cak ve nemli ikliminde klima se&#231;imi yaln&#305;zca serinlemek i&#231;in de&#287;il, konforu korumak ve enerji t&uuml;ketimini kontrol alt&#305;nda tutmak i&#231;in de &ouml;nemlidir. &Ouml;z&uuml;m Klima olarak ev, ofis, ma&#287;aza, restoran, otel ve ticari alanlarda ihtiyaca uygun iklimlendirme &#231;&ouml;z&uuml;mleri sunuyoruz. Amac&#305;m&#305;z; mek&acirc;n&#305;n yap&#305;s&#305;n&#305;, kullan&#305;m al&#305;&#351;kanl&#305;klar&#305;n&#305; ve uzun vadeli servis ihtiyac&#305;n&#305; birlikte de&#287;erlendirerek do&#287;ru sistemi kurmakt&#305;r.</p>
+    <p>Antalya merkez, D&ouml;&#351;emealt&#305;, Kepez, Muratpa&#351;a ve Konyaalt&#305; gibi farkl&#305; b&ouml;lgelerde konut ve i&#351;letme ihtiya&#231;lar&#305; birbirinden ayr&#305;labilir. Bir evde sessizlik ve d&uuml;&#351;&uuml;k elektrik t&uuml;ketimi daha &ouml;nemliyken, bir i&#351;letmede s&uuml;rekli kullan&#305;m, servis eri&#351;imi, kapasite planlamas&#305; ve estetik montaj daha belirleyici olabilir. Bu nedenle hizmeti tek bir cihaz sat&#305;&#351;&#305; gibi de&#287;il; ke&#351;if, proje, montaj, bak&#305;m ve teknik destek ad&#305;mlar&#305;ndan olu&#351;an b&uuml;t&uuml;nl&uuml;kl&uuml; bir s&uuml;re&#231; olarak ele al&#305;yoruz.</p>
+    <p>Klima al&#305;rken en s&#305;k yap&#305;lan hata sadece metrekareye bakarak cihaz se&#231;mektir. Oysa cephe y&ouml;n&uuml;, g&uuml;ne&#351; alma s&uuml;resi, tavan y&uuml;ksekli&#287;i, cam y&uuml;zeyi, ki&#351;i say&#305;s&#305; ve yal&#305;t&#305;m durumu cihaz performans&#305;n&#305; do&#287;rudan etkiler. Bu nedenle hizmet s&uuml;recimiz <a href="kesfetteam.asp" title="Antalya klima ke&#351;if hizmeti">ke&#351;if</a> ile ba&#351;lar; kapasite, cihaz tipi ve montaj noktas&#305; netle&#351;tikten sonra kullan&#305;c&#305;ya en uygun alternatifler sunulur.</p>
+    <p><a href="klima.asp" title="Antalya Mitsubishi Electric klima modelleri">Mitsubishi Electric klima</a> modelleri, bireysel kullan&#305;mda sessiz &#231;al&#305;&#351;ma, enerji tasarrufu ve konfor beklentisine cevap verirken; ticari alanlarda daha y&uuml;ksek kapasite ve d&uuml;zenli performans ihtiyac&#305; &ouml;ne &#231;&#305;kar. Tekli klima uygulamalar&#305;ndan ticari tip cihazlara kadar, sat&#305;&#351; ve montaj s&uuml;recinde cihaz&#305;n sadece bug&uuml;nk&uuml; ihtiyac&#305; de&#287;il, uzun s&uuml;reli kullan&#305;m maliyeti de dikkate al&#305;n&#305;r. B&ouml;ylece gere&#287;inden b&uuml;y&uuml;k cihazla fazla enerji harcamak veya yetersiz kapasiteyle konfor kayb&#305; ya&#351;amak yerine dengeli bir se&#231;im yap&#305;l&#305;r.</p>
+    <p>Otel, ofis, klinik, restoran, ma&#287;aza ve birden fazla odas&#305; bulunan yap&#305;larda <a href="vrf_sistemler.asp" title="Antalya VRF sistemleri">VRF sistemleri</a> daha esnek bir &#231;&ouml;z&uuml;m sa&#287;lar. Bir d&#305;&#351; &uuml;niteyle farkl&#305; i&#231; &uuml;nitelerin y&ouml;netilebilmesi, hem tasar&#305;m hem de kullan&#305;m kolayl&#305;&#287;&#305; a&#231;&#305;s&#305;ndan avantaj olu&#351;turur. Do&#287;ru projelendirme, borulama, drenaj ve devreye alma ad&#305;mlar&#305; sistemin verimini belirledi&#287;i i&#231;in uygulama s&uuml;recinde teknik detaylara dikkat edilir.</p>
+    <p>Klima montaj&#305;, bak&#305;m ve teknik servis hizmetlerinde hedefimiz cihaz&#305;n ilk g&uuml;nk&uuml; performans&#305;n&#305; korumas&#305;d&#305;r. Hatal&#305; montaj veya geciken bak&#305;m, so&#287;utma verimini d&uuml;&#351;&uuml;rebilir ve ar&#305;za riskini art&#305;rabilir. Bu nedenle montaj sonras&#305; kullan&#305;m bilgilendirmesi, periyodik bak&#305;m ve ihtiya&#231; halinde teknik m&uuml;dahale s&uuml;recini planl&#305; &#351;ekilde y&uuml;r&uuml;t&uuml;yoruz.</p>
+    <p>Kapal&#305; alanlarda temiz hava sirk&uuml;lasyonu ve i&#231; hava kalitesi de konforun par&#231;as&#305;d&#305;r. Bu y&uuml;zden <a href="havalandirma.asp" title="Antalya havaland&#305;rma sistemleri">havaland&#305;rma sistemleri</a> ve &#305;s&#305; pompas&#305; &#231;&ouml;z&uuml;mleriyle ya&#351;am alan&#305;n&#305; b&uuml;t&uuml;n olarak ele al&#305;yoruz. Antalya'da klima servisi, klima montaj&#305;, VRF sistemleri veya havaland&#305;rma hizmeti i&#231;in ihtiyac&#305;n&#305;za uygun &#231;&ouml;z&uuml;m&uuml; birlikte belirleyebiliriz.</p>
+  </div>
+  <div class="hizmetAksiyon"><a href="iletisim.asp" title="&Ouml;z&uuml;m Klima ileti&#351;im">Ke&#351;if ve servis talebi i&#231;in bizimle ileti&#351;ime ge&#231;in</a>.</div>
+</section>
 
     
 
