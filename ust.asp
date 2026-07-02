@@ -87,6 +87,125 @@
 
 </div>
 
+<%
+Function JsonLdEncode(data)
+  Dim s
+  If IsNull(data) Then
+    s = ""
+  Else
+    s = CStr(data)
+  End If
+
+  s = Replace(s, "<br />", " ", 1, -1, 1)
+  s = Replace(s, "<br/>", " ", 1, -1, 1)
+  s = Replace(s, "<br>", " ", 1, -1, 1)
+  s = Replace(s, "&nbsp;", " ", 1, -1, 1)
+  s = Replace(s, "\", "\\")
+  s = Replace(s, Chr(34), "\" & Chr(34))
+  s = Replace(s, vbCrLf, " ")
+  s = Replace(s, vbCr, " ")
+  s = Replace(s, vbLf, " ")
+  s = Replace(s, vbTab, " ")
+
+  JsonLdEncode = s
+End Function
+%>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  "@id": "https://ozumklima.com/#hvacbusiness",
+  "name": "\u00d6z\u00fcm Klima",
+  "alternateName": ["Ozum Klima", "Antalya Klima"],
+  "url": "https://ozumklima.com/",
+  "logo": "https://ozumklima.com/images/logo.png",
+  "image": "https://ozumklima.com/images/logo.png",
+  "description": "\u00d6z\u00fcm Klima, Antalya'da klima, Mitsubishi Electric klima, VRF sistemleri, havaland\u0131rma, \u0131s\u0131 pompas\u0131, ke\u015fif, montaj, bak\u0131m ve teknik servis \u00e7\u00f6z\u00fcmleri sunar.",
+  "telephone": "+902422297139",
+  "email": "<%=JsonLdEncode(ayars("eposta"))%>",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "<%=JsonLdEncode(ayars("adres"))%>",
+    "addressLocality": "Antalya",
+    "addressRegion": "Antalya",
+    "addressCountry": "TR"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Antalya"},
+    {"@type": "Place", "name": "D\u00f6\u015femealt\u0131"},
+    {"@type": "Place", "name": "Kepez"},
+    {"@type": "Place", "name": "Muratpa\u015fa"},
+    {"@type": "Place", "name": "Konyaalt\u0131"}
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+902422297139",
+    "contactType": "customer service",
+    "areaServed": "TR",
+    "availableLanguage": ["tr"]
+  },
+  "knowsAbout": [
+    "Klima sat\u0131\u015f ve montaj",
+    "Klima bak\u0131m ve teknik servis",
+    "Mitsubishi Electric klima",
+    "VRF sistemleri",
+    "Havaland\u0131rma sistemleri",
+    "Is\u0131 pompas\u0131",
+    "Ticari iklimlendirme"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "\u0130klimlendirme Hizmetleri",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Klima sat\u0131\u015f ve montaj",
+          "url": "https://ozumklima.com/klima.asp"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Klima bak\u0131m ve teknik servis",
+          "url": "https://ozumklima.com/iletisim.asp"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "VRF sistemleri",
+          "url": "https://ozumklima.com/vrf_sistemler.asp"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Havaland\u0131rma sistemleri",
+          "url": "https://ozumklima.com/havalandirma.asp"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Ke\u015fif ve proje deste\u011fi",
+          "url": "https://ozumklima.com/kesfetteam.asp"
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "<%=JsonLdEncode(ayars("face"))%>",
+    "<%=JsonLdEncode(ayars("insta"))%>"
+  ]
+}
+</script>
+
 <style>
   #nav-icon2 {
     width: 30px;
