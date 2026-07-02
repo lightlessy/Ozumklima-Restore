@@ -1,3 +1,4 @@
+<!--#include file='charset.asp'-->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  <html> 
 <!--#include file='db.asp'-->
@@ -9,19 +10,19 @@
     g= 19
  t= request.querystring("t")
  s= request.querystring("s")       
-  d= request.querystring("d") 
+   d= request.querystring("d") 
    
-  if d="" then
-  diz="sira asc"  
-  elseif d="0" then    
-  diz="sira desc"    
-   elseif d="19" then    
-  diz="fiyat asc"  
-  elseif d="91" then    
-  diz="fiyat desc"
-  end if       
-  
-  
+   if d="" then
+   diz="sira asc"  
+   elseif d="0" then    
+   diz="sira desc"    
+    elseif d="19" then    
+   diz="fiyat asc"  
+   elseif d="91" then    
+   diz="fiyat desc"
+   end if       
+   
+   
  
     set anas = Server.CreateObJect("ADODB.RecordSet")
 Sorgula = "Select * From anagrup where id= " & g &" "
@@ -65,7 +66,7 @@ end if
   <link rel="canonical" href="<%=canonicalUrl%>" />
 
 
- <META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-9"> 
+ <meta http-equiv="Content-Type" content="text/html; charset=windows-1254"> 
   
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>   
        
@@ -76,6 +77,15 @@ end if
    <link href="css/fontawesome-all.css" rel="stylesheet">
       <script src="js/jquery-2.1.1.js"></script>
       
+<style>
+.aeoCevap {width:92%; max-width:1120px; margin:24px auto 30px auto; padding:26px 4%; background:#FFFFFF; border:1px solid #E8E8E8; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; color:#2B2B2B;}
+.aeoCevap h1 {margin:0 0 12px 0; padding:0; font-size:1.55em; line-height:1.35em; color:#171717;}
+.aeoCevap h2 {margin:18px 0 7px 0; padding:0; font-size:1.12em; line-height:1.4em; color:#222222;}
+.aeoCevap p {margin:0 0 12px 0; padding:0; font-size:1em; line-height:1.68em; color:#3A3A3A;}
+.aeoCevap ul {margin:8px 0 0 18px; padding:0; line-height:1.65em;}
+.aeoCevap a {color:#DE0303; font-weight:bold; text-decoration:none;}
+.aeoCevap a:hover {text-decoration:underline;}
+</style>
 
 </head>
 
@@ -123,13 +133,21 @@ Loop
 
 
 
-
 </Div>
- 
 
+<section class="aeoCevap" aria-labelledby="klima-aeo-baslik">
+  <h1 id="klima-aeo-baslik">Antalya Klima Sat&#305;&#351;, Ke&#351;if ve Montaj Hizmeti</h1>
+  <p><strong>K&#305;sa cevap:</strong> &Ouml;z&uuml;m Klima, Antalya'da ev, ofis ve ticari alanlar i&#231;in klima se&#231;imi, Mitsubishi Electric klima &#231;&ouml;z&uuml;mleri, ke&#351;if, montaj, bak&#305;m ve teknik servis deste&#287;i sunar.</p>
+  <p>Antalya'da klima se&#231;erken yaln&#305;zca metrekareye bakmak yeterli de&#287;ildir. Cephe y&ouml;n&uuml;, g&uuml;ne&#351; alma s&uuml;resi, tavan y&uuml;ksekli&#287;i, cam y&uuml;zeyi, yal&#305;t&#305;m durumu, ki&#351;i say&#305;s&#305; ve cihaz&#305;n g&uuml;nl&uuml;k kullan&#305;m yo&#287;unlu&#287;u birlikte de&#287;erlendirilmelidir. Bu nedenle do&#287;ru klima tercihi genellikle yerinde ke&#351;if ile ba&#351;lar.</p>
+  <h2>Klima se&#231;iminde en kritik konu nedir?</h2>
+  <p>En kritik konu, mek&acirc;na uygun kapasite ve do&#287;ru montaj noktas&#305;d&#305;r. Gere&#287;inden k&uuml;&#231;&uuml;k cihaz konforu sa&#287;layamaz; gere&#287;inden b&uuml;y&uuml;k cihaz ise gereksiz enerji t&uuml;ketimi ve verimsiz &#231;al&#305;&#351;ma riski olu&#351;turabilir.</p>
+  <h2>Hangi b&ouml;lgelerde klima hizmeti verilir?</h2>
+  <p>&Ouml;z&uuml;m Klima, Antalya merkez ba&#351;ta olmak &uuml;zere D&ouml;&#351;emealt&#305;, Kepez, Muratpa&#351;a ve Konyaalt&#305; b&ouml;lgelerinde klima, ke&#351;if, montaj ve servis talepleri i&#231;in destek sa&#287;lar. G&uuml;ncel ke&#351;if ve servis uygunlu&#287;u i&#231;in <a href="iletisim.asp" title="&Ouml;z&uuml;m Klima ileti&#351;im">ileti&#351;im</a> sayfas&#305;ndan firmaya ula&#351;&#305;labilir.</p>
+</section>
+ 
      
-  <script>
-    $(document).ready(function(){
+   <script>
+     $(document).ready(function(){
 
       $(".goturen").on('change', function () {
           var url = $(this).val(); // get selected value
@@ -199,7 +217,7 @@ Do while not object.Eof
 </div>
 
      
-<div class="detayal">�ncele </div>    
+<div class="detayal">&#304;ncele </div>    
             
 
  
