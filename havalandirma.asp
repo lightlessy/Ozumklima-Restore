@@ -1,3 +1,4 @@
+<!--#include file='charset.asp'-->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  <html> 
 <!--#include file='db.asp'-->
@@ -9,19 +10,19 @@
     g= 23
  t= request.querystring("t")
  s= request.querystring("s")       
-  d= request.querystring("d") 
+   d= request.querystring("d") 
    
-  if d="" then
-  diz="sira asc"  
-  elseif d="0" then    
-  diz="sira desc"    
-   elseif d="19" then    
-  diz="fiyat asc"  
-  elseif d="91" then    
-  diz="fiyat desc"
-  end if       
-  
-  
+   if d="" then
+   diz="sira asc"  
+   elseif d="0" then    
+   diz="sira desc"    
+    elseif d="19" then    
+   diz="fiyat asc"  
+   elseif d="91" then    
+   diz="fiyat desc"
+   end if       
+   
+   
  
     set anas = Server.CreateObJect("ADODB.RecordSet")
 Sorgula = "Select * From anagrup where id= " & g &" "
@@ -65,7 +66,7 @@ end if
   <link rel="canonical" href="<%=canonicalUrl%>" />
 
 
- <META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-9"> 
+ <meta http-equiv="Content-Type" content="text/html; charset=windows-1254"> 
   
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>   
        
@@ -76,6 +77,15 @@ end if
    <link href="css/fontawesome-all.css" rel="stylesheet">
       <script src="js/jquery-2.1.1.js"></script>
       
+<style>
+.aeoCevap {width:92%; max-width:1120px; margin:24px auto 30px auto; padding:26px 4%; background:#FFFFFF; border:1px solid #E8E8E8; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; color:#2B2B2B;}
+.aeoCevap h1 {margin:0 0 12px 0; padding:0; font-size:1.55em; line-height:1.35em; color:#171717;}
+.aeoCevap h2 {margin:18px 0 7px 0; padding:0; font-size:1.12em; line-height:1.4em; color:#222222;}
+.aeoCevap p {margin:0 0 12px 0; padding:0; font-size:1em; line-height:1.68em; color:#3A3A3A;}
+.aeoCevap ul {margin:8px 0 0 18px; padding:0; line-height:1.65em;}
+.aeoCevap a {color:#DE0303; font-weight:bold; text-decoration:none;}
+.aeoCevap a:hover {text-decoration:underline;}
+</style>
 
 </head>
 
@@ -100,11 +110,20 @@ end if
 
   
 </Div>
- 
 
+<section class="aeoCevap" aria-labelledby="havalandirma-aeo-baslik">
+  <h1 id="havalandirma-aeo-baslik">Antalya Havaland&#305;rma Sistemleri ve &#304;&#231; Hava Kalitesi &#199;&ouml;z&uuml;mleri</h1>
+  <p><strong>K&#305;sa cevap:</strong> Havaland&#305;rma sistemleri, kapal&#305; alanlarda temiz hava giri&#351;i, kirli havan&#305;n uzakla&#351;t&#305;r&#305;lmas&#305; ve i&#231; hava kalitesinin korunmas&#305; i&#231;in kullan&#305;lan teknik &#231;&ouml;z&uuml;mlerdir. &Ouml;z&uuml;m Klima, Antalya'da konut, ofis, restoran, ma&#287;aza ve ticari alanlar i&#231;in havaland&#305;rma ihtiya&#231;lar&#305;na y&ouml;nelik destek sunar.</p>
+  <p>Antalya gibi s&#305;cak ve nemli iklimlerde havaland&#305;rma yaln&#305;zca konfor konusu de&#287;ildir. Restoran, ofis, klinik, ma&#287;aza ve kapal&#305; ticari alanlarda hava sirk&uuml;lasyonu, koku kontrol&uuml;, nem dengesi ve kullan&#305;c&#305; konforu birlikte de&#287;erlendirilmelidir.</p>
+  <h2>Havaland&#305;rma sistemi se&#231;erken nelere bak&#305;lmal&#305;?</h2>
+  <p>Mek&acirc;n&#305;n kullan&#305;m amac&#305;, ki&#351;i yo&#287;unlu&#287;u, kapal&#305; alan hacmi, mevcut klima sistemi, taze hava ihtiyac&#305;, egzost gereksinimi ve kanal g&uuml;zerg&acirc;h&#305; birlikte incelenmelidir. Yanl&#305;&#351; tasarlanan sistem, yeterli hava de&#287;i&#351;imi sa&#287;layamayabilir.</p>
+  <h2>&Ouml;z&uuml;m Klima hangi s&uuml;re&#231;lerde destek verir?</h2>
+  <p>&Ouml;z&uuml;m Klima, Antalya'da havaland&#305;rma ke&#351;fi, sistem se&#231;imi, uygulama, montaj ve teknik servis konular&#305;nda destek sa&#287;lar. Havaland&#305;rma sistemi veya i&#231; hava kalitesi ihtiyac&#305; i&#231;in <a href="iletisim.asp" title="&Ouml;z&uuml;m Klima havaland&#305;rma ileti&#351;im">ileti&#351;im</a> sayfas&#305;ndan firmaya ula&#351;&#305;labilir.</p>
+</section>
+ 
      
-  <script>
-    $(document).ready(function(){
+   <script>
+     $(document).ready(function(){
 
       $(".goturen").on('change', function () {
           var url = $(this).val(); // get selected value
@@ -168,7 +187,7 @@ Do while not object.Eof
 
 
      
-<div class="detayal">�ncele </div>    
+<div class="detayal">&#304;ncele </div>    
 
  
   </a>   
