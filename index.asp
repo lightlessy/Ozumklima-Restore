@@ -93,41 +93,7 @@ body {
 <body> 
              
 
-
-
-
-  <div id="giris"  style="position:fixed; width:100%; height:100%; z-index:10999;border:0px solid #FF8000;background-color:#171717; filter:alpha(opacity=98);  -moz-opacity: 0.98; opacity: 0.98;  display:none; text-align:center">
- 
-<div  style="display:inline-block; width:50%;max-width:320px ;  margin:0px auto ; left:0px ;  right:0px; text-align:right ">
-<BR><BR>
-
-<a  href="https://klima.mitsubishielectric.com.tr/Assets/pdf/Fiyat-Listesi-Yaz-Kampanyasi-29.07.2022.pdf" target=_blank><img  src="popup1.jpg" width="100%"></a>
-
-</div><div  style="display:inline-block; width:50%;max-width:320px ;  margin:0px auto ; left:0px ;  right:0px; text-align:right ">
-<BR><BR>
-  <font style="color:#FFFFFF; font-family:arial; font-size:1em;cursor: pointer;"><B>X</B> </font>
-
-<a  href="https://klima.mitsubishielectric.com.tr/Assets/pdf/Fiyat-Listesi-Hava-Temizleme-Cihazi-26.07.2022.pdf" target=_blank ><img  src="popup2.jpg" width="100%"></a>
-
-</div>
-</div>    
-   
-
-   <script>
-     
-   $(window).load(function() {
- 
-  $("#giris").fadeIn(1000);
-            $("#giris").click(    function(){  $('#beyaz').remove();  $("#giris").fadeTo(1000, 0,kaldir);    }  )   ;
-            
-            function kaldir (){    $('#giris').remove();   }       
-
-    });      
-       
-   </script>
-   
-   
-                                     
+                         
 
 <!--#include file='ust.asp'-->
 
