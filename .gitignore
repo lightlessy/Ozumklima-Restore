@@ -12,3 +12,15 @@ database.php
 
 node_modules/
 vendor/
+
+
+# private config
+config/mail-config.asp
+
+# Access database / backups
+*.mdb
+db/*.mdb
+*.accdb
+*.bak
+*.zip
+*.rar

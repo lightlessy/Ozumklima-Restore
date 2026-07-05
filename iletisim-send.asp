@@ -7,6 +7,7 @@ Response.Charset = "windows-1254"
 Response.ContentType = "text/html"
 %>
 
+<!--#include file="config/mail-config.asp"-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,10 +44,10 @@ htmlBody = htmlBody & "<tr><td>Telefon:</td><td><b>" & Server.HTMLEncode(tel) & 
 htmlBody = htmlBody & "<tr bgcolor='#F3F3F3'><td>Mesaj:</td><td><b>" & Replace(Server.HTMLEncode(formMesaj), vbCrLf, "<br>") & "</b></td></tr>"
 htmlBody = htmlBody & "</table>"
 
-kime = "info@ozumklima.com"
-kimden = "form@ozumklima.com"
+kime = CONTACT_TO
+kimden = SMTP_USER
 konu = "Bize Ulasin"
-gonderenAd = "Iletisim Formu"
+gonderenAd = CONTACT_FROM_NAME
 
 Set mektup = Server.CreateObject("Persits.MailSender")
 
@@ -61,8 +62,8 @@ If Err.Number <> 0 Then
   Response.End
 End If
 
-mektup.Host = "mail.ozumklima.com"
-mektup.Port = 587
+mektup.Host = SMTP_HOST
+mektup.Port = SMTP_PORT
 mektup.IsHTML = True
 
 mektup.From = kimden
@@ -73,8 +74,8 @@ mektup.AddReplyTo mail
 mektup.Subject = konu
 mektup.Body = htmlBody
 
-mektup.Username = kimden
-mektup.Password = "RFit30X43"
+mektup.Username = SMTP_USER
+mektup.Password = SMTP_PASS
 
 mektup.CharSet = "windows-1254"
 mektup.ContentTransferEncoding = "Quoted-Printable"
