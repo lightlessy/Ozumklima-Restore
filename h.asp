@@ -58,10 +58,6 @@ end if
            <link href="css/lity.css" rel="stylesheet">
 
 <script src="js/lity.min.js"></script>
-
-<style>
-.hizmetLandingBlock{margin-top:24px;padding:18px;border:1px solid #E1E1E1;background:#FFFFFF;white-space:normal;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}.hizmetLandingBlock h2{margin:0 0 10px 0;font-size:1.35em;line-height:1.35em;color:#222}.hizmetLandingBlock p{margin:0 0 16px 0;line-height:1.65em;color:#444}.hizmetLandingGrid{display:flex;flex-wrap:wrap;gap:12px}.hizmetLandingCard{flex:1 1 220px;min-width:210px;border:1px solid #E7E7E7;background:#FAFAFA;padding:14px;box-sizing:border-box}.hizmetLandingCard b{display:block;margin-bottom:7px;color:#222;font-size:1.03em}.hizmetLandingCard span{display:block;line-height:1.55em;color:#555;margin-bottom:10px}.hizmetLandingCard a{color:#DE0303;font-weight:bold;text-decoration:none}.hizmetLandingCard a:hover{text-decoration:underline}.rehberMiniBlock{margin-top:18px;padding:14px;border:1px solid #E1E1E1;background:#F8F8F8;white-space:normal;line-height:1.65em}.rehberMiniBlock a{font-weight:bold;color:#3F3F3F;text-decoration:none}.rehberMiniBlock a:hover{text-decoration:underline}
-</style>
    
 
   
@@ -104,47 +100,6 @@ end if
   <Div  class="icerik2"  style="white-space: pre-line ; "><span><B>  <%=icerisi2("isim") %>  </B> </span>  
      <%=icerisi2("icerik") %>
 
-   <div class="hizmetLandingBlock">
-      <h2>Antalya Iklimlendirme Hizmetleri</h2>
-      <p>Ozum Klima; Antalya'da klima servisi, montaj, bakim, Mitsubishi Electric klima cozumleri ve VRF sistemleri icin kesif odakli hizmet sayfalari sunar. Ihtiyaciniza en yakin basligi secerek detayli bilgi alabilirsiniz.</p>
-      <div class="hizmetLandingGrid">
-        <div class="hizmetLandingCard">
-          <b>Antalya Klima Servisi</b>
-          <span>Klima kesif, montaj, bakim ve teknik servis surecleri.</span>
-          <a href="antalya-klima-servisi.asp">Detaylari incele</a>
-        </div>
-        <div class="hizmetLandingCard">
-          <b>Dosemealti Klima Servisi</b>
-          <span>Dosemealti villa, konut ve isletmeler icin klima destek sureci.</span>
-          <a href="dosemealti-klima-servisi.asp">Detaylari incele</a>
-        </div>
-        <div class="hizmetLandingCard">
-          <b>Antalya Klima Montaji</b>
-          <span>Ic unite, dis unite, drenaj ve montaj noktasi planlamasi.</span>
-          <a href="antalya-klima-montaji.asp">Detaylari incele</a>
-        </div>
-        <div class="hizmetLandingCard">
-          <b>Antalya Klima Bakimi</b>
-          <span>Sezon oncesi bakim, filtre, drenaj ve calisma kontrolleri.</span>
-          <a href="antalya-klima-bakimi.asp">Detaylari incele</a>
-        </div>
-        <div class="hizmetLandingCard">
-          <b>Mitsubishi Electric Klima</b>
-          <span>Antalya'da Mitsubishi Electric klima secimi, kesif ve montaj.</span>
-          <a href="antalya-mitsubishi-electric-klima.asp">Detaylari incele</a>
-        </div>
-        <div class="hizmetLandingCard">
-          <b>Antalya VRF Sistemleri</b>
-          <span>Otel, ofis, klinik ve ticari alanlar icin VRF cozumleri.</span>
-          <a href="antalya-vrf-sistemleri.asp">Detaylari incele</a>
-        </div>
-      </div>
-   </div>
-
-   <div class="rehberMiniBlock">
-      <b>Karar asamasinda misiniz?</b> Klima kapasitesi, kesif ve sistem secimi hakkinda bilgi almak icin <a href="klima-rehberi.asp">Klima Rehberi</a> sayfasini inceleyin.
-   </div>
-
    <div style="margin-top:22px; padding:14px; border:1px solid #E1E1E1; background:#F8F8F8; white-space:normal;">
       <b>Uygulama Ornekleri:</b> Antalya'da tamamladigimiz gercek saha uygulamalarini inceleyin.
       <br>
@@ -179,7 +134,7 @@ var offset = modeller.offset();
 
 
    
-if ( anchor =="#hak" ) {   $("html, body").animate({ scrollTop: offset.top-150 }, 600);           }    
+if ( anchor == "#hak" ) {   $("html, body").animate({ scrollTop: offset.top-150 }, 600);           }    
 else {   } 
 
 
