@@ -2,27 +2,96 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ozumklima.com/</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-05</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ozumklima.com/klima.asp</loc>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ozumklima.com/vrf_sistemler.asp</loc>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ozumklima.com/havalandirma.asp</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ozumklima.com/kesfetteam.asp</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/h.asp?id=12</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ozumklima.com/referanslar.asp</loc>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ozumklima.com/uygulama-ornekleri.asp</loc>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ozumklima.com/iletisim.asp</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://ozumklima.com/antalya-klima-servisi.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/dosemealti-klima-servisi.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/antalya-klima-montaji.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/antalya-klima-bakimi.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/antalya-mitsubishi-electric-klima.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/antalya-vrf-sistemleri.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://ozumklima.com/klima-rehberi.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/40-m2-oda-kac-btu-klima.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/vrf-mi-multi-split-mi.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/klima-kesfi-nasil-yapilir.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://ozumklima.com/antalya-villa-klima-cozumleri.asp</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.75</priority>
   </url>
 </urlset>
