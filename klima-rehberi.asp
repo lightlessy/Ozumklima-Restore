@@ -4,8 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Klima Rehberi | BTU, VRF, Kesif ve Villa Cozumleri | Ozum Klima</title>
-<meta name="description" content="Ozum Klima Klima Rehberi; Antalya ikliminde BTU hesabı, VRF ve multi split secimi, klima kesfi ve villa iklimlendirme konularinda karar destek icerikleri sunar.">
+<title>Klima Rehberi Blog | BTU, VRF, Kesif ve Villa Cozumleri | Ozum Klima</title>
+<meta name="description" content="Ozum Klima blog ve klima rehberi; Antalya'da klima secimi, BTU hesabı, VRF, multi split, klima kesfi ve villa iklimlendirme konularinda rehber icerikler sunar.">
 <link rel="canonical" href="https://ozumklima.com/klima-rehberi.asp">
 <link href="css/font.css" rel="stylesheet" type="text/css">
 <link href="css/fontawesome-all.css" rel="stylesheet">
@@ -17,10 +17,10 @@
 <!--#include file='ust.asp'-->
 <div class="rehberWrap">
   <section class="rehberHero">
-    <h1>Klima Rehberi</h1>
-    <p>Antalya ikliminde klima secimi sadece marka veya metrekare karari degildir. Dogru BTU kapasitesi, kesif, montaj noktasi, kullanim yogunlugu, VRF / multi split tercihi ve servis destegi birlikte degerlendirilmelidir.</p>
+    <h1>Klima Rehberi Blog</h1>
+    <p>Ozum Klima blog ve klima rehberi; Antalya ikliminde klima secimi, dogru BTU kapasitesi, kesif, montaj noktasi, kullanim yogunlugu, VRF / multi split tercihi ve servis destegi hakkinda karar destek icerikleri sunar.</p>
   </section>
-  <section class="rehberGrid" aria-label="Klima rehberi yazilari">
+  <section class="rehberGrid" aria-label="Klima blog ve rehber yazilari">
     <article class="rehberCard">
       <h2>40 m2 Oda Icin Kac BTU Klima Gerekir?</h2>
       <p>Metrekare tek basina yeterli degildir. Cephe, gunes alma suresi, cam yuzeyi, yalitim ve Antalya nemi kapasite kararini etkiler.</p>
@@ -43,17 +43,23 @@
     </article>
   </section>
   <div class="rehberNote">
-    <b>Not:</b> Bu rehberler genel karar destegi saglar. Net kapasite, model ve montaj karari icin <a href="kesfetteam.asp">kesif sureci</a> ve <a href="iletisim.asp">Ozum Klima ile iletisim</a> esas alinmalidir.
+    <b>Not:</b> Bu blog icerikleri genel karar destegi saglar. Net kapasite, model ve montaj karari icin <a href="kesfetteam.asp">kesif sureci</a> ve <a href="iletisim.asp">Ozum Klima ile iletisim</a> esas alinmalidir.
   </div>
 </div>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"CollectionPage",
-  "name":"Klima Rehberi",
+  "@type":"Blog",
+  "name":"Ozum Klima Rehberi Blog",
   "url":"https://ozumklima.com/klima-rehberi.asp",
-  "about":["Klima secimi","BTU hesabı","VRF sistemleri","Multi split klima","Klima kesfi","Antalya villa klima cozumleri"],
-  "publisher":{"@id":"https://ozumklima.com/#hvacbusiness"}
+  "description":"Antalya ikliminde klima secimi, BTU hesabı, VRF, multi split, kesif ve villa klima cozumleri hakkinda rehber blog icerikleri.",
+  "publisher":{"@id":"https://ozumklima.com/#hvacbusiness"},
+  "blogPost":[
+    {"@type":"BlogPosting","headline":"40 m2 Oda Icin Kac BTU Klima Gerekir?","url":"https://ozumklima.com/40-m2-oda-kac-btu-klima.asp"},
+    {"@type":"BlogPosting","headline":"VRF mi Multi Split mi?","url":"https://ozumklima.com/vrf-mi-multi-split-mi.asp"},
+    {"@type":"BlogPosting","headline":"Klima Kesfi Nasil Yapilir?","url":"https://ozumklima.com/klima-kesfi-nasil-yapilir.asp"},
+    {"@type":"BlogPosting","headline":"Antalya Villa Klima Cozumleri","url":"https://ozumklima.com/antalya-villa-klima-cozumleri.asp"}
+  ]
 }
 </script>
 <!--#include file='alt.asp'-->
