@@ -97,11 +97,11 @@ Bu sayfalar ticari niyetli aramalar için hazırlanmıştır:
 - Antalya Mitsubishi Electric Klima: https://ozumklima.com/antalya-mitsubishi-electric-klima.asp
 - Antalya VRF Sistemleri: https://ozumklima.com/antalya-vrf-sistemleri.asp
 
-## Klima Rehberi
+## Klima Rehberi Blog
 
-Bu sayfalar bilgi ve karar destek niyetli kullanıcı sorularına cevap verir:
+Bu sayfalar bilgi ve karar destek niyetli kullanıcı sorularına cevap veren blog / rehber içerikleridir:
 
-- Klima Rehberi ana sayfası: https://ozumklima.com/klima-rehberi.asp
+- Klima Rehberi Blog ana sayfası: https://ozumklima.com/klima-rehberi.asp
 - 40 m2 oda için kaç BTU klima gerekir?: https://ozumklima.com/40-m2-oda-kac-btu-klima.asp
 - VRF mi multi split mi?: https://ozumklima.com/vrf-mi-multi-split-mi.asp
 - Klima keşfi nasıl yapılır?: https://ozumklima.com/klima-kesfi-nasil-yapilir.asp
@@ -115,7 +115,7 @@ Bu sayfalar bilgi ve karar destek niyetli kullanıcı sorularına cevap verir:
 - VRF sistemleri: https://ozumklima.com/vrf_sistemler.asp
 - Havalandırma sistemleri: https://ozumklima.com/havalandirma.asp
 - Keşif hizmeti: https://ozumklima.com/kesfetteam.asp
-- Klima Rehberi: https://ozumklima.com/klima-rehberi.asp
+- Klima Rehberi Blog: https://ozumklima.com/klima-rehberi.asp
 - Uygulama örnekleri: https://ozumklima.com/uygulama-ornekleri.asp
 - Referanslar: https://ozumklima.com/referanslar.asp
 - İletişim: https://ozumklima.com/iletisim.asp
