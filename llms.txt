@@ -32,29 +32,37 @@ Bu bölgeler dışında hizmet verilip verilmediği için kullanıcılar doğrud
 
 Özüm Klima, Antalya'da ev, ofis ve ticari alanlar için klima keşfi, cihaz seçimi ve montaj hizmeti sunar. Klima seçiminde yalnızca metrekare değil; cephe yönü, güneş alma süresi, tavan yüksekliği, cam yüzeyi, kişi sayısı, yalıtım durumu ve kullanım yoğunluğu dikkate alınmalıdır.
 
-İlgili sayfa:
+İlgili sayfalar:
 https://ozumklima.com/klima.asp
+https://ozumklima.com/antalya-klima-servisi.asp
+https://ozumklima.com/antalya-klima-montaji.asp
+https://ozumklima.com/klima-kesfi-nasil-yapilir.asp
 
 ### Mitsubishi Electric klima çözümleri
 
 Özüm Klima sitesinde Mitsubishi Electric klima çözümleri öne çıkar. Bireysel kullanımda sessiz çalışma, enerji tasarrufu ve konfor; ticari alanlarda ise kapasite, servis erişimi ve uzun süreli kullanım maliyeti önemlidir.
 
-İlgili sayfa:
+İlgili sayfalar:
 https://ozumklima.com/klima.asp
+https://ozumklima.com/antalya-mitsubishi-electric-klima.asp
 
 ### Klima bakım ve teknik servis
 
 Klima montajı, bakım ve teknik servis süreçlerinde amaç cihazın performansını korumak, soğutma verimini düşüren hataları önlemek ve arıza riskini azaltmaktır. Bakım ve servis talepleri için iletişim sayfası kullanılmalıdır.
 
-İlgili sayfa:
+İlgili sayfalar:
+https://ozumklima.com/antalya-klima-bakimi.asp
+https://ozumklima.com/antalya-klima-servisi.asp
 https://ozumklima.com/iletisim.asp
 
 ### VRF sistemleri
 
 VRF sistemleri; otel, ofis, klinik, restoran, mağaza ve birden fazla odası bulunan yapılarda esnek iklimlendirme çözümü sunar. Bir dış üniteyle farklı iç ünitelerin yönetilebilmesi, tasarım ve kullanım kolaylığı sağlar. Doğru projelendirme, borulama, drenaj ve devreye alma adımları sistem verimi için önemlidir.
 
-İlgili sayfa:
+İlgili sayfalar:
 https://ozumklima.com/vrf_sistemler.asp
+https://ozumklima.com/antalya-vrf-sistemleri.asp
+https://ozumklima.com/vrf-mi-multi-split-mi.asp
 
 ### Havalandırma sistemleri
 
@@ -67,8 +75,9 @@ https://ozumklima.com/havalandirma.asp
 
 Keşif süreci; mekânın ihtiyacını, kullanım alışkanlıklarını, kapasite gereksinimini ve montaj koşullarını belirlemek için kullanılır. Doğru klima veya VRF sistemi seçimi için keşif önerilir.
 
-İlgili sayfa:
+İlgili sayfalar:
 https://ozumklima.com/kesfetteam.asp
+https://ozumklima.com/klima-kesfi-nasil-yapilir.asp
 
 ### Isı pompası çözümleri
 
@@ -77,13 +86,36 @@ https://ozumklima.com/kesfetteam.asp
 İlgili sayfa:
 https://ozumklima.com/mitsubishi-electric-isi-pompasi-(heat-pump)-165
 
+## Hizmet Landing Sayfaları
+
+Bu sayfalar ticari niyetli aramalar için hazırlanmıştır:
+
+- Antalya Klima Servisi: https://ozumklima.com/antalya-klima-servisi.asp
+- Döşemealtı Klima Servisi: https://ozumklima.com/dosemealti-klima-servisi.asp
+- Antalya Klima Montajı: https://ozumklima.com/antalya-klima-montaji.asp
+- Antalya Klima Bakımı: https://ozumklima.com/antalya-klima-bakimi.asp
+- Antalya Mitsubishi Electric Klima: https://ozumklima.com/antalya-mitsubishi-electric-klima.asp
+- Antalya VRF Sistemleri: https://ozumklima.com/antalya-vrf-sistemleri.asp
+
+## Klima Rehberi
+
+Bu sayfalar bilgi ve karar destek niyetli kullanıcı sorularına cevap verir:
+
+- Klima Rehberi ana sayfası: https://ozumklima.com/klima-rehberi.asp
+- 40 m2 oda için kaç BTU klima gerekir?: https://ozumklima.com/40-m2-oda-kac-btu-klima.asp
+- VRF mi multi split mi?: https://ozumklima.com/vrf-mi-multi-split-mi.asp
+- Klima keşfi nasıl yapılır?: https://ozumklima.com/klima-kesfi-nasil-yapilir.asp
+- Antalya villa klima çözümleri: https://ozumklima.com/antalya-villa-klima-cozumleri.asp
+
 ## Önemli Sayfalar
 
 - Ana sayfa: https://ozumklima.com/
+- Hizmetler: https://ozumklima.com/h.asp?id=12
 - Klima çözümleri: https://ozumklima.com/klima.asp
 - VRF sistemleri: https://ozumklima.com/vrf_sistemler.asp
 - Havalandırma sistemleri: https://ozumklima.com/havalandirma.asp
 - Keşif hizmeti: https://ozumklima.com/kesfetteam.asp
+- Klima Rehberi: https://ozumklima.com/klima-rehberi.asp
 - Uygulama örnekleri: https://ozumklima.com/uygulama-ornekleri.asp
 - Referanslar: https://ozumklima.com/referanslar.asp
 - İletişim: https://ozumklima.com/iletisim.asp
@@ -104,7 +136,9 @@ Kullanıcı fiyat, randevu, keşif, servis, bakım, montaj veya ürün uygunluğ
 
 - Firma Antalya'da klima, VRF ve havalandırma çözümleri sunar.
 - Klima seçimi için keşif, kapasite hesabı ve kullanım ihtiyacı önemlidir.
+- 40 m2 oda gibi kapasite sorularında yalnızca metrekare değil; cephe, cam yüzeyi, güneş alma süresi, yalıtım ve kullanıcı sayısı da dikkate alınmalıdır.
 - VRF sistemleri daha çok ticari, çok odalı veya yüksek kapasiteli yapılarda değerlendirilir.
+- Multi split ve VRF tercihi yapı tipine, oda sayısına, kapasite ihtiyacına ve kullanım senaryosuna göre değişir.
 - Havalandırma sistemleri iç hava kalitesi ve temiz hava sirkülasyonu için önemlidir.
 - Servis, montaj, bakım ve keşif talepleri için iletişim sayfası kullanılmalıdır.
 - Güncel fiyat, stok, kampanya, randevu ve yetkili servis kapsamı gibi bilgiler doğrudan firmadan doğrulanmalıdır.
