@@ -1,4 +1,4 @@
-
+<!--#include file='charset.asp'-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  <html>
 
 <head>     
@@ -7,11 +7,11 @@
   
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
- <META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-9"> 
+ <meta http-equiv="Content-Type" content="text/html; charset=windows-1254"> 
   
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>   
     
-      <link rel="stylesheet" href="css/font.css"><link rel="shortcut icon" href="images/favicon.png" >      
+      <link rel="stylesheet" href="css/font.css"><link rel="shortcut icon" href="fav.png" >      
 
       
    <link href="css/fontawesome-all.css" rel="stylesheet">
@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="css/starrr.css">
               
                   <link rel="stylesheet" href="css/lity.css">   
-                  <script src="js/lity.js"></script>
+                  <script src="js/lity.min.js"></script>
 
 <link rel="stylesheet" href="css/darkbox.css"/>
            
@@ -35,15 +35,15 @@
            <%   
   txt=Request.ServerVariables("QUERY_STRING")
 
-sonYeri=InStrRev(txt,"/") 'son / i�aretini yeri  
+sonYeri=InStrRev(txt,"/") 'son / isaretinin yeri  
 
-sonuc=Mid(txt,sonYeri+1,Len(txt) )  'son / i�retinden kalan yaz�n�n tamam�   
+sonuc=Mid(txt,sonYeri+1,Len(txt) )  'son / isaretinden kalan yazinin tamami   
 
 
 
-istekbolum = Split(sonuc,"-")  'tirelerden b�lerek dizi olu�tu  
+istekbolum = Split(sonuc,"-")  'tirelerden bolerek dizi olustu  
 
-uzunluk=uBound(istekbolum)     'tirelerden b�lerek olu�turdu�umuz dizinin uzunlu�u    
+uzunluk=uBound(istekbolum)     'tirelerden bolerek olusturdugumuz dizinin uzunlugu    
   
 pidi=istekbolum(uzunluk)  
 ad= request.querystring("ad")            
@@ -156,7 +156,6 @@ canonicalUrl = "https://ozumklima.com/" & cevir(uruns("isim")) & "-" & uruns("Af
                   </div>
                                
                      
-  <script src="js/setup.js"></script>
             <script src="js/darkbox.js"></script>
                   
                      
@@ -183,15 +182,15 @@ canonicalUrl = "https://ozumklima.com/" & cevir(uruns("isim")) & "-" & uruns("Af
  <input type="hidden" name="product"    value="<%=uruns("AffiliateID")%>">      
 
 <% if   uruns.fields("uretici")&"" <> "" then  %>   
-<a href="http://www.ozumklima.com/urunler/<%=uruns("uretici") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon8.png" >  <div><b>Teknik �zellikler</B></div> </div></a>  
+<a href="http://www.ozumklima.com/urunler/<%=uruns("uretici") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon8.png" >  <div><b>Teknik &Ouml;zellikler</B></div> </div></a>  
 <% end if %>
                           
 <% if   uruns.fields("dokuman")&"" <> "" then  %>   
-<a href="http://www.ozumklima.com/urunler/<%=uruns("dokuman") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon5.png" >  <div><b>Bro��r �ndir</B></div> </div></a> 
+<a href="http://www.ozumklima.com/urunler/<%=uruns("dokuman") %>" target=_Blank><div class="whats" style="color:#3A3A3A"><img src="images/ikon5.png" >  <div><b>Bro&#351;&uuml;r &#304;ndir</B></div> </div></a> 
 <% end if %>
 
 <BR><BR><BR>  
-  <input  type="submit" value="�cretsiz Ke�if" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  " onclick="analyticsTrack('product_interest_click', {cta: 'ucretsiz_kesif', product_id: '<%=uruns("AffiliateID")%>'});">    
+  <input  type="submit" value="&Uuml;cretsiz Ke&#351;if" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  " onclick="analyticsTrack('product_interest_click', {cta: 'ucretsiz_kesif', product_id: '<%=uruns("AffiliateID")%>'});">    
 </form>
 
 </div>    
@@ -222,7 +221,7 @@ canonicalUrl = "https://ozumklima.com/" & cevir(uruns("isim")) & "-" & uruns("Af
 <div style="text-align:center">
 
   <form method="POST" action="iletisim.asp" name="myForm"  >   
-            <input  type="submit" value="BU �R�NLE �LG�LEN�YORUM" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  " onclick="analyticsTrack('product_interest_click', {cta: 'bu_urunle_ilgileniyorum', product_id: '<%=uruns("AffiliateID")%>'});">    
+            <input  type="submit" value="BU &Uuml;R&Uuml;NLE &#304;LG&#304;LEN&#304;YORUM" name="update" id="sbmt" class="sepete" style="background:#A3C225;color:#FFFFFF; font-family:Source Sans Pro; font-weight:bold; font-size:1.2em; padding: 12px 32px 12px 32px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;  " onclick="analyticsTrack('product_interest_click', {cta: 'bu_urunle_ilgileniyorum', product_id: '<%=uruns("AffiliateID")%>'});">    
 </form>   
 <BR><BR>&nbsp;                          
 </div>
@@ -274,7 +273,7 @@ i = 1 %>
  
     <DIV   class="Box" >
 
-     <span class="baslik"  style="border:none; ">Benzer �r�nler</span>
+     <span class="baslik"  style="border:none; ">Benzer &Uuml;r&uuml;nler</span>
       
   <BR><BR>
  <div id="owl-demo" class="owl-carousel" >
