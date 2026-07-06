@@ -1,39 +1,79 @@
-   <span class="solMenuBas" >KONFORLOG</span>
+<span class="solMenuBas">BLOG</span>
  
- <% 
-Function cevir(data)   
-if not data="" then
-data = Replace (data ,"ý","i",1,-1,1) 
-data = Replace (data ,"ð","g",1,-1,1) 
-data = Replace (data ,"ü","u",1,-1,1) 
-data = Replace (data ,"þ","s",1,-1,1) 
-data = Replace (data ,"ö","o",1,-1,1) 
-data = Replace (data ,"ç","c",1,-1,1) 
-data = Replace (data ,"I","i",1,-1,1) 
-data = Replace (data ,"Ð","g",1,-1,1) 
-data = Replace (data ,"Ü","u",1,-1,1) 
-data = Replace (data ,"Þ","s",1,-1,1) 
-data = Replace (data ,"Ý","i",1,-1,1) 
-data = Replace (data ,"Ç","c",1,-1,1) 
-data = Replace (data ,"Ö","o",1,-1,1) 
-data = Replace (data ," ","-",1,-1,1)   
-end if
-cevir=data 
+<% 
+Function cevir(data)
+
+    If Not IsNull(data) Then
+        data = LCase(Trim(data & ""))
+
+        data = Replace(data, "Ã§", "c")
+        data = Replace(data, "ÄŸ", "g")
+        data = Replace(data, "Ä±", "i")
+        data = Replace(data, "i", "i")
+        data = Replace(data, "Ã¶", "o")
+        data = Replace(data, "ÅŸ", "s")
+        data = Replace(data, "Ã¼", "u")
+
+        data = Replace(data, "Ã‡", "c")
+        data = Replace(data, "Äž", "g")
+        data = Replace(data, "Ä°", "i")
+        data = Replace(data, "I", "i")
+        data = Replace(data, "Ã–", "o")
+        data = Replace(data, "Åž", "s")
+        data = Replace(data, "Ãœ", "u")
+
+        data = Replace(data, "'", "")
+        data = Replace(data, """", "")
+        data = Replace(data, ".", "")
+        data = Replace(data, ",", "")
+        data = Replace(data, ":", "")
+        data = Replace(data, ";", "")
+        data = Replace(data, "/", "-")
+        data = Replace(data, "\", "-")
+        data = Replace(data, " ", "-")
+    Else
+        data = ""
+    End If
+
+    cevir = data
+
 End Function 
 %> 
 
-   <%  
+<%
+Dim bloglar, Sorgula
 
-set object = Server.CreateObJect("ADODB.RecordSet")
+Set bloglar = Server.CreateObject("ADODB.RecordSet")
+
 Sorgula = "Select * From sayfalar where ana=3 order by sira asc"
-object.open Sorgula,baglanti,1,3  
 
-Do while not object.Eof                                                                                                                                                                                                                  
+bloglar.Open Sorgula, baglanti, 1, 1
+
+If bloglar.EOF Then
+%>
+
+    <div>Blog yaz&#305;s&#305; bulunamad&#305;.</div>
+
+<%
+Else
+
+    Do While Not bloglar.EOF
 %>   
 
- <a href="konforlog.asp?k=<%=cevir(object("isim")) %>&id=<%=object("id") %>"  ><div><i class="fas fa-chevron-right"></i> <%=object("isim") %></div></a>   
+    <a href="blog.asp?k=<%=Server.URLEncode(cevir(bloglar("isim"))) %>&id=<%=bloglar("id") %>">
+        <div>
+            <i class="fas fa-chevron-right"></i> <%=bloglar("isim") %>
+        </div>
+    </a>   
  
 <%  
-object.MoveNExt
-Loop
+        bloglar.MoveNext
+    Loop
+
+End If
+
+If IsObject(bloglar) Then
+    If bloglar.State = 1 Then bloglar.Close
+    Set bloglar = Nothing
+End If
 %>
