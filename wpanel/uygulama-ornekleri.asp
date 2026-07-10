@@ -19,6 +19,23 @@ Function UygulamaAdminNumber(ByVal value, ByVal fallback)
   End If
 End Function
 
+Function UygulamaAdminValue(ByRef rs, ByVal fieldName)
+  On Error Resume Next
+  UygulamaAdminValue = rs(fieldName) & ""
+  If Err.Number <> 0 Then
+    UygulamaAdminValue = ""
+    Err.Clear
+  End If
+  On Error GoTo 0
+End Function
+
+Sub UygulamaAdminSetField(ByRef rs, ByVal fieldName, ByVal fieldValue)
+  On Error Resume Next
+  rs(fieldName) = fieldValue
+  If Err.Number <> 0 Then Err.Clear
+  On Error GoTo 0
+End Sub
+
 Function UygulamaAdminSlug(ByVal value)
   Dim slugValue
   slugValue = LCase(Trim(CStr(value & "")))
@@ -31,10 +48,14 @@ Function UygulamaAdminSlug(ByVal value)
   slugValue = Replace(slugValue, ";", " ")
   slugValue = Replace(slugValue, "'", "")
   slugValue = Replace(slugValue, Chr(34), "")
+  slugValue = Replace(slugValue, "(", " ")
+  slugValue = Replace(slugValue, ")", " ")
   slugValue = Replace(slugValue, " ", "-")
   Do While InStr(slugValue, "--") > 0
     slugValue = Replace(slugValue, "--", "-")
   Loop
+  If Left(slugValue, 1) = "-" Then slugValue = Mid(slugValue, 2)
+  If Right(slugValue, 1) = "-" Then slugValue = Left(slugValue, Len(slugValue) - 1)
   If slugValue = "" Then slugValue = "uygulama-ornegi"
   UygulamaAdminSlug = slugValue
 End Function
@@ -46,18 +67,33 @@ Function UygulamaAdminIsLive(ByVal value)
   If liveText = "true" Or liveText = "1" Or liveText = "-1" Then UygulamaAdminIsLive = True
 End Function
 
-Sub UygulamaAdminSeed(ByVal baslik, ByVal etiket, ByVal problem, ByVal cozum, ByVal uygulama, ByVal sonuc, ByVal ctaMetni, ByVal ctaUrl, ByVal slug, ByVal sira)
+Sub UygulamaAdminAddColumn(ByVal columnSql)
+  On Error Resume Next
+  baglanti.Execute "ALTER TABLE uygulama_ornekleri ADD COLUMN " & columnSql
+  Err.Clear
+  On Error GoTo 0
+End Sub
+
+Sub UygulamaAdminSeed(ByVal baslik, ByVal etiket, ByVal kisaOzet, ByVal lokasyon, ByVal projeTipi, ByVal hizmetTipi, ByVal sistemMarka, ByVal projeSuresi, ByVal problem, ByVal kesif, ByVal cozum, ByVal uygulama, ByVal sonuc, ByVal ctaMetni, ByVal ctaUrl, ByVal slug, ByVal takipEtiketi, ByVal sira)
   Dim seedSql
-  seedSql = "INSERT INTO uygulama_ornekleri ([baslik], [etiket], [problem], [cozum], [uygulama], [sonuc], [cta_metni], [cta_url], [slug], [sira], [yayin], [kayit_tarihi]) VALUES (" & _
+  seedSql = "INSERT INTO uygulama_ornekleri ([baslik], [etiket], [kisa_ozet], [lokasyon], [proje_tipi], [hizmet_tipi], [sistem_marka], [proje_suresi], [problem], [kesif_degerlendirme], [cozum], [uygulama], [sonuc], [cta_metni], [cta_url], [slug], [takip_etiketi], [sira], [yayin], [kayit_tarihi]) VALUES (" & _
             "'" & UygulamaAdminSql(baslik) & "'," & _
             "'" & UygulamaAdminSql(etiket) & "'," & _
+            "'" & UygulamaAdminSql(kisaOzet) & "'," & _
+            "'" & UygulamaAdminSql(lokasyon) & "'," & _
+            "'" & UygulamaAdminSql(projeTipi) & "'," & _
+            "'" & UygulamaAdminSql(hizmetTipi) & "'," & _
+            "'" & UygulamaAdminSql(sistemMarka) & "'," & _
+            "'" & UygulamaAdminSql(projeSuresi) & "'," & _
             "'" & UygulamaAdminSql(problem) & "'," & _
+            "'" & UygulamaAdminSql(kesif) & "'," & _
             "'" & UygulamaAdminSql(cozum) & "'," & _
             "'" & UygulamaAdminSql(uygulama) & "'," & _
             "'" & UygulamaAdminSql(sonuc) & "'," & _
             "'" & UygulamaAdminSql(ctaMetni) & "'," & _
             "'" & UygulamaAdminSql(ctaUrl) & "'," & _
-            "'" & UygulamaAdminSql(slug) & "'," & CLng(sira) & ",-1,Now())"
+            "'" & UygulamaAdminSql(slug) & "'," & _
+            "'" & UygulamaAdminSql(takipEtiketi) & "'," & CLng(sira) & ",-1,Now())"
   baglanti.Execute seedSql
 End Sub
 
@@ -69,13 +105,37 @@ Sub UygulamaAdminEnsureTable()
   Set testRs = baglanti.Execute("SELECT TOP 1 [id] FROM uygulama_ornekleri")
   If Err.Number <> 0 Then
     Err.Clear
-    baglanti.Execute "CREATE TABLE uygulama_ornekleri ([id] AUTOINCREMENT PRIMARY KEY, [baslik] TEXT(255), [etiket] TEXT(100), [problem] MEMO, [cozum] MEMO, [uygulama] MEMO, [sonuc] MEMO, [cta_metni] TEXT(255), [cta_url] TEXT(255), [slug] TEXT(120), [sira] INTEGER, [yayin] YESNO, [kayit_tarihi] DATETIME)"
+    baglanti.Execute "CREATE TABLE uygulama_ornekleri ([id] AUTOINCREMENT PRIMARY KEY, [baslik] TEXT(255), [etiket] TEXT(100), [kisa_ozet] MEMO, [lokasyon] TEXT(150), [proje_tipi] TEXT(120), [hizmet_tipi] TEXT(150), [sistem_marka] TEXT(180), [proje_suresi] TEXT(80), [problem] MEMO, [kesif_degerlendirme] MEMO, [cozum] MEMO, [uygulama] MEMO, [sonuc] MEMO, [cover_image] TEXT(255), [cover_alt] TEXT(255), [galeri_gorseller] MEMO, [galeri_altlar] MEMO, [video_url] TEXT(255), [oncesi_image] TEXT(255), [oncesi_alt] TEXT(255), [sonrasi_image] TEXT(255), [sonrasi_alt] TEXT(255), [musteri_yorumu] MEMO, [sss] MEMO, [ilgili_hizmet_url] TEXT(255), [ilgili_bolge_url] TEXT(255), [cta_metni] TEXT(255), [cta_url] TEXT(255), [slug] TEXT(120), [takip_etiketi] TEXT(120), [seo_title] TEXT(255), [meta_description] MEMO, [sira] INTEGER, [yayin] YESNO, [kayit_tarihi] DATETIME)"
   End If
   If Not testRs Is Nothing Then
     If testRs.State = 1 Then testRs.Close
     Set testRs = Nothing
   End If
   On Error GoTo 0
+
+  Call UygulamaAdminAddColumn("[kisa_ozet] MEMO")
+  Call UygulamaAdminAddColumn("[lokasyon] TEXT(150)")
+  Call UygulamaAdminAddColumn("[proje_tipi] TEXT(120)")
+  Call UygulamaAdminAddColumn("[hizmet_tipi] TEXT(150)")
+  Call UygulamaAdminAddColumn("[sistem_marka] TEXT(180)")
+  Call UygulamaAdminAddColumn("[proje_suresi] TEXT(80)")
+  Call UygulamaAdminAddColumn("[kesif_degerlendirme] MEMO")
+  Call UygulamaAdminAddColumn("[cover_image] TEXT(255)")
+  Call UygulamaAdminAddColumn("[cover_alt] TEXT(255)")
+  Call UygulamaAdminAddColumn("[galeri_gorseller] MEMO")
+  Call UygulamaAdminAddColumn("[galeri_altlar] MEMO")
+  Call UygulamaAdminAddColumn("[video_url] TEXT(255)")
+  Call UygulamaAdminAddColumn("[oncesi_image] TEXT(255)")
+  Call UygulamaAdminAddColumn("[oncesi_alt] TEXT(255)")
+  Call UygulamaAdminAddColumn("[sonrasi_image] TEXT(255)")
+  Call UygulamaAdminAddColumn("[sonrasi_alt] TEXT(255)")
+  Call UygulamaAdminAddColumn("[musteri_yorumu] MEMO")
+  Call UygulamaAdminAddColumn("[sss] MEMO")
+  Call UygulamaAdminAddColumn("[ilgili_hizmet_url] TEXT(255)")
+  Call UygulamaAdminAddColumn("[ilgili_bolge_url] TEXT(255)")
+  Call UygulamaAdminAddColumn("[takip_etiketi] TEXT(120)")
+  Call UygulamaAdminAddColumn("[seo_title] TEXT(255)")
+  Call UygulamaAdminAddColumn("[meta_description] MEMO")
 
   On Error Resume Next
   Set testRs = baglanti.Execute("SELECT COUNT(*) AS toplam FROM uygulama_ornekleri")
@@ -87,9 +147,9 @@ Sub UygulamaAdminEnsureTable()
   On Error GoTo 0
 
   If toplamKayit = 0 Then
-    Call UygulamaAdminSeed("Antalya Villa Klima Montaji", "Villa / Konut", "Musteri yaz aylarinda salon ve yatak odalarinda yeterli sogutma alamiyordu.", "Alan kesfi yapildi, uygun BTU hesaplandi ve Mitsubishi Electric klima sistemi onerildi.", "Montaj, drenaj hatti ve dis unite konumlandirmasi tamamlandi.", "Musteri daha sessiz, verimli ve stabil bir sogutma deneyimi elde etti.", "Benzer bir cozum icin iletisime gec", "../iletisim.asp", "villa-klima-montaji", 10)
-    Call UygulamaAdminSeed("Mitsubishi Electric Klima Bakim Uygulamasi", "Bakim / Servis", "Klimada sogutma performansi dusmus, enerji tuketimi artmis ve hava kalitesi zayiflamisti.", "Filtre, serpantin ve drenaj hatti kontrol edilerek periyodik bakim plani uygulandi.", "Ic ve dis unite temizlik, gaz basinc kontrolu ve calisma testi adimlari tamamlandi.", "Daha dengeli sogutma, dusuk enerji tuketimi ve daha konforlu ic ortam elde edildi.", "Bakim plani al", "../iletisim.asp", "mitsubishi-bakim", 20)
-    Call UygulamaAdminSeed("Isyeri / Ofis VRF Sistem Cozumu", "VRF / Ticari", "Farkli ofis bolumlerinde sicaklik dengesi saglanamiyor, enerji maliyetleri yuksek seyrediyordu.", "Bolge bazli ihtiyac analizi yapilarak uygun kapasitede VRF ic ve dis unite kombinasyonu planlandi.", "Boru hatti, otomasyon ayarlari ve oda bazli kontrol senaryolari devreye alindi.", "Ofis genelinde dengeli iklimlendirme ve olculebilir enerji verimliligi elde edildi.", "VRF kesfi talep et", "../iletisim.asp", "ofis-vrf", 30)
+    Call UygulamaAdminSeed("Antalya Villa Klima Montaji", "Villa / Konut", "Konyaalti bolgesindeki villada salon ve yatak odalari icin sessiz, dengeli ve estetik klima cozumunun nasil planlandigini inceleyin.", "Konyaalti / Antalya", "Villa", "Klima montaji", "Mitsubishi Electric multi split", "1 gun", "Musteri yaz aylarinda salon ve yatak odalarinda yeterli sogutma alamiyor, dis unite konumunun goruntu ve ses acisindan sorun yaratmamasini istiyordu.", "Kesifte oda metrekareleri, cephe yonu, cam alani, drenaj hattinin gececegi guzergah, elektrik altyapisi ve dis unite servis erisimi kontrol edildi.", "Alan ihtiyacina uygun kapasite hesaplandi ve birden fazla ic uniteyi dengeli calistirabilecek Mitsubishi Electric cozum onerildi.", "Ic unite yerleri musteriyle netlestirildi, boru ve drenaj hatlari gizli guzergahlarla tasindi, dis unite bakim erisimi korunacak sekilde konumlandirildi.", "Musteri daha sessiz, daha stabil ve villa mimarisine daha uyumlu bir sogutma deneyimi elde etti.", "Benzer bir cozum icin kesif talep et", "iletisim.asp", "konyaalti-villa-klima-montaji", "case_konyaalti_villa_klima", 10)
+    Call UygulamaAdminSeed("Mitsubishi Electric Klima Bakim Uygulamasi", "Bakim / Servis", "Performansi dusen bir Mitsubishi Electric klima icin filtre, drenaj ve calisma testlerini kapsayan periyodik bakim sureci.", "Muratpasa / Antalya", "Konut", "Klima bakimi", "Mitsubishi Electric split klima", "Ayni gun", "Klimada sogutma performansi dusmus, enerji tuketimi artmis ve ic ortam hava kalitesi zayiflamisti.", "Kesifte filtre kirliligi, drenaj akisi, serpantin durumu, gaz basinci ve calisma sesi kontrol edildi.", "Periyodik bakim planiyla filtre, serpantin ve drenaj hattinin temizlenmesi; gaz basinci ve calisma testlerinin tamamlanmasi onerildi.", "Ic ve dis unite temizlikleri yapildi, drenaj hatti acildi, gaz basinci kontrol edildi ve cihaz test modunda calistirildi.", "Daha dengeli sogutma, daha dusuk zorlanma ve daha konforlu ic ortam elde edildi.", "Bakim plani al", "iletisim.asp", "mitsubishi-electric-klima-bakim-uygulamasi", "case_mitsubishi_bakim", 20)
+    Call UygulamaAdminSeed("Isyeri / Ofis VRF Sistem Cozumu", "VRF / Ticari", "Farkli odalarda farkli isi ihtiyaci olan ofis icin bolge bazli kontrol saglayan VRF sistem planlamasi.", "Muratpasa / Antalya", "Ofis", "VRF sistemleri", "Mitsubishi Electric VRF", "3 gun", "Farkli ofis bolumlerinde sicaklik dengesi saglanamiyor, toplanti odalari ve acik ofis alani ayni anda verimli yonetilemiyordu.", "Kesifte kullanim saatleri, bolumlerin kisi yogunlugu, cephe yonleri, tavan arasi gecisleri, otomasyon ihtiyaci ve dis unite konumu degerlendirildi.", "Bolge bazli ihtiyac analizi yapilarak uygun kapasitede VRF ic ve dis unite kombinasyonu planlandi.", "Boru hatti, otomasyon ayarlari ve oda bazli kontrol senaryolari devreye alindi. Teslimde kullaniciya temel kontrol egitimi verildi.", "Ofis genelinde dengeli iklimlendirme, kullanici bazli kontrol ve daha yonetilebilir enerji kullanimi elde edildi.", "VRF kesfi talep et", "iletisim.asp", "muratpasa-ofis-vrf-sistem-cozumu", "case_muratpasa_ofis_vrf", 30)
   End If
 End Sub
 %>
@@ -101,7 +161,7 @@ End Sub
 <%
 Call UygulamaAdminEnsureTable()
 
-Dim formAction, redirectMsg, recordId, saveRs, deleteId, sortValue, publishValue, slugValue, ctaUrlValue
+Dim formAction, recordId, saveRs, deleteId, sortValue, publishValue, slugValue, ctaUrlValue, trackingValue
 formAction = Request.Form("form_action")
 
 If formAction = "delete" Then
@@ -121,8 +181,11 @@ If formAction = "save" Then
   slugValue = Trim(Request.Form("slug") & "")
   If slugValue = "" Then slugValue = UygulamaAdminSlug(Request.Form("baslik"))
 
+  trackingValue = Trim(Request.Form("takip_etiketi") & "")
+  If trackingValue = "" Then trackingValue = "case_" & Replace(slugValue, "-", "_")
+
   ctaUrlValue = Trim(Request.Form("cta_url") & "")
-  If ctaUrlValue = "" Then ctaUrlValue = "../iletisim.asp"
+  If ctaUrlValue = "" Then ctaUrlValue = "iletisim.asp"
 
   Set saveRs = Server.CreateObject("ADODB.RecordSet")
   If recordId > 0 Then
@@ -133,17 +196,40 @@ If formAction = "save" Then
   End If
 
   If recordId = 0 Or Not saveRs.EOF Then
-    saveRs("baslik") = Trim(Request.Form("baslik") & "")
-    saveRs("etiket") = Trim(Request.Form("etiket") & "")
-    saveRs("problem") = Trim(Request.Form("problem") & "")
-    saveRs("cozum") = Trim(Request.Form("cozum") & "")
-    saveRs("uygulama") = Trim(Request.Form("uygulama") & "")
-    saveRs("sonuc") = Trim(Request.Form("sonuc") & "")
-    saveRs("cta_metni") = Trim(Request.Form("cta_metni") & "")
-    saveRs("cta_url") = ctaUrlValue
-    saveRs("slug") = slugValue
-    saveRs("sira") = sortValue
-    saveRs("yayin") = publishValue
+    Call UygulamaAdminSetField(saveRs, "baslik", Trim(Request.Form("baslik") & ""))
+    Call UygulamaAdminSetField(saveRs, "etiket", Trim(Request.Form("etiket") & ""))
+    Call UygulamaAdminSetField(saveRs, "kisa_ozet", Trim(Request.Form("kisa_ozet") & ""))
+    Call UygulamaAdminSetField(saveRs, "lokasyon", Trim(Request.Form("lokasyon") & ""))
+    Call UygulamaAdminSetField(saveRs, "proje_tipi", Trim(Request.Form("proje_tipi") & ""))
+    Call UygulamaAdminSetField(saveRs, "hizmet_tipi", Trim(Request.Form("hizmet_tipi") & ""))
+    Call UygulamaAdminSetField(saveRs, "sistem_marka", Trim(Request.Form("sistem_marka") & ""))
+    Call UygulamaAdminSetField(saveRs, "proje_suresi", Trim(Request.Form("proje_suresi") & ""))
+    Call UygulamaAdminSetField(saveRs, "problem", Trim(Request.Form("problem") & ""))
+    Call UygulamaAdminSetField(saveRs, "kesif_degerlendirme", Trim(Request.Form("kesif_degerlendirme") & ""))
+    Call UygulamaAdminSetField(saveRs, "cozum", Trim(Request.Form("cozum") & ""))
+    Call UygulamaAdminSetField(saveRs, "uygulama", Trim(Request.Form("uygulama") & ""))
+    Call UygulamaAdminSetField(saveRs, "sonuc", Trim(Request.Form("sonuc") & ""))
+    Call UygulamaAdminSetField(saveRs, "cover_image", Trim(Request.Form("cover_image") & ""))
+    Call UygulamaAdminSetField(saveRs, "cover_alt", Trim(Request.Form("cover_alt") & ""))
+    Call UygulamaAdminSetField(saveRs, "galeri_gorseller", Trim(Request.Form("galeri_gorseller") & ""))
+    Call UygulamaAdminSetField(saveRs, "galeri_altlar", Trim(Request.Form("galeri_altlar") & ""))
+    Call UygulamaAdminSetField(saveRs, "video_url", Trim(Request.Form("video_url") & ""))
+    Call UygulamaAdminSetField(saveRs, "oncesi_image", Trim(Request.Form("oncesi_image") & ""))
+    Call UygulamaAdminSetField(saveRs, "oncesi_alt", Trim(Request.Form("oncesi_alt") & ""))
+    Call UygulamaAdminSetField(saveRs, "sonrasi_image", Trim(Request.Form("sonrasi_image") & ""))
+    Call UygulamaAdminSetField(saveRs, "sonrasi_alt", Trim(Request.Form("sonrasi_alt") & ""))
+    Call UygulamaAdminSetField(saveRs, "musteri_yorumu", Trim(Request.Form("musteri_yorumu") & ""))
+    Call UygulamaAdminSetField(saveRs, "sss", Trim(Request.Form("sss") & ""))
+    Call UygulamaAdminSetField(saveRs, "ilgili_hizmet_url", Trim(Request.Form("ilgili_hizmet_url") & ""))
+    Call UygulamaAdminSetField(saveRs, "ilgili_bolge_url", Trim(Request.Form("ilgili_bolge_url") & ""))
+    Call UygulamaAdminSetField(saveRs, "cta_metni", Trim(Request.Form("cta_metni") & ""))
+    Call UygulamaAdminSetField(saveRs, "cta_url", ctaUrlValue)
+    Call UygulamaAdminSetField(saveRs, "slug", slugValue)
+    Call UygulamaAdminSetField(saveRs, "takip_etiketi", trackingValue)
+    Call UygulamaAdminSetField(saveRs, "seo_title", Trim(Request.Form("seo_title") & ""))
+    Call UygulamaAdminSetField(saveRs, "meta_description", Trim(Request.Form("meta_description") & ""))
+    Call UygulamaAdminSetField(saveRs, "sira", sortValue)
+    Call UygulamaAdminSetField(saveRs, "yayin", publishValue)
     saveRs.Update
   End If
 
@@ -154,18 +240,47 @@ If formAction = "save" Then
 End If
 
 Dim editMode, editId, editRs
-Dim fBaslik, fEtiket, fProblem, fCozum, fUygulama, fSonuc, fCtaMetni, fCtaUrl, fSlug, fSira, fYayin
+Dim fBaslik, fEtiket, fKisaOzet, fLokasyon, fProjeTipi, fHizmetTipi, fSistemMarka, fSure
+Dim fProblem, fKesif, fCozum, fUygulama, fSonuc
+Dim fCoverImage, fCoverAlt, fGaleriGorseller, fGaleriAltlar, fVideoUrl
+Dim fOncesiImage, fOncesiAlt, fSonrasiImage, fSonrasiAlt
+Dim fMusteriYorumu, fSss, fIlgiliHizmetUrl, fIlgiliBolgeUrl
+Dim fCtaMetni, fCtaUrl, fSlug, fTakipEtiketi, fSeoTitle, fMetaDescription, fSira, fYayin
+
 editMode = False
 editId = UygulamaAdminNumber(Request.QueryString("sid"), 0)
 fBaslik = ""
 fEtiket = ""
+fKisaOzet = ""
+fLokasyon = ""
+fProjeTipi = ""
+fHizmetTipi = ""
+fSistemMarka = ""
+fSure = ""
 fProblem = ""
+fKesif = ""
 fCozum = ""
 fUygulama = ""
 fSonuc = ""
-fCtaMetni = "Iletisime gec"
-fCtaUrl = "../iletisim.asp"
+fCoverImage = ""
+fCoverAlt = ""
+fGaleriGorseller = ""
+fGaleriAltlar = ""
+fVideoUrl = ""
+fOncesiImage = ""
+fOncesiAlt = ""
+fSonrasiImage = ""
+fSonrasiAlt = ""
+fMusteriYorumu = ""
+fSss = ""
+fIlgiliHizmetUrl = ""
+fIlgiliBolgeUrl = ""
+fCtaMetni = "Benzer bir proje icin kesif talep et"
+fCtaUrl = "iletisim.asp"
 fSlug = ""
+fTakipEtiketi = ""
+fSeoTitle = ""
+fMetaDescription = ""
 fSira = 10
 fYayin = True
 
@@ -176,15 +291,38 @@ If Request.QueryString("edit") = "yes" And editId > 0 Then
     editMode = True
     fBaslik = editRs("baslik") & ""
     fEtiket = editRs("etiket") & ""
-    fProblem = editRs("problem") & ""
-    fCozum = editRs("cozum") & ""
-    fUygulama = editRs("uygulama") & ""
-    fSonuc = editRs("sonuc") & ""
-    fCtaMetni = editRs("cta_metni") & ""
-    fCtaUrl = editRs("cta_url") & ""
-    fSlug = editRs("slug") & ""
-    fSira = UygulamaAdminNumber(editRs("sira"), 10)
-    fYayin = UygulamaAdminIsLive(editRs("yayin"))
+    fKisaOzet = UygulamaAdminValue(editRs, "kisa_ozet")
+    fLokasyon = UygulamaAdminValue(editRs, "lokasyon")
+    fProjeTipi = UygulamaAdminValue(editRs, "proje_tipi")
+    fHizmetTipi = UygulamaAdminValue(editRs, "hizmet_tipi")
+    fSistemMarka = UygulamaAdminValue(editRs, "sistem_marka")
+    fSure = UygulamaAdminValue(editRs, "proje_suresi")
+    fProblem = UygulamaAdminValue(editRs, "problem")
+    fKesif = UygulamaAdminValue(editRs, "kesif_degerlendirme")
+    fCozum = UygulamaAdminValue(editRs, "cozum")
+    fUygulama = UygulamaAdminValue(editRs, "uygulama")
+    fSonuc = UygulamaAdminValue(editRs, "sonuc")
+    fCoverImage = UygulamaAdminValue(editRs, "cover_image")
+    fCoverAlt = UygulamaAdminValue(editRs, "cover_alt")
+    fGaleriGorseller = UygulamaAdminValue(editRs, "galeri_gorseller")
+    fGaleriAltlar = UygulamaAdminValue(editRs, "galeri_altlar")
+    fVideoUrl = UygulamaAdminValue(editRs, "video_url")
+    fOncesiImage = UygulamaAdminValue(editRs, "oncesi_image")
+    fOncesiAlt = UygulamaAdminValue(editRs, "oncesi_alt")
+    fSonrasiImage = UygulamaAdminValue(editRs, "sonrasi_image")
+    fSonrasiAlt = UygulamaAdminValue(editRs, "sonrasi_alt")
+    fMusteriYorumu = UygulamaAdminValue(editRs, "musteri_yorumu")
+    fSss = UygulamaAdminValue(editRs, "sss")
+    fIlgiliHizmetUrl = UygulamaAdminValue(editRs, "ilgili_hizmet_url")
+    fIlgiliBolgeUrl = UygulamaAdminValue(editRs, "ilgili_bolge_url")
+    fCtaMetni = UygulamaAdminValue(editRs, "cta_metni")
+    fCtaUrl = UygulamaAdminValue(editRs, "cta_url")
+    fSlug = UygulamaAdminValue(editRs, "slug")
+    fTakipEtiketi = UygulamaAdminValue(editRs, "takip_etiketi")
+    fSeoTitle = UygulamaAdminValue(editRs, "seo_title")
+    fMetaDescription = UygulamaAdminValue(editRs, "meta_description")
+    fSira = UygulamaAdminNumber(UygulamaAdminValue(editRs, "sira"), 10)
+    fYayin = UygulamaAdminIsLive(UygulamaAdminValue(editRs, "yayin"))
   End If
   If editRs.State = 1 Then editRs.Close
   Set editRs = Nothing
@@ -198,7 +336,7 @@ End If
   }
 
   .case-admin-wrap {
-    max-width: 1070px;
+    max-width: 1120px;
     margin: 0 auto 50px auto;
     padding: 22px 12px 50px 12px;
     font-family: Open Sans, Arial, sans-serif;
@@ -221,10 +359,27 @@ End If
   }
 
   .case-admin-hero p {
-    margin: 0;
+    margin: 0 0 10px 0;
     color: #666;
     font-size: 14px;
     line-height: 1.6em;
+  }
+
+  .case-admin-schema {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .case-admin-schema span {
+    display: inline-flex;
+    border-radius: 999px;
+    background: #3c3c3c;
+    color: #f7bb09;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 800;
   }
 
   .case-admin-alert {
@@ -262,6 +417,11 @@ End If
     font-size: 17px;
   }
 
+  .case-admin-card-head span {
+    color: #f3f3f3;
+    font-size: 13px;
+  }
+
   .case-admin-card-body {
     padding: 18px;
   }
@@ -272,8 +432,16 @@ End If
     gap: 14px;
   }
 
+  .case-admin-grid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .case-admin-field {
     margin-bottom: 14px;
+  }
+
+  .case-admin-field.full {
+    grid-column: 1 / -1;
   }
 
   .case-admin-field label {
@@ -282,6 +450,14 @@ End If
     color: #333;
     font-size: 13px;
     font-weight: 800;
+  }
+
+  .case-admin-field small {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.45em;
   }
 
   .case-admin-field input[type=text],
@@ -300,6 +476,10 @@ End If
     min-height: 92px;
     resize: vertical;
     line-height: 1.55em;
+  }
+
+  .case-admin-field textarea.tall {
+    min-height: 128px;
   }
 
   .case-admin-field input[type=text]:focus,
@@ -365,7 +545,7 @@ End If
   .case-admin-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 850px;
+    min-width: 980px;
     font-size: 13px;
   }
 
@@ -399,7 +579,8 @@ End If
   }
 
   @media screen and (max-width: 760px) {
-    .case-admin-grid {
+    .case-admin-grid,
+    .case-admin-grid.three {
       grid-template-columns: 1fr;
     }
 
@@ -413,8 +594,18 @@ End If
 
 <div class="case-admin-wrap">
   <div class="case-admin-hero">
-    <h1>Uygulama ornekleri paneli</h1>
-    <p>Bu sayfadan sitedeki uygulama orneklerini ekleyebilir, duzenleyebilir, silebilir ve yayindan kaldirabilirsiniz. Ilk acilista tablo yoksa otomatik olusturulur ve mevcut statik ornekler veritabanina tasinir.</p>
+    <h1>Case study paneli</h1>
+    <p>Bu panel artik kart listesi degil, detay sayfali mini case sistemi icin calisir. Public listede yalnizca kapak, ozet ve meta bilgiler gorunur; ziyaretci <b>uygulama-ornegi.asp?slug=...</b> detay sayfasina gider.</p>
+    <p>Guncel alan yapisi: baslik, etiket, kisa ozet, lokasyon, proje tipi, hizmet tipi, sistem/marka, sure, problem, kesif/degerlendirme, cozum, uygulama, sonuc, CTA, slug, takip etiketi, SEO title, meta description, kapak foto, galeri, video URL, oncesi/sonrasi, musteri notu ve SSS.</p>
+    <div class="case-admin-schema">
+      <span>Kart + detay URL</span>
+      <span>Kapak foto</span>
+      <span>Galeri</span>
+      <span>Video URL opsiyonel</span>
+      <span>Oncesi / sonrasi</span>
+      <span>Alt text</span>
+      <span>SEO / AEO alanlari</span>
+    </div>
   </div>
 
   <% If Request.QueryString("ok") = "save" Then %>
@@ -425,8 +616,8 @@ End If
 
   <div class="case-admin-card">
     <div class="case-admin-card-head">
-      <strong><% If editMode Then %>Kaydi duzenle<% Else %>Yeni uygulama ornegi ekle<% End If %></strong>
-      <span>Problem &rarr; Cozum &rarr; Uygulama &rarr; Sonuc akisi</span>
+      <strong><% If editMode Then %>Case'i duzenle<% Else %>Yeni case ekle<% End If %></strong>
+      <span>Problem &rarr; Kesif &rarr; Cozum &rarr; Uygulama &rarr; Sonuc &rarr; CTA akisi</span>
     </div>
 
     <div class="case-admin-card-body">
@@ -446,27 +637,153 @@ End If
           </div>
         </div>
 
-        <div class="case-admin-grid">
+        <div class="case-admin-field">
+          <label>Kisa ozet</label>
+          <textarea name="kisa_ozet"><%=UygulamaAdminTextarea(fKisaOzet)%></textarea>
+          <small>Kartta ve detay sayfasi girisinde gorunur. 1-2 cumle yeterli.</small>
+        </div>
+
+        <div class="case-admin-grid three">
           <div class="case-admin-field">
-            <label>Problem</label>
-            <textarea name="problem"><%=UygulamaAdminTextarea(fProblem)%></textarea>
+            <label>Lokasyon</label>
+            <input type="text" name="lokasyon" value="<%=UygulamaAdminHtml(fLokasyon)%>" maxlength="150" placeholder="Lara / Muratpasa / Antalya">
           </div>
 
           <div class="case-admin-field">
-            <label>Cozum</label>
-            <textarea name="cozum"><%=UygulamaAdminTextarea(fCozum)%></textarea>
+            <label>Proje tipi</label>
+            <input type="text" name="proje_tipi" value="<%=UygulamaAdminHtml(fProjeTipi)%>" maxlength="120" placeholder="Otel / Ofis / Villa">
+          </div>
+
+          <div class="case-admin-field">
+            <label>Hizmet tipi</label>
+            <input type="text" name="hizmet_tipi" value="<%=UygulamaAdminHtml(fHizmetTipi)%>" maxlength="150" placeholder="VRF sistemleri / Klima montaji">
           </div>
         </div>
 
         <div class="case-admin-grid">
           <div class="case-admin-field">
-            <label>Uygulama</label>
-            <textarea name="uygulama"><%=UygulamaAdminTextarea(fUygulama)%></textarea>
+            <label>Sistem / marka</label>
+            <input type="text" name="sistem_marka" value="<%=UygulamaAdminHtml(fSistemMarka)%>" maxlength="180" placeholder="Mitsubishi Electric VRF">
           </div>
 
           <div class="case-admin-field">
+            <label>Proje suresi</label>
+            <input type="text" name="proje_suresi" value="<%=UygulamaAdminHtml(fSure)%>" maxlength="80" placeholder="1 gun / 3 gun / Ayni gun">
+          </div>
+        </div>
+
+        <div class="case-admin-grid">
+          <div class="case-admin-field">
+            <label>Problem</label>
+            <textarea name="problem" class="tall"><%=UygulamaAdminTextarea(fProblem)%></textarea>
+          </div>
+
+          <div class="case-admin-field">
+            <label>Kesif / degerlendirme</label>
+            <textarea name="kesif_degerlendirme" class="tall"><%=UygulamaAdminTextarea(fKesif)%></textarea>
+            <small>Eksik olan en kritik alan: m2, cephe, drenaj, dis unite, elektrik, servis erisimi gibi teknik dusunce burada.</small>
+          </div>
+        </div>
+
+        <div class="case-admin-grid">
+          <div class="case-admin-field">
+            <label>Cozum</label>
+            <textarea name="cozum" class="tall"><%=UygulamaAdminTextarea(fCozum)%></textarea>
+          </div>
+
+          <div class="case-admin-field">
+            <label>Uygulama</label>
+            <textarea name="uygulama" class="tall"><%=UygulamaAdminTextarea(fUygulama)%></textarea>
+          </div>
+        </div>
+
+        <div class="case-admin-grid">
+          <div class="case-admin-field">
             <label>Sonuc</label>
-            <textarea name="sonuc"><%=UygulamaAdminTextarea(fSonuc)%></textarea>
+            <textarea name="sonuc" class="tall"><%=UygulamaAdminTextarea(fSonuc)%></textarea>
+          </div>
+
+          <div class="case-admin-field">
+            <label>Musteri yorumu / notu</label>
+            <textarea name="musteri_yorumu" class="tall"><%=UygulamaAdminTextarea(fMusteriYorumu)%></textarea>
+            <small>Opsiyonel. Isim vermeden anonim not da girilebilir.</small>
+          </div>
+        </div>
+
+        <div class="case-admin-card" style="box-shadow:none; margin-top:10px">
+          <div class="case-admin-card-head">
+            <strong>Medya alanlari</strong>
+            <span>Upload yerine dosya yolu / URL girilir; video URL opsiyoneldir.</span>
+          </div>
+          <div class="case-admin-card-body">
+            <div class="case-admin-grid">
+              <div class="case-admin-field">
+                <label>Kapak foto URL / dosya yolu</label>
+                <input type="text" name="cover_image" value="<%=UygulamaAdminHtml(fCoverImage)%>" maxlength="255" placeholder="images/case/lara-otel-vrf.webp">
+              </div>
+
+              <div class="case-admin-field">
+                <label>Kapak alt text</label>
+                <input type="text" name="cover_alt" value="<%=UygulamaAdminHtml(fCoverAlt)%>" maxlength="255" placeholder="Lara otel VRF klima dis unite uygulamasi">
+              </div>
+            </div>
+
+            <div class="case-admin-grid">
+              <div class="case-admin-field">
+                <label>Galeri foto URLleri</label>
+                <textarea name="galeri_gorseller"><%=UygulamaAdminTextarea(fGaleriGorseller)%></textarea>
+                <small>Her satira bir foto: images/case/foto-1.webp</small>
+              </div>
+
+              <div class="case-admin-field">
+                <label>Galeri alt textleri</label>
+                <textarea name="galeri_altlar"><%=UygulamaAdminTextarea(fGaleriAltlar)%></textarea>
+                <small>Her satir, soldaki ayni siradaki fotografin alt metni.</small>
+              </div>
+            </div>
+
+            <div class="case-admin-field">
+              <label>Video URL</label>
+              <input type="text" name="video_url" value="<%=UygulamaAdminHtml(fVideoUrl)%>" maxlength="255" placeholder="YouTube / Vimeo / Instagram linki - opsiyonel">
+            </div>
+
+            <div class="case-admin-grid">
+              <div class="case-admin-field">
+                <label>Oncesi foto</label>
+                <input type="text" name="oncesi_image" value="<%=UygulamaAdminHtml(fOncesiImage)%>" maxlength="255" placeholder="Opsiyonel">
+              </div>
+
+              <div class="case-admin-field">
+                <label>Oncesi alt text</label>
+                <input type="text" name="oncesi_alt" value="<%=UygulamaAdminHtml(fOncesiAlt)%>" maxlength="255">
+              </div>
+            </div>
+
+            <div class="case-admin-grid">
+              <div class="case-admin-field">
+                <label>Sonrasi foto</label>
+                <input type="text" name="sonrasi_image" value="<%=UygulamaAdminHtml(fSonrasiImage)%>" maxlength="255" placeholder="Opsiyonel">
+              </div>
+
+              <div class="case-admin-field">
+                <label>Sonrasi alt text</label>
+                <input type="text" name="sonrasi_alt" value="<%=UygulamaAdminHtml(fSonrasiAlt)%>" maxlength="255">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-admin-grid">
+          <div class="case-admin-field">
+            <label>SSS</label>
+            <textarea name="sss" class="tall"><%=UygulamaAdminTextarea(fSss)%></textarea>
+            <small>Format: Soru|Cevap. Her satira bir SSS. Ornek: Otel icin VRF mi multi split mi?|Oda sayisi ve bagimsiz kontrol ihtiyacina gore kesifte netlestirilir.</small>
+          </div>
+
+          <div class="case-admin-field">
+            <label>SEO meta description</label>
+            <textarea name="meta_description" class="tall"><%=UygulamaAdminTextarea(fMetaDescription)%></textarea>
+            <small>Bos kalirsa kisa ozet/problem kullanilir.</small>
           </div>
         </div>
 
@@ -478,19 +795,45 @@ End If
 
           <div class="case-admin-field">
             <label>CTA linki</label>
-            <input type="text" name="cta_url" value="<%=UygulamaAdminHtml(fCtaUrl)%>" maxlength="255" placeholder="../iletisim.asp">
+            <input type="text" name="cta_url" value="<%=UygulamaAdminHtml(fCtaUrl)%>" maxlength="255" placeholder="iletisim.asp">
+            <small>Public sayfada kullanilir. Takip icin istersen /iletisim.asp?source=case_x eklenebilir.</small>
           </div>
         </div>
 
         <div class="case-admin-grid">
           <div class="case-admin-field">
-            <label>Slug / takip etiketi</label>
+            <label>Slug</label>
             <input type="text" name="slug" value="<%=UygulamaAdminHtml(fSlug)%>" maxlength="120" placeholder="Bos kalirsa basliktan uretilir">
+            <small>Detay URL: ../uygulama-ornegi.asp?slug=<%=UygulamaAdminHtml(fSlug)%></small>
+          </div>
+
+          <div class="case-admin-field">
+            <label>Takip etiketi</label>
+            <input type="text" name="takip_etiketi" value="<%=UygulamaAdminHtml(fTakipEtiketi)%>" maxlength="120" placeholder="case_lara_otel_vrf">
+          </div>
+        </div>
+
+        <div class="case-admin-grid">
+          <div class="case-admin-field">
+            <label>SEO title</label>
+            <input type="text" name="seo_title" value="<%=UygulamaAdminHtml(fSeoTitle)%>" maxlength="255" placeholder="Bos kalirsa baslik + Ozum Klima kullanilir">
           </div>
 
           <div class="case-admin-field">
             <label>Siralama</label>
             <input type="text" name="sira" value="<%=UygulamaAdminHtml(fSira)%>" maxlength="6">
+          </div>
+        </div>
+
+        <div class="case-admin-grid">
+          <div class="case-admin-field">
+            <label>Ilgili hizmet URL</label>
+            <input type="text" name="ilgili_hizmet_url" value="<%=UygulamaAdminHtml(fIlgiliHizmetUrl)%>" maxlength="255" placeholder="antalya-vrf-sistemleri.asp">
+          </div>
+
+          <div class="case-admin-field">
+            <label>Ilgili bolge URL</label>
+            <input type="text" name="ilgili_bolge_url" value="<%=UygulamaAdminHtml(fIlgiliBolgeUrl)%>" maxlength="255" placeholder="muratpasa-klima-servisi.asp">
           </div>
         </div>
 
@@ -501,7 +844,8 @@ End If
         <div class="case-admin-actions">
           <button type="submit" class="case-admin-button"><% If editMode Then %>Guncelle<% Else %>Kaydet<% End If %></button>
           <% If editMode Then %><a href="uygulama-ornekleri.asp" class="case-admin-link">Yeni kayit moduna don</a><% End If %>
-          <a href="../uygulama-ornekleri.asp" target="_blank" class="case-admin-link">Sitede gor</a>
+          <a href="../uygulama-ornekleri.asp" target="_blank" class="case-admin-link">Listeyi sitede gor</a>
+          <% If editMode And Trim(fSlug) <> "" Then %><a href="../uygulama-ornegi.asp?slug=<%=Server.URLEncode(fSlug)%>" target="_blank" class="case-admin-link">Detay sayfasini ac</a><% End If %>
         </div>
       </form>
     </div>
@@ -510,12 +854,12 @@ End If
   <div class="case-admin-card">
     <div class="case-admin-card-head">
       <strong>Kayit listesi</strong>
-      <span>Sira numarasina gore yayinda gorunur</span>
+      <span>Sira numarasina gore yayinda gorunur; detay linki slug ile olusur.</span>
     </div>
 
     <div class="case-admin-card-body case-admin-table-wrap">
       <%
-      Dim listRs
+      Dim listRs, listSlug, hasMedia
       Set listRs = Server.CreateObject("ADODB.RecordSet")
       listRs.Open "SELECT * FROM uygulama_ornekleri ORDER BY [sira] ASC, [id] ASC", baglanti, 1, 1
       %>
@@ -523,31 +867,40 @@ End If
       <table class="case-admin-table">
         <tr>
           <th width="55">Sira</th>
-          <th>Baslik</th>
-          <th width="130">Etiket</th>
+          <th>Baslik / slug</th>
+          <th width="150">Lokasyon</th>
+          <th width="140">Hizmet</th>
+          <th width="95">Medya</th>
           <th width="110">Durum</th>
           <th width="95">Duzenle</th>
+          <th width="95">Detay</th>
           <th width="75">Sil</th>
         </tr>
 
         <% If listRs.EOF Then %>
-          <tr><td colspan="6">Henuz kayit yok.</td></tr>
+          <tr><td colspan="9">Henuz kayit yok.</td></tr>
         <% Else %>
           <%
           Do While Not listRs.EOF
+            listSlug = UygulamaAdminValue(listRs, "slug")
+            hasMedia = "Yok"
+            If Trim(UygulamaAdminValue(listRs, "cover_image")) <> "" Or Trim(UygulamaAdminValue(listRs, "galeri_gorseller")) <> "" Or Trim(UygulamaAdminValue(listRs, "video_url")) <> "" Then hasMedia = "Var"
           %>
             <tr>
-              <td><%=UygulamaAdminHtml(listRs("sira"))%></td>
-              <td><b><%=UygulamaAdminHtml(listRs("baslik"))%></b><br><span style="color:#777"><%=UygulamaAdminHtml(listRs("slug"))%></span></td>
-              <td><%=UygulamaAdminHtml(listRs("etiket"))%></td>
+              <td><%=UygulamaAdminHtml(UygulamaAdminValue(listRs, "sira"))%></td>
+              <td><b><%=UygulamaAdminHtml(listRs("baslik"))%></b><br><span style="color:#777"><%=UygulamaAdminHtml(listSlug)%></span></td>
+              <td><%=UygulamaAdminHtml(UygulamaAdminValue(listRs, "lokasyon"))%></td>
+              <td><%=UygulamaAdminHtml(UygulamaAdminValue(listRs, "hizmet_tipi"))%></td>
+              <td><%=hasMedia%></td>
               <td>
-                <% If UygulamaAdminIsLive(listRs("yayin")) Then %>
+                <% If UygulamaAdminIsLive(UygulamaAdminValue(listRs, "yayin")) Then %>
                   <span class="case-admin-status live">Yayinda</span>
                 <% Else %>
                   <span class="case-admin-status">Pasif</span>
                 <% End If %>
               </td>
               <td><a class="case-admin-link" href="uygulama-ornekleri.asp?edit=yes&sid=<%=listRs("id")%>">Duzenle</a></td>
+              <td><% If Trim(listSlug) <> "" Then %><a class="case-admin-link" target="_blank" href="../uygulama-ornegi.asp?slug=<%=Server.URLEncode(listSlug)%>">Ac</a><% End If %></td>
               <td>
                 <form method="post" action="uygulama-ornekleri.asp" style="margin:0">
                   <input type="hidden" name="form_action" value="delete">
