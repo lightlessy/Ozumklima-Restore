@@ -40,12 +40,12 @@ ayars.open sqly, baglanti,1,3
 <ul class="nav">  
 
 	<li  class="test">
-		<a href="#">KATEGORİLER</a> 
+		<a href="#">KATEGORÃLER</a> 
 		
 		<ul>
 <li><a href="mainsil.asp">Ana Kategoriler</a>   </li>
 <li><a href="tipsil.asp">Alt Kategoriler</a>      </li>
-<li><a href="cargo-edit.asp">Kargo Düzenleme</a>     </li>
+<li><a href="cargo-edit.asp">Kargo DÃ¼zenleme</a>     </li>
   </ul>
 		
 	</li>       
@@ -53,16 +53,16 @@ ayars.open sqly, baglanti,1,3
 	         
 	         
 			<li  class="test">
-		<a href="#">ÜRÜNLER</a> 
+		<a href="#">ÃœRÃœNLER</a> 
 		
 		<ul>
 		
 <li><a href="join.asp">Ekle</a>      </li>
-<li><a href="urunler.asp">Düzenle</a>   </li>       
-<li><a href="indirim-urunler.asp">İndirimli Ürünler</a>      </li> 
-<li><a href="pasif-urunler.asp">Pasif Ürünler</a>      </li> 
-<li><a href="urun_bul.asp">Ürün Bul</a>       </li>     
-<li><a href="urun-hitler.asp">Popüler</a>   </li>
+<li><a href="urunler.asp">DÃ¼zenle</a>   </li>       
+<li><a href="indirim-urunler.asp">Ãndirimli ÃœrÃ¼nler</a>      </li> 
+<li><a href="pasif-urunler.asp">Pasif ÃœrÃ¼nler</a>      </li> 
+<li><a href="urun_bul.asp">ÃœrÃ¼n Bul</a>       </li>     
+<li><a href="urun-hitler.asp">PopÃ¼ler</a>   </li>
   </ul>
 		
 	</li>        
@@ -72,13 +72,13 @@ ayars.open sqly, baglanti,1,3
 	
 	
 				<li  class="test">
-		<a href="#">SİPARİŞLER</a> 
+		<a href="#">SÃPARÃÃLER</a> 
 		
 		<ul>
 
  <li> <a href="orders.asp">Devam Eden </a>     </li>    
  <li> <a href="ar_orders.asp">Kargolanan</a>       </li>
- <li> <a href="iptal_orders.asp">İptal Olan</a>     </li> 
+ <li> <a href="iptal_orders.asp">Ãptal Olan</a>     </li> 
  
   </ul>
 		
@@ -92,10 +92,10 @@ ayars.open sqly, baglanti,1,3
 	
 	
 		<li  class="test">
-		<a href="#">MÜŞTERİLER</a> 
+		<a href="#">MÃœÃTERÃLER</a> 
 		
 		<ul>
-<li><a href="uye-list.asp">Müşteri Listesi</a>       </li>  
+<li><a href="uye-list.asp">MÃ¼Ã¾teri Listesi</a>       </li>  
 <li><a href="yorumlar.asp">Yorumlar</a>       </li>
 
   </ul>
@@ -112,7 +112,7 @@ ayars.open sqly, baglanti,1,3
 		
 		<ul>
 <li><a href="slayt.asp">Ekle</a>   </li>
-<li><a href="slayt_sil.asp">Düzenle</a>    </li>
+<li><a href="slayt_sil.asp">DÃ¼zenle</a>    </li>
   </ul>
 		
 	</li>  
@@ -120,27 +120,29 @@ ayars.open sqly, baglanti,1,3
      
    
    		<li  class="test">
-		<a href="#">İÇERİK</a> 
+		<a href="#">ÃÃ‡ERÃK</a> 
 		
 		<ul>
 <li><a href="sayfa-ekle.asp">Ekle</a>   </li>
-<li><a href="sayfa-sil.asp?id=1">Kurumsal Düzenle</a>    </li>        
-<li><a href="sayfa-sil.asp?id=2">Hizmetler Düzenle</a>    </li>  
-<li><a href="sayfa-sil.asp?id=3">Blog Düzenle</a>    </li>  
+<li><a href="sayfa-sil.asp?id=1">Kurumsal DÃ¼zenle</a>    </li>        
+<li><a href="sayfa-sil.asp?id=2">Hizmetler DÃ¼zenle</a>    </li>  
+<li><a href="sayfa-sil.asp?id=3">Blog DÃ¼zenle</a>    </li>  
+<li><a href="uygulama-ornekleri.asp">Uygulama Ornekleri</a>    </li>  
 <li><a href="refer.asp">Referans Ekle</a>   </li>
-<li><a href="refer_sil.asp">Referans Düzenle</a>    </li>
+<li><a href="refer_sil.asp">Referans DÃ¼zenle</a>    </li>
   </ul>
 		
 	</li>  
 	
 	
 	
+	
 			<li  class="test">
-		<a href="#">GALERİ</a> 
+		<a href="#">GALERÃ</a> 
 		
 		<ul>
-<li><a href="add_gal_foto.asp">Fotoğraf Ekle</a>   </li>
-<li><a href="galeri_edit.asp">Fotoğraf Düzenle</a>    </li>
+<li><a href="add_gal_foto.asp">FotoÃ°raf Ekle</a>   </li>
+<li><a href="galeri_edit.asp">FotoÃ°raf DÃ¼zenle</a>    </li>
   </ul>
 		
 	</li>  
@@ -150,8 +152,8 @@ ayars.open sqly, baglanti,1,3
 		<a href="#">AYARLAR</a> 
 		
 		<ul>      
-<li><a href="ayar.asp">İletişim Bilgileri</a>    </li>
-<li><a href="ayar.asp">Şifre Değişimi</a>   </li>
+<li><a href="ayar.asp">ÃletiÃ¾im Bilgileri</a>    </li>
+<li><a href="ayar.asp">Ãifre DeÃ°iÃ¾imi</a>   </li>
 <li><a href="ayar.asp">Banka Bilgileri</a>    </li>
 <li><a href="ayar.asp">Sosyal Medya</a>    </li>
   </ul>
@@ -161,7 +163,7 @@ ayars.open sqly, baglanti,1,3
 
 
 	
-	 	<li><a href="exit.asp" onClick='javascript:window.close()'>ÇIKIŞ  </a></li>  
+	 	<li><a href="exit.asp" onClick='javascript:window.close()'>Ã‡IKIÃ  </a></li>  
 	
 	</ul>
 </div>
