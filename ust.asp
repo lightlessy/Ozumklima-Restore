@@ -33,7 +33,7 @@
 
     <div class="ozm-logo-wrap">
       <a href="https://ozumklima.com" aria-label="&#214;z&#252;m Klima Ana Sayfa">
-        <img src="images/logo.png" class="logo ozm-logo" alt="&#214;z&#252;m Klima">
+<img src="/images/logo.png" class="logo ozm-logo" alt="&#214;z&#252;m Klima">
       </a>
     </div>
 
@@ -229,6 +229,9 @@
     transform: rotate(0deg);
     transition: .5s ease-in-out;
     cursor: pointer;
+    position: relative;
+    flex: 0 0 30px;
+    min-width: 30px;
   }
 
   #nav-icon2 span {
@@ -374,6 +377,24 @@
       display: none;
     }
   }
+  @media screen and (max-width: 520px) {
+  .ozm-cta-btn {
+    display: none;
+  }
+
+  .ozm-header-main {
+    gap: 10px;
+  }
+
+  .ozm-logo-wrap {
+    width: 140px;
+    flex: 0 0 140px;
+  }
+
+  .ozm-logo {
+    width: 140px;
+  }
+}
 </style>
 
 <script>
