@@ -1,4 +1,3 @@
-<%@ Language="VBScript" CodePage="65001" %>
 <%
 Response.Buffer = True
 Response.CodePage = 65001
