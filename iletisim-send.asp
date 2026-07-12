@@ -1,9 +1,10 @@
+<%@ Language="VBScript" CodePage="65001" %>
 <%
 Response.Buffer = True
-Session.CodePage = 1254
+Session.CodePage = 65001
 Session.LCID = 1055
-Response.CodePage = 1254
-Response.Charset = "windows-1254"
+Response.CodePage = 65001
+Response.Charset = "utf-8"
 Response.ContentType = "text/html"
 %>
 
@@ -11,8 +12,8 @@ Response.ContentType = "text/html"
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
-<title>Mesaj Gonderimi</title>
+<meta charset="utf-8">
+<title>Mesaj Gönderimi</title>
 </head>
 
 <body style="font-family:Arial; font-size:15px; padding:40px;">
@@ -37,7 +38,7 @@ End If
 
 htmlBody = ""
 htmlBody = htmlBody & "<table style='font-family:arial; font-size:14px; width:500px; border:1px solid #E6E6E6' cellspacing='6' cellpadding='5'>"
-htmlBody = htmlBody & "<tr><td colspan='2'><font color='#0080C0'><b>Bize Ulasin Formu</b></font></td></tr>"
+htmlBody = htmlBody & "<tr><td colspan='2'><font color='#0080C0'><b>Bize Ulaşın Formu</b></font></td></tr>"
 htmlBody = htmlBody & "<tr><td>Ad Soyad:</td><td><b>" & Server.HTMLEncode(isim) & "</b></td></tr>"
 htmlBody = htmlBody & "<tr><td>E-Posta:</td><td><b>" & Server.HTMLEncode(mail) & "</b></td></tr>"
 htmlBody = htmlBody & "<tr><td>Telefon:</td><td><b>" & Server.HTMLEncode(tel) & "</b></td></tr>"
@@ -46,7 +47,7 @@ htmlBody = htmlBody & "</table>"
 
 kime = CONTACT_TO
 kimden = SMTP_USER
-konu = "Bize Ulasin"
+konu = "Bize Ulaşın"
 gonderenAd = CONTACT_FROM_NAME
 
 Set mektup = Server.CreateObject("Persits.MailSender")
@@ -54,8 +55,8 @@ Set mektup = Server.CreateObject("Persits.MailSender")
 If Err.Number <> 0 Then
 %>
 
-  <b>Mail sistemi hatasi:</b><br><br>
-  Persits.MailSender sunucuda kurulu degil veya izin yok.<br><br>
+  <b>Mail sistemi hatası:</b><br><br>
+  Persits.MailSender sunucuda kurulu değil veya izin yok.<br><br>
   Hata: <%=Err.Description%>
 
 <%
@@ -77,7 +78,7 @@ mektup.Body = htmlBody
 mektup.Username = SMTP_USER
 mektup.Password = SMTP_PASS
 
-mektup.CharSet = "windows-1254"
+mektup.CharSet = "utf-8"
 mektup.ContentTransferEncoding = "Quoted-Printable"
 
 Err.Clear
@@ -86,13 +87,13 @@ mektup.Send
 If Err.Number <> 0 Then
 %>
 
-  <b>Mail gonderilemedi.</b><br><br>
+  <b>Mail gönderilemedi.</b><br><br>
   Hata: <%=Err.Description%><br><br>
   Muhtemel sebepler:<br>
-  - SMTP sifresi yanlis<br>
+  - SMTP şifresi yanlış<br>
   - Hosting port 587 engelliyor<br>
   - mail.ozumklima.com SMTP kabul etmiyor<br>
-  - Persits kurulu ama mail auth/TLS ayari eksik
+  - Persits kurulu ama mail auth/TLS ayarı eksik
 
 <%
   Response.End
@@ -101,7 +102,7 @@ End If
 Set mektup = Nothing
 %>
 
-<b>Mesajiniz iletilmistir. Tesekkurler.</b>
+<b>Mesajınız iletilmiştir. Teşekkürler.</b>
 
 <br><br>
 
