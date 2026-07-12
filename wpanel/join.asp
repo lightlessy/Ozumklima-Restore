@@ -1,288 +1,276 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 
-  <!--#include file="menu.asp"-->     
-  
+<!--#include file="menu.asp"-->
 
-<div class="baslik">Ürün Ekle </div>
-  
-  <body OnLoad="initialiseWebWizRTE();">        
-  
-  
-     	<script src="../js/jscolor.js"></script>            
+<body onload="initialiseWebWizRTE();">
 
-                                               
-<% grup= request.querystring("g")
- tip= request.querystring("tip")   
+<div class="baslik">ÃœrÃ¼n Ekle</div>
 
+<script src="../js/jscolor.js"></script>
 
- if  request.querystring("grup")="add"  then  
+<%
+Dim grup, tip, surface
 
+grup = Trim(Request.QueryString("g") & "")
+tip = Trim(Request.QueryString("tip") & "")
+surface = Trim(Request.QueryString("surface") & "")
 
-set Rs = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From anagrup"
-Rs.open Sorgula,baglanti,1,3    
+If grup <> "" And Not IsNumeric(grup) Then grup = ""
+If tip <> "" And Not IsNumeric(tip) Then tip = ""
+If surface <> "" And Not IsNumeric(surface) Then surface = ""
 
-Rs.AddNew            
-Rs("isim")=   Request.Form("isim1")    
-Rs("durum")=   1
-Rs.Update            
+If Request.QueryString("grup") = "add" Then
+  Set Rs = Server.CreateObject("ADODB.RecordSet")
+  Sorgula = "SELECT * FROM anagrup"
+  Rs.Open Sorgula, baglanti, 1, 3
 
-Response.Redirect Request.ServerVariables("HTTP_REFERER")        
+  Rs.AddNew
+  Rs("isim") = Request.Form("isim1")
+  Rs("durum") = 1
+  Rs.Update
 
-end if %>       
+  Rs.Close
+  Set Rs = Nothing
+  Response.Redirect Request.ServerVariables("HTTP_REFERER")
+End If
 
+If Request.QueryString("tip") = "add" Then
+  If Not IsNumeric(Request.Form("grup")) Then
+    Response.Write "GeÃ§ersiz ana kategori."
+    Response.End
+  End If
 
+  Set Rs = Server.CreateObject("ADODB.RecordSet")
+  Sorgula = "SELECT * FROM tip"
+  Rs.Open Sorgula, baglanti, 1, 3
 
+  Rs.AddNew
+  Rs("isim") = Request.Form("isim2")
+  Rs("grup") = CLng(Request.Form("grup"))
+  Rs.Update
 
- 
- 
- <% if  request.querystring("tip")="add"  then  
+  Rs.Close
+  Set Rs = Nothing
+  Response.Redirect Request.ServerVariables("HTTP_REFERER")
+End If
 
+If Request.QueryString("surf") = "add" Then
+  If Not IsNumeric(Request.Form("grubu")) Then
+    Response.Write "GeÃ§ersiz kategori."
+    Response.End
+  End If
 
-set Rs = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From tip"
-Rs.open Sorgula,baglanti,1,3    
+  Set Rs = Server.CreateObject("ADODB.RecordSet")
+  Sorgula = "SELECT * FROM surface"
+  Rs.Open Sorgula, baglanti, 1, 3
 
-Rs.AddNew            
-Rs("isim")=   Request.Form("isim2") 
-Rs("grup")=   Request.Form("grup") 
-Rs.Update            
+  Rs.AddNew
+  Rs("isim") = Request.Form("isim3")
+  Rs("grup") = CLng(Request.Form("grubu"))
+  Rs.Update
 
-Response.Redirect Request.ServerVariables("HTTP_REFERER")        
+  Rs.Close
+  Set Rs = Nothing
+  Response.Redirect Request.ServerVariables("HTTP_REFERER")
+End If
+%>
 
-end if %>       
-                                             
+<br><br>
 
+<form name="f" action="join2.asp" method="post">
 
-             
-<% if  request.querystring("surf")="add"  then  
-
-
-set Rs = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From surface"
-Rs.open Sorgula,baglanti,1,3    
-
-Rs.AddNew            
-Rs("isim")=   Request.Form("isim3") 
-Rs("grup")=   Request.Form("grubu") 
-Rs.Update            
-
-Response.Redirect Request.ServerVariables("HTTP_REFERER")        
-
-end if %>     
-                          
-
-  <BR><BR>
-
-                               
-<FORM  name="f"  action=join2.asp method=post >                    
-
-
-<Table  border=1  bordercolor=#DFDFDF bgcolor=#FFFFFF cellpadding=5 cellspacing=5 width=900 class=font align=center>    
-
-
- 
-<script>
-    $(function(){
-      // bind change event to select
-      $('#anagrup').bind('change', function () {  
-      
-          var url = '?g='+ $(this).val(); // get selected value
-      
-
-   if (url) { // require a URL
-              window.location = url; // redirect
-          }
-          return false;
-      });
-    });        
-
-</script>    
-       
+<table border="1" bordercolor="#DFDFDF" bgcolor="#FFFFFF" cellpadding="5" cellspacing="5" width="900" class="font" align="center">
 
 <script>
-    $(function(){
-      // bind change event to select
-      $('#tip').bind('change', function () {  
-      
-          var url = '?g=<%=grup%>&tip='+ $(this).val(); // get selected value
-      
+$(function () {
+  $('#anagrup').on('change', function () {
+    var value = $(this).val();
+    window.location = value ? ('?g=' + encodeURIComponent(value)) : 'join.asp';
+  });
 
-   if (url) { // require a URL
-              window.location = url; // redirect
-          }
-          return false;
-      });
-    });        
+  $('#tip').on('change', function () {
+    var value = $(this).val();
+    var group = '<%=Server.HTMLEncode(grup)%>';
+    window.location = value
+      ? ('?g=' + encodeURIComponent(group) + '&tip=' + encodeURIComponent(value))
+      : ('?g=' + encodeURIComponent(group));
+  });
+});
+</script>
 
-</script>  
+<tr>
+  <td><b>ÃœrÃ¼n Kategorisi:</b></td>
+  <td>
+    <select name="anagrup" id="anagrup">
+      <option value="">LÃ¼tfen SeÃ§iniz</option>
+<%
+Set mods = Server.CreateObject("ADODB.RecordSet")
+Sorgula = "SELECT * FROM anagrup ORDER BY sira DESC"
+mods.Open Sorgula, baglanti, 1, 3
 
-
-<tr><td><B>Ürün Kategori: </B></td><td>
-
-<select name="anagrup"  id="anagrup">
-<option value1="" value="">Lütfen Seçiniz</option>   
-<%  
-           
-set mods = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From anagrup order by sira desc"
-mods.open Sorgula,baglanti,1,3      
-
-Do while not mods.Eof      
-%>   
-  
-<option value="<%=mods("id")%>" <%if Cint(grup) =mods("id") then %> selected <% end if %>><%=mods("isim")%></option>    
- 
-
-<%  
-mods.MoveNExt
+Do While Not mods.EOF
+%>
+      <option value="<%=mods("id")%>"<%
+        If grup <> "" Then
+          If CLng(grup) = CLng(mods("id")) Then Response.Write " selected"
+        End If
+      %>><%=Server.HTMLEncode(mods("isim") & "")%></option>
+<%
+  mods.MoveNext
 Loop
-%>   
-</select>   
+mods.Close
+Set mods = Nothing
+%>
+    </select>
+  </td>
+  <td colspan="2" width="250">
+    <input style="width:150px" name="isim1">
+    <input type="submit" value="+ Ana Kategori Ekle" onclick="f.action='join.asp?grup=add'; return true;">
+    &nbsp; | &nbsp; <a href="javascript:penc1()"><img src="images/del.png" width="20" alt="Sil"></a>
+  </td>
+</tr>
 
-</td><td colspan=2 width=250>
-                                     
-<INPUT   style="WIDTH: 150px"  name="isim1">       
-<input type="submit" value="+ Ana Kategori Ekle" onclick="f.action='join.asp?grup=add'; return true; ">   
+<% If grup <> "" Then %>
+<tr>
+  <td><b>Alt Kategori:</b></td>
+  <td>
+    <select name="tip" id="tip">
+      <option value="">LÃ¼tfen SeÃ§iniz</option>
+<%
+Set mods = Server.CreateObject("ADODB.RecordSet")
+Sorgula = "SELECT * FROM tip WHERE grup = " & CLng(grup) & " ORDER BY sira DESC"
+mods.Open Sorgula, baglanti, 1, 3
 
- &nbsp; | &nbsp; <a href="javascript:penc1()"><img src="images/del.png" width=20></a> 
- </td></tr> 
- 
- 
-  <% if grup <> "" then %>
-  
-<tr><td><B>Alt Kategori:</B> </td><td>
-<select name="tip" id="tip"> 
-<option value1=""  value="">Lütfen Seçiniz</option>   
-<%  
-           
-set mods = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From tip where grup = "& grup &"  order by sira desc"
-mods.open Sorgula,baglanti,1,3      
-
-Do while not mods.Eof      
-%>   
-  
-<option  value="<%=mods("id")%>" <%if Cint(tip) =mods("id") then %> selected <% end if %>><%=mods("isim")%></option>    
- 
-
-<%  
-mods.MoveNExt
+Do While Not mods.EOF
+%>
+      <option value="<%=mods("id")%>"<%
+        If tip <> "" Then
+          If CLng(tip) = CLng(mods("id")) Then Response.Write " selected"
+        End If
+      %>><%=Server.HTMLEncode(mods("isim") & "")%></option>
+<%
+  mods.MoveNext
 Loop
-%>   
-</select>   
-</div>
-</td><td colspan=2>
-                                     
-<INPUT   style="WIDTH: 150px"  name="isim2">       
-<INPUT type="hidden"  name="grup" value="<%=grup%>">  
-<input type="submit" value="+ Alt Kategori Ekle" onclick="f.action='join.asp?tip=add'; return true; ">   
+mods.Close
+Set mods = Nothing
+%>
+    </select>
+  </td>
+  <td colspan="2">
+    <input style="width:150px" name="isim2">
+    <input type="hidden" name="grup" value="<%=CLng(grup)%>">
+    <input type="submit" value="+ Alt Kategori Ekle" onclick="f.action='join.asp?tip=add'; return true;">
+    &nbsp; | &nbsp; <a href="javascript:penc2()"><img src="images/del.png" width="20" alt="Sil"></a>
+  </td>
+</tr>
+<% End If %>
 
- &nbsp; | &nbsp; <a href="javascript:penc2()"><img src="images/del.png" width=20></a> 
- </td></tr> 
+<% If grup <> "" And tip <> "" Then %>
+<tr>
+  <td><b>ÃœrÃ¼n Grubu:</b></td>
+  <td>
+    <select name="surface" id="surface">
+      <option value="0">LÃ¼tfen SeÃ§iniz</option>
+<%
+Set mods = Server.CreateObject("ADODB.RecordSet")
+Sorgula = "SELECT * FROM surface WHERE grup = " & CLng(grup) & " ORDER BY isim DESC"
+mods.Open Sorgula, baglanti, 1, 3
 
-
-<% end if %>
-
-                      
-
-
-  <% if tip <> "" then %>    
-  
-  
-  <tr><td><B>Ürün Grubu:</B> </td><td>
-<select name="surface" id="surface"> 
-<option value1=""  value="0">Lütfen Seçiniz</option>   
-<%  
-           
-set mods = Server.CreateObJect("ADODB.RecordSet")
-Sorgula = "Select * From surface where grup = "& grup &"  order by isim desc"
-mods.open Sorgula,baglanti,1,3      
-
-Do while not mods.Eof      
-%>   
-  
-<option  value="<%=mods("id")%>" <%if Cint(surface) =mods("id") then %> selected <% end if %>><%=mods("isim")%></option>    
- 
-
-<%  
-mods.MoveNExt
+Do While Not mods.EOF
+%>
+      <option value="<%=mods("id")%>"<%
+        If surface <> "" Then
+          If CLng(surface) = CLng(mods("id")) Then Response.Write " selected"
+        End If
+      %>><%=Server.HTMLEncode(mods("isim") & "")%></option>
+<%
+  mods.MoveNext
 Loop
-%>   
-</select>   
-</div>
-</td><td colspan=2>
-                                     
-<INPUT   style="WIDTH: 100px"  name="isim3">       
-<INPUT type="hidden"  name="grubu" value="<%=grup%>">  
-<input type="submit" value="+ Ekle" onclick="f.action='join.asp?surf=add'; return true; ">   
+mods.Close
+Set mods = Nothing
+%>
+    </select>
+  </td>
+  <td colspan="2">
+    <input style="width:100px" name="isim3">
+    <input type="hidden" name="grubu" value="<%=CLng(grup)%>">
+    <input type="submit" value="+ Ekle" onclick="f.action='join.asp?surf=add'; return true;">
+    &nbsp; | &nbsp; <a href="javascript:penc3()"><img src="images/del.png" width="20" alt="Sil"></a>
+  </td>
+</tr>
 
- &nbsp; | &nbsp; <a href="javascript:penc3()"><img src="images/del.png" width=20></a> 
- </td></tr>    
-  
+<tr><td><b>ÃœrÃ¼n Kodu:</b></td><td><input style="width:100px" name="kodu" value="0"></td></tr>
+<tr><td><b>ÃœrÃ¼n AdÄ±:</b></td><td><input style="width:350px" name="isim"></td></tr>
 
-<tr><td><B>Ürün Kodu: </B></td><td><INPUT  style="WIDTH: 100px"  name="kodu" value="0" ></td>
+<tr>
+  <td><b>Renk SeÃ§enekleri:</b></td>
+  <td colspan="3">
+<%
+Dim renkIndex
+For renkIndex = 1 To 10
+%>
+    <input class="jscolor" name="renk<%=renkIndex%>" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+<%
+Next
+%>
+  </td>
+</tr>
 
-<tr><td><B>Ürün Adý: </B></td><td><INPUT  style="WIDTH: 350px"  name="isim"></td>      </tr>  
+<tr>
+  <td><b>Beden / Numara SeÃ§enekleri:</b></td>
+  <td colspan="3">
+<%
+Dim bedenIndex
+For bedenIndex = 1 To 10
+%>
+    <input name="beden<%=bedenIndex%>" value="0" style="width:40px">
+<%
+Next
+%>
+  </td>
+</tr>
 
-<tr><td><B>Renk Seçenekleri:</B>  </td><td colspan=3> 
-<input class="jscolor"  name="renk1" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk2" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk3" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk4" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk5" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk6" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk7" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk8" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk9" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
-<input class="jscolor"  name="renk10" value="0" style="width:50px; -webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px; border:1px solid #C0C0C0">   
- </td></tr> 
+<tr bgcolor="#F7F4F0">
+  <td><b>Ã–zet - TanÄ±mlama:</b></td>
+  <td colspan="3"><textarea style="width:700px; height:50px" name="descr"></textarea></td>
+</tr>
 
-
-<tr><td><B>Beden / Numara Seçenekleri:</B>  </td><td colspan=3> 
-<input  name="beden1" value="0" style="width:40px;">   
-<input  name="beden2" value="0" style="width:40px;">
-<input  name="beden3" value="0" style="width:40px;">
-<input  name="beden4" value="0" style="width:40px;">
-<input  name="beden5" value="0" style="width:40px;">
-<input  name="beden6" value="0" style="width:40px;">
-<input  name="beden7" value="0" style="width:40px;">
-<input  name="beden8" value="0" style="width:40px;">
-<input  name="beden9" value="0" style="width:40px;">
-<input  name="beden10" value="0" style="width:40px;">
-
- </td></tr>  
- 
- 
-<tr bgcolor=#F7F4F0><td><B>Özet - Tanýmlama:</B></td><td colspan=3>
-<TEXTAREA   style="WIDTH: 700px; HEIGHT: 50px"  name="descr"></TEXTAREA></td></tr>                                                           
-
-	<%
+<%
 strFormName = "f"
 strTextAreaName = "notlar"
-%> 
+%>
 
-<tr bgcolor=#F7F4F0><td colspan=4>    
-<B>Ürün Detaylarý:</B> <BR><BR>
+<tr bgcolor="#F7F4F0">
+  <td colspan="4">
+    <b>ÃœrÃ¼n DetaylarÄ±:</b><br><br>
+    <!--#include file="RTE_editor_inc.asp"--><br>
+    <textarea style="width:870px; height:390px" name="notlar" id="notlar"></textarea>
+  </td>
+</tr>
 
-<!--#include file="RTE_editor_inc.asp" --><BR>
-<TEXTAREA   style="WIDTH: 870px; HEIGHT: 390px"  name="notlar" id="notlar"></TEXTAREA></td></tr> 
-  
-   
-  <tr><td><B>Kargoya Veriliþ Süresi:</B>  </td><td> <INPUT  style="WIDTH: 100px"  name="delivery" value="3">    </td></tr>
+<tr><td><b>Kargoya VeriliÅŸ SÃ¼resi:</b></td><td><input style="width:100px" name="delivery" value="3"></td></tr>
 
+<tr>
+  <td><b>Anahtar Kelimeler:</b></td>
+  <td colspan="3"><textarea style="width:700px; height:50px" name="keyw"></textarea></td>
+</tr>
 
-<tr><td><B>Anahtar Kelimeler: </B> </td><td colspan=3>
-<TEXTAREA   style="WIDTH: 700px; HEIGHT: 50px"  name="keyw"></TEXTAREA></td></tr>
+<input type="hidden" name="yayin" value="0">
 
+<tr>
+  <td colspan="4" align="center"><input type="submit" value="ÃœRÃœN EKLE"></td>
+</tr>
 
-<input type="hidden" name="yayin" value="0">  
+<% End If %>
 
-<tr><td colspan=4 align=center>              
-<input type="submit" value="ÜRÜN EKLE"> 
-</td></tr></table>
- </FORM>
-               
- <BR><BR>&nbsp;
-       
- <% end if %>  
- 
+</table>
+</form>
+
+<br><br>
+
+</body>
