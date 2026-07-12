@@ -827,9 +827,9 @@ If Trim(dAfterAlt) = "" Then dAfterAlt = dBaslik & " sonrasi"
 
         <% If Trim(dHizmetUrl) <> "" Or Trim(dBolgeUrl) <> "" Then %>
           <div class="detail-side-links">
-            <strong>Ilgili sayfalar</strong>
-            <% If Trim(dHizmetUrl) <> "" Then %><a href="<%=UygulamaDetailUrl(dHizmetUrl)%>">Ilgili hizmet sayfasi</a><% End If %>
-            <% If Trim(dBolgeUrl) <> "" Then %><a href="<%=UygulamaDetailUrl(dBolgeUrl)%>">Ilgili bolge sayfasi</a><% End If %>
+            <strong>İlgili Sayfalar</strong>
+            <% If Trim(dHizmetUrl) <> "" Then %><a href="<%=UygulamaDetailUrl(dHizmetUrl)%>">İlgili hizmet sayfası</a><% End If %>
+            <% If Trim(dBolgeUrl) <> "" Then %><a href="<%=UygulamaDetailUrl(dBolgeUrl)%>">İlgili bölge sayfası</a><% End If %>
           </div>
         <% End If %>
       </aside>
