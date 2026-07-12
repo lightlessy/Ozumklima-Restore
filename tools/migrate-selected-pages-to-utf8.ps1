@@ -44,12 +44,12 @@ function Ensure-PagePreamble([string]$Text, [string]$RelativePath) {
 
     if (-not $isInclude -and $looksLikePage) {
         if ($normalized -notmatch '^\s*<%@\s*Language\s*=\s*["'']VBScript["'']\s+CodePage\s*=\s*["'']?65001["'']?\s*%>') {
-            $normalized = "<%@ Language=\"VBScript\" CodePage=\"65001\" %>`r`n" + $normalized
+            $normalized = '<%@ Language="VBScript" CodePage="65001" %>' + "`r`n" + $normalized
         }
 
         if ($normalized -notmatch 'Response\.CodePage\s*=\s*65001') {
             $directiveEnd = $normalized.IndexOf("%>") + 2
-            $runtime = "`r`n<%`r`nResponse.Buffer = True`r`nResponse.CodePage = 65001`r`nResponse.Charset = \"utf-8\"`r`n%>"
+            $runtime = "`r`n<%`r`nResponse.Buffer = True`r`nResponse.CodePage = 65001`r`nResponse.Charset = `"utf-8`"`r`n%>"
             $normalized = $normalized.Insert($directiveEnd, $runtime)
         }
     }
