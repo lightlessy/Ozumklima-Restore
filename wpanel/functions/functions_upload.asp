@@ -1,18 +1,24 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -30,9 +36,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -53,7 +59,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 	Dim strOriginalFileName	'Holds the original file name for those components that need to save the file first
 	Dim objFSO		'Holds the file system object
 	Dim file		'Holds the FSO file object
-	
+
 
 
 	'******************************************
@@ -62,7 +68,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 
 	'Select which upload component to use
 	Select Case strUploadComponent
-	
+
 
 		'******************************************
 		'***     Persits AspUpload component   ****
@@ -72,9 +78,9 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 		Case "AspUpload", "AspUpload2"
 
 			'Create upload object
-		
-			Set objUpload = Server.CreateObject("Persits.Upload")   
-			
+
+			Set objUpload = Server.CreateObject("Persits.Upload")
+
 			'If AspUpload 3.x or above get the progress ID for the progress bar
 			If strUploadComponent = "AspUpload" Then objUpload.ProgressID = Request.QueryString("PID")
 
@@ -93,7 +99,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 
 				'Replace spaces with underscores
 				strNewFileName = Replace(strNewFileName, " ", "_", 1, -1, 1)
-				
+
 				'Remove semicolons to prevent IIS 6 and below vulnerbility
 				strNewFileName = Replace(strNewFileName, ";", "", 1, -1, 1)
 
@@ -118,7 +124,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 						'Create a new file name for the file if it already exsist
 						strNewFileName = hexValue(3) & "_" & strNewFileName
 					Loop
-					
+
 
 					'Save the file to disk with new file name
 					'** Copy virtual is used as save as is often disabled by the web host **
@@ -171,7 +177,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 
 				'Replace spaces with underscores
 				strNewFileName = Replace(strNewFileName, " ", "_", 1, -1, 1)
-				
+
 				'Remove semicolons to prevent IIS 6 and below vulnerbility
 				strNewFileName = Replace(strNewFileName, ";", "", 1, -1, 1)
 
@@ -192,8 +198,8 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 						'Create a new file name for file if it already exsist
 						strNewFileName = hexValue(3) & "_" & strNewFileName
 					Loop
-					
-					
+
+
 					'Save the file to disk
 					.Files(0).SaveAs strFileUploadPath & "/" & strNewFileName
 
@@ -234,7 +240,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 
 				'Replace spaces with underscores
 				strNewFileName = Replace(strNewFileName, " ", "_", 1, -1, 1)
-				
+
 				'Remove semicolons to prevent IIS 6 and below vulnerbility
 				strNewFileName = Replace(strNewFileName, ";", "", 1, -1, 1)
 
@@ -256,8 +262,8 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 						'Create a new file name for file if it already exsist
 						strNewFileName = hexValue(3) & "_" & strNewFileName
 					Loop
-					
-					
+
+
 					'Clean up
 					Set objSAFileManager = Nothing
 
@@ -299,7 +305,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 
 				'Replace spaces with underscores
 				strNewFileName = Replace(strNewFileName, " ", "_", 1, -1, 1)
-				
+
 				'Remove semicolons to prevent IIS 6 and below vulnerbility
 				strNewFileName = Replace(strNewFileName, ";", "", 1, -1, 1)
 
@@ -314,8 +320,8 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 
 					'Create a new file name for file as using a random genrated hex code, and hope it doesn't already exist as there is noway with this component of finding if the file already exists
 					strNewFileName = hexValue(5) & "_" & strNewFileName
-					
-					
+
+
 					'Save the file to disk
 					.Files(1).SaveAs strFileUploadPath & "/" & strNewFileName
 
@@ -368,7 +374,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 
 				'Replace spaces with underscores
 				strNewFileName = Replace(strNewFileName, " ", "_", 1, -1, 1)
-				
+
 				'Remove semicolons to prevent IIS 6 and below vulnerbility
 				strNewFileName = Replace(strNewFileName, ";", "", 1, -1, 1)
 
@@ -386,7 +392,7 @@ Private Function fileUpload(ByVal strFileUploadPath, ByVal saryFileUploadTypes, 
 						'Create a new file name for file if it already exsist
 						strNewFileName = hexValue(3) & "_" & strNewFileName
 					Loop
-					
+
 					'Save the file to disk
 					Call .SaveToWeb("file", strFileUploadPath & "/" & strNewFileName)
 

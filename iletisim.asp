@@ -1,91 +1,155 @@
+<%@ Language="VBScript" CodePage="65001" %>
 <!--#include file='charset.asp'-->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<head>  
- 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1254"> 
+<head>
+
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>&Ouml;z&uuml;m Klima &#304;leti&#351;im | Antalya Klima Servisi ve Ke&#351;if Talebi</title>   
+<title>Özüm Klima İletişim | Antalya Klima Servisi ve Keşif Talebi</title>
 
-<meta name="description" content="&Ouml;z&uuml;m Klima ile ileti&#351;ime ge&#231;in. Antalya'da klima, VRF, havaland&#305;rma, ke&#351;if, teklif, montaj, bak&#305;m ve servis deste&#287;i al&#305;n.">
+<meta name="description" content="Özüm Klima ile iletişime geçin. Antalya'da klima, VRF, havalandırma, keşif, teklif, montaj, bakım ve servis desteği alın.">
 <link rel="canonical" href="https://ozumklima.com/iletisim.asp">
 
-<meta name="author" content="Mega Tasar&#305;m">   
+<meta name="author" content="Mega Tasarım">
 
-<link rel="icon" type="image/png" href="fav.png">   
+<link rel="icon" type="image/png" href="fav.png">
 
-<link href="css/font.css" rel="stylesheet" type="text/css">   
+<link href="css/font.css" rel="stylesheet" type="text/css">
 
-<script src="js/jquery-2.1.1.js"></script>  
-<script src="js/jquery-ui.min.js"></script>               
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 
 <link href="css/fontawesome-all.css" rel="stylesheet">
 
-<% hform= request.querystring("hform") %>
+<%
+hform = Request.QueryString("hform")
+%>
+
 </head>
 
-<body> 
+<body>
 
 <!--#include file='ust.asp'-->
 
-<DIV>
-               
-<Div class="slogan" style="height:20px"></Div>
+<div>
 
-<Div class="iletTas">  
+  <div class="slogan" style="height:20px"></div>
 
-   <Div style="float:left; max-width:300px" class="adresTel"> 
-   
-      <font style="font-size:1.3em; color:#FEAD41;">Alo Konfor Hatt&#305;<BR></font>
-      <span class="alttel"><i class="fas fa-phone"></i>  <%=ayars("tel") %>  <BR><BR></span>
-                  
-      <B>Adres: </B><BR>
-      <%=ayars("adres") %>
+  <div class="iletTas">
 
-      <BR><BR>
-                   
-      <B>E-Posta:</B><BR>
-      <a href="mailto:<%=ayars("eposta") %>" target=_Blank style="color:#000000"> <%=ayars("eposta") %></a> <BR><BR>
-                  
-      <B>Faks: </B><BR>
-      <%=ayars("faks") %> <BR><BR> 
-                  
-      <B>Bizi Takip Edin: </B><BR>
-      <a href="<%=ayars("face")%>" target=_blank><i class="fab fa-facebook-f"></i></a>&nbsp;&nbsp;  
-      <a href="<%=ayars("insta")%>" target=_blank><i class="fab fa-instagram"></i></a>&nbsp;&nbsp;
-           
-   </Div>
+    <div style="float:left; max-width:300px" class="adresTel">
 
-   <Div style="float:right;" class="formTas">  
-     
+      <span style="font-size:1.3em; color:#FEAD41;">Alo Konfor Hattı<br></span>
+
+      <span class="alttel">
+        <i class="fas fa-phone"></i>
+        <%=ayars("tel")%>
+        <br><br>
+      </span>
+
+      <strong>Adres:</strong><br>
+      <%=ayars("adres")%>
+
+      <br><br>
+
+      <strong>E-Posta:</strong><br>
+      <a href="mailto:<%=ayars("eposta")%>" target="_blank" style="color:#000000">
+        <%=ayars("eposta")%>
+      </a>
+
+      <br><br>
+
+      <strong>Faks:</strong><br>
+      <%=ayars("faks")%>
+
+      <br><br>
+
+      <strong>Bizi Takip Edin:</strong><br>
+
+      <a href="<%=ayars("face")%>" target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      &nbsp;&nbsp;
+
+      <a href="<%=ayars("insta")%>" target="_blank" rel="noopener">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+    </div>
+
+    <div style="float:right;" class="formTas">
+
       <div style="text-align:center;">
 
-         <form method="post" name="cic" action="iletisim-send.asp" class="form"
-      onsubmit="safeTrack('contact_form_submit_attempt', {source:'iletisim_page'});">          
-                          
-            <input name="isim" type="text" placeholder="&#304;sim" size="26" maxlength="60" required>
-            <input name="mail" type="email" placeholder="E-Posta Adresiniz" size="26" maxlength="60" required>  
-            <input name="tel" type="text" placeholder="Telefon Numaran&#305;z" size="10" maxlength="11" onkeypress="return numbersonly(this, event)"> 
-            <textarea name="mes" cols="25" rows="6" placeholder="Mesaj&#305;n&#305;z" required></textarea>	 
-            <input type="submit" name="submit" value="G&ouml;nder" class=btn style="color:#FFFFFF"> 	 	 
-      
-         </form>         
-      
-      </div>   
-         
-   </Div>
+        <form
+          method="post"
+          name="cic"
+          action="iletisim-send.asp"
+          class="form"
+          onsubmit="safeTrack('contact_form_submit_attempt', {source:'iletisim_page'});"
+        >
 
-   <Div style="clear:both"></Div>   
+          <input
+            name="isim"
+            type="text"
+            placeholder="İsim"
+            size="26"
+            maxlength="60"
+            required
+          >
 
-</Div>            
+          <input
+            name="mail"
+            type="email"
+            placeholder="E-Posta Adresiniz"
+            size="26"
+            maxlength="60"
+            required
+          >
 
-</DIV>        
+          <input
+            name="tel"
+            type="text"
+            placeholder="Telefon Numaranız"
+            size="10"
+            maxlength="11"
+            onkeypress="return numbersonly(this, event)"
+          >
 
-<%=ayars("map") %>                                                                                         
-      
-<!--  #include file='alt.asp' -->      
+          <textarea
+            name="mes"
+            cols="25"
+            rows="6"
+            placeholder="Mesajınız"
+            required
+          ></textarea>
+
+          <input
+            type="submit"
+            name="submit"
+            value="Gönder"
+            class="btn"
+            style="color:#FFFFFF"
+          >
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <div style="clear:both"></div>
+
+  </div>
+
+</div>
+
+<%=ayars("map")%>
+
+<!--#include file='alt.asp'-->
 
 </body>
 </html>

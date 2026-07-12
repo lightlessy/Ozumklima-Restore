@@ -1,39 +1,45 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 
-  <!--#include file="menu.asp"-->  
- 
+  <!--#include file="menu.asp"-->
 
-  <div class="baslik">SMS Gönder</div>    
-                                               
+
+  <div class="baslik">SMS GÃ¶nder</div>
+
 <% tip= request.querystring("tip") %>
 
-  <body OnLoad="initialiseWebWizRTE();">  
+  <body OnLoad="initialiseWebWizRTE();">
 
 
-<% 
+<%
 Function KarakterTemizle(Veri)
 KarakterTemizle = Replace(Veri, "'", "''")
-Veri = KarakterTemizle                                                         
+Veri = KarakterTemizle
 End Function            %>
 
- 
- <% if  request("1") <>""  then  
+
+ <% if  request("1") <>""  then
 
 
-mesaj = request.form("mesaj") 
- 
- Dim alici  
+mesaj = request.form("mesaj")
+
+ Dim alici
 
 Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from uyeler "
-Rs.Open rSQL, baglanti, 1, 3          
+Rs.Open rSQL, baglanti, 1, 3
 
- 
-Do while not Rs.Eof   
 
-a = "["& Rs("tel") &"]," + a 
-        
-Rs.MoveNExt 
-Loop 
+Do while not Rs.Eof
+
+a = "["& Rs("tel") &"]," + a
+
+Rs.MoveNExt
+Loop
 
 
 
@@ -67,41 +73,41 @@ Sub postsms()
 	"</SMS>"
 	Response.write HTTPPoster("http://dakikapi.com/api/xml_api.php", strXML)
 End Sub
-postsms()   
+postsms()
 
-%>                          
-          
+%>
+
 <div class=font style="margin:0px auto; width:500px; text-align:center; margin-top:150px; font-size:1.2em; color:#0080C0">
-<B>SMS GÖNDERÝLDÝ</B>
+<B>SMS GÃ–NDERÄ°LDÄ°</B>
 <%=a%>
 </div>
 
-<%else%>   
-          
-    
+<%else%>
+
+
     <BR><BR>
-         
-  <form method="post" action="smsat.asp" name="myForm" id="myForm">         
-   	   
- <table border=1 bgcolor=#FFFFFF bordercolor=#E6EBEE cellpadding=5 cellspacing=5 align=center  class=font align=center>  
- 
 
-<tr><td>    
-  <b> Alýcý </b>:   Tüm Üyeler</td></tr>       
+  <form method="post" action="smsat.asp" name="myForm" id="myForm">
 
-<tr><td>    
-  <b> Mesaj Ýçeriði </b>:
+ <table border=1 bgcolor=#FFFFFF bordercolor=#E6EBEE cellpadding=5 cellspacing=5 align=center  class=font align=center>
+
+
+<tr><td>
+  <b> AlÄ±cÄ± </b>:   TÃ¼m Ãœyeler</td></tr>
+
+<tr><td>
+  <b> Mesaj Ä°Ã§eriÄŸi </b>:
   <BR><BR>
-   
-  <TEXTAREA cols=100 name="mesaj"  rows=5 required></TEXTAREA></td></tr>      
-   
-</tr>	     
-   
+
+  <TEXTAREA cols=100 name="mesaj"  rows=5 required></TEXTAREA></td></tr>
+
+</tr>
+
   <tr><td colspan=4 align=center>
-  <input type="submit" name="1" value="GÖNDER" />
+  <input type="submit" name="1" value="GÃ–NDER" />
 </td></tr>
 </table>
-      </form>       
-                               
-      
+      </form>
+
+
 <%   end if  %>

@@ -1,5 +1,11 @@
-﻿<% @ Language=VBScript %>
-<% Option Explicit %>   
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
+<% @ Language=VBScript %>
+<% Option Explicit %>
 
 
 
@@ -8,19 +14,19 @@
 <!--#include file="language_files/RTE_language_file_inc.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                                              
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.     
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -38,9 +44,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -63,10 +69,10 @@ Dim intHeight
 
 'If this a post back read in the form elements
 If Request.Form("URL") <> "http://" AND Request.Form("URL") <> "" AND Request.Form("postBack") Then
-	
+
 	'Initilise variable
 	intBorder = 0
-	
+
 	'Get form elements
 	strImageURL = Request.Form("URL")
 	strImageAltText = Request.Form("Alt")
@@ -76,7 +82,7 @@ If Request.Form("URL") <> "http://" AND Request.Form("URL") <> "" AND Request.Fo
 	If isNumeric(Request.Form("vert")) Then lngVerical = LngC(Request.Form("vert"))
 	If isNumeric(Request.Form("width")) Then intWidth = LngC(Request.Form("width"))
 	If isNumeric(Request.Form("height")) Then intHeight = LngC(Request.Form("height"))
-	
+
 	'Escape characters that will course a crash
 	strImageURL = Replace(strImageURL, "'", "\'", 1, -1, 1)
 	strImageURL = Replace(strImageURL, """", "\""", 1, -1, 1)
@@ -105,18 +111,18 @@ vbCrLf & "//-->")
 
 'If this is Gecko based browser or Opera link to JS code for Gecko
 If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "<script language=""JavaScript"" src=""RTE_javascript_gecko.asp"" type=""text/javascript""></script>")
-	
+
 %>
 <script language="JavaScript">
 <%
 'If this a post back write javascript
 If Request.Form("URL") <> "http://" AND Request.Form("URL") <> "" AND Request.Form("postBack") Then
-	
+
 	Response.Write(vbCrLf & vbCrLf & "	editor = window.opener.document.getElementById('WebWizRTE');")
-	
+
 	'Tell that we are an image
 	Response.Write(vbCrLf & vbCrLf & "	img = editor.contentWindow.document.createElement('img');")
-	
+
 	'Set image attributes
 	Response.Write(vbCrLf & vbCrLf & "	img.setAttribute('src', '" & strImageURL & "');")
 	Response.Write(vbCrLf & "	img.setAttribute('border', '" & intBorder & "');")
@@ -126,18 +132,18 @@ If Request.Form("URL") <> "http://" AND Request.Form("URL") <> "" AND Request.Fo
 	If intHeight <> "" Then Response.Write(vbCrLf & "	img.setAttribute('height', '" & intHeight & "');")
 	If lngVerical <> "" Then Response.Write(vbCrLf & "	img.setAttribute('vspace', '" & lngVerical & "');")
 	If strAlign <> "" Then Response.Write(vbCrLf & "	img.setAttribute('align', '" & strAlign & "');")
-	 
-     
-     	'If this is Mozilla or Opera then we need to call insertElementPosition to find where to place the image
-     	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then 
-		
+
+
+	'If this is Mozilla or Opera then we need to call insertElementPosition to find where to place the image
+	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
+
 		Response.Write(vbCrLf & vbCrLf & "	try{" & _
 					vbCrLf & "		insertElementPosition(editor.contentWindow, img);" & _
 					vbCrLf & "	}catch(exception){" & _
 					vbCrLf & "		alert('" & strTxtErrorInsertingObject & "');" & _
 					vbCrLf & "		editor.contentWindow.focus();" & _
 					vbCrLf & "	}")
-	
+
 	'Else this is IE so placing the image is simpler
 	Else
 		Response.Write(vbCrLf & vbCrLf & "	try{" & _
@@ -148,16 +154,16 @@ If Request.Form("URL") <> "http://" AND Request.Form("URL") <> "" AND Request.Fo
 					vbCrLf & "		editor.contentWindow.focus();" & _
 					vbCrLf & "	}")
 	End If
-		
+
 	'Set focus
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write(vbCrLf & "	editor.focus();")
 	Else
 		Response.Write(vbCrLf & "	editor.contentWindow.focus();")
 	End If
-		
+
 	'Close window
 	Response.Write(vbCrLf & "	window.close();")
 End If
@@ -248,9 +254,9 @@ function changeImage(){
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 If blnAbout Then
 	Response.Write("<span class=""text"" style=""font-size:10px""><a href=""http://www.richtexteditor.org"" target=""_blank"" style=""font-size:10px"">Web Wiz Rich Text Editor</a> version " & strRTEversion & "</span>")
-End If 
-'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******      
-      
+End If
+'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
+
       %></td>
       <td align="right" class="RTEtableBottomRow"><input type="hidden" name="postBack" value="true">
           <input type="submit" id="Submit" name="Submit" value="     <% = strTxtOK %>     ">&nbsp;<input type="button" name="cancel" value=" <% = strTxtCancel %> " onClick="window.close()">

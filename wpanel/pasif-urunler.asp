@@ -1,87 +1,93 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <html>
  <head>
-  <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <title>PANEL </title>
+  <meta charset="utf-8">
 <link rel=stylesheet type="text/css" href="font.css">
-</head>     
-   
-   
-  <!--#include file="menu.asp"-->  
-  
-<div class="baslik">Pasif Ürünler </div>
+</head>
+
+
+  <!--#include file="menu.asp"-->
+
+<div class="baslik">Pasif ÃœrÃ¼nler </div>
            <BR><BR>
-  
-  
+
+
   <%
 
 
-if Request.Querystring("psil2")=1 then 
+if Request.Querystring("psil2")=1 then
 
 
 Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from products  where AffiliateID = "& Request("id")
-Rs.Open rSQL, baglanti, 1, 3 
+Rs.Open rSQL, baglanti, 1, 3
 
-Rs.Delete 
-Rs.Update 
+Rs.Delete
+Rs.Update
 
 rs.close
-set rs = nothing 
-Response.Redirect Request.ServerVariables("HTTP_REFERER")         
+set rs = nothing
+Response.Redirect Request.ServerVariables("HTTP_REFERER")
 
-end if      %> 
+end if      %>
 
-                            
+
 
 <table class=font border=1 bordercolor=#E8E8E8 cellspacing=3 cellpadding=4 width=780 align=center>
 
- 
+
 <%
 
 Set mods1 = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select id,isim  from  anagrup "
-mods1.Open rSQL, baglanti, 1, 3     
+mods1.Open rSQL, baglanti, 1, 3
 
 
 
-Do while not mods1.Eof     
+Do while not mods1.Eof
 
 Set mods = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select AffiliateID,anagrup,isim,urunana,tip, yayin from products  where anagrup="& mods1("id") &" and yayin=0 group by anagrup, isim, AffiliateID,urunana,tip, yayin"
-mods.Open rSQL, baglanti, 1, 3       
+mods.Open rSQL, baglanti, 1, 3
 
-%>  
-           
-<tr bgcolor=#F3F0E4><td colspan=4><B><%=mods1("isim")%></B> </td></tr> 
-    
-    
-<% 
-  k=1 
-  Do while not mods.Eof      %>   
-  
+%>
+
+<tr bgcolor=#F3F0E4><td colspan=4><B><%=mods1("isim")%></B> </td></tr>
+
+
+<%
+  k=1
+  Do while not mods.Eof      %>
+
 
 <tr class="menuoff" onmouseover="className='menuon';" onmouseout="className='menuoff';">
 <td><%=mods("isim")%></td>
-<td align=center><a href="edits.asp?id=<%=mods("AffiliateID")%>&g=<%=mods("anagrup")%>&tip=<%=mods("tip")%>"><img src="images/edit.png" width=20></a><td align=center> <a href="?psil2=1&id=<%=mods("AffiliateID")%>" onclick="return confirm('Kayıt silinecek. Onaylıyor Musunuz?')"><img src="images/del.png" width=20></a>
-</td>      
+<td align=center><a href="edits.asp?id=<%=mods("AffiliateID")%>&g=<%=mods("anagrup")%>&tip=<%=mods("tip")%>"><img src="images/edit.png" width=20></a><td align=center> <a href="?psil2=1&id=<%=mods("AffiliateID")%>" onclick="return confirm('KayÄ±t silinecek. OnaylÄ±yor Musunuz?')"><img src="images/del.png" width=20></a>
+</td>
 </tr>
-<%   
-  k = k + 1 
+<%
+  k = k + 1
 mods.MoveNExt
 Loop
-%>      
-</td></tr>   
-    
+%>
+</td></tr>
 
 
-<%     
+
+<%
 
 mods1.MoveNExt
 Loop
-%>  
-</table>  
+%>
+</table>
 
-                         
+
 <BR><BR>
 &nbsp;
 

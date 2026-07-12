@@ -1,3 +1,9 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <!--#include file='db.asp'-->
 <%
 Function UygulamaDetailSql(ByVal value)
@@ -186,7 +192,7 @@ Sub UygulamaDetailEnsureTable()
   Call UygulamaDetailAddColumn("[meta_description] MEMO")
 
 
-  
+
   On Error Resume Next
   Set testRs = baglanti.Execute("SELECT COUNT(*) AS toplam FROM uygulama_ornekleri")
   If Err.Number = 0 Then toplamKayit = CLng(testRs("toplam"))
@@ -669,10 +675,10 @@ If Trim(dAfterAlt) = "" Then dAfterAlt = dBaslik & " sonrasi"
 
       <div class="detail-info-grid">
         <% Call UygulamaRenderInfo("Lokasyon", dLokasyon) %>
-        <% Call UygulamaRenderInfo("Proje tipi", dProjeTipi) %>
-        <% Call UygulamaRenderInfo("Hizmet", dHizmetTipi) %>
-        <% Call UygulamaRenderInfo("Sistem / marka", dSistemMarka) %>
-        <% Call UygulamaRenderInfo("Sure", dSure) %>
+        <% Call UygulamaRenderInfo("Proje Tİpİ", dProjeTipi) %>
+        <% Call UygulamaRenderInfo("Hİzmet", dHizmetTipi) %>
+        <% Call UygulamaRenderInfo("Sİstem / marka", dSistemMarka) %>
+        <% Call UygulamaRenderInfo("Süre", dSure) %>
       </div>
     </section>
 
@@ -695,53 +701,53 @@ If Trim(dAfterAlt) = "" Then dAfterAlt = dBaslik & " sonrasi"
 
         <% If Trim(dKesif) <> "" Then %>
           <section class="detail-section">
-            <h2>Kesif ve teknik degerlendirme</h2>
+            <h2>Keşif ve teknik değerlendirme</h2>
             <%=UygulamaDetailParagraphs(dKesif)%>
           </section>
         <% End If %>
 
         <% If Trim(dCozum) <> "" Then %>
           <section class="detail-section">
-            <h2>Cozum</h2>
+            <h2>Çözüm</h2>
             <%=UygulamaDetailParagraphs(dCozum)%>
           </section>
         <% End If %>
 
         <% If Trim(dUygulama) <> "" Then %>
           <section class="detail-section">
-            <h2>Uygulama sureci</h2>
+            <h2>Uygulama süreci</h2>
             <%=UygulamaDetailParagraphs(dUygulama)%>
           </section>
         <% End If %>
 
         <% If Trim(dSonuc) <> "" Then %>
           <section class="detail-section">
-            <h2>Sonuc</h2>
+            <h2>Sonuç</h2>
             <%=UygulamaDetailParagraphs(dSonuc)%>
           </section>
         <% End If %>
 
         <% If Trim(dYorum) <> "" Then %>
           <section class="detail-section">
-            <h2>Musteri notu</h2>
+            <h2>Müşteri notu</h2>
             <div class="detail-quote"><%=UygulamaDetailText(dYorum)%></div>
           </section>
         <% End If %>
 
         <% If Trim(dBefore) <> "" Or Trim(dAfter) <> "" Then %>
           <section class="detail-section">
-            <h2>Oncesi / sonrasi</h2>
+            <h2>Öncesi / sonrası</h2>
             <div class="detail-before-after">
               <% If Trim(dBefore) <> "" Then %>
                 <figure>
                   <img src="<%=UygulamaDetailImage(dBefore)%>" alt="<%=UygulamaDetailAttr(dBeforeAlt)%>">
-                  <figcaption>Oncesi</figcaption>
+                  <figcaption>Öncesi</figcaption>
                 </figure>
               <% End If %>
               <% If Trim(dAfter) <> "" Then %>
                 <figure>
                   <img src="<%=UygulamaDetailImage(dAfter)%>" alt="<%=UygulamaDetailAttr(dAfterAlt)%>">
-                  <figcaption>Sonrasi</figcaption>
+                  <figcaption>Sonrası</figcaption>
                 </figure>
               <% End If %>
             </div>
@@ -793,7 +799,7 @@ If Trim(dAfterAlt) = "" Then dAfterAlt = dBaslik & " sonrasi"
 
         <% If Trim(dFaq) <> "" Then %>
           <section class="detail-section">
-            <h2>Sik sorulan sorular</h2>
+            <h2>Sık sorulan sorular</h2>
             <%
             Dim faqLines, f, faqLine, pipePos, faqQuestion, faqAnswer
             faqLines = Split(Replace(Replace(dFaq, vbCrLf, vbLf), vbCr, vbLf), vbLf)
@@ -818,8 +824,8 @@ If Trim(dAfterAlt) = "" Then dAfterAlt = dBaslik & " sonrasi"
 
       <aside class="detail-side">
         <div class="detail-cta">
-          <h2>Benzer bir alan icin kesif planlayalim</h2>
-          <p>Bu uygulamadaki gibi ihtiyaca gore kapasite, cihaz tipi, dis unite konumu ve servis erisimi birlikte degerlendirilebilir.</p>
+          <h2>Benzer bir alan icin keşif planlayalım</h2>
+          <p>Bu uygulamadaki gibi ihtiyaca göre kapasite, cihaz tipi, dış ünite konumu ve servis erişimi birlikte değerlendirilebilir.</p>
           <a href="<%=UygulamaDetailUrl(dCtaUrl)%>" onclick="if(window.analyticsTrack){analyticsTrack('case_study_cta_click', {page: 'uygulama-ornegi', case_slug: '<%=UygulamaDetailAttr(slug)%>', tracking_tag: '<%=UygulamaDetailAttr(dTakip)%>'});}">
             <%=UygulamaDetailText(dCtaMetni)%> <span>&#8594;</span>
           </a>

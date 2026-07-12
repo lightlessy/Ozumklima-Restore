@@ -1,22 +1,28 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 
 <!--#include file="RTE_configuration/RTE_setup.asp" -->
 <!--#include file="functions/RTE_functions_common.asp" -->
 <!--#include file="language_files/RTE_language_file_inc.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -34,9 +40,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -102,7 +108,7 @@ function PromptMode(selectMode){
 
 //function to clear area
 function clearWebWizRTE(){
- 	if (window.confirm('<% = strResetWarningEditorConfirm %>')){
+	if (window.confirm('<% = strResetWarningEditorConfirm %>')){
 	 	document.getElementById(textArea).value='';
 	}
 }
@@ -121,7 +127,7 @@ function AddMessageCode(code, promptText, InsertText){
 			document.getElementById(textArea).value += '<' + code + '></' + code + '>';
 		}
 	}
-				
+
 	document.getElementById(textArea).focus();
 }
 
@@ -138,7 +144,7 @@ function FontCode(code, endCode) {
 		else{
 			document.getElementById(textArea).value += '<' + code + '></font>';
 		}
-	}	
+	}
 	document.getElementById(textArea).focus();
 }
 
@@ -151,11 +157,11 @@ function AddCode(code){
 	if ((code != '') && (code == 'URL')){
 		if (promptOn == true){
 			insertText = prompt('<% = strTxtEnterHyperlinkText %>', '');
-				
+
 				if ((insertText != null) && (insertText != '') && (code == 'URL')){
 					insertCode = prompt('<% = strTxtEnterHeperlinkURL %>', 'http://');
-						
-						if ((insertCode != null) && (insertCode != '') && (insertCode != 'http://')){					
+
+						if ((insertCode != null) && (insertCode != '') && (insertCode != 'http://')){
 							document.getElementById(textArea).value += '<a href="' + insertCode + '">' + insertText + '</a>';
 						}
 				}
@@ -164,17 +170,17 @@ function AddCode(code){
 			document.getElementById(textArea).value += '<a href=""></a>';
 		}
 	}
-	
-	
+
+
 	//For the email code
 	if ((code != '') && (code == 'EMAIL')){
 		if (promptOn == true){
 			insertText = prompt('<% = strTxtEnterEmailText %>', '');
-				
+
 				if ((insertText != null) && (insertText != '')){
 					insertCode = prompt('<% = strTxtEnterEmailMailto %>', '');
-						
-						if ((insertCode != null) && (insertCode != '')){					
+
+						if ((insertCode != null) && (insertCode != '')){
 						document.getElementById(textArea).value += '<a href="mailto:' + insertCode + '">' + insertText + '</a>';
 					}
 				}
@@ -183,60 +189,60 @@ function AddCode(code){
 			document.getElementById(textArea).value += '<a href="mailto:"></a>';
 		}
 	}
-	
+
 	//For the image code
 	if ((code != '') && (code == 'IMG')){
-		if (promptOn == true){	
+		if (promptOn == true){
 			insertCode = prompt('<% = strTxtEnterImageURL %>', 'http://');
-						
-				if ((insertCode != null) && (insertCode != '')){					
+
+				if ((insertCode != null) && (insertCode != '')){
 				document.getElementById(textArea).value += '<img src="' + insertCode + '" />';
-			}			
+			}
 		}
 		else {
 			document.getElementById("message").value += '<img src="" />';
 		}
 	}
-	
+
 	//For the list code
 	if ((code != '') && (code == 'LIST')){
 		if (promptOn == true){
 			listType = prompt('<% = strTxtEnterTypeOfList %> \n<% = strTxtEnterEnter %> \'1\' <% = strTxtEnterNumOrBlankList %>', '');
-			
+
 			while ((listType != null) && (listType != '') && (listType != '1')) {
-				listType = prompt('<% = strTxtEnterListError %> \'1\' <% = strTxtEnterNumOrBlankList %>','');               
+				listType = prompt('<% = strTxtEnterListError %> \'1\' <% = strTxtEnterNumOrBlankList %>','');
 			}
-			
-			if (listType != null){			
+
+			if (listType != null){
 				var listItem = '1';
 				var insertCode = '';
-				
+
 				while ((listItem != '') && (listItem != null)) {
-					listItem = prompt('<% = strEnterLeaveBlankForEndList %>',''); 
-					if (listItem != '') {             
-						insertCode += '<li>' + listItem + '</li>'; 
-					}                   
-				} 
-				
+					listItem = prompt('<% = strEnterLeaveBlankForEndList %>','');
+					if (listItem != '') {
+						insertCode += '<li>' + listItem + '</li>';
+					}
+				}
+
 				if (listType == '') {
 					document.getElementById(textArea).value += '<ul>' + insertCode + '</ul>';
 				} else {
 					document.getElementById(textArea).value += '<ol>' + insertCode + '</ol>';
-				} 
-				
+				}
+
 			}
 		}
 		else{
 			document.getElementById(textArea).value += '<ul><li> </li><li> </li><li> </li></ul>';
-		}			
+		}
 	}
-	
-	
+
+
 	//For the indent
 	if ((code != '') && (code == 'INDENT')){
-						
-			document.getElementById(textArea).value += '      ';				
+
+			document.getElementById(textArea).value += '      ';
 	}
-				
+
 	document.getElementById(textArea).focus();
 }

@@ -1,4 +1,10 @@
-﻿<% @ Language=VBScript %>
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
+<% @ Language=VBScript %>
 <% Option Explicit %>
 
 
@@ -8,19 +14,19 @@
 <!--#include file="language_files/RTE_language_file_inc.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                                              
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.   
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -38,9 +44,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -63,7 +69,7 @@ Dim strSubject
 
 'If this a post back read in the form elements
 If Request.Form("URL") <> "" OR Request.Form("email") <> "" AND Request.Form("postBack") Then
-	
+
 	'Get form elements
 	strLinkType = Request.Form("selType")
 	strHyperlinkType = Request.Form("linkChoice")
@@ -72,10 +78,10 @@ If Request.Form("URL") <> "" OR Request.Form("email") <> "" AND Request.Form("po
 	strWindow = Request.Form("Window")
 	strEmail = Request.Form("email")
 	strSubject = Request.Form("subject")
-	
+
 	'If the http:// part is repeated in the URL then strip it:-
 	strHyperlink = Replace(strHyperlink, strHyperlinkType, "", 1, -1, 1)
-	
+
 	'Escape characters that will course a crash
 	strHyperlink = Replace(strHyperlink, "'", "\'", 1, -1, 1)
 	strHyperlink = Replace(strHyperlink, """", "\""", 1, -1, 1)
@@ -87,11 +93,11 @@ If Request.Form("URL") <> "" OR Request.Form("email") <> "" AND Request.Form("po
 	strEmail = Replace(strEmail, """", "\""", 1, -1, 1)
 	strSubject = Replace(strSubject, "'", "\'", 1, -1, 1)
 	strSubject = Replace(strSubject, """", "\""", 1, -1, 1)
-	
-	
-	
+
+
+
 	'If this is an email mailto then set the email type to mailto:
-	If strLinkType = "email" Then 
+	If strLinkType = "email" Then
 		strHyperlinkType = "mailto:"
 		strHyperlink = strEmail
 		If strSubject <> "" Then strHyperlink = strHyperlink & "?subject=" & strSubject
@@ -119,28 +125,28 @@ vbCrLf & "//-->")
 
 'If this is Gecko or Opera based browser link to JS code for Gecko
 If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "<script language=""JavaScript"" src=""RTE_javascript_gecko.asp"" type=""text/javascript""></script>")
-	
+
 %>
 <script language="JavaScript">
 <%
 
 'If this a post back write javascript
 If Request.Form("URL") <> "" OR Request.Form("email") <> "" AND Request.Form("postBack") Then
-		
-	
+
+
 	'*********************************************
 	'***  	JavaScript for Mozilla & IE	 *****
 	'*********************************************
-	
+
 	Response.Write(vbCrLf & "editor = window.opener.document.getElementById('WebWizRTE');")
-	
+
 	'Mozilla and Opera use different methods than IE to get the selected text (if any)
-	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then 
+	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
 		Response.Write(vbCrLf & vbCrLf & "var selectedRange = editor.contentWindow.window.getSelection();")
-	Else	
+	Else
 		Response.Write(vbCrLf & vbCrLf & "var selectedRange = editor.contentWindow.document.selection.createRange();")
-	End If	
-	
+	End If
+
 
 
 	'If there is a selected area, turn it into a hyperlink
@@ -150,50 +156,50 @@ If Request.Form("URL") <> "" OR Request.Form("email") <> "" AND Request.Form("po
 
 	'Create hyperlink
 	Response.Write(vbCrLf & "	editor.contentWindow.window.document.execCommand('CreateLink', false, '" & strHyperlinkType & strHyperlink & "')")
-		
+
 	'Set attributes if required
 	If (strLinkType = "link" AND (strTitle <> "" OR strWindow <> "")) OR (strLinkType = "email" AND strSubject <> "") Then
-		
+
 		'Set hyperlink attributes
 		Response.Write(vbCrLf & vbCrLf & "	var hyperlink = editor.contentWindow.window.document.getElementsByTagName('a');" & _
 			       vbCrLf & "	for (var i=0; i < hyperlink.length; i++){" & _
 			       vbCrLf & "		if (hyperlink[i].getAttribute('href').search('" & strHyperlinkType & Replace(strHyperlink, "?", "\\?", 1, -1, 1) & "') != -1){")
-		
-		'Set title, window, subject if required	       
+
+		'Set title, window, subject if required
 		If strLinkType = "link" AND strTitle <> "" Then Response.Write(vbCrLf & "			hyperlink[i].setAttribute('title','" & strTitle & "');")
 		If strLinkType = "link" AND strWindow <> "" Then Response.Write(vbCrLf & "			hyperlink[i].setAttribute('target','" & strWindow & "');")
-			       
+
 		Response.Write(vbCrLf & "		}" & _
 			       vbCrLf & "	}")
 	End If
-	
-	
-	
+
+
+
 	'Else no selected area so use the hyperlink text as the displayed text
 	Response.Write(vbCrLf & "}else{")
-	
+
 	'Tell that we are maiing a hyperlink 'a'
 	Response.Write(vbCrLf & vbCrLf & "	hyperlink = editor.contentWindow.document.createElement('a');")
-	
+
 	'Create the hyperlink atrtibutes
 	Response.Write(vbCrLf & vbCrLf & "	hyperlink.setAttribute('href', '" & strHyperlinkType & strHyperlink & "');")
 	If strLinkType = "link" AND strTitle <> "" Then Response.Write(vbCrLf & "	hyperlink.setAttribute('title', '" & strTitle & "');")
 	If strLinkType = "link" AND strWindow <> "" Then Response.Write(vbCrLf & "	hyperlink.setAttribute('target', '" & strWindow & "');")
-	
-	
+
+
 	'Use the text eentered for the link to be a child of the a tag so that it is the screen display
 	Response.Write(vbCrLf & "	hyperlink.appendChild(editor.contentWindow.document.createTextNode('" & strHyperlinkType & strHyperlink & "'));")
-	
+
 	'If this is Mozilla or Opera then we need to call insertElementPosition to find where to place the image
-     	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then 
-		
+	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
+
 	Response.Write(vbCrLf & vbCrLf & "	try{" & _
 				vbCrLf & "		insertElementPosition(editor.contentWindow, hyperlink);" & _
 				vbCrLf & "	}catch(exception){" & _
 				vbCrLf & "		alert('" & strTxtErrorInsertingObject & "');" & _
 				vbCrLf & "		editor.contentWindow.focus();" & _
 				vbCrLf & "	}")
-	
+
 	'Else this is IE so placing the link is simpler
 	Else
 		Response.Write(vbCrLf & vbCrLf & "	try{" & _
@@ -204,23 +210,23 @@ If Request.Form("URL") <> "" OR Request.Form("email") <> "" AND Request.Form("po
 					vbCrLf & "		editor.contentWindow.focus();" & _
 					vbCrLf & "	}")
 	End If
-	
+
 	Response.Write(vbCrLf & "}")
-	
 
 
-	
+
+
 	'Set focus
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write(vbCrLf & "	editor.focus();")
 	Else
 		Response.Write(vbCrLf & "	editor.contentWindow.focus();")
 	End If
-	
+
 	'Close window
-	Response.Write(vbCrLf & "window.close();")	
+	Response.Write(vbCrLf & "window.close();")
 End If
 
 
@@ -247,7 +253,7 @@ function initialise(){
 	if (document.getElementById('URL').value==''){
 		document.getElementById('Submit').disabled=true;
 	}
-	
+
 	self.focus();
 }
 
@@ -259,10 +265,10 @@ function showPreview(linkSelection){
 			document.getElementById("previewLink").contentWindow.location.href =(linkSelection.options[linkSelection.selectedIndex].value + document.getElementById("URL").value);
 		}catch(exception){
 		}
-	
+
 	}else{
 		document.getElementById("previewLink").contentWindow.location.href="RTE_popup_link_preview.asp?b=0";
-	
+
 	}
 }
 
@@ -271,7 +277,7 @@ function disablePreview(linkSelection){
 	if (linkSelection.options[linkSelection.selectedIndex].value=="http://" || linkSelection.options[linkSelection.selectedIndex].value=="https://"){
 		document.getElementById("preview").disabled=false;
 		document.getElementById("previewLink").contentWindow.location.href="RTE_popup_link_preview.asp";
-		
+
 	}else{
 		document.getElementById("preview").disabled=true;
 		document.getElementById("previewLink").contentWindow.location.href="RTE_popup_link_preview.asp?b=0";
@@ -282,19 +288,19 @@ function disablePreview(linkSelection){
 function swapLinkType(selType){
 	if (selType.value == "email"){
 		document.getElementById("hyperlink").style.display="none";
-    		document.getElementById("mailLink").style.display="block";<%
-    		
+		document.getElementById("mailLink").style.display="block";<%
+
 'If this is Gekco based browser or Opera the element needs to be set to visable
-If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "		document.getElementById(""mailLink"").style.visibility=""visable"";") 		
-    		%>
-    		
+If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "		document.getElementById(""mailLink"").style.visibility=""visable"";")
+		%>
+
 	}else{
 		document.getElementById("mailLink").style.display="none";
 		document.getElementById("hyperlink").style.display="block";<%
-		
+
 'If this is Gekco based browser or Opera the element needs to be set to visable
-If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "		document.getElementById(""hyperlink"").style.visibility=""visable"";") 		
-    		%>
+If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "		document.getElementById(""hyperlink"").style.visibility=""visable"";")
+		%>
 	}
 }
 
@@ -323,7 +329,7 @@ If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "		
           </table></td>
         </tr>
         <tr>
-          <td height="276">            
+          <td height="276">
           <span id="hyperlink">
             <table width="100%" border="0" cellpadding="2" cellspacing="0">
               <tr>
@@ -387,9 +393,9 @@ If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "		
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 If blnAbout Then
 	Response.Write("<span class=""text"" style=""font-size:10px""><a href=""http://www.richtexteditor.org"" target=""_blank"" style=""font-size:10px"">Web Wiz Rich Text Editor</a> version " & strRTEversion & "</span>")
-End If 
-'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******      
-      
+End If
+'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
+
       %></td>
       <td align="right" class="RTEtableBottomRow" nowrap="nowrap" valign="top"><input type="hidden" name="postBack" value="true"><input type="submit" id="Submit" name="Submit" value="     <% = strTxtOK %>     ">&nbsp;<input type="button" name="cancel" value=" <% = strTxtCancel %> " onClick="window.close()">
       <br /><br />

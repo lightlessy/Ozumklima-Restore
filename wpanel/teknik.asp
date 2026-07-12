@@ -1,6 +1,12 @@
-    <!--#INCLUDE file="dbase.asp"-->  
-    
-      <!--#include file="menu.asp"-->  
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
+    <!--#INCLUDE file="dbase.asp"-->
+
+      <!--#include file="menu.asp"-->
 
 <HEAD>
 
@@ -30,28 +36,28 @@ function ShowProgress()
   }
   return true;
 }
-</SCRIPT> 
+</SCRIPT>
 
 </HEAD>
 
 
 
                  <center><BR><BR>        <BR>
-                 
-                 <div style="width:350px; background-color:#FFFFFF; border:1px solid #E8E8E8; padding:15px; text-aligfn:center;">                        
-			<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data" 
+
+                 <div style="width:350px; background-color:#FFFFFF; border:1px solid #E8E8E8; padding:15px; text-aligfn:center;">
+			<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data"
 		ACTION="teknik2.asp?<% = PID %>"
-		OnSubmit="return ShowProgress();"> 
-		<INPUT TYPE="FILE" SIZE="40" NAME="dokuman" style="background-color:#E8E8E8"><BR>   
-		 
+		OnSubmit="return ShowProgress();">
+		<INPUT TYPE="FILE" SIZE="40" NAME="dokuman" style="background-color:#E8E8E8"><BR>
+
 <input type="hidden" name="id" value="<%=request.querystring("id")%>">
 <input type="hidden" name="g" value="<%=request.querystring("g")%>">
 <input type="hidden" name="tip" value="<%=request.querystring("tip")%>">
-		    <BR><BR>	
-		 	
-	<INPUT TYPE=SUBMIT VALUE="YÜKLE">
-	</FORM> 
-	
+		    <BR><BR>
+
+	<INPUT TYPE=SUBMIT VALUE="YÃœKLE">
+	</FORM>
+
 	</div>
 
          <BR><BR><BR>

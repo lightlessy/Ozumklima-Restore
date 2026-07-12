@@ -1,18 +1,24 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -30,9 +36,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased

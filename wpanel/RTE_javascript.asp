@@ -1,5 +1,11 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <% @ Language=VBScript %>
-<% Option Explicit %>  
+<% Option Explicit %>
 
 
 
@@ -8,19 +14,19 @@
 <!--#include file="functions/RTE_functions_common.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -38,9 +44,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -100,7 +106,7 @@ function initialiseWebWizRTE(){
 	textArea.parentNode.insertBefore(iframe, textArea);
 
 	//style iframe
-	
+
 	iframe.style.width = textAreaWidth + 'px';
 	iframe.style.height = textAreaHeight + 'px';
 	iframe.style.border = '#A5ACB2 1px solid';
@@ -134,7 +140,7 @@ function initialiseWebWizRTE(){
 'IE SUCKS!!
 If RTEenabled = "winIE" Then
 
-%>		
+%>
 		editor.attachEvent('onkeypress', editorEvents);
 		editor.attachEvent('onmousedown', editorEvents);
 		document.attachEvent('onmousedown', hideIframes);
@@ -152,13 +158,13 @@ End If
 
 %>	}
 	setTimeout(initIframe, 300);
-	
+
 	//get present onsubmit events
 	if (typeof textArea.form.onsubmit == 'function'){
 		textArea.form.originalOnSubmit = [];
 		textArea.form.originalOnSubmit.push(textArea.form.onsubmit);
 	}
-	
+
 	//get textrea value from RTE and run any original onSubmit events
 	textArea.form.onsubmit = function(){
 		textArea.value = editor.body.innerHTML;
@@ -166,7 +172,7 @@ End If
 			return this.originalOnSubmit[i]();
 		}
 	}
-	
+
 	//resetting the form
 	textArea.form.onreset = function(){
 		if (window.confirm('<% = strResetWarningFormConfirm %>')){
@@ -263,7 +269,7 @@ If RTEenabled = "Gecko" AND blnUseCSS = false Then Response.Write("	document.get
 
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write("		editor.focus();")
 	Else
 		Response.Write("		editor.contentWindow.focus()")
@@ -294,10 +300,10 @@ If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
 %>
 	//Paste for AppleWebKit (Safari & Chrome)
 	else if ((navigator.userAgent.indexOf('AppleWebKit') > 0) & (command == 'paste')){
-	
+
 		alert('<% = strTxtYourBrowserSettingsDoNotPermit %> \'' + command + '\' <% = strTxtPleaseUseKeybordsShortcut %> \(<% = strTxtWindowsUsers %> Ctrl + v, <% = strTxtMacUsers %> Apple + v\)')
 	}
-	
+
 	//Cut, copy, paste for Gecko
 	else if ((command == 'cut') || (command == 'copy') || (command == 'paste')){
 		try{
@@ -305,7 +311,7 @@ If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
 
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write("	  		editor.focus();")
 	Else
 		Response.Write("	  		editor.contentWindow.focus()")
@@ -313,7 +319,7 @@ If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
 
 %>
 	  		editor.contentWindow.document.execCommand(command, false, option);
-	  		
+
 		}catch(exception){
 			switch(command){
 				case 'cut': keyboard = 'x'; break;
@@ -356,7 +362,7 @@ If blnAdvAdddHyperlink = false Then
 
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write("				editor.focus();")
 	Else
 		Response.Write("				editor.contentWindow.focus()")
@@ -380,7 +386,7 @@ End If
 
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write("	  	editor.focus();")
 	Else
 		Response.Write("	  	editor.contentWindow.focus()")
@@ -394,13 +400,13 @@ End If
 
 'If Opera change the focus method
 If RTEenabled = "opera" Then
-	
+
 	Response.Write("	editor.focus();")
 Else
 	Response.Write("	editor.contentWindow.focus();")
 End If
 
-%>	
+%>
 }
 <%
 
@@ -437,13 +443,13 @@ End If
 
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write("	  	editor.focus();")
 	Else
 		Response.Write("	  	editor.contentWindow.focus()")
 	End If
 
-%>	  	
+%>
 	hideIframes();
 }
 <%
@@ -478,10 +484,10 @@ function HTMLview(){
 	}else{
 		var html = editor.contentWindow.document.body.innerHTML;
 		editor.contentWindow.document.body.innerText = html;
-    		document.getElementById('ToolBar1').style.visibility='hidden';
-    		document.getElementById('ToolBar2').style.visibility='hidden';
-    		htmlOn = true;
-    	}<%
+		document.getElementById('ToolBar1').style.visibility='hidden';
+		document.getElementById('ToolBar2').style.visibility='hidden';
+		htmlOn = true;
+	}<%
 
 
 	'Else for Midas
@@ -500,12 +506,12 @@ function HTMLview(){
 	//HTML view
 	}else{
 		var html = document.createTextNode(editor.contentWindow.document.body.innerHTML);
-    		editor.contentWindow.document.body.innerHTML = '';
-    		editor.contentWindow.document.body.appendChild(html);
-    		document.getElementById('ToolBar1').style.visibility='hidden';
-    		document.getElementById('ToolBar2').style.visibility='hidden';
-    		htmlOn = true;
-    	}
+		editor.contentWindow.document.body.innerHTML = '';
+		editor.contentWindow.document.body.appendChild(html);
+		document.getElementById('ToolBar1').style.visibility='hidden';
+		document.getElementById('ToolBar2').style.visibility='hidden';
+		htmlOn = true;
+	}
 <%
 
 	End If
@@ -513,7 +519,7 @@ function HTMLview(){
 
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write("    		editor.focus();")
 	Else
 		Response.Write("    		editor.contentWindow.focus()")
@@ -563,7 +569,7 @@ function clearWebWizRTE(){
 <%
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write("	 	document.getElementById('WebWizRTE').focus();")
 	Else
 		Response.Write("	 	document.getElementById('WebWizRTE').contentWindow.focus()")
@@ -687,10 +693,10 @@ function editorEvents(evt){
 If RTEenabled = "Gecko" Then
 
 %>
-  	//Keyboard shortcuts
-  	if (evt.type=='keypress' && evt.ctrlKey){
-  		var kbShortcut;
-  		switch (keyCodeChar){
+	//Keyboard shortcuts
+	if (evt.type=='keypress' && evt.ctrlKey){
+		var kbShortcut;
+		switch (keyCodeChar){
 			case 'b': kbShortcut = 'bold'; break;
 			case 'i': kbShortcut = 'italic'; break;
 			case 'u': kbShortcut = 'underline'; break;
@@ -710,7 +716,7 @@ End If
 'Prevent double line spacing in IE (IE SUCKS!!!)
 'If this is IE then detect if ENTER key is prssed then replace <p> with <div>
 
-'I would replace <p> with <br>, but this then courses problems within tables, ordered lists, and 
+'I would replace <p> with <br>, but this then courses problems within tables, ordered lists, and
 'other elements so <div> is used as it creates the same one line effect but without the problems
 If RTEenabled = "winIE" AND blnNoIEdblLine Then
 

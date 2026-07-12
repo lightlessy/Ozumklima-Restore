@@ -1,5 +1,11 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <% @ Language=VBScript %>
-<% Option Explicit %>        
+<% Option Explicit %>
 
 
 
@@ -8,19 +14,19 @@
 <!--#include file="language_files/RTE_language_file_inc.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -38,9 +44,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -69,7 +75,7 @@ lngWidth = 1
 
 'If this a post back read in the form elements
 If isNumeric(Request.Form("rows")) AND isNumeric(Request.Form("cols")) AND Request.Form("postBack") Then
-	
+
 	'Get form elements
 	If isNumeric(Request.Form("rows")) Then lngRows = LngC(Request.Form("rows"))
 	If isNumeric(Request.Form("cols")) Then lngCols = LngC(Request.Form("cols"))
@@ -78,11 +84,11 @@ If isNumeric(Request.Form("rows")) AND isNumeric(Request.Form("cols")) AND Reque
 	strAlign = Request.Form("align")
 	If isNumeric(Request.Form("border")) Then lngBorder = LngC(Request.Form("border"))
 	If isNumeric(Request.Form("pad")) Then lngPad = LngC(Request.Form("pad"))
-	If isNumeric(Request.Form("space")) Then lngSpace = LngC(Request.Form("space"))	
+	If isNumeric(Request.Form("space")) Then lngSpace = LngC(Request.Form("space"))
 End If
 
 
-%>	
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -103,65 +109,65 @@ vbCrLf & "//-->")
 
 'If this a post back write javascript
 If isNumeric(Request.Form("rows")) AND isNumeric(Request.Form("cols")) AND Request.Form("postBack") Then
-	
+
 	'If this is Gecko based browser or Opera link to JS code for Gecko
 	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "<script language=""JavaScript"" src=""RTE_javascript_gecko.asp"" type=""text/javascript""></script>")
-	
-	
+
+
 	Response.Write(vbCrLf & "<script  language=""JavaScript"">")
 
-%>	
-    	   	
-    	editor = window.opener.document.getElementById('WebWizRTE');
-    	
-    	rows = <% = lngRows %>;
-    	cols = <% = lngCols %>;
-   
-    	if ((rows > 0) && (cols > 0)) {
-      
+%>
+
+	editor = window.opener.document.getElementById('WebWizRTE');
+
+	rows = <% = lngRows %>;
+	cols = <% = lngCols %>;
+
+	if ((rows > 0) && (cols > 0)) {
+
 	      	table = editor.contentWindow.document.createElement("table");
-	      	
+
 	      	table.setAttribute("border", "<% = lngBorder %>");
 	      	table.setAttribute("cellpadding", "<% = lngPad %>");
 	      	table.setAttribute("cellspacing", "<% = lngSpace %>");
 	      	table.setAttribute("align", "<% = strAlign %>");
 	      	table.setAttribute("width", "<% = lngWidth & strWidthValue %>");
-	      
+
 	      	tbody = editor.contentWindow.document.createElement("tbody");
-      
-      		for (var rowNo=0; rowNo < rows; rowNo++) {
-        
-        		tr = editor.contentWindow.document.createElement("tr");
-        
-        		for (var colNo=0; colNo < cols; colNo++) {
-          
+
+		for (var rowNo=0; rowNo < rows; rowNo++) {
+
+		tr = editor.contentWindow.document.createElement("tr");
+
+		for (var colNo=0; colNo < cols; colNo++) {
+
 		          	td = editor.contentWindow.document.createElement("td");
-		          	tr.appendChild(td);<%      
-      
-      		'If this is Mozilla or Opera then we need to place a <br> tag in the table cells
-      		If RTEenabled = "Gecko" OR RTEenabled = "opera" Then %>
+		          	tr.appendChild(td);<%
+
+		'If this is Mozilla or Opera then we need to place a <br> tag in the table cells
+		If RTEenabled = "Gecko" OR RTEenabled = "opera" Then %>
 		          	br = editor.contentWindow.document.createElement("br");
 		          	td.appendChild(br);<%
 		End If
-		
-		%>        
-        		}
-        
-        	tbody.appendChild(tr);
-      		}
-      
-      		table.appendChild(tbody);<%      
-      
-      		'If this is Mozilla or Opera then we need to call insertElementPosition to find where to place the table
-      		If RTEenabled = "Gecko" OR RTEenabled = "opera" Then 
-			
+
+		%>
+		}
+
+	tbody.appendChild(tr);
+		}
+
+		table.appendChild(tbody);<%
+
+		'If this is Mozilla or Opera then we need to call insertElementPosition to find where to place the table
+		If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
+
 			Response.Write(vbCrLf & vbCrLf & "	try{" & _
 						vbCrLf & "		insertElementPosition(editor.contentWindow, table);" & _
 						vbCrLf & "	}catch(exception){" & _
 						vbCrLf & "		alert('" & strTxtErrorInsertingObject & "');" & _
 						vbCrLf & "		editor.contentWindow.focus();" & _
 						vbCrLf & "	}")
-		
+
 		'Else this is IE so it's simpler to place in the table
 		Else
 			Response.Write(vbCrLf & vbCrLf & "	try{" & _
@@ -172,23 +178,23 @@ If isNumeric(Request.Form("rows")) AND isNumeric(Request.Form("cols")) AND Reque
 					vbCrLf & "		editor.contentWindow.focus();" & _
 					vbCrLf & "	}")
 		End If
-		
+
 	'Set focus
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write(vbCrLf & "	editor.focus();")
 	Else
 		Response.Write(vbCrLf & "	editor.contentWindow.focus();")
 	End If
-      
-      	%>
-      		window.close();
+
+	%>
+		window.close();
 	}
-	
-<%	
-	
-	
+
+<%
+
+
 	Response.Write("</script>")
 
 End If

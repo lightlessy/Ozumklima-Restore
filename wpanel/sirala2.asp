@@ -1,15 +1,21 @@
-<!--#INCLUDE file="dbase.asp"-->     
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
+<!--#INCLUDE file="dbase.asp"-->
 
 
 <%
 
-acik=Request.Form("giden")     
+acik=Request.Form("giden")
 
-a=split(acik,",")     
+a=split(acik,",")
 
-uzunluk=uBound(a)       
+uzunluk=uBound(a)
 
-%> 
+%>
 
 
 
@@ -22,10 +28,10 @@ uzunluk=uBound(a)
 
 Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from products where AffiliateID = "& b(0)
-Rs.Open rSQL, baglanti, 1, 3 
+Rs.Open rSQL, baglanti, 1, 3
 Rs("sira")= b(1)
-Rs.Update        
-   
+Rs.Update
+
 next %>
 
 

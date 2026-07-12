@@ -4,7 +4,7 @@
 	Dim StrDate_Time
 	Dim StrWeekDayName
 	Dim StrMonthName
-	
+
 	On Error Resume Next
 
 	StrDate = FormatDateTime(Date(),vbshortdate)
@@ -29,7 +29,7 @@
 		StrFooter = ObjSettings("StrFooter")
 		StrBannerURL = ObjSettings("StrBannerURL")
 		StrBannerPath = ObjSettings("StrBannerPath")
-		
+
 		StrDomain = "http://www.cemexnaturalstone.com"
 
 		ObjSettings.Close()
@@ -39,21 +39,21 @@
 
 	If Request.Cookies(StrTitle)("StrFirstVisit") = "" Then
 		Response.Cookies(StrTitle)("StrFirstVisit") = Now()
-		Response.Cookies(StrTitle).Expires = Now() + 365  
+		Response.Cookies(StrTitle).Expires = Now() + 365
 	Else
 		Response.Cookies(StrTitle)("StrLastVisit") = Now()
-		Response.Cookies(StrTitle).Expires = Now() + 365 
+		Response.Cookies(StrTitle).Expires = Now() + 365
 	End If
 
 	'##---
 
 	Function StrRandomCode(StrNumber)
-		
-		For i = 1 To (StrNumber/2) 
+
+		For i = 1 To (StrNumber/2)
 			Randomize
 			StrCode = StrCode + Chr(Int((10) * Rnd + 48))
 			StrCode = StrCode + Chr(Int((26) * Rnd + 65))
-			
+
 			StrRandomCode = StrCode
 		Next
 
@@ -69,7 +69,7 @@
 		Set ObjPath = ObjFSO.GetFile(Server.MapPath("db/database.mdb"))
 			StrModified = ObjPath.DateLastModified
 
-			Response.Write "Son güncelleme : " & StrModified
+			Response.Write "Son gÃ¼ncelleme : " & StrModified
 
 		Set ObjFSO = Nothing
 		Set ObjPath = Nothing

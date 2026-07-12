@@ -1,12 +1,18 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <HTML>
-<HEAD> 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">     
-       
-<title>HATALI BİLGİ GİRİŞİ</title>
+<HEAD>
+<meta charset="utf-8">
+
+<title>HATALI BÄ°LGÄ° GÄ°RÄ°ÅÄ°</title>
 <script>
 
 
-var alertmessage="Hatalı Kullanıcı Bilgileri --- Bilgilerinizi Doğru Girdiğinizden Emin Olunuz"
+var alertmessage="HatalÄ± KullanÄ±cÄ± Bilgileri --- Bilgilerinizi DoÄŸru GirdiÄŸinizden Emin Olunuz"
 
 
 
@@ -48,7 +54,7 @@ loadalert()
 else
 alertornot()
 
-</script>        
+</script>
 
 </HEAD>
 <meta http-equiv="refresh"

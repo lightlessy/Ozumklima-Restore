@@ -1,32 +1,38 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 
 
-   
-  <!--#include file="menu.asp"-->  
+
+  <!--#include file="menu.asp"-->
 
 
-  
+
 <%
 
 
 Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from siparis  where kod = '"& Request("sil") &"'"
-Rs.Open rSQL, baglanti, 1, 3 
+Rs.Open rSQL, baglanti, 1, 3
 
 
-Do while not Rs.Eof                                                                                                                                                                                                                     
+Do while not Rs.Eof
 
 
-Rs.Delete 
-Rs.Update 
+Rs.Delete
+Rs.Update
 
 
 Rs.MoveNExt
 Loop
 
 rs.close
-set rs = nothing 
-Response.Redirect Request.ServerVariables("HTTP_REFERER")         
+set rs = nothing
+Response.Redirect Request.ServerVariables("HTTP_REFERER")
 
-    %>   
+    %>
 
 

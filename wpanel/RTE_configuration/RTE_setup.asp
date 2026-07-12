@@ -1,19 +1,25 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <!--#include file="RTE_license.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -37,7 +43,7 @@ Dim strDisplayLicense
 Const strRTEversion = "4.09"
 blnAbout = rteAbout()
 If Request.QueryString("about") Then Call rteInfo()
-'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******   
+'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 
 
 
@@ -118,7 +124,7 @@ Const blnOverWriteFiles = false 'Set this to true only if you wish the user to o
 
 Const strUploadComponent = "AspUpload"	'Persits AspUpload 3.x or above (includes progess bar) - http://www.aspupload.com
 'Const strUploadComponent = "AspUpload2"	'Persits AspUpload - http://www.aspupload.com
-'Const strUploadComponent = "Dundas"	'Dundas Upload - http://www.dundas.com 
+'Const strUploadComponent = "Dundas"	'Dundas Upload - http://www.dundas.com
 'Const strUploadComponent = "fileUp"	'SA FileUp - http://www.softartisans.com
 'Const strUploadComponent = "aspSmart"	'aspSmartUpload - http://www.aspsmart.com
 'Const strUploadComponent = "AspSimple"	'AspSimpleUpload - http://www.asphelp.com
@@ -137,7 +143,7 @@ Const intMaxFileSize = 15360 'Use AspUpload 3.x or above for uploads over 2048KB
 
 'Image uploads
 Const blnImageUpload = true 'Upload images to the editor
-'blnAdvAddImage (advanced image insert popup), also needs to be enabled to upload images as it uses the same pop up window 
+'blnAdvAddImage (advanced image insert popup), also needs to be enabled to upload images as it uses the same pop up window
 Const strImageUploadPath = "../urunler"
 Const strImageTypes = "jpeg;jpg;gif;png" 'Separate file types with ;
 Const intMaxImageSize = 1024 'Use AspUpload 3.x or above for uploads over 2048KB (size in KB)
@@ -149,7 +155,7 @@ Const intMaxImageSize = 1024 'Use AspUpload 3.x or above for uploads over 2048KB
 '***************************************************************************
 'If you are submitting the RTE content to a file outside of the RTE folder you may find that some of the relative
 'paths for things like images stored on the server are incorrect (ie. href="my_documents/myPicture.jpg")
-'The following can be used to change those relative server paths to full URL's so that if the submitted content is 
+'The following can be used to change those relative server paths to full URL's so that if the submitted content is
 'displayed on a page out side of the RTE files the paths to images etc. still work
 
 Const blnUseFullURLpath = false

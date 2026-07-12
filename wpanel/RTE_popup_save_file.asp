@@ -1,5 +1,11 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <% @ Language=VBScript %>
-<% Option Explicit %>  
+<% Option Explicit %>
 
 
 
@@ -8,19 +14,19 @@
 <!--#include file="language_files/RTE_language_file_inc.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -38,9 +44,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -74,49 +80,49 @@ Dim strSavePageEncoding		'Holds the code page
 
 'if save is on run the file
 If blnSave Then
-	
+
 	'Get the file types allowed
 	saryAllowedFileTypes = Split(Trim(strSaveFileTypes), ";")
-	
+
 	'Get the save file path
 	strFilePath = strSaveFileFolderPath
-	
+
 	'Change \ for /
 	strFilePath = Replace(strFilePath, "\", "/'", 1, -1, 1)
 
-	
-	
+
+
 	'If this is a postback save the file
 	If Request.Form("postback") Then
-		
+
 		blnFileExtensionOK = false
 		blnNewFileName = false
-		
+
 		'Read in the form details
 		strFileName = Trim(Request.Form("fileName"))
 		strFileExtension = Trim(Request.Form("ext"))
 		strFileTitle = Trim(Request.Form("title"))
 		strEditorContents = Request.Form("WebWizRTE")
 		strSavePageEncoding = Trim(Request.Form("DOCTYPE"))
-		
+
 		'Check the file extension is OK
 		'Loop through and display allowed extensions
 		For intExtensionLoopCounter = 0 To UBound(saryAllowedFileTypes)
 			If strFileExtension = "." & saryAllowedFileTypes(intExtensionLoopCounter) Then blnFileExtensionOK = true
 		Next
-		
+
 		'If the file extension is not allowed set the file type to text
 		If blnFileExtensionOK = false Then strFileExtension = ".txt"
-		
+
 		'Check there is a title
 		If strFileTitle = "" Then strFileTitle = "Untitled Document"
-		
+
 		'***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 		If blnAbout Then
 			strFileTitle = strFileTitle & " - Saved from Web Wiz Rich Text Editor(TM) ver. " & strRTEversion
-		End If 
+		End If
 		'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
-		
+
 		'Build file contents
 		strFileContents = "<!doctype html public ""-//W3C//DTD HTML 4.0 Transitional//EN"">" & _
 		vbCrLf & "<html>" & _
@@ -129,69 +135,69 @@ If blnSave Then
 		vbCrLf & strEditorContents & _
 		vbCrLf & "</body>" & _
 		vbCrLf & "</html>"
-		
-		
+
+
 		'Save the file
-		
+
 		'Initilse the files name
 		strNewFileName =  strFileName
-		
+
 		'Check the file name is OK
-		
+
 		'Remove dodgy characters that may course problems
 		strNewFileName = characterStrip(strNewFileName)
-		
+
 		'Remove any paths
 		strNewFileName = Replace(strNewFileName, "/", "", 1, -1, 1)
 		strNewFileName = Replace(strNewFileName, "\", "", 1, -1, 1)
 		strNewFileName = Replace(strNewFileName, ".", "", 1, -1, 1)
-		
-	
+
+
 		'If there is no file name left make one
 		If strNewFileName = "" Then strNewFileName = "New Document"
-		
+
 		'Loop through and remove any extra extensions in the file name
 		For intExtensionLoopCounter = 0 To UBound(saryAllowedFileTypes)
 			strNewFileName = Replace(strNewFileName, "." & saryAllowedFileTypes(intExtensionLoopCounter), "", 1, -1, 0)
 		Next
-		
-		'Add the extension onto the file name	
+
+		'Add the extension onto the file name
 		strNewFileName = strNewFileName & strFileExtension
-		
-		
-		
-		
-	
+
+
+
+
+
 		'Create the file system object
 		Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
-		
+
 		'If you can not overwrite files check to make sure the file does not exsist, if it does rename the file
 		If blnOverWriteFiles = false Then
 			'Check to make sure the file does not already exist
 			Do While objFSO.FileExists(Server.MapPath(strSaveFileFolderPath) & "\" & strNewFileName)
-	
+
 				'Create a new file name for file if it already exsist
 				strNewFileName = hexValue(3) & "_" & strNewFileName
 			Loop
 		End If
-		
-		
+
+
 		'Create a new file
 		Set tsObject = objFSO.CreateTextFile(Server.MapPath(strSaveFileFolderPath) & "\" & strNewFileName)
-	
+
 		'Write to the new file
 		tsObject.Write strFileContents
-		
-		
+
+
 		'Clean up
 		Set objFSO = Nothing
 		Set tsObject = Nothing
-		
-		
+
+
 		'See if the file name is changed
 		If strFileName & strFileExtension <> strNewFileName Then blnNewFileName = true
 	End If
-	
+
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -254,10 +260,10 @@ function initialise(){
 
 	'Loop through and display allowed extensions
 	For intExtensionLoopCounter = 0 To UBound(saryAllowedFileTypes)
-	
+
 		Response.Write("<option value=""." & saryAllowedFileTypes(intExtensionLoopCounter) & """>." & saryAllowedFileTypes(intExtensionLoopCounter) & "</option>")
 	Next
-	
+
 	%>
                 </select>
 </td>
@@ -280,9 +286,9 @@ function initialise(){
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 If blnAbout Then
 	Response.Write("<span class=""text"" style=""font-size:10px""><a href=""http://www.richtexteditor.org"" target=""_blank"" style=""font-size:10px"">Web Wiz Rich Text Editor</a> version " & strRTEversion & "</span>")
-End If 
-'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******      
-      
+End If
+'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
+
       %></td>
       <td align="right" class="RTEtableBottomRow">
           <input name="WebWizRTE" type="hidden" id="WebWizRTE">
@@ -303,7 +309,7 @@ If Request.Form("postback") Then
 	Else
 		Response.Write("	alert('" & strTxtTheFile & " \'" & strNewFileName & "\' " & strTxtHasBeenSaved & ".');")
 	End If
-	      
+
 	Response.Write(vbCrLf & "	window.close();" & vbCrLf & "</script>")
 
 End If

@@ -1,12 +1,18 @@
-<!DOCTYPE html> 
-<html lang="en"> 
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-<meta http-eqiv="Content-Type" content="windows-1254">      
+<meta http-eqiv="Content-Type" content="windows-1254">
 
-        <title>Resim Yükle</title>
+        <title>Resim YÃ¼kle</title>
       <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-     
+
   <%
 Set UploadProgress = Server.CreateObject("Persits.UploadProgress")
 PID = "PID=" & UploadProgress.CreateProgressID()
@@ -31,60 +37,60 @@ function ShowProgress()
   }
   return true;
 }
-</SCRIPT> 
+</SCRIPT>
 
     </head>
-    <body>    
-    
-    
-    
-    <!--#INCLUDE file="dbase.asp"-->  
-    
-      <!--#include file="menu.asp"-->  
-      
+    <body>
 
-    
-  
-             
- 
-  
+
+
+    <!--#INCLUDE file="dbase.asp"-->
+
+      <!--#include file="menu.asp"-->
+
+
+
+
+
+
+
   <%
-  id = request.querystring("id")      
-g = request.querystring("g")    
-n = request.querystring("n")  
+  id = request.querystring("id")
+g = request.querystring("g")
+n = request.querystring("n")
 tip = request.querystring("tip")
-isim = request.querystring("isim")  
+isim = request.querystring("isim")
 
-%> 
-     
+%>
+
    <BR>
-   
-<div style="  text-align:center; margin-top:20px">  
-    
 
-	<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data"  ACTION="imageupdate2.asp?<% = PID %>"	OnSubmit="return ShowProgress();"    style="margin-top:15px; display: inline-block; padding: 15px; text-align: center; background-color:#314F51; color:#FFFFFF;  border-radius: 6px;"> 
-	     Fotoðraf:	<INPUT TYPE="FILE" SIZE="40" NAME="foto" required><BR>  <BR>   
-        
-<input  type="hidden" name="isim" value="<%=isim%>"> 	     
-<input  type="hidden" name="id" value="<%=id%>">   
-<input  type="hidden" name="tip" value="<%=tip%>">  
-<input  type="hidden" name="n" value="<%=n%>">   
-<input  type="hidden" name="g" value="<%=g%>">    
-<input  type="hidden" name="git" value="2"> 
-	<INPUT TYPE=SUBMIT VALUE="YÜKLE">
-	</FORM>                   
-    
-  </div>  
-  
-               
-                 
-     
-     
+<div style="  text-align:center; margin-top:20px">
 
-           
 
- 
-       
-                                              
+	<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data"  ACTION="imageupdate2.asp?<% = PID %>"	OnSubmit="return ShowProgress();"    style="margin-top:15px; display: inline-block; padding: 15px; text-align: center; background-color:#314F51; color:#FFFFFF;  border-radius: 6px;">
+	     FotoÄŸraf:	<INPUT TYPE="FILE" SIZE="40" NAME="foto" required><BR>  <BR>
+
+<input  type="hidden" name="isim" value="<%=isim%>">
+<input  type="hidden" name="id" value="<%=id%>">
+<input  type="hidden" name="tip" value="<%=tip%>">
+<input  type="hidden" name="n" value="<%=n%>">
+<input  type="hidden" name="g" value="<%=g%>">
+<input  type="hidden" name="git" value="2">
+	<INPUT TYPE=SUBMIT VALUE="YÃœKLE">
+	</FORM>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
     </body>
-</html> 
+</html>

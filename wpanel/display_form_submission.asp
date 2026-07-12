@@ -1,3 +1,9 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <% @ Language=VBScript %>
 <% Option Explicit %>
 <!--#include file="RTE_configuration/RTE_setup.asp" -->
@@ -5,19 +11,19 @@
 <!--#include file="language_files/RTE_language_file_inc.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                               
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -35,9 +41,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -99,7 +105,7 @@ End If
 <head>
 <meta name="copyright" content="Copyright (C) 2001-2012 Web Wiz" />
 <title>Display Message</title>
-<HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"> 
+<HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 <!--#include file="RTE_configuration/browser_page_encoding_inc.asp" -->
 
 <!--//
@@ -114,18 +120,18 @@ Copyright: (C)2001-2012 Web Wiz Ltd. All rights reserved
 </head>
 <body OnLoad="self.focus();">
 <table width="100%" border="0" cellspacing="0" cellpadding="1" align="center" height="53">
-  <tr> 
+  <tr>
     <td align="center" height="17"><h1><% = strTxtDisplayMessage %></h1></td>
   </tr>
 </table>
 <table width="98%" border="0" cellspacing="0" cellpadding="1" bgcolor="#E7E7E7" align="center">
- <tr> 
-  <td> 
+ <tr>
+  <td>
           <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF" height="147">
-          <tr> 
-           <td class="RTEtextarea" valign="top"> 
+          <tr>
+           <td class="RTEtextarea" valign="top">
             <!--// /* Message body -->
-            <% = strEditorContent %> 
+            <% = strEditorContent %>
             <!-- Message body ''"" */ //-->
            </td>
           </tr>
@@ -135,12 +141,12 @@ Copyright: (C)2001-2012 Web Wiz Ltd. All rights reserved
       </table>
 <div align="center">
 <br />
-<% 
+<%
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 If blnAbout Then
 	Response.Write("<span class=""text"" style=""font-size:10px""><a href=""http://www.richtexteditor.org"" target=""_blank"" style=""font-size:10px"">Web Wiz Rich Text Editor</a> version " & strRTEversion & "</span>")
 	Response.Write("<br /><span class=""text"" style=""font-size:10px"">Copyright &copy;2001-2012 Web Wiz</span>")
-End If 
+End If
 '***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 %>
 </div>

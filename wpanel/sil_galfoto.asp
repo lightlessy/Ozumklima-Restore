@@ -1,7 +1,13 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 
 
 <html>
-<head>   
+<head>
 <script language=javascript>
 
 function CloseWindow()
@@ -14,23 +20,23 @@ window.close();
 
 }
 
-</script>            
+</script>
 
-   
-<!--#INCLUDE file="menu.asp"-->        
 
-                           
+<!--#INCLUDE file="menu.asp"-->
+
+
 
 <BR><BR><center><font face=verdana size=2><%
 
 set id = Request.QueryString("id")
 sql = "delete from galery where id="
 sql = sql & id
-set db=baglanti.Execute(sql)    
+set db=baglanti.Execute(sql)
 
 response.redirect("galeri_edit.asp?gal_kat="&request("gal_kat")&"&altkat="&request("altkat")&"")
-%>  
-   
+%>
+
 
 
 

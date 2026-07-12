@@ -1,3 +1,9 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <% @ EnableSessionState = False
 Language=VBScript
 %>
@@ -9,19 +15,19 @@ Language=VBScript
 <%
 
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                                              
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved. 
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -39,9 +45,9 @@ Language=VBScript
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -54,7 +60,7 @@ Language=VBScript
 Response.AddHeader "pragma","cache"
 Response.AddHeader "cache-control","public"
 Response.CacheControl =	"Public"
-Response.Expires = -1 
+Response.Expires = -1
 
 
 
@@ -64,7 +70,7 @@ Dim strProgressBar
 Dim strProgressBarFormat
 Dim intRefeshTime
 
-  
+
 'Read in the PID
 strPID = Request.QueryString("PID")
 intRefeshTime = Request.QueryString("to")
@@ -72,16 +78,16 @@ intRefeshTime = Request.QueryString("to")
 
 'Make sure that we have a PID
 If strPID <> "" Then
-	
+
 	'Progress Bar format (see http://www.aspupload.com/manual_progress.html for different format options)
 	strProgressBarFormat = "%T%P " & strTxtOfFilesUploadedToRemoteServer & "%t%B0%T " & strTxtEstimatedTimeLeft & ": %d %R (%U of %V " & strTxtCopied & ") %l " & strTxtTransferRate & ": %d %S/Sec %t"
 
 	'Create upload progress object
 	Set objUploadProgress = Server.CreateObject("Persits.UploadProgress")
-	
+
 	'Progress bar
 	strProgressBar = objUploadProgress.FormatProgress(strPID, intRefeshTime, "#00007F", strProgressBarFormat)
-	
+
 	'Clean up
 	Set objUploadProgress = Nothing
 End If
@@ -109,15 +115,15 @@ function CloseMe()
 
 
 'Not finished yet
-Else    
+Else
 %>
 <html>
 <head>
 <meta HTTP-EQUIV="Refresh" CONTENT="1;URL=<%
 
- 	Response.Write(Request.ServerVariables("URL"))
- 	Response.Write("?to=" & intRefeshTime & "&PID=" & strPID)
- 
+	Response.Write(Request.ServerVariables("URL"))
+	Response.Write("?to=" & intRefeshTime & "&PID=" & strPID)
+
   %>" />
 <title>Uploading Files...</title>
 <style type="text/css">
@@ -135,8 +141,8 @@ td {
 	color: #000000;
 }
 td.spread {
-	font-size: 6pt; line-height:6pt 
-} 
+	font-size: 6pt; line-height:6pt
+}
 td.brick {
 	font-size:6pt; height:15px
 }
@@ -145,8 +151,8 @@ td.brick {
 <body>
 <% = strProgressBar %>
 </body>
-</html><% 
+</html><%
 
-End If 
+End If
 
 %>

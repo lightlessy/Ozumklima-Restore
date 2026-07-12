@@ -1,7 +1,13 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 
 <HEAD>
 
-<title>Foto Güncelle </title>
+<title>Foto GÃ¼ncelle </title>
 
 <%
 Set UploadProgress = Server.CreateObject("Persits.UploadProgress")
@@ -27,36 +33,36 @@ function ShowProgress()
   }
   return true;
 }
-</SCRIPT> 
+</SCRIPT>
 
 </HEAD>
 
-<!--#INCLUDE file="menu.asp"-->    
+<!--#INCLUDE file="menu.asp"-->
 
-    <div class="baslik">Fotoðraf Güncelle</div>     
+    <div class="baslik">FotoÄŸraf GÃ¼ncelle</div>
 
-              		<% Session("id") = request.querystring("id")  
-              		Session("gal_kat") = request.querystring("gal_kat")           %>       
+		<% Session("id") = request.querystring("id")
+		Session("gal_kat") = request.querystring("gal_kat")           %>
 
-                       <BR><BR>                                                                  <CENTER>        
-                       
-                        <table bgcolor=#F7F7F7 cellpadding=5 cellspacing=5 align=center class=fontsm> 
+                       <BR><BR>                                                                  <CENTER>
+
+                        <table bgcolor=#F7F7F7 cellpadding=5 cellspacing=5 align=center class=fontsm>
 
             <tr>	<td colspan=2>
-                                                 
-			<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data" 
+
+			<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data"
 		ACTION="updateimage_galeri.asp?<% = PID %>&gal_kat=<%=request("gal_kat")%>"
-		OnSubmit="return ShowProgress();"> 
-	     Fotoðraf:	<INPUT TYPE="FILE" SIZE="40" NAME="foto">
-	     
+		OnSubmit="return ShowProgress();">
+	     FotoÄŸraf:	<INPUT TYPE="FILE" SIZE="40" NAME="foto">
+
 	     </td></tr>
-  <tr><td colspan=2 align=center> 
-	<INPUT TYPE=SUBMIT VALUE="YÜKLE">
-	</FORM>               
-	</td></tr></table>    
+  <tr><td colspan=2 align=center>
+	<INPUT TYPE=SUBMIT VALUE="YÃœKLE">
+	</FORM>
+	</td></tr></table>
 </CENTER>
 
-               
+
 <BR><BR><BR>
 
       </body>

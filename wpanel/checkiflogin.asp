@@ -1,3 +1,9 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
 <%
 
 set baglanti=server.createobject("adodb.connection")
@@ -6,17 +12,17 @@ baglanti.open "driver={microsoft access driver (*.mdb)}; dbq=" &server.mappath("
 
 level2=""
 SCRIPT_NAME = LCase(Request.ServerVariables("SCRIPT_NAME"))
-if Instr(SCRIPT_NAME, "")>0 then 
-	level2=""                                                                                                                                 
+if Instr(SCRIPT_NAME, "")>0 then
+	level2=""
 else
 	level2=""
 end if
-                    
+
 
 
 if Session("wpAfLogin") <> "true" then
-	response.redirect level2 & "index.asp"       
-		
+	response.redirect level2 & "index.asp"
+
 
 	end if
 

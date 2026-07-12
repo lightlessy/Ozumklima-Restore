@@ -1,5 +1,11 @@
-﻿<% @ Language=VBScript %>
-<% Option Explicit %>   
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
+<% @ Language=VBScript %>
+<% Option Explicit %>
 
 
 
@@ -8,19 +14,19 @@
 <!--#include file="language_files/RTE_language_file_inc.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                                              
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.     
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -38,9 +44,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -85,27 +91,27 @@ If strMode = "img" Then
 
 	'Get the image types allowed
 	saryAllowedFileTypes = Split(Trim(strImageTypes), ";")
-	
+
 	'Get the file path
 	strFolderPath = strImageUploadPath
 
 
 'If this is the open file dialog
 ElseIf  strMode = "open" Then
-	
+
 	'Get the file types allowed
 	saryAllowedFileTypes = Split(Trim(strOpenFileTypes), ";")
-	
+
 	'Get the file path
 	strFolderPath = strOpenFileFolderPath
 
 
 'If this is the save file dialog
 ElseIf  strMode = "save" Then
-	
+
 	'Get the file types allowed
 	saryAllowedFileTypes = Split(Trim(strSaveFileTypes), ";")
-	
+
 	'Get the file path
 	strFolderPath = strSaveFileFolderPath
 
@@ -113,7 +119,7 @@ ElseIf  strMode = "save" Then
 Else
 	'Get the file types allowed
 	saryAllowedFileTypes = Split(Trim(strFileTypes), ";")
-	
+
 	'Get the file path
 	strFolderPath = strFileUploadPath
 End If
@@ -122,33 +128,33 @@ End If
 
 'See if this is a subfolder being looked in
 If strSubFolderName <> "" Then
-	
+
 	'Replace any \ with \
 	strSubFolderName = Replace(strSubFolderName, "/", "\", 1, -1, 1)
 
 	'Loop through and remove any parent paths that could course a security issue
 	For intParentStripLoop = 0 To 1
-		
+
 		'Look for ..\
 		If Instr(1, strSubFolderName, "..\", 1) Then
 			strSubFolderName = Replace(strSubFolderName, "..\", "", 1, -1, 1)
 			intParentStripLoop = 0 'Loop again incase there are anymore
 		End If
-		
+
 		'Remove any .\
 		If Instr(1, strSubFolderName, ".\", 1) Then
 			strSubFolderName = Replace(strSubFolderName, ".\", "", 1, -1, 1)
 			intParentStripLoop = 0 'Loop again incase there are anymore
 		End If
 	Next
-	
+
 	'Get the complete folder path to the subfolder in the upload directory
 	strFolderPath = strFolderPath &  strSubFolderName
-	
+
 
 	'Calculate one folder up path
 	strSubFolderUp = Mid(strSubFolderName, 1, (Len(strSubFolderName) - Len(Mid(strSubFolderName, InstrRev(strSubFolderName, "\")))))
-	
+
 End If
 
 
@@ -180,7 +186,7 @@ vbCrLf & "//-->")
 %>
 
 <script language="JavaScript">
-	
+
 //Function to get subfolder
 function subFolder(sub){
 	self.document.location.href = 'RTE_file_browser.asp?look=<% = Server.URLEncode(Request.QueryString("look")) %>&sub=<% = Replace(strSubFolderName, "\", "\\", 1, -1, 1) %>\\' + sub;
@@ -196,7 +202,7 @@ function upadatePreview(fileName){<%
 
 'If this is an image use different code to preview image
 If strMode = "img" Then
-	
+
 	'See if we are to use the full URL for this image
 	If blnUseFullURLpath Then
 		Response.Write(vbCrLf & "	self.parent.document.getElementById('prevWindow').contentWindow.document.getElementById('prevFile').src = '" & strFullURLpathToRTEfiles & Replace(strFolderPath, "\", "/", 1, -1, 1) & "/' + fileName;")
@@ -212,14 +218,14 @@ ElseIf NOT strMode = "save" Then
 	extension = extension.slice(extension.lastIndexOf('.'), extension.length).toLowerCase();
 
 	//Display file if of the correct type
-	if (extension==".txt" 
-	 || extension==".text" 
-	 || extension==".htm" 
-	 || extension==".html" 
-	 || extension==".gif" 
-	 || extension==".jpg" 
-	 || extension==".jpeg" 
-	 || extension==".png" 
+	if (extension==".txt"
+	 || extension==".text"
+	 || extension==".htm"
+	 || extension==".html"
+	 || extension==".gif"
+	 || extension==".jpg"
+	 || extension==".jpeg"
+	 || extension==".png"
 	 || extension==".bmp"){
 		try {<%
 	'See if we are to use the full URL for file
@@ -227,17 +233,17 @@ ElseIf NOT strMode = "save" Then
 		Response.Write(vbCrLf & "			self.parent.document.getElementById('prevWindow').contentWindow.location.href = '" & strFullURLpathToRTEfiles & Replace(strFolderPath, "\", "/", 1, -1, 1) & "/' + fileName;")
 	Else
 		Response.Write(vbCrLf & "			self.parent.document.getElementById('prevWindow').contentWindow.location.href = '" & Replace(strFolderPath, "\", "/", 1, -1, 1) & "/' + fileName;")
-	End If		
-		
+	End If
+
 		%>
 		}catch(exception){
 		}
-	
+
 	}else{
 		self.parent.document.getElementById("prevWindow").contentWindow.location.href="RTE_popup_link_preview.asp?b=0";
-	
+
 	}<%
-		
+
 End If
 
 'If this is open or save file dialog then update the file name
@@ -251,7 +257,7 @@ If NOT strMode = "save" Then
 		Response.Write(vbCrLf & "	self.parent.document.getElementById('URL').value = '" & strFullURLpathToRTEfiles & Replace(strFolderPath, "\", "/", 1, -1, 1) & "/' + fileName;")
 	Else
 		Response.Write(vbCrLf & "	self.parent.document.getElementById('URL').value = '" & Replace(strFolderPath, "\", "/", 1, -1, 1) & "/' + fileName;")
-	End If	
+	End If
 End If
 %>
 	self.parent.document.getElementById('Submit').disabled=false;
@@ -275,8 +281,8 @@ function outIcon(iconItem) {
 	font-size: 11px;
 	color: #000000;
 }
-html,body { 
-	border: 0px; 
+html,body {
+	border: 0px;
 }
 -->
 </style>
@@ -285,14 +291,14 @@ html,body {
 <table width="100%"  border="0" cellspacing="0" cellpadding="3"><%
 
 
-	
+
 
 'Else show an icon for Parent Directory
 If strSubFolderName <> "" Then
-	
+
 	If NOT strSubFolderName = "_vti_cnf" Then
 		intElementIDno = intElementIDno + 1
-			
+
 		Response.Write(vbCrLf & "  <tr onMouseover=""overIcon(this)"" onMouseout=""outIcon(this)"" onClick=""upFolder()"" style=""cursor: default;"">" & _
 			       vbCrLf & "    <td colspan=""3"" class=""fileText""><img src=""" & strRTEImagePath & "icon_up_folder.gif"" align=""absbottom"" title=""" & strTxtParentDirectory & """ border=""0"">" & strTxtParentDirectory & "</td>" & _
 			       vbCrLf & "  </tr>")
@@ -301,9 +307,9 @@ End If
 
 'Show any sub folders
 For Each objFSOsubFolder In objFSOfolder.SubFolders
-		
+
 	intElementIDno = intElementIDno + 1
-		
+
 	Response.Write(vbCrLf & "  <tr onMouseover=""overIcon(this)"" onMouseout=""outIcon(this)"" onClick=""subFolder(document.getElementById('ico" & intElementIDno & "').title)"" style=""cursor: default;"">" & _
 		       vbCrLf & "    <td colspan=""3"" class=""fileText""><img src=""" & strRTEImagePath & "icon_folder.gif"" align=""absbottom"" id=""ico" & intElementIDno & """ title=""" & objFSOsubFolder.Name & """ border=""0"">"  & objFSOsubFolder.Name & "</td>" & _
 	 	       vbCrLf & "  </tr>")
@@ -313,33 +319,33 @@ Next
 
 'Loop through all the files in the folder
 For Each objFSOfile in objFSOfolder.Files
-		
+
 	'Loop through to check if the file has an allowed extension
 	For intExtensionLoopCounter = 0 To UBound(saryAllowedFileTypes)
-		
+
 		'If the extension is allowed show the file
 		If LCase(objFSO.GetExtensionName(objFSOfile.Name)) = saryAllowedFileTypes(intExtensionLoopCounter) Then
-			
+
 			'Initilse the icon file with unknown file type
 			strFileIcon = "icon_unknown.gif"
 			intElementIDno = intElementIDno + 1
-		
+
 			'Read in details
 			strFileName = objFSOfile.Name
 			strFileType = objFSOfile.Type
 			intFileSize = LngC(objFSOfile.Size / 1024)
 			strFileExtension = LCase(objFSO.GetExtensionName(objFSOfile.Name))
-			
+
 			'Check the length of the file name is not to long
 			If Len(strFileName) > 21 Then
 				strFileName = Trim(Mid(strFileName, 1, 19)) & "..." & strFileExtension
 			End If
-			
+
 			'Check the length of the file type is not to long
 			If Len(strFileType) > 11 Then
 				strFileType = Trim(Mid(strFileType, 1, 8)) & "..."
 			End If
-			
+
 			'Get the icon for the file type
 			Select Case strFileExtension
 				Case "jpg"
@@ -374,28 +380,28 @@ For Each objFSOfile in objFSOfolder.Files
 					strFileIcon = "icon_exe.gif"
 				Case "pdf"
 					strFileIcon = "icon_pdf.gif"
-			
+
 			End Select
-			
-			
-		
-			Response.Write(vbCrLf & "  <tr onMouseover=""overIcon(this)"" onMouseout=""outIcon(this)"" OnClick=""upadatePreview(document.getElementById('ico" & intElementIDno & "').title)"" style=""cursor: default;"">" & _ 
+
+
+
+			Response.Write(vbCrLf & "  <tr onMouseover=""overIcon(this)"" onMouseout=""outIcon(this)"" OnClick=""upadatePreview(document.getElementById('ico" & intElementIDno & "').title)"" style=""cursor: default;"">" & _
 			 	       vbCrLf & "    <td class=""fileText"" width=""58%""><img src=""" & strRTEImagePath & strFileIcon & """ align=""absbottom"" id=""ico" & intElementIDno & """ title=""" & objFSOfile.Name & """ border=""0"">" & strFileName & "</td>" & _
 			 	       vbCrLf & "    <td class=""fileText"" width=""15%"">" & intFileSize & "KB</td>" & _
 			 	       vbCrLf & "    <td class=""fileText"" width=""27%"">" & strFileType & "</td>" & _
 			 	       vbCrLf & "  </tr>")
 		End If
 	Next
-		
+
 
 Next
 
 'Distroy objects
 Set objFSOsubFolder = Nothing
-Set objFSOfile = Nothing	
+Set objFSOfile = Nothing
 Set objFSOfolder = Nothing
-Set objFSO = Nothing  
-  
+Set objFSO = Nothing
+
 %>
 </table>
 </body>

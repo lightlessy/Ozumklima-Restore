@@ -1,5 +1,11 @@
-﻿<% @ Language=VBScript %>
-<% Option Explicit %> 
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "utf-8"
+%>
+<% @ Language=VBScript %>
+<% Option Explicit %>
 
 
 
@@ -9,19 +15,19 @@
 <!--#include file="functions/functions_upload.asp" -->
 <%
 '****************************************************************************************
-'**  Copyright Notice    
+'**  Copyright Notice
 '**
 '**  Web Wiz Rich Text Editor(TM)
 '**  http://www.richtexteditor.org
-'**                                                              
-'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.     
-'**  
+'**
+'**  Copyright (C)2001-2012 Web Wiz Ltd. All Rights Reserved.
+'**
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM WEB WIZ LTD.
-'**  
-'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE 
+'**
+'**  IF YOU DO NOT AGREE TO THE LICENSE AGREEMENT THEN WEB WIZ LTD. IS UNWILLING TO LICENSE
 '**  THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF 'WEB WIZ' SOFTWARE
 '**  AND DERIVATIVE WORKS IMMEDIATELY.
-'**  
+'**
 '**  If you have not received a copy of the license with this work then a copy of the latest
 '**  license contract can be found at:-
 '**
@@ -39,9 +45,9 @@
 
 
 
-'*************************** SOFTWARE AND CODE MODIFICATIONS **************************** 
+'*************************** SOFTWARE AND CODE MODIFICATIONS ****************************
 '**
-'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE  
+'** MODIFICATION OF THE FREE EDITIONS OF THIS SOFTWARE IS A VIOLATION OF THE LICENSE
 '** AGREEMENT AND IS STRICTLY PROHIBITED
 '**
 '** If you wish to modify any part of this software a license must be purchased
@@ -92,7 +98,7 @@ blnInsertImage = false
 
 'Setup for progress bar
 If strUploadComponent = "AspUpload"  AND blnImageUpload Then
-	
+
 	'Set error trapping
 	On Error Resume Next
 
@@ -101,11 +107,11 @@ If strUploadComponent = "AspUpload"  AND blnImageUpload Then
 	strAspUploadPID = "&PID=" & objUploadProgress.CreateProgressID()
 	strAspUploadBarRef = "AspUpload_ProgressBar_Frame.asp?to=10" & strAspUploadPID
 	Set objUploadProgress = Nothing
-	
+
 	'Check to see if an error has occurred
 	'If an error has occurred write an error to the page
 	If Err.Number <> 0 Then	Call errorMsg("An error has occurred.<br />Please check the Persits AspUpload Component 3.0 or above is installed on the server.", "create_AspUpload_progress_object", "file_upload.asp")
-		
+
 	'Disable error trapping
 	On Error goto 0
 End If
@@ -114,17 +120,17 @@ End If
 
 'If this is a post back then upload the image (use querysting as it is a multipart/form-data form)
 If Request.QueryString("PB") = "Y" AND blnImageUpload Then
-	
+
 	'Get the image types to upload
 	saryFileUploadTypes = Split(Trim(strImageTypes), ";")
-	
+
 	'Call upoload file function
 	strImageName = fileUpload(strImageUploadPath, saryFileUploadTypes, intMaxImageSize, strUploadComponent, lngErrorFileSize, blnExtensionOK)
-	
+
 	'Calculate the error file upload size in MB
-	If lngErrorFileSize >= 1024 Then 
+	If lngErrorFileSize >= 1024 Then
 		strErrorUploadSize = FormatNumber((lngErrorFileSize / 1024), 1) & " MB"
-	ElseIf lngErrorFileSize > 0 Then 
+	ElseIf lngErrorFileSize > 0 Then
 		strErrorUploadSize = lngErrorFileSize & " KB"
 	End If
 
@@ -132,10 +138,10 @@ If Request.QueryString("PB") = "Y" AND blnImageUpload Then
 
 'If this a normal form post back to insert an image read in the form elements
 ElseIf Request.Form("URL") <> "http://" AND Request.Form("URL") <> "" AND Request.Form("postBack") Then
-	
+
 	'Initilise variable
 	intBorder = 0
-	
+
 	'Get form elements
 	strImageURL = Request.Form("URL")
 	strImageAltText = Request.Form("Alt")
@@ -145,21 +151,21 @@ ElseIf Request.Form("URL") <> "http://" AND Request.Form("URL") <> "" AND Reques
 	If isNumeric(Request.Form("vert")) Then lngVerical = LngC(Request.Form("vert"))
 	If isNumeric(Request.Form("width")) Then intWidth = LngC(Request.Form("width"))
 	If isNumeric(Request.Form("height")) Then intHeight = LngC(Request.Form("height"))
-	
+
 	'Escape characters that will course a crash
 	strImageURL = Replace(strImageURL, "'", "\'", 1, -1, 1)
 	strImageURL = Replace(strImageURL, """", "\""", 1, -1, 1)
 	strImageAltText = Replace(strImageAltText, "'", "\'", 1, -1, 1)
 	strImageAltText = Replace(strImageAltText, """", "\""", 1, -1, 1)
-	
+
 	blnInsertImage = true
 End If
 
 
 'Calculate the image upload size in MB
-If intMaxImageSize >= 1024 Then 
+If intMaxImageSize >= 1024 Then
 	strMaxImageUpload = FormatNumber((intMaxImageSize / 1024), 1) & " MB"
-Else 
+Else
 	strMaxImageUpload = intMaxImageSize & " KB"
 End If
 
@@ -187,7 +193,7 @@ vbCrLf & "//-->")
 
 'If this is Gecko based browser or Opera link to JS code for Gecko
 If RTEenabled = "Gecko" OR RTEenabled = "opera" Then Response.Write(vbCrLf & "<script language=""JavaScript"" src=""RTE_javascript_gecko.asp"" type=""text/javascript""></script>")
-	
+
 %>
 <script language="JavaScript" src="RTE_javascript_common.asp" type="text/javascript"></script>
 <script language="JavaScript">
@@ -198,7 +204,7 @@ function initilzeElements(){
 
 'If an image has been uploaded update the form
 If lngErrorFileSize = 0 AND blnExtensionOK = True AND strImageName <> "" Then
-	
+
 	'See if we are to use the full URL for file
 	If blnUseFullURLpath Then
 		Response.Write(vbCrLf & "	document.getElementById('URL').value = '" & strFullURLpathToRTEfiles & Replace(strImageUploadPath, "\", "/", 1, -1, 1)  & "/" & strImageName & "'")
@@ -220,12 +226,12 @@ End If
 <%
 'If this a post back write javascript
 If blnInsertImage Then
-	
+
 	Response.Write(vbCrLf & vbCrLf & "	editor = window.opener.document.getElementById('WebWizRTE');")
-	
+
 	'Tell that we are an image
 	Response.Write(vbCrLf & vbCrLf & "	img = editor.contentWindow.document.createElement('img');")
-	
+
 	'Set image attributes
 	Response.Write(vbCrLf & vbCrLf & "	img.setAttribute('src', '" & strImageURL & "');")
 	Response.Write(vbCrLf & "	img.setAttribute('border', '" & intBorder & "');")
@@ -235,18 +241,18 @@ If blnInsertImage Then
 	If intHeight <> "" Then Response.Write(vbCrLf & "	img.setAttribute('height', '" & intHeight & "');")
 	If lngVerical <> "" Then Response.Write(vbCrLf & "	img.setAttribute('vspace', '" & lngVerical & "');")
 	If strAlign <> "" Then Response.Write(vbCrLf & "	img.setAttribute('align', '" & strAlign & "');")
-	 
-     
-     	'If this is Mozilla or Opera then we need to call insertElementPosition to find where to place the image
-     	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then 
-		
+
+
+	'If this is Mozilla or Opera then we need to call insertElementPosition to find where to place the image
+	If RTEenabled = "Gecko" OR RTEenabled = "opera" Then
+
 		Response.Write(vbCrLf & vbCrLf & "	try{" & _
 					vbCrLf & "		insertElementPosition(editor.contentWindow, img);" & _
 					vbCrLf & "	}catch(exception){" & _
 					vbCrLf & "		alert('" & strTxtErrorInsertingObject & "');" & _
 					vbCrLf & "		editor.contentWindow.focus();" & _
 					vbCrLf & "	}")
-	
+
 	'Else this is IE so placing the image is simpler
 	Else
 		Response.Write(vbCrLf & vbCrLf & "	try{" & _
@@ -257,16 +263,16 @@ If blnInsertImage Then
 					vbCrLf & "		editor.contentWindow.focus();" & _
 					vbCrLf & "	}")
 	End If
-		
+
 	'Set focus
 	'If Opera change the focus method
 	If RTEenabled = "opera" Then
-		
+
 		Response.Write(vbCrLf & "	editor.focus();")
 	Else
 		Response.Write(vbCrLf & "	editor.contentWindow.focus();")
 	End If
-		
+
 	'Close window
 	Response.Write(vbCrLf & "	window.close();")
 End If
@@ -296,16 +302,16 @@ function changeImage(){
 
 <%
 'If image upload is enabled then have the following function
-If blnImageUpload Then	
+If blnImageUpload Then
 %>
 //Function to check upload file is selected
 function checkFile(){
 	if (document.getElementById('file').value==''){
-	
+
 		alert('<% = strTxtErrorUploadingImage %>\n<% = strTxtNoImageToUpload %>')
 		return false;
 	}else{<%
-		
+
 'AspUpload Progress bar
 If strUploadComponent = "AspUpload" Then
 
@@ -339,7 +345,7 @@ End If
               <td width="88%" class="text"><% = strTxtPath %>: <span id="path"><% = strImageUploadPath %></span></td>
             </tr>
             <%
-            
+
 'If image upload is enabled then display an image upload form
 If blnImageUpload Then
 
@@ -359,11 +365,11 @@ If blnImageUpload Then
             </tr>
             <tr>
               <td>
-              	<input name="upload" type="submit" id="upload" value="Upload">
+	<input name="upload" type="submit" id="upload" value="Upload">
               </td>
             </tr>
            </form><%
-           
+
 'Else file uploading is disabled so show a larger file browser window
 Else
 
@@ -430,9 +436,9 @@ End If
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
 If blnAbout Then
 	Response.Write("<span class=""text"" style=""font-size:10px""><a href=""http://www.richtexteditor.org"" target=""_blank"" style=""font-size:10px"">Web Wiz Rich Text Editor</a> version " & strRTEversion & "</span>")
-End If 
-'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******      
-      
+End If
+'***** END WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
+
       %></td>
       <td width="24%" align="right" class="RTEtableBottomRow">        <input type="hidden" name="postBack" value="true">
         <input type="submit" name="Submit" id="Submit" value="     <% = strTxtOK %>     ">&nbsp;<input type="button" name="cancel" value=" <% = strTxtCancel %> " onClick="window.close()">

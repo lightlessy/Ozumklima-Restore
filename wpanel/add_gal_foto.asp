@@ -1,5 +1,5 @@
-     
-<HEAD>  
+
+<HEAD>
 
 
    <%
@@ -26,43 +26,43 @@ function ShowProgress()
   }
   return true;
 }
-</SCRIPT>   
+</SCRIPT>
 
 
 </HEAD>
 
 
 
-<body>    
+<body>
 
 <!--#INCLUDE file="menu.asp"-->
-  
-    <div class="baslik">Fotoðraf Ekle</div>        
-  
+
+    <div class="baslik">FotoÄŸraf Ekle</div>
+
 
 <BR><BR>
-<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data" 	ACTION="uploadimage_galeri.asp?<% = PID %>"  		OnSubmit="return ShowProgress();"> 
-		
-   
- <table bgcolor=#F7F7F7 cellpadding=5 cellspacing=5 align=center class=fontsm> 
+<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data" 	ACTION="uploadimage_galeri.asp?<% = PID %>"  		OnSubmit="return ShowProgress();">
+
+
+ <table bgcolor=#F7F7F7 cellpadding=5 cellspacing=5 align=center class=fontsm>
 
             <tr>	<td colspan=2>
 
 
 <B>
-Fotoðraf Seçiniz:   </B>    
-<INPUT TYPE="FILE" SIZE="40" NAME="foto" MULTIPLE><BR>    <BR>       
-       
+FotoÄŸraf SeÃ§iniz:   </B>
+<INPUT TYPE="FILE" SIZE="40" NAME="foto" MULTIPLE><BR>    <BR>
+
 
 </td></tr>
   <tr><td colspan=2 align=center>
-	<INPUT TYPE=SUBMIT VALUE="YÜKLE">
+	<INPUT TYPE=SUBMIT VALUE="YÃœKLE">
 </td></tr>
 </table>
-	</FORM>       
+	</FORM>
 
 
                        <BR><BR><BR>
-           
+
       </body>
       </html>

@@ -1,7 +1,7 @@
 
-  <!--#include file="menu.asp"-->  
-   
- 
+  <!--#include file="menu.asp"-->
+
+
 <%
 Set UploadProgress = Server.CreateObject("Persits.UploadProgress")
 PID = "PID=" & UploadProgress.CreateProgressID()
@@ -26,31 +26,31 @@ function ShowProgress()
   }
   return true;
 }
-</SCRIPT> 
+</SCRIPT>
 
 
-  <body>  
+  <body>
 
-  <div class="baslik">Slayt Ekle </div>       
- 
-
-<BR><BR> 
+  <div class="baslik">Slayt Ekle </div>
 
 
-      	<form method="post" NAME="MyForm" action="upload_flas.asp?<% = PID %>" ENCTYPE="multipart/form-data" OnSubmit="return ShowProgress();"> 
-      	
-   
- 	   
- <table bgcolor=#FDFDFD cellpadding=5 cellspacing=5 align=center width=700 class=font align=center> 
+<BR><BR>
 
-<tr><td><b>Görsel Seç </b></td><td><input type="file" name="resim" size="51"></td>	</tr>
- <tr><td><b>Gideceði Baðlantý </b></td><td><input type="text" size="80" name="adres"></td></tr>	
 
-  <tr><td colspan=2 align=center><input type="submit" value="YÜKLE" class="admin_button"></td>
-</td></tr>      
+	<form method="post" NAME="MyForm" action="upload_flas.asp?<% = PID %>" ENCTYPE="multipart/form-data" OnSubmit="return ShowProgress();">
+
+
+
+ <table bgcolor=#FDFDFD cellpadding=5 cellspacing=5 align=center width=700 class=font align=center>
+
+<tr><td><b>GÃ¶rsel SeÃ§ </b></td><td><input type="file" name="resim" size="51"></td>	</tr>
+ <tr><td><b>GideceÄŸi BaÄŸlantÄ± </b></td><td><input type="text" size="80" name="adres"></td></tr>
+
+  <tr><td colspan=2 align=center><input type="submit" value="YÃœKLE" class="admin_button"></td>
+</td></tr>
 
 </table>
-      </form>     
-                               
-      
+      </form>
+
+
 
