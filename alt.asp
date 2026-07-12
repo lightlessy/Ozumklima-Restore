@@ -167,5 +167,7 @@ Loop
 </DIV>     
                       
 
+<link href="css/home-polish.css" rel="stylesheet" type="text/css">
+<!--#include file='js/home-polish.js'-->
 
 <!--#include file='analytics.asp'-->
