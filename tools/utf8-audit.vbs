@@ -144,6 +144,6 @@ Function CsvEscape(ByVal textValue)
   safeValue = Replace(safeValue, vbCrLf, " ")
   safeValue = Replace(safeValue, vbCr, " ")
   safeValue = Replace(safeValue, vbLf, " ")
-  safeValue = Replace(safeValue, """", """"")
-  CsvEscape = """" & safeValue & """"
+  safeValue = Replace(safeValue, Chr(34), Chr(34) & Chr(34))
+  CsvEscape = Chr(34) & safeValue & Chr(34)
 End Function
