@@ -3,7 +3,6 @@
 </div>
 
 
-
     
 <DIV   style="background-color:#353535" >
      <Div  class="alt"  >           
@@ -166,8 +165,5 @@ Loop
 </Div>
 </DIV>     
                       
-
-<link href="css/home-polish.css" rel="stylesheet" type="text/css">
-<!--#include file='js/home-polish.js'-->
 
 <!--#include file='analytics.asp'-->
