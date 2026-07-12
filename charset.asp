@@ -1,7 +1,8 @@
+<%@ Language="VBScript" CodePage="65001" %>
 <%
 Response.Buffer = True
-Response.CodePage = 1254
-Session.CodePage = 1254
+Response.CodePage = 65001
+Session.CodePage = 65001
 Session.LCID = 1055
-Response.Charset = "windows-1254"
+Response.Charset = "utf-8"
 %>
