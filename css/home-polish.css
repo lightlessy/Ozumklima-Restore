@@ -1,0 +1,266 @@
+/* Home page visual polish: low-risk conversion and trust improvements */
+.ozm-home-polish-active .flexslider-container {
+  max-width: 1270px;
+  margin: 18px auto 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0,0,0,.16);
+  background: #fff;
+}
+
+.ozm-home-polish-active .flexslider {
+  border-radius: 18px;
+}
+
+.ozm-home-polish-active .flexslider .slides > li {
+  position: relative;
+}
+
+.ozm-home-polish-active .flexslider .slides > li:after,
+.ozm-home-polish-active .bizim:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
+  pointer-events: none;
+}
+
+.ozm-home-polish-active .slogan {
+  width: 92%;
+  max-width: 1120px;
+  margin: 28px auto 22px auto;
+  padding: 26px 30px;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.08);
+  box-sizing: border-box;
+}
+
+.ozm-home-polish-active .slogan .slo2 {
+  display: block;
+  margin-bottom: 6px;
+  color: #555;
+  font-size: 1.05em;
+  line-height: 1.55em;
+}
+
+.ozm-home-polish-active .slogan .slo1 {
+  display: block;
+  color: #171717;
+  font-size: 1.9em;
+  line-height: 1.25em;
+  font-weight: 800;
+}
+
+.ozm-home-polish-active .homeCta {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ozm-home-polish-active .homeCta a {
+  min-width: 150px;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .95em;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.ozm-home-polish-active .homeCta a:first-child {
+  background: #171717;
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+}
+
+.ozm-home-polish-active .homeCta a:last-child {
+  background: #f7f7f7;
+  color: #222;
+  border: 1px solid #dedede;
+}
+
+.ozm-home-polish-active .homeCta a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0,0,0,.14);
+}
+
+.ozm-home-polish-active .kutular {
+  max-width: 1180px;
+  margin: 22px auto 34px auto;
+  gap: 18px;
+}
+
+.ozm-home-polish-active .kutular > a > div {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.ozm-home-polish-active .kutular > a > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(0,0,0,.16);
+}
+
+.ozm-home-polish-active .hizmetGovdesi,
+.ozm-home-polish-active .yorums .beyaz,
+.ozm-home-polish-active .anlasmali,
+.ozm-home-polish-active .urunkutular {
+  border-radius: 16px;
+  box-shadow: 0 12px 34px rgba(0,0,0,.07);
+  border: 1px solid #ececec;
+}
+
+.ozm-home-polish-active .yorums {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto 35px auto;
+}
+
+.ozm-home-polish-active .yorums .slo1,
+.ozm-home-polish-active .anlasmali .slo1 {
+  border-bottom: 0 !important;
+  text-align: center;
+}
+
+.ozm-home-polish-active .yorums .slo1 span,
+.ozm-home-polish-active .anlasmali .slo1 span {
+  display: inline-block;
+  padding: 0 0 8px 0;
+  border-bottom: 3px solid #222;
+}
+
+.ozm-home-polish-active .slideshow-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.ozm-home-polish-active .mySlides {
+  min-height: 135px;
+  padding: 28px 34px;
+  background: #fff;
+  border: 1px solid #ededed;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.07);
+  box-sizing: border-box;
+}
+
+.ozm-home-polish-active .mySlides q {
+  display: block;
+  color: #333;
+  font-size: 1.15em;
+  line-height: 1.75em;
+}
+
+.ozm-home-polish-active .dot-container {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.ozm-home-polish-active .dot {
+  height: 9px;
+  width: 9px;
+  margin: 0 4px;
+  background-color: #c9c9c9;
+  border-radius: 99px;
+  display: inline-block;
+  cursor: pointer;
+  transition: width .2s ease, background .2s ease;
+}
+
+.ozm-home-polish-active .dot.active {
+  width: 24px;
+  background-color: #222;
+}
+
+.ozm-home-polish-active .anlasmali {
+  width: 92%;
+  max-width: 1120px;
+  margin: 36px auto;
+  padding: 28px 22px 30px 22px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.ozm-home-polish-active .anlasmali .owl-carousel .owl-stage {
+  display: flex;
+  align-items: center;
+}
+
+.ozm-home-polish-active .anlasmali .owl-carousel .owl-item > div,
+.ozm-home-polish-active .anlasmali .owl-carousel > div {
+  min-height: 92px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #ededed;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.06);
+  box-sizing: border-box;
+}
+
+.ozm-home-polish-active .anlasmali img {
+  max-height: 58px;
+  width: auto !important;
+  max-width: 160px;
+  object-fit: contain;
+  filter: grayscale(10%);
+  opacity: .92;
+  transition: transform .18s ease, opacity .18s ease, filter .18s ease;
+}
+
+.ozm-home-polish-active .anlasmali img:hover {
+  transform: scale(1.04);
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.ozm-home-polish-active .urunkutular a > div {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.ozm-home-polish-active .urunkutular a > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 42px rgba(0,0,0,.18);
+}
+
+@media only screen and (max-width: 760px) {
+  .ozm-home-polish-active .flexslider-container,
+  .ozm-home-polish-active .flexslider,
+  .ozm-home-polish-active .flexslider .slides > li,
+  .ozm-home-polish-active .flexslider .slides,
+  .ozm-home-polish-active .flex-viewport {
+    height: 360px;
+    border-radius: 0;
+  }
+
+  .ozm-home-polish-active .slogan {
+    margin-top: 18px;
+    padding: 22px 18px;
+  }
+
+  .ozm-home-polish-active .slogan .slo1 {
+    font-size: 1.35em;
+  }
+
+  .ozm-home-polish-active .homeCta a {
+    width: 100%;
+  }
+
+  .ozm-home-polish-active .mySlides {
+    padding: 22px 18px;
+  }
+}
