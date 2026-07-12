@@ -62,7 +62,8 @@
      
       <div style="text-align:center;">
 
-         <form method="post" name="cic" action="iletisim-send.asp" class="form">          
+         <form method="post" name="cic" action="iletisim-send.asp" class="form"
+      onsubmit="safeTrack('contact_form_submit_attempt', {source:'iletisim_page'});">          
                           
             <input name="isim" type="text" placeholder="&#304;sim" size="26" maxlength="60" required>
             <input name="mail" type="email" placeholder="E-Posta Adresiniz" size="26" maxlength="60" required>  

@@ -1,3 +1,8 @@
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.CodePage = 65001
+Response.Charset = "UTF-8"
+%>
 <%
 Function UygulamaCaseSql(ByVal value)
   UygulamaCaseSql = Replace(CStr(value & ""), "'", "''")
@@ -154,7 +159,7 @@ End Sub
 <html>
 <head>
 
-<META HTTP-EQUIV="Content-Type" content="text/html; charset=windows-1254">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Uygulama Ornekleri ve Case Study | Ozum Klima Antalya</title>
@@ -469,16 +474,16 @@ uygulamaRs.Open uygulamaSql, baglanti, 1, 1
       <p class="case-subtitle">Ozum Klima'nin Antalya'da hayata gecirdigi gercek saha uygulamalarini kart ozetleriyle inceleyin. Her ornek kendi detay sayfasinda problem, kesif, cozum, uygulama, sonuc, fotograf ve CTA akisiyle anlatilir.</p>
 
       <div class="case-metrics">
-        <div class="case-metric"><strong>Kesif</strong><span>Alan, kapasite ve ihtiyac analizi</span></div>
-        <div class="case-metric"><strong>Kanit</strong><span>Foto, galeri ve opsiyonel video</span></div>
-        <div class="case-metric"><strong>Sonuc</strong><span>Okunabilir case study sayfasi</span></div>
+        <div class="case-metric"><strong>Keşif</strong></div>
+        <div class="case-metric"><strong>Kanıt</strong></div>
+        <div class="case-metric"><strong>Sonuç</strong></div>
       </div>
     </div>
   </section>
 
   <div class="case-wrap">
     <% If uygulamaRs.EOF Then %>
-      <div class="case-empty">Yayinda uygulama ornegi bulunamadi. Panelden yeni bir kayit ekleyebilirsiniz.</div>
+      <div class="case-empty">Yayında uygulama örneği bulunamadı. Panelden yeni bir kayıt ekleyebilirsiniz.</div>
     <% Else %>
       <div class="case-grid">
         <%

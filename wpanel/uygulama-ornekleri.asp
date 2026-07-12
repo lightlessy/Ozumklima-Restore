@@ -1,4 +1,10 @@
-<% Response.Buffer = True %>
+<%@ Language="VBScript" CodePage="65001" %>
+<%
+Response.Buffer = True
+Response.CodePage = 65001
+Response.Charset = "UTF-8"
+Session.CodePage = 65001
+%>
 <!--#INCLUDE file="dbase.asp"-->
 <%
 If Request.Cookies("ozum")("wpAfLogin") <> "true" Then
@@ -281,7 +287,8 @@ Sub UygulamaAdminHandleSave()
   If uploadError = "" Then
     On Error Resume Next
     Set Upload = Server.CreateObject("Persits.Upload")
-    Upload.Save savePath
+Upload.CodePage = 65001
+Upload.Save savePath
     If Err.Number <> 0 Then
       uploadError = "upload"
       Err.Clear
@@ -477,8 +484,11 @@ End If
       <span>Problem &rarr; Kesif &rarr; Cozum &rarr; Uygulama &rarr; Sonuc &rarr; CTA akisi</span>
     </div>
     <div class="case-admin-card-body">
-      <form method="post" action="uygulama-ornekleri.asp?form_action=save" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<%=editId%>">
+<form method="post"
+      action="uygulama-ornekleri.asp?form_action=save"
+      enctype="multipart/form-data"
+      accept-charset="UTF-8">
+              <input type="hidden" name="id" value="<%=editId%>">
 
         <div class="case-admin-grid">
           <div class="case-admin-field"><label>Baslik</label><input type="text" name="baslik" value="<%=UygulamaAdminHtml(fBaslik)%>" maxlength="255" required></div>

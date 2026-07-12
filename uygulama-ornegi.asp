@@ -1,3 +1,4 @@
+<!--#include file='db.asp'-->
 <%
 Function UygulamaDetailSql(ByVal value)
   UygulamaDetailSql = Replace(CStr(value & ""), "'", "''")
@@ -184,6 +185,8 @@ Sub UygulamaDetailEnsureTable()
   Call UygulamaDetailAddColumn("[seo_title] TEXT(255)")
   Call UygulamaDetailAddColumn("[meta_description] MEMO")
 
+
+  
   On Error Resume Next
   Set testRs = baglanti.Execute("SELECT COUNT(*) AS toplam FROM uygulama_ornekleri")
   If Err.Number = 0 Then toplamKayit = CLng(testRs("toplam"))
