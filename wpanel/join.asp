@@ -1,7 +1,6 @@
 <%@ Language="VBScript" CodePage="65001" %>
 <%
 Response.Buffer = True
-Response.CodePage = 65001
 Response.Charset = "utf-8"
 %>
 
@@ -15,7 +14,6 @@ Response.Charset = "utf-8"
 
   <%
   Dim grup, tip, surface
-  Dim Rs, mods, Sorgula
 
   grup = Trim(Request.QueryString("g") & "")
   tip = Trim(Request.QueryString("tip") & "")
@@ -128,10 +126,10 @@ Response.Charset = "utf-8"
   </script>
 
   <tr>
-      <td><strong>ÃœrÃ¼n Kategori:</strong></td>
+      <td><strong>Ürün Kategori:</strong></td>
   <td>
       <select name="anagrup" id="anagrup">
-          <option value="">LÃ¼tfen SeÃ§iniz</option>
+          <option value="">Lütfen Seçiniz</option>
 
           <%
           Set mods = Server.CreateObject("ADODB.Recordset")
@@ -175,233 +173,230 @@ Response.Charset = "utf-8"
       </a>
   </td>
   </tr>
+<%
+If tip <> "" And grup <> "" Then
+%>
 
-  <%
-  If grup <> "" Then
-  %>
+<tr>
+    <td><strong>Ürün Grubu:</strong></td>
 
-  <tr>
-      <td><strong>Alt Kategori:</strong></td>
-  <td>
-      <select name="tip" id="tip">
-          <option value="">LÃ¼tfen SeÃ§iniz</option>
+    <td>
+        <select name="surface" id="surface">
+            <option value="0">Lütfen Seçiniz</option>
 
-          <%
-          Set mods = Server.CreateObject("ADODB.Recordset")
-          Sorgula = "SELECT * FROM tip WHERE grup = " & CLng(grup) & " ORDER BY sira DESC"
-          mods.Open Sorgula, baglanti, 1, 3
+            <%
+            On Error Resume Next
 
-          Do While Not mods.EOF
-          %>
+            Set mods = Server.CreateObject("ADODB.Recordset")
 
-              <option value="<%=CLng(mods("id"))%>"<%
-                  If tip <> "" Then
-                      If CLng(tip) = CLng(mods("id")) Then
-                          Response.Write " selected"
-                      End If
-                  End If
-              %>><%=Server.HTMLEncode(mods("isim") & "")%></option>
+            Sorgula = _
+                "SELECT [id], [isim] " & _
+                "FROM [surface] " & _
+                "WHERE [grup] = " & CLng(grup) & " " & _
+                "ORDER BY [isim] DESC"
 
-          <%
-              mods.MoveNext
-          Loop
+            mods.Open Sorgula, baglanti, 1, 1
 
-          mods.Close
-          Set mods = Nothing
-          %>
-      </select>
-  </td>
+            If Err.Number <> 0 Then
+                Response.Write "</select>"
+                Response.Write "<div style='color:red;font-weight:bold;'>"
+                Response.Write "Surface SQL hatası: " & Server.HTMLEncode(Err.Description)
+                Response.Write "<br>SQL: " & Server.HTMLEncode(Sorgula)
+                Response.Write "</div>"
 
-  <td colspan="2">
-      <input type="text" style="width:150px" name="isim2">
+                Err.Clear
+                Set mods = Nothing
+            Else
 
-      <input type="hidden" name="grup" value="<%=Server.HTMLEncode(grup)%>">
+                Do While Not mods.EOF
+            %>
 
-      <input
-          type="submit"
-          value="+ Alt Kategori Ekle"
-          onclick="f.action='join.asp?tip=add'; return true;"
-      >
+                    <option value="<%=CLng(mods("id"))%>"<%
+                        If surface <> "" And IsNumeric(surface) Then
+                            If CLng(surface) = CLng(mods("id")) Then
+                                Response.Write " selected"
+                            End If
+                        End If
+                    %>><%=Server.HTMLEncode(mods("isim") & "")%></option>
 
-      &nbsp; | &nbsp;
+            <%
+                    mods.MoveNext
+                Loop
 
-      <a href="javascript:penc2()">
-          <img src="images/del.png" width="20" alt="Sil">
-      </a>
-  </td>
-  </tr>
+                mods.Close
+                Set mods = Nothing
 
-  <%
-  End If
-  %>
+            End If
 
-  <%
-  If tip <> "" And grup <> "" Then
-  %>
+            On Error GoTo 0
+            %>
+        </select>
+    </td>
 
-  <tr>
-      <td><strong>ÃœrÃ¼n Grubu:</strong></td>
-  <td>
-      <select name="surface" id="surface">
-          <option value="0">LÃ¼tfen SeÃ§iniz</option>
+    <td colspan="2">
+        <input
+            type="text"
+            style="width:100px"
+            name="isim3"
+        >
 
-          <%
-          Set mods = Server.CreateObject("ADODB.Recordset")
-          Sorgula = "SELECT * FROM surface WHERE grup = " & CLng(grup) & " ORDER BY isim DESC"
-          mods.Open Sorgula, baglanti, 1, 3
+        <input
+            type="hidden"
+            name="grubu"
+            value="<%=CLng(grup)%>"
+        >
 
-          Do While Not mods.EOF
-          %>
+        <input
+            type="submit"
+            value="+ Ekle"
+            formaction="join.asp?surf=add"
+            formmethod="post"
+        >
 
-              <option value="<%=CLng(mods("id"))%>"<%
-                  If surface <> "" Then
-                      If CLng(surface) = CLng(mods("id")) Then
-                          Response.Write " selected"
-                      End If
-                  End If
-              %>><%=Server.HTMLEncode(mods("isim") & "")%></option>
+        &nbsp; | &nbsp;
 
-          <%
-              mods.MoveNext
-          Loop
+        <a href="javascript:penc3();">
+            <img src="images/del.png" width="20" alt="Sil">
+        </a>
+    </td>
+</tr>
 
-          mods.Close
-          Set mods = Nothing
-          %>
-      </select>
-  </td>
+<tr>
+    <td><strong>Ürün Kodu:</strong></td>
 
-  <td colspan="2">
-      <input type="text" style="width:100px" name="isim3">
+    <td colspan="3">
+        <input
+            type="text"
+            style="width:100px"
+            name="kodu"
+            value="0"
+        >
+    </td>
+</tr>
 
-      <input type="hidden" name="grubu" value="<%=Server.HTMLEncode(grup)%>">
+<tr>
+    <td><strong>Ürün Adı:</strong></td>
 
-      <input
-          type="submit"
-          value="+ Ekle"
-          onclick="f.action='join.asp?surf=add'; return true;"
-      >
+    <td colspan="3">
+        <input
+            type="text"
+            style="width:350px"
+            name="isim"
+        >
+    </td>
+</tr>
 
-      &nbsp; | &nbsp;
+<tr>
+    <td><strong>Renk Seçenekleri:</strong></td>
 
-      <a href="javascript:penc3()">
-          <img src="images/del.png" width="20" alt="Sil">
-      </a>
-  </td>
-  </tr>
+    <td colspan="3">
+        <input class="jscolor" name="renk1" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk2" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk3" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk4" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk5" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk6" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk7" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk8" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk9" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+        <input class="jscolor" name="renk10" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
+    </td>
+</tr>
 
-  <tr>
-      <td><strong>ÃœrÃ¼n Kodu:</strong></td>
-      <td>
-          <input type="text" style="width:100px" name="kodu" value="0">
-      </td>
-  </tr>
+<tr>
+    <td><strong>Beden / Numara Seçenekleri:</strong></td>
 
-  <tr>
-      <td><strong>ÃœrÃ¼n AdÄ±:</strong></td>
-      <td>
-          <input type="text" style="width:350px" name="isim">
-      </td>
-  </tr>
+    <td colspan="3">
+        <input name="beden1" value="0" style="width:40px">
+        <input name="beden2" value="0" style="width:40px">
+        <input name="beden3" value="0" style="width:40px">
+        <input name="beden4" value="0" style="width:40px">
+        <input name="beden5" value="0" style="width:40px">
+        <input name="beden6" value="0" style="width:40px">
+        <input name="beden7" value="0" style="width:40px">
+        <input name="beden8" value="0" style="width:40px">
+        <input name="beden9" value="0" style="width:40px">
+        <input name="beden10" value="0" style="width:40px">
+    </td>
+</tr>
 
-  <tr>
-      <td><strong>Renk SeÃ§enekleri:</strong></td>
-  <td colspan="3">
-      <input class="jscolor" name="renk1" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk2" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk3" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk4" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk5" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk6" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk7" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk8" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk9" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-      <input class="jscolor" name="renk10" value="0" style="width:50px; border-radius:40px; border:1px solid #C0C0C0">
-  </td>
-  </tr>
+<tr bgcolor="#F7F4F0">
+    <td><strong>Özet - Tanımlama:</strong></td>
 
-  <tr>
-      <td><strong>Beden / Numara SeÃ§enekleri:</strong></td>
-  <td colspan="3">
-      <input name="beden1" value="0" style="width:40px">
-      <input name="beden2" value="0" style="width:40px">
-      <input name="beden3" value="0" style="width:40px">
-      <input name="beden4" value="0" style="width:40px">
-      <input name="beden5" value="0" style="width:40px">
-      <input name="beden6" value="0" style="width:40px">
-      <input name="beden7" value="0" style="width:40px">
-      <input name="beden8" value="0" style="width:40px">
-      <input name="beden9" value="0" style="width:40px">
-      <input name="beden10" value="0" style="width:40px">
-  </td>
-  </tr>
+    <td colspan="3">
+        <textarea
+            style="width:700px; height:50px"
+            name="descr"
+        ></textarea>
+    </td>
+</tr>
 
-  <tr bgcolor="#F7F4F0">
-      <td><strong>Ã–zet - TanÄ±mlama:</strong></td>
-  <td colspan="3">
-      <textarea
-          style="width:700px; height:50px"
-          name="descr"
-      ></textarea>
-  </td>
-  </tr>
+<%
+strFormName = "f"
+strTextAreaName = "notlar"
+%>
 
-  <%
-  strFormName = "f"
-  strTextAreaName = "notlar"
-  %>
+<tr bgcolor="#F7F4F0">
+    <td colspan="4">
+        <strong>Ürün Detayları:</strong>
 
-  <tr bgcolor="#F7F4F0">
-      <td colspan="4">
-          <strong>ÃœrÃ¼n DetaylarÄ±:</strong>
-  <br><br>
+        <br><br>
 
-      <!--#include file="RTE_editor_inc.asp"-->
+        <!-- TEST İÇİN RTE GEÇİCİ OLARAK KAPALI -->
+        <% ' <!--#include file="RTE_editor_inc.asp"--> %>
 
-      <br>
+        <textarea
+            style="width:870px; height:390px"
+            name="notlar"
+            id="notlar"
+        ></textarea>
+    </td>
+</tr>
 
-      <textarea
-          style="width:870px; height:390px"
-          name="notlar"
-          id="notlar"
-      ></textarea>
-  </td>
-  </tr>
+<tr>
+    <td><strong>Kargoya Veriliş Süresi:</strong></td>
 
-  <tr>
-      <td><strong>Kargoya VeriliÅŸ SÃ¼resi:</strong></td>
-  <td>
-      <input
-          type="text"
-          style="width:100px"
-          name="delivery"
-          value="3"
-      >
-  </td>
-  </tr>
+    <td colspan="3">
+        <input
+            type="text"
+            style="width:100px"
+            name="delivery"
+            value="3"
+        >
+    </td>
+</tr>
 
-  <tr>
-      <td><strong>Anahtar Kelimeler:</strong></td>
-  <td colspan="3">
-      <textarea
-          style="width:700px; height:50px"
-          name="keyw"
-      ></textarea>
-  </td>
-  </tr>
+<tr>
+    <td><strong>Anahtar Kelimeler:</strong></td>
 
-  <input type="hidden" name="yayin" value="0">
+    <td colspan="3">
+        <textarea
+            style="width:700px; height:50px"
+            name="keyw"
+        ></textarea>
+    </td>
+</tr>
 
-  <tr>
-      <td colspan="4" align="center">
-          <input type="submit" value="ÃœRÃœN EKLE">
-      </td>
-  </tr>
+<tr style="display:none;">
+    <td colspan="4">
+        <input type="hidden" name="yayin" value="0">
+    </td>
+</tr>
 
-  <%
-  End If
-  %>
+<tr>
+    <td colspan="4" align="center">
+        <input
+            type="submit"
+            value="Ürün Ekle"
+            formaction="join2.asp"
+            formmethod="post"
+        >
+    </td>
+</tr>
 
+<%
+End If
+%>
   </table>
 
   </form>
