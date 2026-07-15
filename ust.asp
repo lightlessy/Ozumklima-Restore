@@ -427,31 +427,49 @@
     if (ekranGen > 1024) {
       var didScroll = false;
 
-      window.onscroll = function () {
+      $(window).on("scroll", function () {
         didScroll = true;
-      };
+      });
 
       setInterval(function () {
-        if (didScroll) {
-          didScroll = false;
+        if (!didScroll) {
+          return;
+        }
 
-          var scroll = $(window).scrollTop();
+        didScroll = false;
 
-          if (scroll > 80) {
-            $(".logo").attr("src", "images/logo2.png");
-            $(".logo").stop().animate({ width: "200px" }, 200);
-            $(".menuLogoTas").stop().animate({ paddingTop: "0px" }, 200);
-            $(".genislik").stop().animate({ width: "250px" }, 200);
-          } else {
-            $(".logo").attr("src", "images/logo.png");
-            $(".logo").stop().animate({ width: "245px" }, 200);
-            $(".menuLogoTas").stop().animate({ paddingTop: "0px" }, 200);
-            $(".genislik").stop().animate({ width: "300px" }, 200);
-          }
+        var scroll = $(window).scrollTop();
+
+        if (scroll > 80) {
+          $(".logo")
+            .attr("src", "/images/logo2.png")
+            .stop(true, false)
+            .animate({ width: "200px" }, 200);
+
+          $(".menuLogoTas")
+            .stop(true, false)
+            .animate({ paddingTop: "0px" }, 200);
+
+          $(".genislik")
+            .stop(true, false)
+            .animate({ width: "250px" }, 200);
+        } else {
+          $(".logo")
+            .attr("src", "/images/logo.png")
+            .stop(true, false)
+            .animate({ width: "245px" }, 200);
+
+          $(".menuLogoTas")
+            .stop(true, false)
+            .animate({ paddingTop: "0px" }, 200);
+
+          $(".genislik")
+            .stop(true, false)
+            .animate({ width: "300px" }, 200);
         }
       }, 100);
     } else {
-      $(".logo").attr("src", "images/logo2.png");
+      $(".logo").attr("src", "/images/logo.png");
     }
 
     if (ekranGen < 1024) {

@@ -85,6 +85,1591 @@ body {
 .hizmetGovdesi h1 {font-size:1.35em;}
 .hizmetGovdesi .hizmetMetin {column-count:1;}
 }
+
+/* =========================
+   MODERN MÜŞTERİ YORUMLARI
+   ========================= */
+.musteriYorumlari {
+  width: 92%;
+  max-width: 1120px;
+  margin: 38px auto 50px auto;
+  padding: 48px 4%;
+  box-sizing: border-box;
+  background: #F8F8F8;
+  border-top: 1px solid #E9E9E9;
+  border-bottom: 1px solid #E9E9E9;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.musteriYorumlariBaslik {
+  max-width: 720px;
+  margin: 0 auto 28px auto;
+  text-align: center;
+}
+
+.musteriYorumlariEtiket {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #DE0303;
+  font-size: 0.78em;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.musteriYorumlariBaslik h2 {
+  margin: 0 0 10px 0;
+  color: #171717;
+  font-size: 1.75em;
+  line-height: 1.25em;
+  font-weight: 700;
+}
+
+.musteriYorumlariBaslik p {
+  margin: 0;
+  color: #6C6C6C;
+  font-size: 0.98em;
+  line-height: 1.65em;
+}
+
+.yorumSlider {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.yorumKart {
+  display: none;
+  min-height: 210px;
+  padding: 42px 70px 38px 70px;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 14px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.055);
+  text-align: center;
+  animation: yorumGiris 0.35s ease;
+}
+
+.yorumKartAktif {
+  display: block;
+}
+
+.yorumIkon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+  background: #FFF1F1;
+  color: #DE0303;
+  font-size: 1.25em;
+}
+
+.yorumMetni {
+  margin: 0;
+  color: #292929;
+  font-size: 1.12em;
+  line-height: 1.8em;
+  font-style: normal;
+}
+
+.yorumAltBilgi {
+  display: block;
+  margin-top: 22px;
+  color: #777777;
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.yorumYon {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  margin-top: -21px;
+  padding: 0;
+  border: 1px solid #E1E1E1;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #222222;
+  font-size: 1.15em;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.yorumYon:hover {
+  border-color: #DE0303;
+  color: #DE0303;
+  transform: translateY(-1px);
+}
+
+.yorumOnceki {
+  left: -21px;
+}
+
+.yorumSonraki {
+  right: -21px;
+}
+
+.yorumNoktalar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.yorumNokta {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #CFCFCF;
+  cursor: pointer;
+  transition: width 0.2s ease, border-radius 0.2s ease, background 0.2s ease;
+}
+
+.yorumNoktaAktif {
+  width: 24px;
+  border-radius: 8px;
+  background: #DE0303;
+}
+
+.yorumAltAlan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  max-width: 860px;
+  margin: 30px auto 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid #E4E4E4;
+}
+
+.yorumAltMetin {
+  max-width: 590px;
+}
+
+.yorumAltMetin strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #222222;
+  font-size: 0.98em;
+}
+
+.yorumAltMetin span {
+  color: #707070;
+  font-size: 0.9em;
+  line-height: 1.55em;
+}
+
+.yorumAksiyonlar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.yorumButon {
+  display: inline-block;
+  padding: 12px 17px;
+  border: 1px solid #DE0303;
+  border-radius: 6px;
+  color: #DE0303;
+  background: transparent;
+  font-size: 0.86em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.yorumButon:hover {
+  background: #DE0303;
+  color: #FFFFFF;
+}
+
+.yorumSosyal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+  border: 1px solid #DDDDDD;
+  border-radius: 50%;
+  color: #444444;
+  background: #FFFFFF;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.yorumSosyal:hover {
+  border-color: #DE0303;
+  color: #DE0303;
+}
+
+.yorumBos {
+  padding: 34px;
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 14px;
+  color: #666666;
+  text-align: center;
+}
+
+@keyframes yorumGiris {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media only screen and (max-width: 760px) {
+  .musteriYorumlari {
+    width: 92%;
+    margin: 28px auto 38px auto;
+    padding: 36px 5%;
+  }
+
+  .musteriYorumlariBaslik h2 {
+    font-size: 1.4em;
+  }
+
+  .yorumKart {
+    min-height: 235px;
+    padding: 34px 28px 30px 28px;
+  }
+
+  .yorumMetni {
+    font-size: 1em;
+    line-height: 1.7em;
+  }
+
+  .yorumYon {
+    top: auto;
+    bottom: -62px;
+  }
+
+  .yorumOnceki {
+    left: calc(50% - 52px);
+  }
+
+  .yorumSonraki {
+    right: calc(50% - 52px);
+  }
+
+  .yorumNoktalar {
+    margin-top: 24px;
+    padding-bottom: 52px;
+  }
+
+  .yorumAltAlan {
+    display: block;
+    margin-top: 18px;
+    text-align: center;
+  }
+
+  .yorumAksiyonlar {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+}
+
+
+
+/* =========================
+   MODERN REFERANS AKIŞI
+   ========================= */
+.referansBolumu {
+  width: 100%;
+  margin: 42px 0 58px 0;
+  padding: 46px 0 38px 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-top: 1px solid #E9E9E9;
+  border-bottom: 1px solid #E9E9E9;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.referansBaslik {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+}
+
+.referansEtiket {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #DE0303;
+  font-size: 0.78em;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.referansBaslik h2 {
+  margin: 0 0 10px 0;
+  color: #171717;
+  font-size: 1.75em;
+  line-height: 1.25em;
+  font-weight: 700;
+}
+
+.referansBaslik p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #6C6C6C;
+  font-size: 0.98em;
+  line-height: 1.65em;
+}
+
+.referansAkis {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.referansAkis::before,
+.referansAkis::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 90px;
+  pointer-events: none;
+}
+
+.referansAkis::before {
+  left: 0;
+  background: linear-gradient(to right, #FFFFFF 10%, rgba(255,255,255,0));
+}
+
+.referansAkis::after {
+  right: 0;
+  background: linear-gradient(to left, #FFFFFF 10%, rgba(255,255,255,0));
+}
+
+.referansTrack {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: referansKaydir 42s linear infinite;
+  will-change: transform;
+}
+
+.referansGrup {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 24px;
+  padding-right: 24px;
+}
+
+.referansLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 210px;
+  height: 112px;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.referansLogo:hover {
+  border-color: #D5D5D5;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+.referansLogo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 160px;
+  max-height: 70px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.78;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.referansLogo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.referansAlt {
+  width: 92%;
+  max-width: 1120px;
+  margin: 26px auto 0 auto;
+  text-align: center;
+}
+
+.referansAlt a {
+  display: inline-block;
+  color: #DE0303;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.referansAlt a:hover {
+  border-bottom-color: #DE0303;
+}
+
+.referansBos {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px;
+  box-sizing: border-box;
+  background: #F8F8F8;
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  color: #666666;
+  text-align: center;
+}
+
+@keyframes referansKaydir {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.referansAkis:hover .referansTrack {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .referansTrack {
+    animation: none;
+  }
+
+  .referansAkis {
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .referansBolumu {
+    margin: 30px 0 42px 0;
+    padding: 36px 0 30px 0;
+  }
+
+  .referansBaslik {
+    margin-bottom: 24px;
+  }
+
+  .referansBaslik h2 {
+    font-size: 1.4em;
+  }
+
+  .referansAkis::before,
+  .referansAkis::after {
+    width: 34px;
+  }
+
+  .referansTrack {
+    animation-duration: 42s;
+  }
+
+  .referansGrup {
+    gap: 14px;
+    padding-right: 14px;
+  }
+
+  .referansLogo {
+    width: 164px;
+    height: 94px;
+    padding: 17px 20px;
+  }
+}
+
+
+
+/* =========================
+   2026 UYUMLU İKİ CAROUSEL
+   ========================= */
+.ozumCarousel {
+  position: relative;
+  width: min(100%, 1270px);
+  margin: 0 auto;
+  overflow: hidden;
+  background: #F4F4F4;
+  isolation: isolate;
+}
+
+.ozumCarousel .flexslider,
+.ozumCarousel .flex-viewport,
+.ozumCarousel .slides {
+  width: 100%;
+  border: 0;
+}
+
+.ozumCarousel .flexslider {
+  position: relative;
+  margin: 0;
+  background: #F4F4F4;
+  box-shadow: none;
+}
+
+.ozumHeroCarousel,
+.ozumHeroCarousel .flexslider,
+.ozumHeroCarousel .flex-viewport,
+.ozumHeroCarousel .slides,
+.ozumHeroCarousel .slides > li {
+  height: clamp(420px, 47vw, 600px);
+}
+
+.ozumGaleriCarousel,
+.ozumGaleriCarousel .flexslider,
+.ozumGaleriCarousel .flex-viewport,
+.ozumGaleriCarousel .slides,
+.ozumGaleriCarousel .slides > li {
+  height: clamp(390px, 44vw, 560px);
+}
+
+.ozumCarousel .slides > li {
+  max-width: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ozumCarousel::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 22%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0));
+}
+
+.ozumCarousel .flex-direction-nav a {
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-top: -23px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+  background: rgba(18,18,18,0.48);
+  color: #FFFFFF;
+  opacity: 1;
+  text-shadow: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.ozumCarousel .flex-direction-nav a::before {
+  color: #FFFFFF;
+  font-size: 24px;
+  line-height: 1;
+  text-shadow: none;
+}
+
+.ozumCarousel .flex-direction-nav .flex-prev {
+  left: 22px;
+}
+
+.ozumCarousel .flex-direction-nav .flex-next {
+  right: 22px;
+}
+
+.ozumCarousel:hover .flex-direction-nav .flex-prev {
+  left: 22px;
+}
+
+.ozumCarousel:hover .flex-direction-nav .flex-next {
+  right: 22px;
+}
+
+.ozumCarousel .flex-direction-nav a:hover,
+.ozumCarousel .flex-direction-nav a:focus-visible {
+  border-color: #FFFFFF;
+  background: rgba(222,3,3,0.9);
+  transform: scale(1.04);
+  outline: 3px solid rgba(255,255,255,0.72);
+  outline-offset: 2px;
+}
+
+.ozumCarousel .flex-control-nav {
+  z-index: 5;
+  bottom: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  height: auto;
+  line-height: 1;
+}
+
+.ozumCarousel .flex-control-nav li {
+  margin: 0;
+}
+
+.ozumCarousel .flex-control-paging li a {
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.62);
+  box-shadow: none;
+  transition: width 0.2s ease, border-radius 0.2s ease, background 0.2s ease;
+}
+
+.ozumCarousel .flex-control-paging li a.flex-active {
+  width: 25px;
+  border-radius: 8px;
+  background: #FFFFFF;
+}
+
+.ozumCarousel .flex-control-paging li a:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+.carouselDuraklat {
+  position: absolute;
+  right: 20px;
+  bottom: 13px;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0 13px;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 22px;
+  background: rgba(18,18,18,0.48);
+  color: #FFFFFF;
+  font: 700 12px/1 Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.carouselDuraklat:hover,
+.carouselDuraklat:focus-visible {
+  border-color: #FFFFFF;
+  background: rgba(222,3,3,0.9);
+  outline: 3px solid rgba(255,255,255,0.72);
+  outline-offset: 2px;
+}
+
+.carouselDuraklat i {
+  font-size: 11px;
+}
+
+.ozumGaleriCarousel {
+  margin-top: 8px;
+  border-top: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.ozumGaleriCarousel .slides > li {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 760px) {
+  .ozumHeroCarousel,
+  .ozumHeroCarousel .flexslider,
+  .ozumHeroCarousel .flex-viewport,
+  .ozumHeroCarousel .slides,
+  .ozumHeroCarousel .slides > li {
+    height: clamp(330px, 112vw, 500px);
+  }
+
+  .ozumGaleriCarousel,
+  .ozumGaleriCarousel .flexslider,
+  .ozumGaleriCarousel .flex-viewport,
+  .ozumGaleriCarousel .slides,
+  .ozumGaleriCarousel .slides > li {
+    height: clamp(300px, 88vw, 440px);
+  }
+
+  .ozumCarousel .flex-direction-nav a {
+    width: 44px;
+    height: 44px;
+    margin-top: -22px;
+  }
+
+  .ozumCarousel .flex-direction-nav .flex-prev,
+  .ozumCarousel:hover .flex-direction-nav .flex-prev {
+    left: 10px;
+  }
+
+  .ozumCarousel .flex-direction-nav .flex-next,
+  .ozumCarousel:hover .flex-direction-nav .flex-next {
+    right: 10px;
+  }
+
+  .ozumCarousel .flex-control-nav {
+    bottom: 15px;
+    max-width: calc(100% - 110px);
+    margin-left: 55px;
+  }
+
+  .carouselDuraklat {
+    right: 10px;
+    bottom: 8px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .carouselDuraklat span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .ozumHeroCarousel,
+  .ozumHeroCarousel .flexslider,
+  .ozumHeroCarousel .flex-viewport,
+  .ozumHeroCarousel .slides,
+  .ozumHeroCarousel .slides > li {
+    height: 390px;
+  }
+
+  .ozumGaleriCarousel,
+  .ozumGaleriCarousel .flexslider,
+  .ozumGaleriCarousel .flex-viewport,
+  .ozumGaleriCarousel .slides,
+  .ozumGaleriCarousel .slides > li {
+    height: 330px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ozumCarousel *,
+  .ozumCarousel *::before,
+  .ozumCarousel *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+
+
+/* =========================
+   CAROUSEL SON CİLA
+   ========================= */
+.ozumCarousel {
+  width: 92%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #E8E8E8;
+  border-radius: 12px;
+  background: #F3F3F3;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.055);
+}
+
+.ozumHeroCarousel {
+  margin-top: 28px;
+  margin-bottom: 20px;
+}
+
+.ozumHeroCarousel,
+.ozumHeroCarousel .flexslider,
+.ozumHeroCarousel .flex-viewport,
+.ozumHeroCarousel .slides,
+.ozumHeroCarousel .slides > li {
+  height: clamp(410px, 36vw, 540px);
+}
+
+.ozumGaleriCarousel {
+  margin-top: 32px;
+  margin-bottom: 48px;
+}
+
+.ozumGaleriCarousel,
+.ozumGaleriCarousel .flexslider,
+.ozumGaleriCarousel .flex-viewport,
+.ozumGaleriCarousel .slides,
+.ozumGaleriCarousel .slides > li {
+  height: clamp(340px, 30vw, 455px);
+}
+
+/* FlexSlider'ın font ikonunu kapat; oku geometrik olarak ortala. */
+.ozumCarousel .flex-direction-nav a {
+  width: 46px;
+  height: 46px;
+  margin-top: -23px;
+  font-size: 0;
+  line-height: 1;
+  overflow: visible;
+  border: 1px solid rgba(255,255,255,0.66);
+  background: rgba(20,20,20,0.46);
+}
+
+.ozumCarousel .flex-direction-nav a::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  border-top: 2px solid #FFFFFF;
+  border-right: 2px solid #FFFFFF;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.ozumCarousel .flex-direction-nav .flex-prev::before {
+  transform: rotate(-135deg);
+  margin-left: 4px;
+}
+
+.ozumCarousel .flex-direction-nav .flex-next::before {
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+
+.ozumCarousel .flex-direction-nav .flex-prev,
+.ozumCarousel:hover .flex-direction-nav .flex-prev {
+  left: 18px;
+}
+
+.ozumCarousel .flex-direction-nav .flex-next,
+.ozumCarousel:hover .flex-direction-nav .flex-next {
+  right: 18px;
+}
+
+/* Üstte az sayıda slide için sade pagination. */
+.ozumHeroCarousel .flex-control-nav {
+  bottom: 15px;
+}
+
+/* Alt galeride yüzlerce nokta asla gösterilmez. */
+.ozumGaleriCarousel .flex-control-nav {
+  display: none !important;
+}
+
+.ozumGaleriCarousel .carouselDuraklat {
+  bottom: 14px;
+}
+
+/* Görselleri kırpmadan daha editoryal bir odak. */
+.ozumHeroCarousel .slides > li {
+  background-position: center center;
+}
+
+.ozumGaleriCarousel .slides > li {
+  background-position: center 44%;
+}
+
+@media only screen and (max-width: 760px) {
+  .ozumCarousel {
+    width: calc(100% - 24px);
+    border-radius: 10px;
+  }
+
+  .ozumHeroCarousel {
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+
+  .ozumHeroCarousel,
+  .ozumHeroCarousel .flexslider,
+  .ozumHeroCarousel .flex-viewport,
+  .ozumHeroCarousel .slides,
+  .ozumHeroCarousel .slides > li {
+    height: clamp(300px, 88vw, 420px);
+  }
+
+  .ozumGaleriCarousel {
+    margin-top: 24px;
+    margin-bottom: 34px;
+  }
+
+  .ozumGaleriCarousel,
+  .ozumGaleriCarousel .flexslider,
+  .ozumGaleriCarousel .flex-viewport,
+  .ozumGaleriCarousel .slides,
+  .ozumGaleriCarousel .slides > li {
+    height: clamp(260px, 70vw, 350px);
+  }
+
+  .ozumCarousel .flex-direction-nav a {
+    width: 42px;
+    height: 42px;
+    margin-top: -21px;
+  }
+
+  .ozumCarousel .flex-direction-nav .flex-prev,
+  .ozumCarousel:hover .flex-direction-nav .flex-prev {
+    left: 9px;
+  }
+
+  .ozumCarousel .flex-direction-nav .flex-next,
+  .ozumCarousel:hover .flex-direction-nav .flex-next {
+    right: 9px;
+  }
+
+  .ozumHeroCarousel .flex-control-nav {
+    max-width: calc(100% - 96px);
+    margin-left: 48px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .ozumHeroCarousel,
+  .ozumHeroCarousel .flexslider,
+  .ozumHeroCarousel .flex-viewport,
+  .ozumHeroCarousel .slides,
+  .ozumHeroCarousel .slides > li {
+    height: 330px;
+  }
+
+  .ozumGaleriCarousel,
+  .ozumGaleriCarousel .flexslider,
+  .ozumGaleriCarousel .flex-viewport,
+  .ozumGaleriCarousel .slides,
+  .ozumGaleriCarousel .slides > li {
+    height: 280px;
+  }
+}
+
+
+
+/* =========================
+   OK MERKEZLEME KESİN DÜZELTME
+   ========================= */
+.ozumCarousel .flex-direction-nav a {
+  position: absolute;
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin-top: -23px;
+  padding: 0;
+  overflow: hidden !important;
+  text-indent: -9999px !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+}
+
+.ozumCarousel .flex-direction-nav a::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  display: block !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-top: 2px solid #FFFFFF !important;
+  border-right: 2px solid #FFFFFF !important;
+  background: transparent !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: 0 !important;
+  transform-origin: center center !important;
+}
+
+.ozumCarousel .flex-direction-nav .flex-prev::before {
+  transform: translate(-42%, -50%) rotate(-135deg) !important;
+}
+
+.ozumCarousel .flex-direction-nav .flex-next::before {
+  transform: translate(-58%, -50%) rotate(45deg) !important;
+}
+
+/* FlexSlider teması after veya başka pseudo içerik ekliyorsa kapat. */
+.ozumCarousel .flex-direction-nav a::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media only screen and (max-width: 760px) {
+  .ozumCarousel .flex-direction-nav a {
+    width: 42px;
+    height: 42px;
+    margin-top: -21px;
+  }
+
+  .ozumCarousel .flex-direction-nav a::before {
+    width: 9px !important;
+    height: 9px !important;
+  }
+}
+
+
+
+/* =========================
+   MOBİL TAM GÖRSEL + AUTOPLAY FIX
+   ========================= */
+@media only screen and (max-width: 760px) {
+  .ozumHeroCarousel {
+    aspect-ratio: 16 / 9;
+    height: auto !important;
+    background: #111111;
+  }
+
+  .ozumGaleriCarousel {
+    aspect-ratio: 4 / 3;
+    height: auto !important;
+    background: #F3F3F3;
+  }
+
+  .ozumHeroCarousel .flexslider,
+  .ozumHeroCarousel .flex-viewport,
+  .ozumHeroCarousel .slides,
+  .ozumHeroCarousel .slides > li,
+  .ozumGaleriCarousel .flexslider,
+  .ozumGaleriCarousel .flex-viewport,
+  .ozumGaleriCarousel .slides,
+  .ozumGaleriCarousel .slides > li {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  .ozumHeroCarousel .slides > li,
+  .ozumGaleriCarousel .slides > li {
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+
+
+/* =========================
+   KALICI MOBİL RENDER DÜZELTMESİ
+   ========================= */
+@media only screen and (max-width: 760px) {
+  .ozumHeroCarousel,
+  .ozumHeroCarousel .flexslider,
+  .ozumHeroCarousel .flex-viewport,
+  .ozumHeroCarousel .slides,
+  .ozumHeroCarousel .slides > li {
+    width: 100% !important;
+    height: clamp(230px, 56.25vw, 420px) !important;
+    min-height: 230px !important;
+  }
+
+  .ozumGaleriCarousel,
+  .ozumGaleriCarousel .flexslider,
+  .ozumGaleriCarousel .flex-viewport,
+  .ozumGaleriCarousel .slides,
+  .ozumGaleriCarousel .slides > li {
+    width: 100% !important;
+    height: clamp(260px, 75vw, 390px) !important;
+    min-height: 260px !important;
+  }
+
+  .ozumHeroCarousel .slides > li,
+  .ozumGaleriCarousel .slides > li {
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .ozumHeroCarousel {
+    background: #090909 !important;
+  }
+
+  .ozumGaleriCarousel {
+    background: #F2F2F2 !important;
+  }
+}
+
+/* FlexSlider'ın JS yüklenmesinden önce ilk görsel görünür kalsın. */
+.ozumCarousel .slides > li:first-child {
+  display: block;
+}
+
+
+
+/* =========================
+   VANILLA CAROUSEL MİMARİSİ
+   ========================= */
+.carouselDuraklat,
+.ozumCarousel .flex-direction-nav,
+.ozumCarousel .flex-control-nav {
+  display: none !important;
+}
+
+.ozumCarousel.vanillaCarouselHazir {
+  position: relative;
+  overflow: hidden;
+}
+
+.ozumCarousel.vanillaCarouselHazir .flexslider,
+.ozumCarousel.vanillaCarouselHazir .slides,
+.ozumCarousel.vanillaCarouselHazir .slides > li {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ozumCarousel.vanillaCarouselHazir .flexslider {
+  position: static !important;
+  overflow: visible !important;
+}
+
+.ozumCarousel.vanillaCarouselHazir .slides {
+  position: relative !important;
+  display: block !important;
+}
+
+.ozumCarousel.vanillaCarouselHazir .slides > li {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.008);
+  transition: opacity 0.55s ease, visibility 0.55s ease, transform 0.8s ease;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+}
+
+.ozumCarousel.vanillaCarouselHazir .slides > li.vanillaAktif {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.vanillaCarouselOk {
+  position: absolute;
+  top: 50%;
+  z-index: 8;
+  width: 46px;
+  height: 46px;
+  margin-top: -23px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: 50%;
+  background: rgba(20,20,20,0.5);
+  cursor: pointer;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.vanillaCarouselOk::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #FFFFFF;
+  border-right: 2px solid #FFFFFF;
+}
+
+.vanillaCarouselOnceki {
+  left: 18px;
+}
+
+.vanillaCarouselOnceki::before {
+  transform: translate(-38%, -50%) rotate(-135deg);
+}
+
+.vanillaCarouselSonraki {
+  right: 18px;
+}
+
+.vanillaCarouselSonraki::before {
+  transform: translate(-62%, -50%) rotate(45deg);
+}
+
+.vanillaCarouselOk:hover,
+.vanillaCarouselOk:focus-visible {
+  background: rgba(222,3,3,0.9);
+  outline: 3px solid rgba(255,255,255,0.75);
+  outline-offset: 2px;
+}
+
+.vanillaCarouselNoktalar {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+
+.vanillaCarouselNokta {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.65);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.vanillaCarouselNokta.vanillaNoktaAktif {
+  width: 24px;
+  background: #FFFFFF;
+}
+
+@media only screen and (min-width: 761px) {
+  .ozumHeroCarousel {
+    height: clamp(390px, 34vw, 530px) !important;
+  }
+
+  .ozumGaleriCarousel {
+    height: clamp(330px, 29vw, 450px) !important;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .ozumCarousel {
+    width: calc(100% - 20px) !important;
+    min-height: 0 !important;
+    border-radius: 10px;
+  }
+
+  .ozumHeroCarousel,
+  .ozumGaleriCarousel {
+    height: 280px;
+  }
+
+  .ozumCarousel.vanillaCarouselHazir .slides > li {
+    background-size: contain !important;
+    background-color: transparent !important;
+  }
+
+  .ozumHeroCarousel {
+    background: #090909 !important;
+  }
+
+  .ozumGaleriCarousel {
+    background: #F2F2F2 !important;
+  }
+
+  .vanillaCarouselOk {
+    width: 42px;
+    height: 42px;
+    margin-top: -21px;
+  }
+
+  .vanillaCarouselOnceki {
+    left: 8px;
+  }
+
+  .vanillaCarouselSonraki {
+    right: 8px;
+  }
+
+  .vanillaCarouselNoktalar {
+    bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ozumCarousel.vanillaCarouselHazir .slides > li {
+    transition: none !important;
+  }
+}
+
+
+
+/* =========================
+   RESPONSIVE GALERİ ORAN DÜZELTMESİ
+   ========================= */
+.ozumGaleriCarousel {
+  transition: height 0.38s ease;
+  background: #F2F2F2 !important;
+}
+
+.ozumGaleriCarousel.vanillaCarouselHazir .slides > li {
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-color: #F2F2F2 !important;
+}
+
+/* Eski sabit masaüstü yüksekliğini geçersiz kıl. */
+@media only screen and (min-width: 761px) {
+  .ozumGaleriCarousel {
+    height: 520px;
+  }
+
+  .ozumGaleriCarousel,
+  .ozumGaleriCarousel .flexslider,
+  .ozumGaleriCarousel .slides,
+  .ozumGaleriCarousel .slides > li {
+    min-height: 320px !important;
+    max-height: 760px !important;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .ozumGaleriCarousel {
+    transition-duration: 0.28s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ozumGaleriCarousel {
+    transition: none !important;
+  }
+}
+
+
+
+/* =========================
+   RESPONSIVE HİZMET KARTLARI
+   ========================= */
+.urunkutular {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  grid-template-areas:
+    "ev hava"
+    "ticari hava"
+    "vrf vrf";
+  gap: 18px;
+  width: 92% !important;
+  max-width: 1120px !important;
+  margin: 42px auto 56px auto !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+.urunkutular .solSutun,
+.urunkutular .sagSutun {
+  display: contents !important;
+}
+
+.urunkutular .solSutun > a:nth-child(1) {
+  grid-area: ev;
+}
+
+.urunkutular .solSutun > a:nth-child(2) {
+  grid-area: ticari;
+}
+
+.urunkutular .solSutun > a:nth-child(3) {
+  grid-area: vrf;
+}
+
+.urunkutular .sagSutun > a.vrfm {
+  display: none !important;
+}
+
+.urunkutular .sagSutun > a:last-child {
+  grid-area: hava;
+}
+
+.urunkutular a {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  text-decoration: none;
+  background: #F2F2F2;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.055);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.urunkutular a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.085);
+}
+
+.urunkutular a:focus-visible {
+  outline: 3px solid #DE0303;
+  outline-offset: 3px;
+}
+
+.urunkutular a > div {
+  position: relative;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden;
+  border-radius: inherit;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.urunkutular .solSutun > a:nth-child(1) > div,
+.urunkutular .solSutun > a:nth-child(2) > div {
+  aspect-ratio: 16 / 8.2;
+}
+
+.urunkutular .solSutun > a:nth-child(3) > div {
+  aspect-ratio: 16 / 5.2;
+}
+
+.urunkutular .sagSutun > a:last-child > div {
+  height: 100% !important;
+  min-height: 100% !important;
+}
+
+.urunkutular .sagSutun > a:last-child {
+  min-height: 100%;
+}
+
+.urunkutular a > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.56) 0%,
+    rgba(0,0,0,0.15) 42%,
+    rgba(0,0,0,0.02) 70%
+  );
+  transition: background 0.22s ease;
+}
+
+.urunkutular a:hover > div::before {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.62) 0%,
+    rgba(0,0,0,0.2) 44%,
+    rgba(0,0,0,0.04) 72%
+  );
+}
+
+.urunkutular .Absolute-Center {
+  position: absolute !important;
+  left: 24px !important;
+  right: 24px !important;
+  bottom: 22px !important;
+  top: auto !important;
+  z-index: 2;
+  width: auto !important;
+  height: auto !important;
+  transform: none !important;
+  text-align: left !important;
+}
+
+.urunkutular .Absolute-Center span {
+  display: inline-block;
+  color: #FFFFFF;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+  line-height: 1.25;
+  font-weight: 700;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+/* Tablet: iki sütun korunur ama koreografi sadeleşir. */
+@media only screen and (max-width: 900px) {
+  .urunkutular {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "ev ticari"
+      "hava hava"
+      "vrf vrf";
+    gap: 14px;
+    margin-top: 32px !important;
+    margin-bottom: 44px !important;
+  }
+
+  .urunkutular .solSutun > a:nth-child(1) > div,
+  .urunkutular .solSutun > a:nth-child(2) > div {
+    aspect-ratio: 4 / 3;
+  }
+
+  .urunkutular .sagSutun > a:last-child > div {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 7.2;
+  }
+
+  .urunkutular .solSutun > a:nth-child(3) > div {
+    aspect-ratio: 16 / 7.2;
+  }
+}
+
+/* Mobil: tek kolon, sabit ve dengeli ritim. */
+@media only screen and (max-width: 600px) {
+  .urunkutular {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "ev"
+      "ticari"
+      "vrf"
+      "hava";
+    gap: 12px;
+    width: calc(100% - 24px) !important;
+    margin: 26px auto 36px auto !important;
+  }
+
+  .urunkutular .solSutun > a:nth-child(1) > div,
+  .urunkutular .solSutun > a:nth-child(2) > div,
+  .urunkutular .solSutun > a:nth-child(3) > div,
+  .urunkutular .sagSutun > a:last-child > div {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
+  }
+
+  .urunkutular a {
+    border-radius: 10px;
+  }
+
+  .urunkutular .Absolute-Center {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 17px !important;
+  }
+
+  .urunkutular .Absolute-Center span {
+    font-size: 1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .urunkutular a,
+  .urunkutular a > div::before {
+    transition: none !important;
+  }
+}
+
 </style>  
 
 
@@ -101,8 +1686,8 @@ body {
 
 
         
-<div id="flexslider-container" class="flexslider-container"  >   
-    <div class="flexslider">
+<section id="ana-hero-carousel" class="flexslider-container ozumCarousel ozumHeroCarousel" aria-label="Özüm Klima öne çıkan çözümleri">   
+    <div class="flexslider ozumHeroSlider">
         <ul class="slides" >  
   
                       
@@ -122,30 +1707,289 @@ Loop
 
                       
   </ul>
-    </div>   
+    </div>
+</section>   
          
          
-<script>    
-    
-          
-$(window).load(function() {     
+<script>
+(function () {
+  "use strict";
 
+  function hazirlaCarousel(containerId, ayarlar) {
+    var container = document.getElementById(containerId);
 
-    $('.flexslider').flexslider({
-        startAt: 0,      
+    if (!container) {
+      return;
+    }
 
-        controlNav: false,
-        animationLoop: true,
-        slideshow: true,
-        animation: "fade",
-        directionNav: true,
-        slideshowSpeed: 7000, 
-  
-    });  
-           
+    var liste = container.querySelector(".slides");
+    var slaytlar = liste ? liste.children : [];
+    var aktifIndex = 0;
+    var zamanlayici = null;
+    var noktalar = [];
+    var dokunmaBaslangicX = null;
+    var hareketAzalt = false;
 
-}); 
+    if (!liste || !slaytlar.length) {
+      return;
+    }
 
+    if (container.getAttribute("data-carousel-ready") === "1") {
+      return;
+    }
+
+    container.setAttribute("data-carousel-ready", "1");
+    container.classList.add("vanillaCarouselHazir");
+
+    var onceki = document.createElement("button");
+    onceki.type = "button";
+    onceki.className = "vanillaCarouselOk vanillaCarouselOnceki";
+    onceki.setAttribute("aria-label", "Önceki görsel");
+
+    var sonraki = document.createElement("button");
+    sonraki.type = "button";
+    sonraki.className = "vanillaCarouselOk vanillaCarouselSonraki";
+    sonraki.setAttribute("aria-label", "Sonraki görsel");
+
+    container.appendChild(onceki);
+    container.appendChild(sonraki);
+
+    if (ayarlar.noktalar && slaytlar.length > 1) {
+      var noktaAlani = document.createElement("div");
+      noktaAlani.className = "vanillaCarouselNoktalar";
+      noktaAlani.setAttribute("aria-label", "Slayt seçimi");
+
+      for (var n = 0; n < slaytlar.length; n++) {
+        (function (index) {
+          var nokta = document.createElement("button");
+          nokta.type = "button";
+          nokta.className = "vanillaCarouselNokta";
+          nokta.setAttribute("aria-label", (index + 1) + ". görsele git");
+          nokta.addEventListener("click", function () {
+            goster(index, true);
+          });
+          noktalar.push(nokta);
+          noktaAlani.appendChild(nokta);
+        })(n);
+      }
+
+      container.appendChild(noktaAlani);
+    }
+
+    function arkaPlanUrl(slide) {
+      var stil = window.getComputedStyle(slide);
+      var deger = stil.backgroundImage || "";
+      var eslesme = deger.match(/^url\(["']?(.*?)["']?\)$/);
+      return eslesme ? eslesme[1] : "";
+    }
+
+    function carouselYukseklikAyarla(slide) {
+      var url = arkaPlanUrl(slide);
+
+      if (!url) {
+        container.style.height = ayarlar.varsayilanYukseklik(window.innerWidth) + "px";
+        return;
+      }
+
+      var img = new Image();
+
+      img.onload = function () {
+        var genislik = container.clientWidth;
+        var oran = img.naturalHeight / img.naturalWidth;
+        var yukseklik = Math.round(genislik * oran);
+        var sinirlar = ayarlar.yukseklikSinirlari(window.innerWidth);
+
+        yukseklik = Math.max(sinirlar.min, Math.min(yukseklik, sinirlar.max));
+        container.style.height = yukseklik + "px";
+      };
+
+      img.onerror = function () {
+        container.style.height = ayarlar.varsayilanYukseklik(window.innerWidth) + "px";
+      };
+
+      img.src = url;
+    }
+
+    function goster(index, kullaniciEtkilesimi) {
+      if (index >= slaytlar.length) {
+        index = 0;
+      }
+
+      if (index < 0) {
+        index = slaytlar.length - 1;
+      }
+
+      for (var i = 0; i < slaytlar.length; i++) {
+        var aktif = i === index;
+        slaytlar[i].classList.toggle("vanillaAktif", aktif);
+        slaytlar[i].setAttribute("aria-hidden", aktif ? "false" : "true");
+      }
+
+      for (var j = 0; j < noktalar.length; j++) {
+        var noktaAktif = j === index;
+        noktalar[j].classList.toggle("vanillaNoktaAktif", noktaAktif);
+        noktalar[j].setAttribute("aria-current", noktaAktif ? "true" : "false");
+      }
+
+      aktifIndex = index;
+      carouselYukseklikAyarla(slaytlar[aktifIndex]);
+
+      if (kullaniciEtkilesimi) {
+        yenidenBaslat();
+      }
+    }
+
+    function sonrakiSlayt(kullaniciEtkilesimi) {
+      goster(aktifIndex + 1, kullaniciEtkilesimi);
+    }
+
+    function oncekiSlayt(kullaniciEtkilesimi) {
+      goster(aktifIndex - 1, kullaniciEtkilesimi);
+    }
+
+    function durdur() {
+      if (zamanlayici !== null) {
+        window.clearTimeout(zamanlayici);
+        zamanlayici = null;
+      }
+    }
+
+    function zamanla() {
+      durdur();
+
+      if (slaytlar.length < 2 || document.hidden) {
+        return;
+      }
+
+      zamanlayici = window.setTimeout(function () {
+        sonrakiSlayt(false);
+        zamanla();
+      }, 5000);
+    }
+
+    function baslat() {
+      zamanla();
+    }
+
+    function yenidenBaslat() {
+      zamanla();
+    }
+
+    onceki.addEventListener("click", function () {
+      oncekiSlayt(true);
+    });
+
+    sonraki.addEventListener("click", function () {
+      sonrakiSlayt(true);
+    });
+
+    container.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        oncekiSlayt(true);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        sonrakiSlayt(true);
+      }
+    });
+
+    container.addEventListener("touchstart", function (event) {
+      if (event.touches && event.touches.length === 1) {
+        dokunmaBaslangicX = event.touches[0].clientX;
+      }
+    }, { passive: true });
+
+    container.addEventListener("touchend", function (event) {
+      if (dokunmaBaslangicX === null || !event.changedTouches || !event.changedTouches.length) {
+        return;
+      }
+
+      var fark = event.changedTouches[0].clientX - dokunmaBaslangicX;
+      dokunmaBaslangicX = null;
+
+      if (Math.abs(fark) < 45) {
+        return;
+      }
+
+      if (fark < 0) {
+        sonrakiSlayt(true);
+      } else {
+        oncekiSlayt(true);
+      }
+    }, { passive: true });
+
+    window.addEventListener("resize", function () {
+      carouselYukseklikAyarla(slaytlar[aktifIndex]);
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        durdur();
+      } else {
+        baslat();
+      }
+    });
+
+    goster(0, false);
+    baslat();
+  }
+
+  function baslatCarouseller() {
+    hazirlaCarousel("ana-hero-carousel", {
+      noktalar: true,
+      yukseklikSinirlari: function (genislik) {
+        if (genislik <= 760) {
+          return { min: 190, max: 430 };
+        }
+
+        return { min: 390, max: 530 };
+      },
+      varsayilanYukseklik: function (genislik) {
+        return genislik <= 760 ? 260 : 500;
+      }
+    });
+
+    hazirlaCarousel("uygulama-galeri-carousel", {
+      noktalar: false,
+      yukseklikSinirlari: function (genislik) {
+        if (genislik <= 480) {
+          return { min: 220, max: 520 };
+        }
+
+        if (genislik <= 760) {
+          return { min: 260, max: 560 };
+        }
+
+        if (genislik <= 1180) {
+          return { min: 320, max: 720 };
+        }
+
+        return { min: 360, max: 760 };
+      },
+      varsayilanYukseklik: function (genislik) {
+        if (genislik <= 480) {
+          return 300;
+        }
+
+        if (genislik <= 760) {
+          return 360;
+        }
+
+        return 520;
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", baslatCarouseller);
+  } else {
+    baslatCarouseller();
+  }
+
+  window.addEventListener("load", function () {
+    baslatCarouseller();
+  });
+})();
 </script>     
             
 
@@ -251,130 +2095,147 @@ Yanl&#305;&#351; tercih tad&#305;n&#305;z&#305; ka&#231;&#305;r&#305;r. Ke&#351;
 
     
 
-<Div  class="yorums">
 
-   <Div class="slo1"  style="border-bottom:1px solid #E9E9E9"> <span>M&uuml;&#351;teri Yorumlar&#305; </span> </div>   <BR>
-  
-    
- <div  class="beyaz"  >     
-      <Div    class="beyazicerikTas"  >
-               
-            <div class="hakkimizda"  >
-        
-       
-<div class="slideshow-container">
+<section class="musteriYorumlari" aria-labelledby="musteri-yorumlari-baslik">
+  <div class="musteriYorumlariBaslik">
+    <span class="musteriYorumlariEtiket">Gerçek deneyimler</span>
+    <h2 id="musteri-yorumlari-baslik">Müşterilerimiz ne söylüyor?</h2>
+    <p>Antalya'da keşif, montaj ve teknik servis süreçlerimiz hakkında müşterilerimizin görüşleri.</p>
+  </div>
 
+  <div class="yorumSlider" id="yorumSlider">
 <%
 Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select top 20 * from yorumlar where onay=1"
-Rs.Open rSQL, baglanti, 1, 3 
+Rs.Open rSQL, baglanti, 1, 3
 
-Do while not Rs.Eof                                                                                                                                                                                                                  
+Dim yorumSayisi
+yorumSayisi = Rs.RecordCount
+
+If yorumSayisi > 0 Then
+  Do While Not Rs.Eof
+%>
+    <article class="yorumKart">
+      <div class="yorumIkon" aria-hidden="true">
+        <i class="fas fa-quote-left"></i>
+      </div>
+      <blockquote class="yorumMetni"><%=Rs("yorum") %></blockquote>
+      <span class="yorumAltBilgi">Özüm Klima müşterisi</span>
+    </article>
+<%
+    Rs.MoveNext
+  Loop
+Else
+%>
+    <div class="yorumBos">Henüz yayınlanmış müşteri yorumu bulunmuyor.</div>
+<%
+End If
 %>
 
+<% If yorumSayisi > 1 Then %>
+    <button class="yorumYon yorumOnceki" type="button" aria-label="Önceki yorumu göster" onclick="yorumDegistir(-1)">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="yorumYon yorumSonraki" type="button" aria-label="Sonraki yorumu göster" onclick="yorumDegistir(1)">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+<% End If %>
+  </div>
 
-<div class="mySlides">
-  <q><%=Rs("yorum") %></q>
-</div>
+<% If yorumSayisi > 1 Then %>
+  <div class="yorumNoktalar" aria-label="Müşteri yorumu seçimi">
+    <% For i = 1 To yorumSayisi %>
+      <button class="yorumNokta" type="button" aria-label="<%=i%>. yorumu göster" onclick="yorumSec(<%=i - 1%>)"></button>
+    <% Next %>
+  </div>
+<% End If %>
 
+  <div class="yorumAltAlan">
+    <div class="yorumAltMetin">
+      <strong>Hizmet deneyiminizi paylaşın</strong>
+      <span>Yorumlarınız hizmet kalitemizi geliştirmemize ve yeni müşterilerimizin doğru karar vermesine yardımcı olur.</span>
+    </div>
 
-<%  
-Rs.MoveNExt
-Loop
-%>  
+    <div class="yorumAksiyonlar">
+      <a class="yorumButon" href="kurumsal.asp?id=20">Tüm yorumlar ve değerlendirme</a>
+      <a class="yorumSosyal" href="<%=ayars("face")%>" target="_blank" rel="noopener" aria-label="Facebook">
+        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+      </a>
+      <a class="yorumSosyal" href="<%=ayars("insta")%>" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>
 
-</div>
+<script>
+(function () {
+  var aktifYorum = 0;
+  var yorumlar = document.getElementsByClassName("yorumKart");
+  var noktalar = document.getElementsByClassName("yorumNokta");
+  var otomatikGecis;
 
-<div class="dot-container">         
-<% for i=1 to Rs.recordcount %>
-  <span class="dot" onclick="currentSlide(<%=i%>)"></span>     
-  <% next %>
-</div>
+  function yorumGoster(index) {
+    var i;
 
+    if (!yorumlar.length) {
+      return;
+    }
 
+    if (index >= yorumlar.length) {
+      aktifYorum = 0;
+    } else if (index < 0) {
+      aktifYorum = yorumlar.length - 1;
+    } else {
+      aktifYorum = index;
+    }
 
-   
-   
-   
-   
-   <script> 
-   
-   var slideIndex = 1;
-showSlides(slideIndex);
+    for (i = 0; i < yorumlar.length; i++) {
+      yorumlar[i].className = yorumlar[i].className.replace(" yorumKartAktif", "");
+    }
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+    for (i = 0; i < noktalar.length; i++) {
+      noktalar[i].className = noktalar[i].className.replace(" yorumNoktaAktif", "");
+      noktalar[i].setAttribute("aria-current", "false");
+    }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+    yorumlar[aktifYorum].className += " yorumKartAktif";
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-
-  if (slides.length === 0) {
-    return;
+    if (noktalar.length && noktalar[aktifYorum]) {
+      noktalar[aktifYorum].className += " yorumNoktaAktif";
+      noktalar[aktifYorum].setAttribute("aria-current", "true");
+    }
   }
 
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+  function otomatikBaslat() {
+    if (yorumlar.length > 1) {
+      otomatikGecis = window.setInterval(function () {
+        yorumGoster(aktifYorum + 1);
+      }, 9000);
+    }
   }
 
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
+  window.yorumDegistir = function (yon) {
+    window.clearInterval(otomatikGecis);
+    yorumGoster(aktifYorum + yon);
+    otomatikBaslat();
+  };
 
-  slides[slideIndex-1].style.display = "block";
+  window.yorumSec = function (index) {
+    window.clearInterval(otomatikGecis);
+    yorumGoster(index);
+    otomatikBaslat();
+  };
 
-  if (dots.length > 0 && dots[slideIndex-1]) {
-    dots[slideIndex-1].className += " active";
-  }
-}
-window.onload= function () {
- setInterval(function(){ 
-     plusSlides(1);
- }, 9000);
- }
-
-   
-   </script>                 
-                    
-                    
-                          
-                 <br>
-<a href="kurumsal.asp?id=20" style="color:#DE0303; font-size:1.2em; "> <B>T&Uuml;M YORUMLAR &raquo; &nbsp; | &nbsp; Bizi De&#287;erlendirin &raquo;</B></a>      
-            
-
-                 <BR><B>Antalya Klima</B> - Mitsubishi Klima Antalya Bayii &Ouml;z&uuml;m Klima sosyal medya hesaplar&#305;m&#305;z&#305; takip edin, yeni &uuml;r&uuml;nler, Antalya klima kampanyalar&#305;, s&uuml;rpriz indirimler ve ya&#351;am alanlar&#305;n&#305;za konfor katacak s&#305;n&#305;rs&#305;z se&#231;enekleri ke&#351;fedin.
-                 <BR><BR>
-                 
-              
-                   <Div class="sosyal">
-          <a href="<%=ayars("face")%>" target=_blank><i class="fab fa-facebook-f" style="font-size:2.4em; color:#0080C0"></i> </a>&nbsp;&nbsp;  
-                       <a href="<%=ayars("insta")%>" target=_blank><i class="fab fa-instagram" style="font-size:2.4em; color:#BF0060"></i> </a>&nbsp;&nbsp;
-                   </Div>
-                   
-            </div>
-
-       
-       <div style="clear:both" ></div>
-       </Div>   
-</div>      
+  yorumGoster(0);
+  otomatikBaslat();
+})();
+</script>
 
 
 
-  </div> 
-
-
-
-<div id="flexslider-container" class="flexslider-container"  >   
-    <div class="flexslider">
+<section id="uygulama-galeri-carousel" class="flexslider-container ozumCarousel ozumGaleriCarousel" aria-label="Özüm Klima uygulama galerisi">   
+    <div class="flexslider ozumGaleriSlider">
         <ul class="slides" >  
      
                       
@@ -399,63 +2260,107 @@ Loop
           
           
 
-        <Div  class="anlasmali">
-<a href="referanslar.asp" title="Klima Sistemleri Antalya ve Fazlas&#305;">              <Div class="slo1"  style="border-bottom:1px solid #E9E9E9"> <span>Referanslar </span> </Div>
-                
-<BR><BR>
-<div class="owl-carousel">  
+        
+</section>
 
-  <%
-set icerisi = Server.CreateObJect("ADODB.RecordSet")
+<section class="referansBolumu" aria-labelledby="referanslar-baslik">
+  <header class="referansBaslik">
+    <span class="referansEtiket">Kurumsal deneyim</span>
+    <h2 id="referanslar-baslik">İklimlendirme çözümlerimizde bizi tercih eden işletmeler</h2>
+    <p>Antalya'da konut, ofis ve ticari projelerde klima, VRF, havalandırma, montaj ve teknik servis hizmetleri sunduğumuz referanslarımızdan bazıları.</p>
+  </header>
+
+<%
+Set icerisi = Server.CreateObject("ADODB.Recordset")
 Sorgu = "Select * From refers"
-icerisi.open Sorgu,baglanti,1,3   
+icerisi.Open Sorgu, baglanti, 1, 3
 
-Do while not icerisi.Eof                                                                                                                                                                                                                  
-%>     
+Dim referansSayisi
+referansSayisi = icerisi.RecordCount
 
-  <div> <img src="ref/<%=icerisi("resim") %>" alt="Antalya Klima"> </div>    
-  
-  
-<%  
-icerisi.MoveNExt
-Loop
+If referansSayisi > 0 Then
+%>
+  <div class="referansAkis" role="region" aria-label="Özüm Klima referansları">
+    <div class="referansTrack">
+
+      <div class="referansGrup">
+<%
+  Do While Not icerisi.Eof
+%>
+       <%
+Dim referansIsim, referansLink
+
+referansIsim = Trim(CStr(icerisi("isim") & ""))
+referansLink = Trim(CStr(icerisi("link") & ""))
+
+If referansIsim = "" Then
+  referansIsim = "Özüm Klima referans müşterisi"
+End If
+
+If referansLink <> "" Then
+  If LCase(Left(referansLink, 7)) <> "http://" And LCase(Left(referansLink, 8)) <> "https://" Then
+    referansLink = "http://" & referansLink
+  End If
+Else
+  referansLink = "referanslar.asp"
+End If
 %>
 
-  
- 
-</div>                
+<a class="referansLogo"
+   href="<%=Server.HTMLEncode(referansLink)%>"
+   title="<%=Server.HTMLEncode(referansIsim)%> referans çalışması"
+   <% If referansLink <> "referanslar.asp" Then %>target="_blank" rel="noopener noreferrer"<% End If %>>
+
+  <img src="ref/<%=Server.HTMLEncode(icerisi("resim"))%>"
+       alt="<%=Server.HTMLEncode(referansIsim)%> - Özüm Klima iklimlendirme referansı"
+       loading="lazy"
+       decoding="async">
 </a>
+<%
+    icerisi.MoveNext
+  Loop
+%>
+      </div>
 
-   </Div>
-   <script>
-   
-   $(document).ready(function(){   
-  $(".owl-carousel").owlCarousel({
-  items:4,
-  margin:20,
-  width:265, 
-  loop:true,
-   autoWidth:true,
-   slideSpeed: 1000,  
-   paginationSpeed: 1000,
-    autoplay:true,
-    autoplayTimeout:3000,
-    autoplayHoverPause:true
+      <div class="referansGrup" aria-hidden="true">
+<%
+  icerisi.MoveFirst
+  Do While Not icerisi.Eof
+%>
+        <span class="referansLogo">
+          <img src="ref/<%=icerisi("resim") %>"
+               alt=""
+               loading="lazy"
+               decoding="async">
+        </span>
+<%
+    icerisi.MoveNext
+  Loop
+%>
+      </div>
 
-  
-  });
-});
-   
-   </script>
+    </div>
+  </div>
+<%
+Else
+%>
+  <div class="referansBos">Referanslarımız kısa süre içinde bu alanda yayınlanacaktır.</div>
+<%
+End If
 
- 
-   
-   
-               
-   
-   
- 
-   <DIV    class="urunkutular" >
+icerisi.Close
+Set icerisi = Nothing
+%>
+
+  <div class="referansAlt">
+    <a href="referanslar.asp" title="Özüm Klima referans projeleri">
+      Tüm referanslarımızı ve uygulama alanlarımızı inceleyin &raquo;
+    </a>
+  </div>
+</section>
+
+
+<DIV    class="urunkutular" >
        
                         
                         <Div class="solSutun">
