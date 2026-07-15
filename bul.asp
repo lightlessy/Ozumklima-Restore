@@ -14,7 +14,6 @@ End Function
 
 Function NormalizeSearch(ByVal value)
     Dim result
-
     result = LCase(Trim(CStr(value & "")))
     result = Replace(result, vbTab, " ")
     result = Replace(result, vbCr, " ")
@@ -27,10 +26,6 @@ Function NormalizeSearch(ByVal value)
     result = Replace(result, "?", " ")
     result = Replace(result, "(", " ")
     result = Replace(result, ")", " ")
-    result = Replace(result, "[", " ")
-    result = Replace(result, "]", " ")
-    result = Replace(result, "{", " ")
-    result = Replace(result, "}", " ")
     result = Replace(result, "-", " ")
     result = Replace(result, "_", " ")
     result = Replace(result, "/", " ")
@@ -57,29 +52,25 @@ Function StartsSql(ByVal fieldExpression, ByVal value)
     StartsSql = "LCase(Trim(Nz(" & fieldExpression & ",''))) LIKE '" & SqlText(LCase(value)) & "%'"
 End Function
 
-Function KeywordWordSql(ByVal fieldExpression, ByVal value)
-    Dim normalizedField
-
-    normalizedField = "LCase(Nz(" & fieldExpression & ",''))"
-    normalizedField = "Replace(" & normalizedField & ",',',' ')"
-    normalizedField = "Replace(" & normalizedField & ",'.',' ')"
-    normalizedField = "Replace(" & normalizedField & ",';',' ')"
-    normalizedField = "Replace(" & normalizedField & ",':',' ')"
-    normalizedField = "Replace(" & normalizedField & ",'-',' ')"
-    normalizedField = "Replace(" & normalizedField & ",'/',' ')"
-
-    KeywordWordSql = "(' ' & " & normalizedField & " & ' ') LIKE '% " & SqlText(LCase(value)) & " %'"
+Function KeywordSql(ByVal value)
+    Dim fieldValue
+    fieldValue = "LCase(Nz(p.keyw,''))"
+    fieldValue = "Replace(" & fieldValue & ",',',' ')"
+    fieldValue = "Replace(" & fieldValue & ",';',' ')"
+    fieldValue = "Replace(" & fieldValue & ",'.',' ')"
+    fieldValue = "Replace(" & fieldValue & ",'-',' ')"
+    KeywordSql = "(' ' & " & fieldValue & " & ' ') LIKE '% " & SqlText(LCase(value)) & " %'"
 End Function
 
 Dim t, s, d, bul, normalizedQuery, rawParts
-Dim tokens(), tokenCount, partIndex, tokenValue, duplicateToken, existingIndex
-Dim filterSql, tokenFilterSql, strongMatchSql, scoreSql, tokenScoreSql
-Dim sortSql, threshold, sqlQuery, object
+Dim tokens(), tokenCount, i, j, tokenValue, duplicateToken
+Dim whereSql, tokenWhere, tokenCandidate, relevanceSql, tokenScore
+Dim sortSql, sqlQuery, object
 
-t = Trim(Request.QueryString("t") & "")
-s = Trim(Request.QueryString("s") & "")
-d = Trim(Request.QueryString("d") & "")
-bul = Trim(Request.QueryString("bul") & "")
+t = Trim(Request("t") & "")
+s = Trim(Request("s") & "")
+d = Trim(Request("d") & "")
+bul = Trim(Request("bul") & "")
 
 If t <> "" And Not IsNumeric(t) Then t = ""
 If s <> "" And Not IsNumeric(s) Then s = ""
@@ -93,99 +84,84 @@ ReDim tokens(0)
 If normalizedQuery <> "" Then
     rawParts = Split(normalizedQuery, " ")
 
-    For partIndex = 0 To UBound(rawParts)
-        tokenValue = Trim(rawParts(partIndex))
+    For i = 0 To UBound(rawParts)
+        tokenValue = Trim(rawParts(i))
 
         If Len(tokenValue) >= 2 Then
             duplicateToken = False
 
-            For existingIndex = 0 To tokenCount - 1
-                If tokens(existingIndex) = tokenValue Then duplicateToken = True
+            For j = 0 To tokenCount - 1
+                If tokens(j) = tokenValue Then duplicateToken = True
             Next
 
             If Not duplicateToken Then
                 If tokenCount > 0 Then ReDim Preserve tokens(tokenCount)
                 tokens(tokenCount) = tokenValue
                 tokenCount = tokenCount + 1
-
                 If tokenCount = 6 Then Exit For
             End If
         End If
     Next
 End If
 
-Select Case d
-    Case "19"
-        sortSql = "fiyat ASC, relevance DESC, sira DESC"
-    Case "91"
-        sortSql = "fiyat DESC, relevance DESC, sira DESC"
-    Case Else
-        d = "0"
-        sortSql = "relevance DESC, sira DESC, AffiliateID DESC"
-End Select
+whereSql = "p.yayin=1"
+If t <> "" Then whereSql = whereSql & " AND p.tip=" & CLng(t)
+If s <> "" Then whereSql = whereSql & " AND p.surface=" & CLng(s)
 
-filterSql = "p.yayin=1"
-If t <> "" Then filterSql = filterSql & " AND p.tip=" & CLng(t)
-If s <> "" Then filterSql = filterSql & " AND p.surface=" & CLng(s)
-
-scoreSql = "0"
-tokenFilterSql = ""
-strongMatchSql = ""
+relevanceSql = "0"
+tokenWhere = ""
 
 If tokenCount > 0 Then
-    scoreSql = scoreSql & _
+    relevanceSql = relevanceSql & _
         "+IIF(" & ExactSql("p.isim", normalizedQuery) & ",1000,0)" & _
-        "+IIF(" & StartsSql("p.isim", normalizedQuery) & ",500,0)" & _
-        "+IIF(" & ContainsSql("p.isim", normalizedQuery) & ",260,0)" & _
         "+IIF(" & ExactSql("p.kodu", normalizedQuery) & ",900,0)" & _
-        "+IIF(" & ExactSql("ag.isim", normalizedQuery) & ",240,0)" & _
-        "+IIF(" & ExactSql("tp.isim", normalizedQuery) & ",240,0)" & _
-        "+IIF(" & ExactSql("sf.isim", normalizedQuery) & ",220,0)"
+        "+IIF(" & StartsSql("p.isim", normalizedQuery) & ",500,0)" & _
+        "+IIF(" & ContainsSql("p.isim", normalizedQuery) & ",260,0)"
 
-    For partIndex = 0 To tokenCount - 1
-        tokenValue = tokens(partIndex)
+    For i = 0 To tokenCount - 1
+        tokenValue = tokens(i)
 
-        Dim nameMatch, codeMatch, categoryMatch, keywordMatch, descriptionMatch, anyTokenMatch
-        nameMatch = ContainsSql("p.isim", tokenValue)
-        codeMatch = ContainsSql("p.kodu", tokenValue)
-        categoryMatch = "(" & ContainsSql("ag.isim", tokenValue) & " OR " & ContainsSql("tp.isim", tokenValue) & " OR " & ContainsSql("sf.isim", tokenValue) & ")"
-        keywordMatch = KeywordWordSql("p.keyw", tokenValue)
-        descriptionMatch = ContainsSql("p.descr", tokenValue)
-        anyTokenMatch = "(" & nameMatch & " OR " & codeMatch & " OR " & categoryMatch & " OR " & keywordMatch & " OR " & descriptionMatch & ")"
+        tokenCandidate = "(" & _
+            ContainsSql("p.isim", tokenValue) & " OR " & _
+            ContainsSql("p.kodu", tokenValue) & " OR " & _
+            ContainsSql("ag.isim", tokenValue) & " OR " & _
+            ContainsSql("tp.isim", tokenValue) & " OR " & _
+            ContainsSql("sf.isim", tokenValue) & " OR " & _
+            KeywordSql(tokenValue) & _
+        ")"
 
-        If tokenFilterSql <> "" Then tokenFilterSql = tokenFilterSql & " AND "
-        tokenFilterSql = tokenFilterSql & anyTokenMatch
+        If tokenWhere <> "" Then tokenWhere = tokenWhere & " AND "
+        tokenWhere = tokenWhere & tokenCandidate
 
-        If strongMatchSql <> "" Then strongMatchSql = strongMatchSql & " OR "
-        strongMatchSql = strongMatchSql & "(" & nameMatch & " OR " & codeMatch & " OR " & categoryMatch & " OR " & keywordMatch & ")"
+        tokenScore = _
+            "+IIF(" & ContainsSql("p.isim", tokenValue) & ",120,0)" & _
+            "+IIF(" & ContainsSql("p.kodu", tokenValue) & ",150,0)" & _
+            "+IIF((" & ContainsSql("ag.isim", tokenValue) & " OR " & ContainsSql("tp.isim", tokenValue) & " OR " & ContainsSql("sf.isim", tokenValue) & "),90,0)" & _
+            "+IIF(" & KeywordSql(tokenValue) & ",35,0)" & _
+            "+IIF(" & ContainsSql("p.descr", tokenValue) & ",8,0)"
 
-        tokenScoreSql = _
-            "+IIF(" & nameMatch & ",120,0)" & _
-            "+IIF(" & codeMatch & ",150,0)" & _
-            "+IIF(" & categoryMatch & ",90,0)" & _
-            "+IIF(" & keywordMatch & ",35,0)" & _
-            "+IIF(" & descriptionMatch & ",8,0)"
-
-        scoreSql = scoreSql & tokenScoreSql
+        relevanceSql = relevanceSql & tokenScore
     Next
 
-    filterSql = filterSql & " AND (" & tokenFilterSql & ") AND (" & strongMatchSql & ")"
+    whereSql = whereSql & " AND (" & tokenWhere & ")"
 End If
 
-threshold = 60
-If tokenCount > 1 Then threshold = 60 + ((tokenCount - 1) * 25)
+Select Case d
+    Case "19"
+        sortSql = "p.fiyat ASC, (" & relevanceSql & ") DESC, p.sira DESC"
+    Case "91"
+        sortSql = "p.fiyat DESC, (" & relevanceSql & ") DESC, p.sira DESC"
+    Case Else
+        d = "0"
+        sortSql = "(" & relevanceSql & ") DESC, p.sira DESC, p.AffiliateID DESC"
+End Select
 
 sqlQuery = _
-    "SELECT * FROM (" & _
-        "SELECT p.*, (" & scoreSql & ") AS relevance " & _
-        "FROM ((products AS p " & _
-        "LEFT JOIN anagrup AS ag ON p.anagrup=ag.id) " & _
-        "LEFT JOIN tip AS tp ON p.tip=tp.id) " & _
-        "LEFT JOIN surface AS sf ON p.surface=sf.id " & _
-        "WHERE " & filterSql & _
-    ") AS ranked " & _
-    "WHERE relevance >= " & threshold & " " & _
-    "ORDER BY " & sortSql
+    "SELECT p.* FROM ((products AS p " & _
+    "LEFT JOIN anagrup AS ag ON p.anagrup=ag.id) " & _
+    "LEFT JOIN tip AS tp ON p.tip=tp.id) " & _
+    "LEFT JOIN surface AS sf ON p.surface=sf.id " & _
+    "WHERE " & whereSql & " ORDER BY " & sortSql
 %>
 <!doctype html>
 <html lang="tr">
@@ -199,117 +175,76 @@ sqlQuery = _
     <link rel="stylesheet" href="css/fontawesome-all.css">
     <script src="js/jquery-2.1.1.js"></script>
     <style>
-        .search-page,.search-page *{box-sizing:border-box}
-        .search-page{width:calc(100% - 32px);max-width:1200px;margin:28px auto 65px;font-family:'Source Sans Pro',Arial,sans-serif;color:#333}
-        .search-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;border:1px solid #e2e2e2;background:#f7f7f7}
-        .search-title{margin:0;font-size:1.45rem;line-height:1.25}
-        .search-title strong{color:#111}
-        .search-sort{min-width:210px;padding:9px 10px;border:1px solid #d4d4d4;background:#fff;font:inherit}
-        .search-note{margin:12px 0 0;color:#666;font-size:.94rem}
-        .search-empty{padding:46px 22px;margin-top:22px;border:1px dashed #ccc;background:#fafafa;text-align:center;font-size:1.08rem;color:#555}
-        .search-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:25px}
-        .search-card{min-width:0;border:1px solid #e3e3e3;background:#fff;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
-        .search-card:hover{border-color:#1f9bb7;transform:translateY(-2px);box-shadow:0 7px 20px rgba(0,0,0,.07)}
-        .search-card a{display:flex;height:100%;flex-direction:column;color:#222;text-decoration:none}
-        .search-card__image{display:flex;aspect-ratio:4/3;align-items:center;justify-content:center;overflow:hidden;background:#f5f5f5}
-        .search-card__image img{display:block;width:100%;height:100%;object-fit:contain}
-        .search-card__placeholder{padding:24px;text-align:center;color:#777}
-        .search-card__body{display:flex;flex:1;flex-direction:column;padding:17px}
-        .search-card__name{font-size:1.18rem;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
-        .search-card__description{margin-top:9px;color:#666;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-        .search-card__action{align-self:flex-end;margin-top:auto;padding-top:17px;font-weight:700;color:#147d94}
-        @media(max-width:900px){.search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-        @media(max-width:600px){.search-page{width:calc(100% - 20px);margin-top:18px}.search-head{align-items:stretch;flex-direction:column;padding:15px}.search-sort{width:100%;min-width:0}.search-grid{grid-template-columns:1fr;gap:15px}.search-card a{display:grid;grid-template-columns:120px minmax(0,1fr)}.search-card__image{aspect-ratio:1}.search-card__body{padding:14px}.search-card__description{font-size:.93rem;-webkit-line-clamp:2}}
+        .search-page,.search-page *{box-sizing:border-box}.search-page{width:calc(100% - 32px);max-width:1200px;margin:28px auto 65px;font-family:'Source Sans Pro',Arial,sans-serif;color:#333}.search-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;border:1px solid #e2e2e2;background:#f7f7f7}.search-title{margin:0;font-size:1.45rem;line-height:1.25}.search-sort{min-width:210px;padding:9px 10px;border:1px solid #d4d4d4;background:#fff;font:inherit}.search-note{margin:12px 0 0;color:#666;font-size:.94rem}.search-empty{padding:46px 22px;margin-top:22px;border:1px dashed #ccc;background:#fafafa;text-align:center;font-size:1.08rem;color:#555}.search-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:25px}.search-card{min-width:0;border:1px solid #e3e3e3;background:#fff}.search-card a{display:flex;height:100%;flex-direction:column;color:#222;text-decoration:none}.search-card__image{display:flex;aspect-ratio:4/3;align-items:center;justify-content:center;overflow:hidden;background:#f5f5f5}.search-card__image img{display:block;width:100%;height:100%;object-fit:contain}.search-card__placeholder{padding:24px;text-align:center;color:#777}.search-card__body{display:flex;flex:1;flex-direction:column;padding:17px}.search-card__name{font-size:1.18rem;font-weight:700;line-height:1.35}.search-card__description{margin-top:9px;color:#666;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.search-card__action{align-self:flex-end;margin-top:auto;padding-top:17px;font-weight:700;color:#147d94}@media(max-width:900px){.search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.search-page{width:calc(100% - 20px)}.search-head{align-items:stretch;flex-direction:column}.search-sort{width:100%;min-width:0}.search-grid{grid-template-columns:1fr}.search-card a{display:grid;grid-template-columns:120px minmax(0,1fr)}.search-card__image{aspect-ratio:1}}
     </style>
 </head>
 <body>
 <!--#include file='ust.asp'-->
-
 <main class="search-page">
     <div class="search-head">
-        <h1 class="search-title">
-        <% If bul <> "" Then %>
-            Arama: <strong><%=Server.HTMLEncode(bul)%></strong>
-        <% Else %>
-            Ürün arama
-        <% End If %>
-        </h1>
-
-    <% If tokenCount > 0 Then %>
+        <h1 class="search-title"><% If bul <> "" Then %>Arama: <strong><%=Server.HTMLEncode(bul)%></strong><% Else %>Ürün arama<% End If %></h1>
+        <% If tokenCount > 0 Then %>
         <select class="search-sort" id="searchSort" aria-label="Arama sonuçlarını sırala">
-            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=0"<% If d = "0" Then Response.Write " selected" %>>En alakalı</option>
-            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=19"<% If d = "19" Then Response.Write " selected" %>>Ucuzdan pahalıya</option>
-            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=91"<% If d = "91" Then Response.Write " selected" %>>Pahalıdan ucuza</option>
+            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=0"<% If d="0" Then Response.Write " selected" %>>En alakalı</option>
+            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=19"<% If d="19" Then Response.Write " selected" %>>Ucuzdan pahalıya</option>
+            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=91"<% If d="91" Then Response.Write " selected" %>>Pahalıdan ucuza</option>
         </select>
-    <% End If %>
+        <% End If %>
     </div>
 
 <% If tokenCount = 0 Then %>
     <div class="search-empty">Arama yapmak için en az iki karakterlik bir ürün adı, model, kategori veya özellik yazın.</div>
 <% Else %>
-    <p class="search-note">Sonuçlar ürün adı, model kodu, kategori, ürün grubu ve kontrollü anahtar kelime eşleşmesine göre sıralanır.</p>
 <%
-    Set object = Server.CreateObject("ADODB.Recordset")
-    object.Open sqlQuery, baglanti, 1, 1
-
-    If object.EOF Then
+Set object = Server.CreateObject("ADODB.Recordset")
+On Error Resume Next
+object.Open sqlQuery, baglanti, 1, 1
+If Err.Number <> 0 Then
+    Response.Write "<div class='search-empty'>Arama şu anda tamamlanamadı. Lütfen tekrar deneyin.</div>"
+    Err.Clear
+ElseIf object.EOF Then
 %>
-    <div class="search-empty">“<%=Server.HTMLEncode(bul)%>” için yeterince alakalı bir ürün bulunamadı.</div>
-<%
-    Else
-%>
+    <div class="search-empty">“<%=Server.HTMLEncode(bul)%>” için alakalı ürün bulunamadı.</div>
+<% Else %>
+    <p class="search-note">Sonuçlar ürün adı, model kodu, kategori ve kontrollü anahtar kelime eşleşmesine göre sıralanır.</p>
     <div class="search-grid">
 <%
-        Do While Not object.EOF
-            Dim productName, productId, productImage, productLink, productDescription
-            productName = object("isim") & ""
-            productId = object("AffiliateID") & ""
-            productImage = object("foto1") & ""
-            productDescription = object("descr") & ""
-            productLink = "detay.asp?id=" & productId
-
-            If productName <> "" Then productLink = cevir(productName) & "-" & productId
+Do While Not object.EOF
+    Dim urunIsim, urunID, urunFoto, urunLink, urunDescr
+    urunIsim = object("isim") & ""
+    urunID = object("AffiliateID") & ""
+    urunFoto = object("foto1") & ""
+    urunDescr = object("descr") & ""
+    urunLink = cevir(urunIsim) & "-" & urunID
 %>
         <article class="search-card">
-            <a href="<%=Server.HTMLEncode(productLink)%>">
+            <a href="<%=Server.HTMLEncode(urunLink)%>">
                 <div class="search-card__image">
-                <% If productImage <> "" Then %>
-                    <img src="urunler/<%=Server.HTMLEncode(productImage)%>" width="480" height="360" loading="lazy" alt="<%=Server.HTMLEncode(productName)%>">
-                <% Else %>
-                    <span class="search-card__placeholder">Görsel yakında eklenecek</span>
-                <% End If %>
+                <% If urunFoto <> "" Then %><img src="urunler/<%=Server.HTMLEncode(urunFoto)%>" alt="<%=Server.HTMLEncode(urunIsim)%>" loading="lazy"><% Else %><span class="search-card__placeholder">Görsel yakında eklenecek</span><% End If %>
                 </div>
                 <div class="search-card__body">
-                    <div class="search-card__name"><%=Server.HTMLEncode(productName)%></div>
-                <% If Trim(productDescription) <> "" Then %>
-                    <div class="search-card__description"><%=Server.HTMLEncode(productDescription)%></div>
-                <% End If %>
-                    <div class="search-card__action">İncele →</div>
+                    <div class="search-card__name"><%=Server.HTMLEncode(urunIsim)%></div>
+                    <% If Trim(urunDescr) <> "" Then %><div class="search-card__description"><%=Server.HTMLEncode(urunDescr)%></div><% End If %>
+                    <div class="search-card__action">Ürünü incele</div>
                 </div>
             </a>
         </article>
 <%
-            object.MoveNext
-        Loop
+    object.MoveNext
+Loop
 %>
     </div>
 <%
-    End If
-
-    If object.State = 1 Then object.Close
-    Set object = Nothing
 End If
+If Not object Is Nothing Then
+    If object.State = 1 Then object.Close
+End If
+Set object = Nothing
+On Error GoTo 0
 %>
+<% End If %>
 </main>
-
 <!--#include file='alt.asp'-->
-<script>
-$(function(){
-    $('#searchSort').on('change',function(){
-        var target=$(this).val();
-        if(target){window.location.href=target;}
-    });
-});
-</script>
+<script>$(function(){$('#searchSort').on('change',function(){if(this.value){window.location.href=this.value;}});});</script>
 </body>
 </html>
