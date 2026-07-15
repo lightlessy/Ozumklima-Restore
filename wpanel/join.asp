@@ -491,7 +491,7 @@ strTextAreaName = "notlar"
                     <div class="product-add-colors">
 <%
 Dim renkIndex
-For renkIndex = 1 To 5
+For renkIndex = 1 To 10
 %>
                         <input class="jscolor" name="renk<%=renkIndex%>" value="0" aria-label="Renk <%=renkIndex%>">
 <%
@@ -499,6 +499,21 @@ Next
 %>
                     </div>
                     <div class="product-add-help">Kullanılmayan renkleri 0 olarak bırakabilirsiniz.</div>
+                </div>
+
+                <label>Beden / numara seçenekleri</label>
+                <div>
+                    <div class="product-add-colors">
+<%
+Dim bedenIndex
+For bedenIndex = 1 To 10
+%>
+                        <input type="text" name="beden<%=bedenIndex%>" value="0" maxlength="50" aria-label="Beden veya numara <%=bedenIndex%>">
+<%
+Next
+%>
+                    </div>
+                    <div class="product-add-help">Klima ürünlerinde kullanılmıyorsa 0 olarak bırakabilirsiniz.</div>
                 </div>
             </div>
         </div>
