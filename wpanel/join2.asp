@@ -57,8 +57,9 @@ If UCase(Request.ServerVariables("REQUEST_METHOD")) <> "POST" Then
 End If
 
 Dim isim, tip, anagrup, surface, notlar, delivery, yayin
-Dim kodu, stok, keyw, descr, renk1, renk2, renk3, renk4, renk5
-Dim sql1, checkRs, identityRs, yeniID, errorDescription
+Dim kodu, stok, keyw, descr, sql1, checkRs, identityRs
+Dim yeniID, errorDescription, i, renk(10), beden(10)
+Dim optionColumns, optionValues
 
 isim = FormValue("isim")
 tip = FormValue("tip")
@@ -70,21 +71,30 @@ yayin = IntegerOrDefault(FormValue("yayin"), 0)
 kodu = FormValue("kodu")
 keyw = Request.Form("keyw") & ""
 descr = Request.Form("descr") & ""
-renk1 = FormValue("renk1")
-renk2 = FormValue("renk2")
-renk3 = FormValue("renk3")
-renk4 = FormValue("renk4")
-renk5 = FormValue("renk5")
 stok = 10
 
 If kodu = "" Then kodu = "0"
-If renk1 = "" Then renk1 = "0"
-If renk2 = "" Then renk2 = "0"
-If renk3 = "" Then renk3 = "0"
-If renk4 = "" Then renk4 = "0"
-If renk5 = "" Then renk5 = "0"
 If delivery < 0 Then delivery = 3
 If yayin <> 1 Then yayin = 0
+
+optionColumns = ""
+optionValues = ""
+
+For i = 1 To 10
+    renk(i) = FormValue("renk" & i)
+    beden(i) = FormValue("beden" & i)
+
+    If renk(i) = "" Then renk(i) = "0"
+    If beden(i) = "" Then beden(i) = "0"
+
+    optionColumns = optionColumns & ", renk" & i
+    optionValues = optionValues & ", '" & SqlText(renk(i)) & "'"
+Next
+
+For i = 1 To 10
+    optionColumns = optionColumns & ", beden" & i
+    optionValues = optionValues & ", '" & SqlText(beden(i)) & "'"
+Next
 
 If isim = "" Then
     StopWithError "Ürün adı boş bırakılamaz.", anagrup, tip
@@ -132,18 +142,13 @@ If surface > 0 Then
 End If
 
 sql1 = "INSERT INTO products " & _
-       "(isim, tip, anagrup, surface, renk1, renk2, renk3, renk4, renk5, " & _
-       "notlar, delivery, yayin, kodu, stok, keyw, descr) " & _
+       "(isim, tip, anagrup, surface" & optionColumns & _
+       ", notlar, delivery, yayin, kodu, stok, keyw, descr) " & _
        "VALUES (" & _
        "'" & SqlText(isim) & "', " & _
        tip & ", " & _
        anagrup & ", " & _
-       surface & ", " & _
-       "'" & SqlText(renk1) & "', " & _
-       "'" & SqlText(renk2) & "', " & _
-       "'" & SqlText(renk3) & "', " & _
-       "'" & SqlText(renk4) & "', " & _
-       "'" & SqlText(renk5) & "', " & _
+       surface & optionValues & ", " & _
        "'" & SqlText(notlar) & "', " & _
        delivery & ", " & _
        yayin & ", " & _
