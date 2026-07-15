@@ -53,13 +53,7 @@ Function StartsSql(ByVal fieldExpression, ByVal value)
 End Function
 
 Function KeywordSql(ByVal value)
-    Dim fieldValue
-    fieldValue = "LCase(IIF(p.keyw Is Null,'',p.keyw))"
-    fieldValue = "Replace(" & fieldValue & ",',',' ')"
-    fieldValue = "Replace(" & fieldValue & ",';',' ')"
-    fieldValue = "Replace(" & fieldValue & ",'.',' ')"
-    fieldValue = "Replace(" & fieldValue & ",'-',' ')"
-    KeywordSql = "(' ' & " & fieldValue & " & ' ') LIKE '% " & SqlText(LCase(value)) & " %'"
+    KeywordSql = ContainsSql("p.keyw", value)
 End Function
 
 Dim t, s, d, bul, normalizedQuery, rawParts
@@ -104,7 +98,7 @@ If normalizedQuery <> "" Then
     Next
 End If
 
-whereSql = "p.yayin=1"
+whereSql = "(p.yayin<>0)"
 If t <> "" Then whereSql = whereSql & " AND p.tip=" & CLng(t)
 If s <> "" Then whereSql = whereSql & " AND p.surface=" & CLng(s)
 
@@ -127,16 +121,19 @@ If tokenCount > 0 Then
             ContainsSql("ag.isim", tokenValue) & " OR " & _
             ContainsSql("tp.isim", tokenValue) & " OR " & _
             ContainsSql("sf.isim", tokenValue) & " OR " & _
-            KeywordSql(tokenValue) & _
+            KeywordSql(tokenValue) & " OR " & _
+            ContainsSql("p.descr", tokenValue) & _
         ")"
 
-        If tokenWhere <> "" Then tokenWhere = tokenWhere & " AND "
+        If tokenWhere <> "" Then tokenWhere = tokenWhere & " OR "
         tokenWhere = tokenWhere & tokenCandidate
 
         tokenScore = _
             "+IIF(" & ContainsSql("p.isim", tokenValue) & ",120,0)" & _
             "+IIF(" & ContainsSql("p.kodu", tokenValue) & ",150,0)" & _
-            "+IIF((" & ContainsSql("ag.isim", tokenValue) & " OR " & ContainsSql("tp.isim", tokenValue) & " OR " & ContainsSql("sf.isim", tokenValue) & "),90,0)" & _
+            "+IIF((" & ContainsSql("ag.isim", tokenValue) & _
+                " OR " & ContainsSql("tp.isim", tokenValue) & _
+                " OR " & ContainsSql("sf.isim", tokenValue) & "),90,0)" & _
             "+IIF(" & KeywordSql(tokenValue) & ",35,0)" & _
             "+IIF(" & ContainsSql("p.descr", tokenValue) & ",8,0)"
 
@@ -175,76 +172,395 @@ sqlQuery = _
     <link rel="stylesheet" href="css/fontawesome-all.css">
     <script src="js/jquery-2.1.1.js"></script>
     <style>
-        .search-page,.search-page *{box-sizing:border-box}.search-page{width:calc(100% - 32px);max-width:1200px;margin:28px auto 65px;font-family:'Source Sans Pro',Arial,sans-serif;color:#333}.search-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;border:1px solid #e2e2e2;background:#f7f7f7}.search-title{margin:0;font-size:1.45rem;line-height:1.25}.search-sort{min-width:210px;padding:9px 10px;border:1px solid #d4d4d4;background:#fff;font:inherit}.search-note{margin:12px 0 0;color:#666;font-size:.94rem}.search-empty{padding:46px 22px;margin-top:22px;border:1px dashed #ccc;background:#fafafa;text-align:center;font-size:1.08rem;color:#555}.search-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:25px}.search-card{min-width:0;border:1px solid #e3e3e3;background:#fff}.search-card a{display:flex;height:100%;flex-direction:column;color:#222;text-decoration:none}.search-card__image{display:flex;aspect-ratio:4/3;align-items:center;justify-content:center;overflow:hidden;background:#f5f5f5}.search-card__image img{display:block;width:100%;height:100%;object-fit:contain}.search-card__placeholder{padding:24px;text-align:center;color:#777}.search-card__body{display:flex;flex:1;flex-direction:column;padding:17px}.search-card__name{font-size:1.18rem;font-weight:700;line-height:1.35}.search-card__description{margin-top:9px;color:#666;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.search-card__action{align-self:flex-end;margin-top:auto;padding-top:17px;font-weight:700;color:#147d94}@media(max-width:900px){.search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.search-page{width:calc(100% - 20px)}.search-head{align-items:stretch;flex-direction:column}.search-sort{width:100%;min-width:0}.search-grid{grid-template-columns:1fr}.search-card a{display:grid;grid-template-columns:120px minmax(0,1fr)}.search-card__image{aspect-ratio:1}}
+        .search-page,
+        .search-page * {
+            box-sizing: border-box;
+        }
+
+        .search-page {
+            width: min(1240px, calc(100% - 40px));
+            margin: 34px auto 72px;
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            color: #1f2933;
+        }
+
+        .search-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 26px;
+            border: 1px solid #e4e7eb;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+        }
+
+        .search-title {
+            min-width: 0;
+            margin: 0;
+            font-size: clamp(1.35rem, 2vw, 1.85rem);
+            line-height: 1.2;
+            letter-spacing: -.02em;
+            overflow-wrap: anywhere;
+        }
+
+        .search-title strong {
+            color: #147d94;
+        }
+
+        .search-sort {
+            width: 230px;
+            max-width: 100%;
+            padding: 12px 42px 12px 14px;
+            border: 1px solid #d8dee4;
+            border-radius: 10px;
+            background: #fff;
+            color: #202b33;
+            font: inherit;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .search-sort:focus {
+            border-color: #147d94;
+            box-shadow: 0 0 0 3px rgba(20, 125, 148, .14);
+        }
+
+        .search-note {
+            margin: 18px 2px 0;
+            color: #66727c;
+            font-size: .96rem;
+            line-height: 1.55;
+        }
+
+        .search-empty {
+            margin-top: 24px;
+            padding: 54px 24px;
+            border: 1px dashed #cdd5dc;
+            border-radius: 14px;
+            background: #fafcfd;
+            text-align: center;
+            color: #52606d;
+            font-size: 1.06rem;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            margin-top: 26px;
+            align-items: stretch;
+        }
+
+        .search-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #e2e7eb;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, .055);
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+        }
+
+        .search-card:hover {
+            transform: translateY(-4px);
+            border-color: #c9d7dc;
+            box-shadow: 0 16px 34px rgba(15, 23, 42, .11);
+        }
+
+        .search-card a {
+            display: flex;
+            height: 100%;
+            min-height: 100%;
+            flex-direction: column;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .search-card__image {
+            display: flex;
+            width: 100%;
+            aspect-ratio: 16 / 11;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid #edf0f2;
+            background: linear-gradient(180deg, #fbfbfb 0%, #f3f5f6 100%);
+        }
+
+        .search-card__image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 14px;
+            object-fit: contain;
+            transition: transform .28s ease;
+        }
+
+        .search-card:hover .search-card__image img {
+            transform: scale(1.035);
+        }
+
+        .search-card__placeholder {
+            padding: 24px;
+            text-align: center;
+            color: #7b8794;
+        }
+
+        .search-card__body {
+            display: flex;
+            min-height: 210px;
+            flex: 1;
+            flex-direction: column;
+            padding: 19px 19px 18px;
+        }
+
+        .search-card__name {
+            display: -webkit-box;
+            overflow: hidden;
+            color: #1f2933;
+            font-size: 1.08rem;
+            font-weight: 700;
+            line-height: 1.42;
+            overflow-wrap: anywhere;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+
+        .search-card__description {
+            display: -webkit-box;
+            overflow: hidden;
+            margin-top: 11px;
+            color: #66727c;
+            font-size: .96rem;
+            line-height: 1.52;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+
+        .search-card__action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            align-self: flex-start;
+            margin-top: auto;
+            padding-top: 19px;
+            color: #147d94;
+            font-weight: 700;
+        }
+
+        .search-card__action::after {
+            content: "→";
+            transition: transform .2s ease;
+        }
+
+        .search-card:hover .search-card__action::after {
+            transform: translateX(4px);
+        }
+
+        @media (min-width: 1180px) {
+            .search-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 820px) {
+            .search-page {
+                width: min(100% - 28px, 760px);
+                margin-top: 24px;
+            }
+
+            .search-head {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 20px;
+            }
+
+            .search-sort {
+                width: 100%;
+            }
+
+            .search-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .search-page {
+                width: calc(100% - 20px);
+                margin: 16px auto 54px;
+            }
+
+            .search-head {
+                border-radius: 11px;
+                padding: 17px;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                margin-top: 20px;
+            }
+
+            .search-card a {
+                display: grid;
+                grid-template-columns: 132px minmax(0, 1fr);
+                min-height: 150px;
+            }
+
+            .search-card__image {
+                height: 100%;
+                min-height: 150px;
+                aspect-ratio: auto;
+                border-right: 1px solid #edf0f2;
+                border-bottom: 0;
+            }
+
+            .search-card__image img {
+                padding: 10px;
+            }
+
+            .search-card__body {
+                min-height: 0;
+                padding: 15px 14px;
+            }
+
+            .search-card__name {
+                font-size: 1rem;
+                -webkit-line-clamp: 3;
+            }
+
+            .search-card__description {
+                margin-top: 7px;
+                font-size: .9rem;
+                -webkit-line-clamp: 2;
+            }
+
+            .search-card__action {
+                padding-top: 12px;
+                font-size: .94rem;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .search-card a {
+                grid-template-columns: 112px minmax(0, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
 <!--#include file='ust.asp'-->
 <main class="search-page">
     <div class="search-head">
-        <h1 class="search-title"><% If bul <> "" Then %>Arama: <strong><%=Server.HTMLEncode(bul)%></strong><% Else %>Ürün arama<% End If %></h1>
+        <h1 class="search-title">
+            <% If bul <> "" Then %>
+                Arama: <strong><%=Server.HTMLEncode(bul)%></strong>
+            <% Else %>
+                Ürün arama
+            <% End If %>
+        </h1>
+
         <% If tokenCount > 0 Then %>
-        <select class="search-sort" id="searchSort" aria-label="Arama sonuçlarını sırala">
-            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=0"<% If d="0" Then Response.Write " selected" %>>En alakalı</option>
-            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=19"<% If d="19" Then Response.Write " selected" %>>Ucuzdan pahalıya</option>
-            <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=91"<% If d="91" Then Response.Write " selected" %>>Pahalıdan ucuza</option>
-        </select>
+            <select class="search-sort" id="searchSort" aria-label="Arama sonuçlarını sırala">
+                <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=0"<% If d="0" Then Response.Write " selected" %>>En alakalı</option>
+                <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=19"<% If d="19" Then Response.Write " selected" %>>Ucuzdan pahalıya</option>
+                <option value="?bul=<%=Server.URLEncode(bul)%>&amp;t=<%=Server.URLEncode(t)%>&amp;s=<%=Server.URLEncode(s)%>&amp;d=91"<% If d="91" Then Response.Write " selected" %>>Pahalıdan ucuza</option>
+            </select>
         <% End If %>
     </div>
 
-<% If tokenCount = 0 Then %>
-    <div class="search-empty">Arama yapmak için en az iki karakterlik bir ürün adı, model, kategori veya özellik yazın.</div>
-<% Else %>
+    <% If tokenCount = 0 Then %>
+        <div class="search-empty">Arama yapmak için en az iki karakterlik bir ürün adı, model, kategori veya özellik yazın.</div>
+    <% Else %>
 <%
 Set object = Server.CreateObject("ADODB.Recordset")
+
 On Error Resume Next
-object.Open sqlQuery, baglanti, 1, 1
+object.Open sqlQuery, baglanti, 0, 1
+
 If Err.Number <> 0 Then
-    Response.Write "<div class='search-empty'>Arama şu anda tamamlanamadı. Lütfen tekrar deneyin.</div>"
+    Dim sqlErrorNumber, sqlErrorDescription
+
+    sqlErrorNumber = Err.Number
+    sqlErrorDescription = Err.Description
+
     Err.Clear
-ElseIf object.EOF Then
+    On Error GoTo 0
+
+    Response.Write "<div class='search-empty'>Arama şu anda tamamlanamadı. Lütfen tekrar deneyin.</div>"
+
+    Set object = Nothing
+    Response.End
+End If
+
+On Error GoTo 0
+
+If object.EOF Then
 %>
-    <div class="search-empty">“<%=Server.HTMLEncode(bul)%>” için alakalı ürün bulunamadı.</div>
+        <div class="search-empty">“<%=Server.HTMLEncode(bul)%>” için alakalı ürün bulunamadı.</div>
 <% Else %>
-    <p class="search-note">Sonuçlar ürün adı, model kodu, kategori ve kontrollü anahtar kelime eşleşmesine göre sıralanır.</p>
-    <div class="search-grid">
+        <p class="search-note">Sonuçlar ürün adı, model kodu, kategori, yüzey tipi, açıklama ve anahtar kelime eşleşmesine göre sıralanır.</p>
+
+        <div class="search-grid">
 <%
 Do While Not object.EOF
     Dim urunIsim, urunID, urunFoto, urunLink, urunDescr
+
     urunIsim = object("isim") & ""
     urunID = object("AffiliateID") & ""
     urunFoto = object("foto1") & ""
     urunDescr = object("descr") & ""
     urunLink = cevir(urunIsim) & "-" & urunID
 %>
-        <article class="search-card">
-            <a href="<%=Server.HTMLEncode(urunLink)%>">
-                <div class="search-card__image">
-                <% If urunFoto <> "" Then %><img src="urunler/<%=Server.HTMLEncode(urunFoto)%>" alt="<%=Server.HTMLEncode(urunIsim)%>" loading="lazy"><% Else %><span class="search-card__placeholder">Görsel yakında eklenecek</span><% End If %>
-                </div>
-                <div class="search-card__body">
-                    <div class="search-card__name"><%=Server.HTMLEncode(urunIsim)%></div>
-                    <% If Trim(urunDescr) <> "" Then %><div class="search-card__description"><%=Server.HTMLEncode(urunDescr)%></div><% End If %>
-                    <div class="search-card__action">Ürünü incele</div>
-                </div>
-            </a>
-        </article>
+            <article class="search-card">
+                <a href="<%=Server.HTMLEncode(urunLink)%>">
+                    <div class="search-card__image">
+                        <% If urunFoto <> "" Then %>
+                            <img src="urunler/<%=Server.HTMLEncode(urunFoto)%>" alt="<%=Server.HTMLEncode(urunIsim)%>" loading="lazy">
+                        <% Else %>
+                            <span class="search-card__placeholder">Görsel yakında eklenecek</span>
+                        <% End If %>
+                    </div>
+
+                    <div class="search-card__body">
+                        <div class="search-card__name"><%=Server.HTMLEncode(urunIsim)%></div>
+
+                        <% If Trim(urunDescr) <> "" Then %>
+                            <div class="search-card__description"><%=Server.HTMLEncode(urunDescr)%></div>
+                        <% End If %>
+
+                        <div class="search-card__action">Ürünü incele</div>
+                    </div>
+                </a>
+            </article>
 <%
     object.MoveNext
 Loop
 %>
-    </div>
+        </div>
 <%
 End If
+
 If Not object Is Nothing Then
     If object.State = 1 Then object.Close
 End If
+
 Set object = Nothing
-On Error GoTo 0
 %>
-<% End If %>
+    <% End If %>
 </main>
 <!--#include file='alt.asp'-->
-<script>$(function(){$('#searchSort').on('change',function(){if(this.value){window.location.href=this.value;}});});</script>
+<script>
+$(function () {
+    $('#searchSort').on('change', function () {
+        if (this.value) {
+            window.location.href = this.value;
+        }
+    });
+});
+</script>
 </body>
 </html>
