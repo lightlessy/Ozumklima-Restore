@@ -1,0 +1,156 @@
+/* Ozum Klima product listing cards
+   Normalizes image sizes, card heights and responsive column counts. */
+
+.kutularic {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(18px, 2.2vw, 28px);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto !important;
+  padding: 0 16px;
+  box-sizing: border-box;
+  text-align: initial !important;
+}
+
+.kutularic > div {
+  display: flex !important;
+  flex-direction: column;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  box-sizing: border-box;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.045);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.kutularic > div:nth-child(2n),
+.kutularic > div:nth-child(3n) {
+  margin-right: 0 !important;
+}
+
+.kutularic > div:hover {
+  background: #fff;
+  border-color: #1f9bb7;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+  transform: translateY(-3px);
+}
+
+.kutularic > div > a {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  color: inherit;
+}
+
+.kutularic .urRes {
+  position: relative;
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.kutularic .urRes > img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  object-position: center;
+}
+
+.kutularic .urRes .yeni img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  object-fit: initial;
+}
+
+.kutularic .urAd {
+  order: 2;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-start;
+  min-height: 4.5em;
+  padding: 16px 18px 12px !important;
+  box-sizing: border-box;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.kutularic .yildiz {
+  order: 3;
+  float: none !important;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 32px;
+  padding: 0 18px 12px !important;
+  box-sizing: border-box;
+}
+
+.kutularic .detayal {
+  order: 4;
+  float: none !important;
+  align-self: flex-end;
+  width: auto !important;
+  min-width: 90px;
+  margin: 0 18px 18px !important;
+  padding: 10px 16px !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 980px) {
+  .kutularic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .kutularic {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  .kutularic .urRes {
+    aspect-ratio: 16 / 10;
+  }
+
+  .kutularic .urAd {
+    min-height: 0;
+    padding: 14px 15px 10px !important;
+    font-size: 1.05em;
+    text-align: left;
+  }
+
+  .kutularic .yildiz {
+    padding: 0 15px 10px !important;
+  }
+
+  .kutularic .detayal {
+    align-self: stretch;
+    margin: 0 15px 15px !important;
+    text-align: center;
+  }
+}

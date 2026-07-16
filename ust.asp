@@ -1,3 +1,16 @@
+<%
+Dim ozmProductCardPage
+ozmProductCardPage = LCase(Request.ServerVariables("SCRIPT_NAME"))
+If InStr(ozmProductCardPage, "/klima.asp") > 0 Or _
+   InStr(ozmProductCardPage, "/vrf_sistemler.asp") > 0 Or _
+   InStr(ozmProductCardPage, "/isi_pompasi.asp") > 0 Or _
+   InStr(ozmProductCardPage, "/havalandirma.asp") > 0 Then
+%>
+<link rel="stylesheet" href="css/product-cards.css">
+<%
+End If
+%>
+
 <!--#include file='db.asp'-->
 
 <div class="menuLogoTas">
