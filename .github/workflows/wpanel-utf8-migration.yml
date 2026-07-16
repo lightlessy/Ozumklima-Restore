@@ -1,0 +1,173 @@
+name: One-time wpanel UTF-8 migration
+
+on:
+  push:
+    branches:
+      - utf-8
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: github.repository == 'lightlessy/Ozumklima-Restore'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Convert wpanel text files and publish one clean commit
+        shell: bash
+        env:
+          ORIGINAL_PARENT: 604b57bc25e7367a44ebd8061261708fcf1176a1
+          TARGET_BRANCH: utf-8
+        run: |
+          set -euo pipefail
+
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+
+          git cat-file -e "${ORIGINAL_PARENT}^{commit}"
+          git reset --hard "${ORIGINAL_PARENT}"
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import xml.etree.ElementTree as ET
+
+          ROOT = Path("wpanel")
+          TEXT_SUFFIXES = {
+              ".asp", ".htm", ".html", ".css", ".js", ".txt", ".xml", ".config"
+          }
+
+          LEGACY_TRANSLATION = str.maketrans({
+              "þ": "ş",
+              "Þ": "Ş",
+              "ý": "ı",
+              "Ý": "İ",
+              "ð": "ğ",
+              "Ð": "Ğ",
+          })
+
+          DOUBLE_ENCODED = {
+              "Ã§": "ç", "Ã‡": "Ç",
+              "Ã¶": "ö", "Ã–": "Ö",
+              "Ã¼": "ü", "Ãœ": "Ü",
+              "Ä±": "ı", "Ä°": "İ",
+              "ÅŸ": "ş", "Åž": "Ş",
+              "ÄŸ": "ğ", "Äž": "Ğ",
+          }
+
+          CHARSET_RE = re.compile(
+              r"(?i)(charset\s*=\s*[\"']?)(?:windows-1254|windows-1252|iso-8859-9|iso-8859-1|latin-5)"
+          )
+          CODEPAGE_RE = re.compile(
+              r"(?i)(codepage\s*=\s*[\"']?)(?:1254|1252|28599)"
+          )
+          RESPONSE_CHARSET_RE = re.compile(
+              r"(?i)(Response\.Charset\s*=\s*[\"'])(?:windows-1254|windows-1252|iso-8859-9|iso-8859-1|latin-5)([\"'])"
+          )
+          META_HEAD_RE = re.compile(r"(?i)(<head(?:\s[^>]*)?>)")
+          META_CHARSET_RE = re.compile(r"(?i)<meta\b[^>]*charset\s*=")
+
+          def decode_source(raw: bytes, path: Path) -> str:
+              if raw.startswith(b"\xef\xbb\xbf"):
+                  return raw.decode("utf-8-sig")
+              try:
+                  return raw.decode("utf-8")
+              except UnicodeDecodeError:
+                  try:
+                      return raw.decode("cp1254")
+                  except UnicodeDecodeError as exc:
+                      raise RuntimeError(f"Cannot decode {path}: {exc}") from exc
+
+          def repair_text(text: str) -> str:
+              text = text.translate(LEGACY_TRANSLATION)
+              for broken, fixed in DOUBLE_ENCODED.items():
+                  text = text.replace(broken, fixed)
+              text = CHARSET_RE.sub(r"\1utf-8", text)
+              text = CODEPAGE_RE.sub(r"\g<1>65001", text)
+              text = RESPONSE_CHARSET_RE.sub(r"\1utf-8\2", text)
+              return text
+
+          changed = []
+          scanned = []
+
+          for path in sorted(ROOT.rglob("*")):
+              if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
+                  continue
+
+              raw = path.read_bytes()
+              if b"\x00" in raw:
+                  raise RuntimeError(f"Unexpected binary data in text file: {path}")
+
+              newline = "\r\n" if b"\r\n" in raw else "\n"
+              original = decode_source(raw, path)
+              updated = repair_text(original)
+
+              if path.suffix.lower() in {".asp", ".htm", ".html"}:
+                  if "<head" in updated.lower() and not META_CHARSET_RE.search(updated):
+                      updated = META_HEAD_RE.sub(r"\1" + newline + '<meta charset="utf-8">', updated, count=1)
+
+              normalized = updated.replace("\r\n", "\n").replace("\r", "\n")
+              output = normalized.replace("\n", newline).encode("utf-8")
+              scanned.append(path)
+
+              if output != raw:
+                  path.write_bytes(output)
+                  changed.append(path)
+
+          web_config = ROOT / "web.config"
+          web_config_text = """<?xml version="1.0" encoding="utf-8"?>
+          <configuration>
+            <system.webServer>
+              <asp codePage="65001" />
+            </system.webServer>
+          </configuration>
+          """
+          web_config.write_text(web_config_text, encoding="utf-8", newline="\n")
+          if web_config not in changed:
+              changed.append(web_config)
+
+          forbidden = (
+              "windows-1254", "windows-1252", "iso-8859-9", "iso-8859-1", "latin-5",
+              "þ", "Þ", "ý", "Ý", "ð", "Ð",
+              "Ã§", "Ã‡", "Ã¶", "Ã–", "Ã¼", "Ãœ", "Ä±", "Ä°", "ÅŸ", "Åž", "ÄŸ", "Äž",
+          )
+
+          for path in sorted(ROOT.rglob("*")):
+              if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
+                  continue
+              text = path.read_text(encoding="utf-8")
+              lowered = text.lower()
+              leftovers = [token for token in forbidden if (token.lower() in lowered if token.isascii() else token in text)]
+              if leftovers:
+                  raise RuntimeError(f"Legacy encoding marker remains in {path}: {leftovers}")
+
+          ET.parse(web_config)
+
+          print(f"Scanned {len(scanned)} text files; changed {len(changed)} files.")
+          for path in changed:
+              print(path)
+          PY
+
+          git add -A wpanel
+
+          if git diff --cached --quiet; then
+            echo "No migration changes detected."
+            exit 1
+          fi
+
+          TREE_SHA="$(git write-tree)"
+          NEW_COMMIT="$(printf '%s\n\n%s\n' \
+            'Migrate wpanel to UTF-8' \
+            'Convert legacy Windows-1254 text, normalize charset declarations, and set the Classic ASP code page to UTF-8.' \
+            | git commit-tree "${TREE_SHA}" -p "${ORIGINAL_PARENT}")"
+
+          git push \
+            --force-with-lease="refs/heads/${TARGET_BRANCH}:${GITHUB_SHA}" \
+            origin "${NEW_COMMIT}:refs/heads/${TARGET_BRANCH}"
+
+          echo "Published ${NEW_COMMIT}"
