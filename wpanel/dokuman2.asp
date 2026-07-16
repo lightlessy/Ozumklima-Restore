@@ -2,6 +2,7 @@
 
 <html>
 <head>   
+<meta charset="utf-8">
 <script language=javascript>
 
 function CloseWindow()
@@ -15,7 +16,7 @@ window.close();
 }
 
 </script>
-<title>Foto Güncelle</title>
+<title>Foto GÃ¼ncelle</title>
 <meta http-eqiv="Content-Type" content="windows-1254">      
 
 
@@ -59,6 +60,6 @@ content="1; URL=edits.asp?id=<%=id%>&g=<%=g%>&tip=<%=tip%>">
                  
                  <BR><BR><BR><CENTER>
 <font face=arial size=4 color=#0080C0>
-<b>Döküman Yüklendi... Lütfen Bekleyiniz.</b>
+<b>DÃ¶kÃ¼man YÃ¼klendi... LÃ¼tfen Bekleyiniz.</b>
 </CENTER>
 

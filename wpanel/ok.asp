@@ -1,12 +1,12 @@
 <HTML>
 <HEAD> 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">     
-<META NAME="author" CONTENT="MEGA TASARIM MÜH. İNT. HZM.">           
-<title>Tamamlandı</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">     
+<META NAME="author" CONTENT="MEGA TASARIM MÃœH. Ä°NT. HZM.">           
+<title>TamamlandÄ±</title>
 <script>
 
 
-var alertmessage="Fotoğraf Yüklendi"
+var alertmessage="FotoÄŸraf YÃ¼klendi"
 
 
 

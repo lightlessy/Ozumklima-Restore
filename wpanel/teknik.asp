@@ -3,6 +3,7 @@
       <!--#include file="menu.asp"-->  
 
 <HEAD>
+<meta charset="utf-8">
 
 
 
@@ -49,7 +50,7 @@ function ShowProgress()
 <input type="hidden" name="tip" value="<%=request.querystring("tip")%>">
 		    <BR><BR>	
 		 	
-	<INPUT TYPE=SUBMIT VALUE="YÜKLE">
+	<INPUT TYPE=SUBMIT VALUE="YÃœKLE">
 	</FORM> 
 	
 	</div>

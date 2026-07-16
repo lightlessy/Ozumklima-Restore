@@ -62,9 +62,9 @@ object.open Sorgula,baglanti,1,3
    	 
 <table border="1" bordercolor="#E6E6E6" bgcolor=#FFFFFF cellpadding="3" cellspacing="3" width=800 class=font>          
 
-<tr><td><b>Firma Adý:</b> </td><td><input type="text" name="firma"   value="<%=object("firma")%>" size="55"></td></tr>   
+<tr><td><b>Firma AdÄ±:</b> </td><td><input type="text" name="firma"   value="<%=object("firma")%>" size="55"></td></tr>   
 
-<tr><td colspan=2 bgcolor="#4D4D4D" style="color:#FFFFFF"> Ýletiþim Bilgileri </td></tr>  
+<tr><td colspan=2 bgcolor="#4D4D4D" style="color:#FFFFFF"> Ä°letiÅŸim Bilgileri </td></tr>  
 
 <tr bgcolor="#F0F0E8"><td><b>Adres:</b> </td><td> <TEXTAREA cols=50 name="adres"  rows=5><%=object("adres")%></TEXTAREA></td></tr>   
 <tr bgcolor="#F0F0E8"><td><b>Google Map:</b> </td><td> <TEXTAREA cols=50 name="map"  rows=5><%=object("map")%></TEXTAREA></td></tr>  
@@ -74,12 +74,12 @@ object.open Sorgula,baglanti,1,3
 <tr bgcolor="#F0F0E8"><td><b>GSM 1:</b> </td><td><input type="text" name="gsm"   value="<%=object("gsm")%>" size="55"></td></tr>  
 <tr bgcolor="#F0F0E8"><td><b>GSM 2:</b> </td><td><input type="text" name="gsm2"   value="<%=object("gsm2")%>" size="55"></td></tr>     
 <tr bgcolor="#F0F0E8"><td><b>E-Mail:</b> </td><td><input type="text" name="eposta"   value="<%=object("eposta")%>" size="55"></td></tr>  
-<tr bgcolor="#F0F0E8"><td><b>Ýletiþim Formu Maillerini Almak Ýstediðiniz Mail Adresi:</b> </td><td><input type="text" name="formail"   value="<%=object("formail")%>" size="55"></td></tr>           
+<tr bgcolor="#F0F0E8"><td><b>Ä°letiÅŸim Formu Maillerini Almak Ä°stediÄŸiniz Mail Adresi:</b> </td><td><input type="text" name="formail"   value="<%=object("formail")%>" size="55"></td></tr>           
 
-<tr><td colspan=2 bgcolor="#4D4D4D" style="color:#FFFFFF"> Giriþ Bilgileri </td></tr>     
+<tr><td colspan=2 bgcolor="#4D4D4D" style="color:#FFFFFF"> GiriÅŸ Bilgileri </td></tr>     
 
-<tr bgcolor="#E7EEF1"><td><b>Kullanýcý Adý:</b> </td><td><input type="text" name="kullanici"   value="<%=object("kullanici")%>" size="55"></td></tr>  
-<tr bgcolor="#E7EEF1"><td><b>Þifre:</b> </td><td><input type="text" name="sifre"   value="<%=object("sifre")%>" size="55"></td></tr>  
+<tr bgcolor="#E7EEF1"><td><b>KullanÄ±cÄ± AdÄ±:</b> </td><td><input type="text" name="kullanici"   value="<%=object("kullanici")%>" size="55"></td></tr>  
+<tr bgcolor="#E7EEF1"><td><b>Åžifre:</b> </td><td><input type="text" name="sifre"   value="<%=object("sifre")%>" size="55"></td></tr>  
 
  
 <tr><td colspan=2 bgcolor="#4D4D4D" style="color:#FFFFFF"> Banka Hesap Bilgileri </td></tr>     
@@ -96,7 +96,7 @@ object.open Sorgula,baglanti,1,3
 <tr bgcolor="#E4E1F7"><td><b>You Tube:</b> </td><td><input type="text" name="you"   value="<%=object("you")%>" size="55"></td></tr>
 
 <tr><td align=center colspan=3>
-<input type="submit" name="update" value="Güncelle">
+<input type="submit" name="update" value="GÃ¼ncelle">
 
 </td>      </form>
 

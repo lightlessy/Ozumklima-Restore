@@ -1,6 +1,7 @@
 <html>
 <head>
-<title>Kargolanmýþ Sipariþler</title>
+<meta charset="utf-8">
+<title>KargolanmÄ±ÅŸ SipariÅŸler</title>
 
   <!--#include file="menu.asp"-->                     
                
@@ -8,7 +9,7 @@
 </HEAD>   
 <body>  
 
-  <div class="baslik"> Kargolanmýþ Sipariþler </div>
+  <div class="baslik"> KargolanmÄ±ÅŸ SipariÅŸler </div>
 
 
 
@@ -34,7 +35,7 @@ mods1.open Sorgula,baglanti,1,3
      
  <tr bgcolor=#FFFFFF>
  <td colspan=2 class=onay>  
- <a href="ar_order_det.asp?gun=<%=mods1("gun")%>"><font color=#BF0000>  <B><%=mods1("gun")%></B></font><font color=#4E4E4E> &nbsp; Tarihli Sipariþler  » </a>    </font>              
+ <a href="ar_order_det.asp?gun=<%=mods1("gun")%>"><font color=#BF0000>  <B><%=mods1("gun")%></B></font><font color=#4E4E4E> &nbsp; Tarihli SipariÅŸler  Â» </a>    </font>              
 </td></tr>              
 
 

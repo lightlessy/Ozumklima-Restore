@@ -1,7 +1,7 @@
 <html>
  <head>
   <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css"> 
 
 <% grup = request.querystring("grup")
@@ -12,7 +12,7 @@ t = request.querystring("t")%>
    
   <!--#include file="menu.asp"-->   
     
-  <div class="baslik">Ürün Düzenle </div>
+  <div class="baslik">ÃœrÃ¼n DÃ¼zenle </div>
   
    
    <link rel="stylesheet" href="../css/jquery-ui.css">
@@ -142,7 +142,7 @@ gps.Open rSQL, baglanti, 1, 3
 <font color="#AE0000" size=4><b><%=gps("isim")%></b> <% if t<>"" then %> / <%=gpst("isim")%> <% end if %></font><BR><BR> <BR>
  
 
-     <font class="font" style="color:#4E4E4E; font-size:12px"> SIRALAMAYI DEĞİŞTİRMEK İÇİN SÜRÜKLEYİP BIRAKINIZ.       </font>        
+     <font class="font" style="color:#4E4E4E; font-size:12px"> SIRALAMAYI DEÄÄ°ÅTÄ°RMEK Ä°Ã‡Ä°N SÃœRÃœKLEYÄ°P BIRAKINIZ.       </font>        
         <BR><BR>
 
 
@@ -156,11 +156,11 @@ gps.Open rSQL, baglanti, 1, 3
 <div style="text-align:left; width:500px"><%=mods("isim")%> &nbsp;- &nbsp; Stok: <%=mods("stok")%> </div>
 
 <div>
-<input type="checkbox" name="Veri<%=k%>" value="<%=mods("AffiliateID")%>" <% if mods("urunana")=1 then %>checked <% end if %>> <font size=1>Ana Sayfada Göster </font>
+<input type="checkbox" name="Veri<%=k%>" value="<%=mods("AffiliateID")%>" <% if mods("urunana")=1 then %>checked <% end if %>> <font size=1>Ana Sayfada GÃ¶ster </font>
 </div>
 <div> 
 <a href="edits.asp?id=<%=mods("AffiliateID")%>&g=<%=mods("anagrup")%>&tip=<%=mods("tip")%>"><img src="images/edit.png" width=20></a>
-<a href="?psil2=1&id=<%=mods("AffiliateID")%>" onclick="return confirm('Kayıt silinecek. Onaylıyor Musunuz?')"><img src="images/del.png" width=20></a>
+<a href="?psil2=1&id=<%=mods("AffiliateID")%>" onclick="return confirm('KayÄ±t silinecek. OnaylÄ±yor Musunuz?')"><img src="images/del.png" width=20></a>
 </div>
 
    </li>
@@ -175,7 +175,7 @@ Loop
          </ul>
 
 
-            <input type="submit" value="Seçili Ürünleri Ana Sayfada Göster"><input type="hidden" name="toplam" value="<%=Int(k-1)%>"></td> 
+            <input type="submit" value="SeÃ§ili ÃœrÃ¼nleri Ana Sayfada GÃ¶ster"><input type="hidden" name="toplam" value="<%=Int(k-1)%>"></td> 
 
                   </form>       
          

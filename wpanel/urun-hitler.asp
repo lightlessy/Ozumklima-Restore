@@ -1,14 +1,14 @@
 <html>
  <head>
   <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css">
 </head>     
    
    
   <!--#include file="menu.asp"-->  
   
-<div class="baslik">Popüler Ürünler</div>
+<div class="baslik">PopÃ¼ler ÃœrÃ¼nler</div>
 <BR><BR>
 
 
@@ -42,7 +42,7 @@ Loop
 
    <BR>         
  <BR>
-<B>Ürün Hitleri </B>
+<B>ÃœrÃ¼n Hitleri </B>
            <BR><BR>
      
 </font>

@@ -3,7 +3,7 @@
 
   <body>  
 
-<div class="baslik">Slayt Düzenle </div>
+<div class="baslik">Slayt DÃ¼zenle </div>
 <BR><BR>
 
 
@@ -17,7 +17,7 @@ Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from flas where hid = "& Request.Form("id")
 Rs.Open rSQL, baglanti, 1, 3 
 Rs.Delete ' Sil
-Rs.Update ' Güncelle
+Rs.Update ' GÃ¼ncelle
 
 rs.close
 set rs = nothing 
@@ -72,21 +72,21 @@ object.open Sorgula,baglanti,1,3
           
 <tr> <td><b>Link:</b> </td><td><input type="text" name="adres"   value="<%=object("adres")%>" size="95"></td></tr> 
 
-<tr> <td><b>Sýralama:</b> </td><td><input type="text" name="sira"   value="<%=object("sira")%>" size="5"></td></tr>
+<tr> <td><b>SÄ±ralama:</b> </td><td><input type="text" name="sira"   value="<%=object("sira")%>" size="5"></td></tr>
    
   
 <input type="hidden" name="resim" value="<%=object("resim")%>"> 
 
 <input type="hidden" name="id" value="<%=sid%>"> 
 <tr><td align=center colspan=3>
-<input type="submit" name="update" value="Güncelle">
+<input type="submit" name="update" value="GÃ¼ncelle">
 
 </td>      </form>
 </div>        
   
 </tr>
 <tr><td colspan=2> 
-<a href="slayt_sil.asp"><font color="#3E3E3E" size=2>  <B>« Slayt Listesi  </B> </font></a>   </td></tr>
+<a href="slayt_sil.asp"><font color="#3E3E3E" size=2>  <B>Â« Slayt Listesi  </B> </font></a>   </td></tr>
    </tr></table>  
    
  
@@ -110,8 +110,8 @@ object.open Sorgula,baglanti,1,3
 <tr bgcolor=#F3F0E4 height=30>    
 
 <td align=center><b>Link</b></td>
-<td align=center><b>Görsel</b></td>
-<td align=center><font color=#0080C0><b>Düzenle</b></td><td align=center><font color=#FF0000><b>SÝL</b></td></tr>      
+<td align=center><b>GÃ¶rsel</b></td>
+<td align=center><font color=#0080C0><b>DÃ¼zenle</b></td><td align=center><font color=#FF0000><b>SÄ°L</b></td></tr>      
   
   	 
  
@@ -133,7 +133,7 @@ Do while not object.Eof
 <td align=center>    
 <input type="hidden" name="id" value="<%=object("hid")%>">      
 <input type="hidden" name="delete" value="1">        
-<input type="image" src="images/del.png"  onclick="return confirm('Kaydý Silmek Ýstiyor Musunuz?')"></td></form>
+<input type="image" src="images/del.png"  onclick="return confirm('KaydÄ± Silmek Ä°stiyor Musunuz?')"></td></form>
 
 
 </div>        

@@ -16,6 +16,7 @@
 %>
 <HTML>
 <HEAD>
+<meta charset="utf-8">
 <TITLE>Upload Finished</TITLE>
 <SCRIPT LANGUAGE="JavaScript">
 function CloseMe()
@@ -42,7 +43,7 @@ function CloseMe()
 
 <!--% End If %-->
 
-<TITLE>Dosya Yükleniyor...</TITLE>
+<TITLE>Dosya YÃ¼kleniyor...</TITLE>
 
 <style type='text/css'>td {font-family:arial; font-size: 9pt } td.spread {font-size: 6pt; line-height:6pt } td.brick {font-size:6pt; height:12px}</style>
 

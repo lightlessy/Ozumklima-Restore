@@ -48,6 +48,7 @@ Response.CacheControl =	"Public"
 %>
 <html>
 <head>
+<meta charset="utf-8">
 <title>RTE Colour Pallete</title>
 <%
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******

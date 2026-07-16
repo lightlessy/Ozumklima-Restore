@@ -1,5 +1,6 @@
      
 <HEAD>  
+<meta charset="utf-8">
 
 
    <%
@@ -37,7 +38,7 @@ function ShowProgress()
 
 <!--#INCLUDE file="menu.asp"-->
   
-    <div class="baslik">Fotoðraf Ekle</div>        
+    <div class="baslik">FotoÄŸraf Ekle</div>        
   
 
 <BR><BR>
@@ -50,13 +51,13 @@ function ShowProgress()
 
 
 <B>
-Fotoðraf Seçiniz:   </B>    
+FotoÄŸraf SeÃ§iniz:   </B>    
 <INPUT TYPE="FILE" SIZE="40" NAME="foto" MULTIPLE><BR>    <BR>       
        
 
 </td></tr>
   <tr><td colspan=2 align=center>
-	<INPUT TYPE=SUBMIT VALUE="YÜKLE">
+	<INPUT TYPE=SUBMIT VALUE="YÃœKLE">
 </td></tr>
 </table>
 	</FORM>       

@@ -1,7 +1,7 @@
    
 <!--#INCLUDE file="menu.asp"-->  
 
- <div class="baslik">Ýçerik Düzenle</div>  
+ <div class="baslik">Ä°Ã§erik DÃ¼zenle</div>  
 
   <body OnLoad="initialiseWebWizRTE();">  
   
@@ -25,7 +25,7 @@ Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from sayfalar where id = "& Request.Form("id")
 Rs.Open rSQL, baglanti, 1, 3 
 Rs.Delete ' Sil
-Rs.Update ' Güncelle
+Rs.Update ' GÃ¼ncelle
 
 rs.close
 set rs = nothing 
@@ -83,9 +83,9 @@ object.open Sorgula,baglanti,1,3
  <tr><td><b>Sayfa  Kategorisi </td><td  colspan=3>
 
 <select name="ana"> 
-<option value="0" <% if object("ana")=0 then %> selected <% end if %>  >Lütfen Seçiniz</option>   
+<option value="0" <% if object("ana")=0 then %> selected <% end if %>  >LÃ¼tfen SeÃ§iniz</option>   
 <option  value="1" <% if object("ana")=1 then %> selected <% end if %> >Kurumsal</option>    
-<option  value="2"  <% if object("ana")=2 then %> selected <% end if %> >Yardým</option>   
+<option  value="2"  <% if object("ana")=2 then %> selected <% end if %> >YardÄ±m</option>   
 </select>  
 
 </td></tr>	     
@@ -93,7 +93,7 @@ object.open Sorgula,baglanti,1,3
      
 
  
-<tr> <td><b>Sayfa Adý:</b> </td><td><input type="text" name="isim"   value="<%=object("isim")%>" size="55"></td></tr>   
+<tr> <td><b>Sayfa AdÄ±:</b> </td><td><input type="text" name="isim"   value="<%=object("isim")%>" size="55"></td></tr>   
 
 
 
@@ -107,15 +107,15 @@ strTextAreaName = "icerik"
     
  <TEXTAREA cols=100 name="icerik" id="icerik" rows=33><%=object("icerik")%></TEXTAREA>
  </td></tr>
-<tr><td align=left colspan=2> <B>Sýralama:</B> &nbsp;&nbsp; <input type="text" size=3 name="sira" value="<%=object("sira")%>" onkeypress="return numbersonly(this, event)">       </td></tr>
+<tr><td align=left colspan=2> <B>SÄ±ralama:</B> &nbsp;&nbsp; <input type="text" size=3 name="sira" value="<%=object("sira")%>" onkeypress="return numbersonly(this, event)">       </td></tr>
       
-<tr><td colspan=2><B>Yayýn:</B> <input type="checkbox" name="yayin"  value="1" <% if object("yayin")="1" then %> checked <% end if %>></td></tr>      
+<tr><td colspan=2><B>YayÄ±n:</B> <input type="checkbox" name="yayin"  value="1" <% if object("yayin")="1" then %> checked <% end if %>></td></tr>      
 
                
 
     <input type="hidden" name="id" value="<%=sid%>"> 
 <tr><td align=center colspan=3>
-<input type="submit" name="update" value="Güncelle">
+<input type="submit" name="update" value="GÃ¼ncelle">
 
 </td>      </form>
 </div>        
@@ -130,7 +130,7 @@ object.close
 set object = nothing
 %>   
 <BR><BR>
-<a href="sayfa-sil.asp"><font color=#C40000><b> « Sayfa Listesi </b>     </font></a> 
+<a href="sayfa-sil.asp"><font color=#C40000><b> Â« Sayfa Listesi </b>     </font></a> 
 <BR><BR>          
       
 
@@ -152,10 +152,10 @@ object.open Sorgula,baglanti,1,3
 
 <table border="1" bordercolor="#E6E6E6" bgcolor=#FFFFFF cellpadding="3" cellspacing="3" width=700 class=font>
 <tr bgcolor=#F3F0E4 height=30>    
-   <td><b>Sayfa Adý </b></td>    
+   <td><b>Sayfa AdÄ± </b></td>    
 
-      <td align=center><b>Sýralama </b></td>
-<td align=center><font color=#0080C0><b>Düzenle</b></td><td align=center><font color=#FF0000><b>SÝL</b></td></tr>      
+      <td align=center><b>SÄ±ralama </b></td>
+<td align=center><font color=#0080C0><b>DÃ¼zenle</b></td><td align=center><font color=#FF0000><b>SÄ°L</b></td></tr>      
   
   	 
  
@@ -177,7 +177,7 @@ Do while not object.Eof
 <td align=center>    
 <input type="hidden" name="id" value="<%=object("id")%>">      
 <input type="hidden" name="delete" value="1">        
-<input type="image" src="images/del.png"  onclick="return confirm('Sayfayý Silmek Ýstiyor Musunuz?')"></td></form>
+<input type="image" src="images/del.png"  onclick="return confirm('SayfayÄ± Silmek Ä°stiyor Musunuz?')"></td></form>
 
 
 </div>        

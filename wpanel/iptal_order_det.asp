@@ -1,6 +1,7 @@
 <html>
 <head>
-<title>Ýptal Sipariþler</title>
+<meta charset="utf-8">
+<title>Ä°ptal SipariÅŸler</title>
 
   <!--#include file="menu.asp"-->                     
                
@@ -24,7 +25,7 @@ Response.Redirect "ar_orders.asp"
 <body>  
                 
 
-  <div class="baslik">Ýptal Sipariþler </div>   
+  <div class="baslik">Ä°ptal SipariÅŸler </div>   
                                             
   <BR><BR>
 
@@ -42,7 +43,7 @@ mods1.open Sorgula,baglanti,1,3
 
 <TD valign=top>    
 <font color=#0080C0 size=3>
-<B><%=request.querystring("gun") %>  </b> Tarihli <font color=#B90000><B><%=mods1.recordcount %></B> </font> Sipariþ </font>    
+<B><%=request.querystring("gun") %>  </b> Tarihli <font color=#B90000><B><%=mods1.recordcount %></B> </font> SipariÅŸ </font>    
 
 <BR>                              
 
@@ -52,7 +53,7 @@ mods1.open Sorgula,baglanti,1,3
 <table bgcolor=#f3f7f8 cellpadding=2 cellspacing=2 align=center class=font border=0 width=500>   
 <tr bgcolor=#FFFFFF>
 <td colspan=2 class=onay>  
-<a href="javascript:void(window.open('ar_order_det1.asp?id=<%=mods1("kod")%>','','width=850,height=550,left=400,top=150,resizable=no,menubar=no,centerscreen=yes,status=no,scrollbars=1'))"><font color=#4E4E4E>  <B><%=mods1("kod")%></B> »    </font>  </a>            
+<a href="javascript:void(window.open('ar_order_det1.asp?id=<%=mods1("kod")%>','','width=850,height=550,left=400,top=150,resizable=no,menubar=no,centerscreen=yes,status=no,scrollbars=1'))"><font color=#4E4E4E>  <B><%=mods1("kod")%></B> Â»    </font>  </a>            
 </td></tr>              
 
 
@@ -63,7 +64,7 @@ mods1.MoveNExt
 Loop
 %>     
 
-<TR><TD align=center colspan=2 ><a href="ar_orders.asp"><font color=#0080C0 size=2>  Listeye Dön  «  </font></a>    </TD></TR></TABLE>   
+<TR><TD align=center colspan=2 ><a href="ar_orders.asp"><font color=#0080C0 size=2>  Listeye DÃ¶n  Â«  </font></a>    </TD></TR></TABLE>   
 
 
 

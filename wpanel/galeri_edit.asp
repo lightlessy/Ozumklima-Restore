@@ -24,7 +24,7 @@
 <body> 
               
    
-       <div class="baslik">Galeri Düzenle</div>     
+       <div class="baslik">Galeri DÃ¼zenle</div>     
    
 <BR><BR><center>            
 
@@ -39,7 +39,7 @@ Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from galery where id = "& Request.Form("id")
 Rs.Open rSQL, baglanti, 1, 3 
 Rs.Delete ' Sil
-Rs.Update ' Güncelle
+Rs.Update ' GÃ¼ncelle
 
 rs.close
 set rs = nothing 
@@ -103,7 +103,7 @@ Response.Redirect "galeri_edit.asp?gal_kat="&Request("gal_kat")&"&altkat="&Reque
 
 
  
-<font class="font" style="color:#E10000; font-size:15px"> SIRALAMAYI DEÐÝÞTÝRMEK ÝÇÝN RESMÝ SÜRÜKLEYÝP BIRAKINIZ.       </font>
+<font class="font" style="color:#E10000; font-size:15px"> SIRALAMAYI DEÄžÄ°ÅžTÄ°RMEK Ä°Ã‡Ä°N RESMÄ° SÃœRÃœKLEYÄ°P BIRAKINIZ.       </font>
  <BR><BR>
                            
  
@@ -144,9 +144,9 @@ Do while not object.Eof
 <a href="../galeri/<%=object("foto")%>" target=_Blank><img src="../galeri/<%=object("foto")%>"  border=0 width=200 height=150></a>
  <BR>   
 
- <a href="imageupdate_galeri.asp?id=<%=object("id")%>&gal_kat=<%=object("gal_kat")%>" title="Foto Güncelle"><img src="images/guncel.png" width=25></a>
+ <a href="imageupdate_galeri.asp?id=<%=object("id")%>&gal_kat=<%=object("gal_kat")%>" title="Foto GÃ¼ncelle"><img src="images/guncel.png" width=25></a>
 &nbsp;&nbsp;
- <a href="sil_galfoto.asp?id=<%=object("id")%>&gal_kat=<%=object("gal_kat")%>&altkat=<%=request("altkat")%>" title="Foto Sil" onclick="return confirm('Kayýt silinecek. Onaylýyor Musunuz?')"><img src="images/del.png" width=25></a>
+ <a href="sil_galfoto.asp?id=<%=object("id")%>&gal_kat=<%=object("gal_kat")%>&altkat=<%=request("altkat")%>" title="Foto Sil" onclick="return confirm('KayÄ±t silinecek. OnaylÄ±yor Musunuz?')"><img src="images/del.png" width=25></a>
 
    </li>
 	<%

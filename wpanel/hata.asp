@@ -1,12 +1,12 @@
 <HTML>
 <HEAD> 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">     
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">     
        
-<title>HATALI BİLGİ GİRİŞİ</title>
+<title>HATALI BÄ°LGÄ° GÄ°RÄ°ÅÄ°</title>
 <script>
 
 
-var alertmessage="Hatalı Kullanıcı Bilgileri --- Bilgilerinizi Doğru Girdiğinizden Emin Olunuz"
+var alertmessage="HatalÄ± KullanÄ±cÄ± Bilgileri --- Bilgilerinizi DoÄŸru GirdiÄŸinizden Emin Olunuz"
 
 
 

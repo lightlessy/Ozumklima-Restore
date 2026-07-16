@@ -1,6 +1,6 @@
 <!--#INCLUDE file="menu.asp"-->        
 
-<div class="baslik">Ürün Düzenle </div>
+<div class="baslik">ÃœrÃ¼n DÃ¼zenle </div>
 
   <body OnLoad="initialiseWebWizRTE();">  
 
@@ -16,19 +16,19 @@ toplam = Cint(Request.Form("toplam"))
     	
     	Function cevir(data)   
 if not data="" then
-data = Replace (data ,"ý","i",1,-1,1) 
-data = Replace (data ,"ð","g",1,-1,1) 
-data = Replace (data ,"ü","u",1,-1,1) 
-data = Replace (data ,"þ","s",1,-1,1) 
-data = Replace (data ,"ö","o",1,-1,1) 
-data = Replace (data ,"ç","c",1,-1,1) 
+data = Replace (data ,"Ä±","i",1,-1,1) 
+data = Replace (data ,"ÄŸ","g",1,-1,1) 
+data = Replace (data ,"Ã¼","u",1,-1,1) 
+data = Replace (data ,"ÅŸ","s",1,-1,1) 
+data = Replace (data ,"Ã¶","o",1,-1,1) 
+data = Replace (data ,"Ã§","c",1,-1,1) 
 data = Replace (data ,"I","i",1,-1,1) 
-data = Replace (data ,"Ð","g",1,-1,1) 
-data = Replace (data ,"Ü","u",1,-1,1) 
-data = Replace (data ,"Þ","s",1,-1,1) 
-data = Replace (data ,"Ý","i",1,-1,1) 
-data = Replace (data ,"Ç","c",1,-1,1) 
-data = Replace (data ,"Ö","o",1,-1,1) 
+data = Replace (data ,"Äž","g",1,-1,1) 
+data = Replace (data ,"Ãœ","u",1,-1,1) 
+data = Replace (data ,"Åž","s",1,-1,1) 
+data = Replace (data ,"Ä°","i",1,-1,1) 
+data = Replace (data ,"Ã‡","c",1,-1,1) 
+data = Replace (data ,"Ã–","o",1,-1,1) 
 data = Replace (data ," ","-",1,-1,1)   
 end if
 cevir=Lcase(data)
@@ -198,7 +198,7 @@ object3.Open sql,baglanti,1,3
 
 <tr><td colspan=2> 
        
-<B>Ürün Görsel Düzenleme: </B><BR>      
+<B>ÃœrÃ¼n GÃ¶rsel DÃ¼zenleme: </B><BR>      
 
 <table class=font border=1 cellspacing=0 cellpadding=0 bordercolor="#E9E9E9" width=650 align=center><tr>     
 
@@ -208,7 +208,7 @@ object3.Open sql,baglanti,1,3
 <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=1"><img src="images/edit.png" width=20> </a>
 <a href="fotosil.asp?id=<%=object3("AffiliateID")%>&foto1=&foto2=<%=object3("foto2")%>&foto3=<%=object3("foto3")%>&foto4=<%=object3("foto4")%>&foto5=<%=object3("foto5")%>&sil=<%=object3("foto1")%>"><img src="images/del.png" ></a>
  <% else %> 
- <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=1" title="Görsel Ekle"><img src="images/add.png"> </a> <% end if %>
+ <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=1" title="GÃ¶rsel Ekle"><img src="images/add.png"> </a> <% end if %>
 </td>
 
 
@@ -217,7 +217,7 @@ object3.Open sql,baglanti,1,3
 <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=2"><img src="images/edit.png" width=20>  </a>  
 <a href="fotosil.asp?id=<%=object3("AffiliateID")%>&foto1=<%=object3("foto1")%>&foto2=&foto3=<%=object3("foto3")%>&foto4=<%=object3("foto4")%>&foto5=<%=object3("foto5")%>&sil=<%=object3("foto2")%>"><img src="images/del.png" ></a>
 <% else %> 
- <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=2" title="Görsel Ekle"><img src="images/add.png"> </a> <% end if %>
+ <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=2" title="GÃ¶rsel Ekle"><img src="images/add.png"> </a> <% end if %>
 </td>
           
 
@@ -227,7 +227,7 @@ object3.Open sql,baglanti,1,3
 <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=3"><img src="images/edit.png" width=20>  </a> 
 <a href="fotosil.asp?id=<%=object3("AffiliateID")%>&foto1=<%=object3("foto1")%>&foto2=<%=object3("foto2")%>&foto3=&foto4=<%=object3("foto4")%>&foto5=<%=object3("foto5")%>&sil=<%=object3("foto3")%>"><img src="images/del.png" ></a>
 <% else %> 
- <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=3" title="Görsel Ekle"><img src="images/add.png"> </a> <% end if %>
+ <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=3" title="GÃ¶rsel Ekle"><img src="images/add.png"> </a> <% end if %>
 </td>
 
 
@@ -236,7 +236,7 @@ object3.Open sql,baglanti,1,3
 <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=4"><img src="images/edit.png" width=20>  </a>  
 <a href="fotosil.asp?id=<%=object3("AffiliateID")%>&foto1=<%=object3("foto1")%>&foto2=<%=object3("foto2")%>&foto3=<%=object3("foto3")%>&foto4=&foto5=<%=object3("foto5")%>&sil=<%=object3("foto4")%>"><img src="images/del.png" ></a>
 <% else %> 
- <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=4" title="Görsel Ekle"><img src="images/add.png"> </a> <% end if %>
+ <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=4" title="GÃ¶rsel Ekle"><img src="images/add.png"> </a> <% end if %>
 </td>
 
 
@@ -245,14 +245,14 @@ object3.Open sql,baglanti,1,3
 <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=5"><img src="images/edit.png" width=20>  </a> 
 <a href="fotosil.asp?id=<%=object3("AffiliateID")%>&foto1=<%=object3("foto1")%>&foto2=<%=object3("foto2")%>&foto3=<%=object3("foto3")%>&foto4=<%=object3("foto4")%>&foto5=&sil=<%=object3("foto5")%>"><img src="images/del.png" ></a>
 <% else %> 
- <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=5" title="Görsel Ekle"><img src="images/add.png"></a> <% end if %>
+ <a href="imageupdate.asp?id=<%=object3("AffiliateID")%>&g=<%=object3("anagrup")%>&tip=<%=object3("tip")%>&isim=<%=cevir(object3("isim"))%>&n=5" title="GÃ¶rsel Ekle"><img src="images/add.png"></a> <% end if %>
 </td></tr></table>
 
 
 </td></tr>
 <tr>             
 
-<tr><td><B>Ürün Kodu: </B></td><td>       <INPUT  style="WIDTH: 100px"  name="kodu"  value="<%=object3("kodu")%>"> </td>  </tr>
+<tr><td><B>ÃœrÃ¼n Kodu: </B></td><td>       <INPUT  style="WIDTH: 100px"  name="kodu"  value="<%=object3("kodu")%>"> </td>  </tr>
 
 
  
@@ -294,7 +294,7 @@ object3.Open sql,baglanti,1,3
 
 
 <tr bgcolor=#F7F4F0>
-<td><B>Ürün Kategori: </B></td>
+<td><B>ÃœrÃ¼n Kategori: </B></td>
 <td>    
 
 <select name="anagrup"  id="anagrup">  
@@ -351,7 +351,7 @@ Loop
 
 
 <tr bgcolor=#F7F4F0>
-<td><B>Ürün Grubu:</B></td>
+<td><B>ÃœrÃ¼n Grubu:</B></td>
 <td>
 
 <select name="surface"  id="surface">  
@@ -379,7 +379,7 @@ Loop
 </tr>
 
   
-<tr><td><B>Ýsim:</B> </td><td>  <TEXTAREA   style="padding:5px; WIDTH: 400px; HEIGHT: 50px"  name="isim"><%=object3("isim")%></TEXTAREA></td>  </tr>
+<tr><td><B>Ä°sim:</B> </td><td>  <TEXTAREA   style="padding:5px; WIDTH: 400px; HEIGHT: 50px"  name="isim"><%=object3("isim")%></TEXTAREA></td>  </tr>
  
  
  <tr><td><B>Renkler:</B> </td><td>  
@@ -393,9 +393,9 @@ Loop
        
 <tr><td><B>Fiyat:</B> </td><td>   <INPUT  type="text"  name="fiyat"  value="<%=object3("fiyat")%>" size=10> TL</td></tr>
 
-<tr><td><B>Ýndirimli Fiyat:</B> </td><td>   <INPUT  type="text"  name="indirim"  value="<%=object3("indirim")%>" size=10> TL </td></tr>
+<tr><td><B>Ä°ndirimli Fiyat:</B> </td><td>   <INPUT  type="text"  name="indirim"  value="<%=object3("indirim")%>" size=10> TL </td></tr>
 
-<tr><td><B>Yeni Ürün:</B> </td><td><input type="checkbox" name="yeni"  value="1" <% if object3("yeni")="1" then %> checked <% end if %>></td></tr>     
+<tr><td><B>Yeni ÃœrÃ¼n:</B> </td><td><input type="checkbox" name="yeni"  value="1" <% if object3("yeni")="1" then %> checked <% end if %>></td></tr>     
   
 <tr><td><B>Stok Adet:</B> </td><td><INPUT name="stok" size="5" value="<%=object3("stok")%>"> </td></tr>    
 
@@ -405,13 +405,13 @@ Loop
   <INPUT  type="hidden"   name="sira"  value="<%=object3("sira")%>">
 
 
-<tr><td><B>Kargoya Veriliþ Süresi :</B>  </td><td><INPUT  style="WIDTH: 100px"  name="delivery"  value="<%=object3("delivery")%>">  Ýçerisinde Kargoda!</td></tr>
+<tr><td><B>Kargoya VeriliÅŸ SÃ¼resi :</B>  </td><td><INPUT  style="WIDTH: 100px"  name="delivery"  value="<%=object3("delivery")%>">  Ä°Ã§erisinde Kargoda!</td></tr>
 
 
-<tr><td><B>Yayýn Durumu:</B> </td><td><input type="checkbox" name="yayin"  value="1" <% if object3("yayin")="1" then %> checked <% end if %>></td></tr>   
+<tr><td><B>YayÄ±n Durumu:</B> </td><td><input type="checkbox" name="yayin"  value="1" <% if object3("yayin")="1" then %> checked <% end if %>></td></tr>   
 
 
-<tr><td><B>Özet - Tanýmlama: </B></td><td><TEXTAREA   style="WIDTH: 550px; HEIGHT: 90px"  name="descr"><%=object3("descr")%></TEXTAREA></td></tr>
+<tr><td><B>Ã–zet - TanÄ±mlama: </B></td><td><TEXTAREA   style="WIDTH: 550px; HEIGHT: 90px"  name="descr"><%=object3("descr")%></TEXTAREA></td></tr>
 
 
 	<%
@@ -419,34 +419,34 @@ strFormName = "f"
 strTextAreaName = "notlar"
 %> 
 <tr><td colspan=2>   
-<B>Ürün Detaylarý:</B> <BR><BR>
+<B>ÃœrÃ¼n DetaylarÄ±:</B> <BR><BR>
 <!--#include file="RTE_editor_inc.asp" --><BR>
 <TEXTAREA   style="padding:10px; WIDTH: 1000px; HEIGHT: 450px"  name="notlar" id="notlar"><%=object3("notlar")%></TEXTAREA></td></tr>      
       
                                                                                                                                                                  
 
-<tr><td><B>Döküman Yükle</B></td><td>
+<tr><td><B>DÃ¶kÃ¼man YÃ¼kle</B></td><td>
 <% if   object3.fields("dokuman")&"" = "" then  %>     
-  <a href="dokuman.asp?id=<%=object3("AffiliateID")%>&g=<%=grup%>&tip=<%=tip%>"  style="color:#EC0000"><B>YÜKLE (+)</B> </a> 
+  <a href="dokuman.asp?id=<%=object3("AffiliateID")%>&g=<%=grup%>&tip=<%=tip%>"  style="color:#EC0000"><B>YÃœKLE (+)</B> </a> 
   <% else %>
-  <a href="../urunler/<%=object3("dokuman")%>"  style="color:#0070DF"  target=_blank><B>Döküman Yüklü - Ýncele </B> </a> 
+  <a href="../urunler/<%=object3("dokuman")%>"  style="color:#0070DF"  target=_blank><B>DÃ¶kÃ¼man YÃ¼klÃ¼ - Ä°ncele </B> </a> 
   &nbsp;&nbsp;&nbsp;&nbsp;
   
-  <a href="dokumansil.asp?id=<%=object3("AffiliateID")%>"  onclick="return confirm('Kaydý Silmek Ýstiyor Musunuz?')"> <B>DÖKÜMANI SÝL (-)</B></a>
+  <a href="dokumansil.asp?id=<%=object3("AffiliateID")%>"  onclick="return confirm('KaydÄ± Silmek Ä°stiyor Musunuz?')"> <B>DÃ–KÃœMANI SÄ°L (-)</B></a>
   
   <% end if %>  
   </td></tr>      
   
   
   
-  <tr><td><B>Teknik Özellik Yükle</B></td><td>
+  <tr><td><B>Teknik Ã–zellik YÃ¼kle</B></td><td>
 <% if   object3.fields("uretici")&"" = "" then  %>     
-  <a href="teknik.asp?id=<%=object3("AffiliateID")%>&g=<%=grup%>&tip=<%=tip%>"  style="color:#EC0000"><B>YÜKLE (+)</B> </a> 
+  <a href="teknik.asp?id=<%=object3("AffiliateID")%>&g=<%=grup%>&tip=<%=tip%>"  style="color:#EC0000"><B>YÃœKLE (+)</B> </a> 
   <% else %>
-  <a href="../urunler/<%=object3("uretici")%>"  style="color:#0070DF"  target=_blank><B>Teknik Özellik Yüklü - Ýncele </B> </a> 
+  <a href="../urunler/<%=object3("uretici")%>"  style="color:#0070DF"  target=_blank><B>Teknik Ã–zellik YÃ¼klÃ¼ - Ä°ncele </B> </a> 
   &nbsp;&nbsp;&nbsp;&nbsp;
   
-  <a href="tekniksil.asp?id=<%=object3("AffiliateID")%>"  onclick="return confirm('Kaydý Silmek Ýstiyor Musunuz?')"> <B>TEKNÝK ÖZELLÝK SÝL (-)</B></a>
+  <a href="tekniksil.asp?id=<%=object3("AffiliateID")%>"  onclick="return confirm('KaydÄ± Silmek Ä°stiyor Musunuz?')"> <B>TEKNÄ°K Ã–ZELLÄ°K SÄ°L (-)</B></a>
   
   <% end if %>  
   </td></tr>      
@@ -454,7 +454,7 @@ strTextAreaName = "notlar"
 
 <tr><td><B>Video Embed Kodu </B></td><td><TEXTAREA   style="WIDTH: 550px; HEIGHT: 90px"  name="video"><%=object3("video")%></TEXTAREA></td></tr>   
  
-<tr><td><B>Anahtar Kelimeler: [SEO]</B> <BR> Önerilen kelime sayýsý: 4-6 kelime</td><td><TEXTAREA   style="WIDTH: 550px; HEIGHT: 90px"  name="keyw"><%=object3("keyw")%></TEXTAREA></td></tr>
+<tr><td><B>Anahtar Kelimeler: [SEO]</B> <BR> Ã–nerilen kelime sayÄ±sÄ±: 4-6 kelime</td><td><TEXTAREA   style="WIDTH: 550px; HEIGHT: 90px"  name="keyw"><%=object3("keyw")%></TEXTAREA></td></tr>
 
 
 
@@ -503,12 +503,12 @@ Loop
 </script>    
 
 
-<tr><td><a name="rel"></a><B>Benzer Ürünler:</B></td>
+<tr><td><a name="rel"></a><B>Benzer ÃœrÃ¼nler:</B></td>
 
 <td>
 
 <select name="tip" id="tip" style="font-size:15px; ">  
-<option value1="" >Lütfen Seçiniz</option>   
+<option value1="" >LÃ¼tfen SeÃ§iniz</option>   
 <%  
            
 set mods = Server.CreateObJect("ADODB.RecordSet")
@@ -551,7 +551,7 @@ ilg.open Sorgula,baglanti,1,3
 <input type="checkbox" name="Veri<%=i%>" value="<%=pros("AffiliateID")%>"><%=pros("isim")%> <BR>           
 <% else %>             
 
-<input type="checkbox" name="Veri<%=i%>" value="<%=pros("AffiliateID")%>" <% if ilg.eof then %> <% else %><% if  ilg("ilgili") =  pros("AffiliateID")  then%>checked><a href="edits.asp?id=<%=id%>&g=<%=grup%>&tip=<%=tip%>&rela=<%=rela%>&pro=del&rel1=<%=ilg("urun")%>&rel2=<%=ilg("ilgili")%>#rel">Kaldýr </a> <% end if %><% end if %>><%=pros("isim")%>  <BR> 
+<input type="checkbox" name="Veri<%=i%>" value="<%=pros("AffiliateID")%>" <% if ilg.eof then %> <% else %><% if  ilg("ilgili") =  pros("AffiliateID")  then%>checked><a href="edits.asp?id=<%=id%>&g=<%=grup%>&tip=<%=tip%>&rela=<%=rela%>&pro=del&rel1=<%=ilg("urun")%>&rel2=<%=ilg("ilgili")%>#rel">KaldÄ±r </a> <% end if %><% end if %>><%=pros("isim")%>  <BR> 
 <% end if %>    
 
 
@@ -566,14 +566,14 @@ Loop
 
 <input type="hidden" name="toplam" value="<%=Int(i-1)%>">
 <BR> 
-<input type="submit" value="Benzer Ürünleri Belirle"   onclick="f.action='edits.asp?pro=add#rel'; return true; " style="font-size:12px; background-color:#A4A4A4">   
+<input type="submit" value="Benzer ÃœrÃ¼nleri Belirle"   onclick="f.action='edits.asp?pro=add#rel'; return true; " style="font-size:12px; background-color:#A4A4A4">   
 
 </td></tr>
 <tr>           
 <input type="hidden" name="AffiliateID" value="<%=object3("AffiliateID")%>">       
 
 <tr><td colspan=2 align=center>   
-<input type="submit" value="GÜNCELLE" name="submit"> 
+<input type="submit" value="GÃœNCELLE" name="submit"> 
 </td></tr></table>
  </FORM>
 

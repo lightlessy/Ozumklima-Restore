@@ -1,7 +1,7 @@
 <html>
  <head>
   <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css"> 
 
 <% grup = request.querystring("grup")%>
@@ -15,7 +15,7 @@
   <!--#include file="menu.asp"-->  
   
 
-  <div class="baslik"> Ana Sayfa Ürünleri </div> 
+  <div class="baslik"> Ana Sayfa ÃœrÃ¼nleri </div> 
   
    <link rel="stylesheet" href="../css/jquery-ui.css">
   <style>
@@ -42,7 +42,7 @@
    <table align=center><tr><td>
  
 
-     <font class="font" style="color:#4E4E4E; font-size:12px"> SIRALAMAYI DEĞİŞTİRMEK İÇİN SÜRÜKLEYİP BIRAKINIZ.       </font>   
+     <font class="font" style="color:#4E4E4E; font-size:12px"> SIRALAMAYI DEÄÄ°ÅTÄ°RMEK Ä°Ã‡Ä°N SÃœRÃœKLEYÄ°P BIRAKINIZ.       </font>   
         <BR><BR>
 
 
@@ -65,7 +65,7 @@ mods.Open rSQL, baglanti, 1, 3
   
  <div style="width:400px; text-align:left; "><%=mods("isim")%></div>
  
- <div><a href="urun-ana.asp?kald=1&rid=<%=mods("AffiliateID")%>" title="Ana Sayfadan Kaldır"><img src="images/rem.png" width=20> </a></div>
+ <div><a href="urun-ana.asp?kald=1&rid=<%=mods("AffiliateID")%>" title="Ana Sayfadan KaldÄ±r"><img src="images/rem.png" width=20> </a></div>
 
  <div>
 <a href="edits.asp?id=<%=mods("AffiliateID")%>&g=<%=mods("anagrup")%>&tip=<%=mods("tip")%>"><img src="images/edit.png" width=20></a>

@@ -1,6 +1,7 @@
 <html>
 <head>
-<title>Tamamlanmýþ Sipariþler</title>
+<meta charset="utf-8">
+<title>TamamlanmÄ±ÅŸ SipariÅŸler</title>
 
   <!--#include file="menu.asp"-->      
   
@@ -30,7 +31,7 @@ Response.Redirect "ar_orders.asp"
 <body>  
 
 
-  <div class="baslik">Tamamlanmýþ Sipariþler </div>   <BR><BR> 
+  <div class="baslik">TamamlanmÄ±ÅŸ SipariÅŸler </div>   <BR><BR> 
 
 
 <TABLE border=0 class=onay cellspacing=3 cellpadding=4 align=center><TR>
@@ -46,7 +47,7 @@ mods1.open Sorgula,baglanti,1,3
 
 <TD valign=top>    
 <font color=#0080C0 size=3>
-<B><%=request.querystring("gun") %></B>   Tarihli <font color=#B90000><B><%=mods1.recordcount %></B> </font> Sipariþ </font>        
+<B><%=request.querystring("gun") %></B>   Tarihli <font color=#B90000><B><%=mods1.recordcount %></B> </font> SipariÅŸ </font>        
 
 <BR>                              
 
@@ -62,7 +63,7 @@ mods1.open Sorgula,baglanti,1,3
 </div>
 
 
-<a href="#inline" data-lity><font color=#4E4E4E> <B> <%=mods1("kod")%> - Sipariþ Detaylarý  »</B> </font>  </a>            
+<a href="#inline" data-lity><font color=#4E4E4E> <B> <%=mods1("kod")%> - SipariÅŸ DetaylarÄ±  Â»</B> </font>  </a>            
 </td></tr>              
 
 
@@ -77,7 +78,7 @@ Loop
 </TD></TR>
 
 <TR><TD align=center colspan=2>
-<a href="ar_orders.asp"><font color=#0080C0 size=2> Listeye Dön  «  </font></a>
+<a href="ar_orders.asp"><font color=#0080C0 size=2> Listeye DÃ¶n  Â«  </font></a>
 </TD></TR></TABLE>   
 
  

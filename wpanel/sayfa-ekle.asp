@@ -2,7 +2,7 @@
   <!--#include file="menu.asp"-->  
  
 
-  <div class="baslik">Ýçerik Düzenle</div>    
+  <div class="baslik">Ä°Ã§erik DÃ¼zenle</div>    
                                                
 <% tip= request.querystring("tip") %>
 
@@ -46,7 +46,7 @@ Response.redirect("sayfa-sil.asp?id="&Request.Form("ana")&"")  %>
 
 <select name="ana"> 
   
-<option value="0">Lütfen Seçiniz</option>   
+<option value="0">LÃ¼tfen SeÃ§iniz</option>   
 <option  value="1">Kurumsal</option>    
 <option  value="2">Hizmet</option> 
 <option  value="3">Blog</option>     
@@ -56,9 +56,9 @@ Response.redirect("sayfa-sil.asp?id="&Request.Form("ana")&"")  %>
  
   
 
-<tr><td width=240><font color=#000000><b>Sayfa Adý </td><td  colspan=3><input type="text" size="100" name="isim"></td></tr>	
+<tr><td width=240><font color=#000000><b>Sayfa AdÄ± </td><td  colspan=3><input type="text" size="100" name="isim"></td></tr>	
 
-<tr><td> <font color=#000000>  <b>Ýçerik </b>:</td><td colspan=3>     
+<tr><td> <font color=#000000>  <b>Ä°Ã§erik </b>:</td><td colspan=3>     
 
 	<%
 strFormName = "myForm"
@@ -68,14 +68,14 @@ strTextAreaName = "icerik"
     <!--#include file="RTE_editor_inc.asp" --><BR>
    <TEXTAREA cols=100 name="icerik" id="icerik" rows=25></TEXTAREA></td></tr>      
    
- <tr><td><B>Yayýn:</B> </td><td><input type="checkbox" name="yayin"  value="1"></td></tr>           
+ <tr><td><B>YayÄ±n:</B> </td><td><input type="checkbox" name="yayin"  value="1"></td></tr>           
    
- <tr><td> <b>Sayfa Sýralama </b> </td><td><input type="text" size="3" name="sira" onkeypress="return numbersonly(this, event)" value="0"></td>	  
+ <tr><td> <b>Sayfa SÄ±ralama </b> </td><td><input type="text" size="3" name="sira" onkeypress="return numbersonly(this, event)" value="0"></td>	  
 
 </tr>	     
    
   <tr><td colspan=4 align=center>
-  <input type="submit" name="1" value="GÖNDER" />
+  <input type="submit" name="1" value="GÃ–NDER" />
 </td></tr>
 </table>
       </form>       

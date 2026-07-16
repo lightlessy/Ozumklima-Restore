@@ -1,7 +1,8 @@
 
 <html>
 <head>    
-<title>Müþteri Hesaplarý</title>     
+<meta charset="utf-8">
+<title>MÃ¼ÅŸteri HesaplarÄ±</title>     
  
 
 <!--#include file="menu.asp"-->      
@@ -78,7 +79,7 @@ $(window).scroll(function()
             
 
 
-  <div class="baslik">Müþteri Hesaplarý</div>
+  <div class="baslik">MÃ¼ÅŸteri HesaplarÄ±</div>
 
  <%if request.form("delete")<>"" then  %>
 
@@ -110,9 +111,9 @@ Response.Redirect Request.ServerVariables("HTTP_REFERER")
  <tr bgcolor=#F3F0E4 height=28>    
  <td>ID </td>
   <td width=200>Ad Soyad </td>
-<td align=center width=70><B>Sipariþler</B></td>     
-<td align=center width=100><B>Ýndirim</B></td>   
-<td align=center width=70><B>Düzenle</B></td>       
+<td align=center width=70><B>SipariÅŸler</B></td>     
+<td align=center width=100><B>Ä°ndirim</B></td>   
+<td align=center width=70><B>DÃ¼zenle</B></td>       
 <td align=center width=50><font color=#CA0000><B>Sil</B> </td>   
     </tr>
          
@@ -174,14 +175,14 @@ mods1.open Sorgula,baglanti,1,3
 
  If mods1.EOF And mods1.BOF Then %>     
 
- <BR><BR> <B> SÝPARÝÞ YOK </B>         
+ <BR><BR> <B> SÄ°PARÄ°Åž YOK </B>         
 
 <% else %>
 
 <% Do while not mods1.Eof  %>        
 
  <a href="javascript:void(window.open('ar_order_det1.asp?id=<%=mods1("kod")%>','','width=900,height=600,left=400,top=0,resizable=no,menubar=no,centerscreen=yes,status=no,scrollbars=1'))" style="color:#00557D">
-<B><%=mods1("kod")%></B>  - <%=mods1("tarih")%> - <%=mods1("tfiyat")%> TL  <B> » Detay   </b></a>  
+<B><%=mods1("kod")%></B>  - <%=mods1("tarih")%> - <%=mods1("tfiyat")%> TL  <B> Â» Detay   </b></a>  
 <hr style="height: 1px;background-color: #B9B9B9; border:none;">       
 
  <%  
@@ -192,14 +193,14 @@ Loop
 <% end if %>
 </div>
 
-<td align=center>  <a href="#inline<%=uyes("uid")%>" data-lity><font color=#800000><B>Sipariþler</B> </font></a></td> 
+<td align=center>  <a href="#inline<%=uyes("uid")%>" data-lity><font color=#800000><B>SipariÅŸler</B> </font></a></td> 
 
 
 
 <div id="indline<%=uyes("uid")%>" style="background:#fff; padding:15px; font-family:Open Sans; font-size:14px; color:#373737; width:500px; height:650px  " class="lity-hide">
 <IFRAME frameBorder=0 scrolling=no width=500 height=500 src="uye-kupon.asp?id=<%=uyes("uid")%>" ></IFRAME> 
 </div>
-<td align=center> <a href="#indline<%=uyes("uid")%>" data-lity>Ýndirim Kuponu  </a></td>
+<td align=center> <a href="#indline<%=uyes("uid")%>" data-lity>Ä°ndirim Kuponu  </a></td>
 
 
 <div id="inline2<%=uyes("uid")%>" style="background:#fff; padding:15px; font-family:Open Sans; font-size:14px; color:#373737; width:500px; height:650px  " class="lity-hide">
@@ -212,7 +213,7 @@ Loop
 <td align=center>
 <input type="hidden" name="uid" value="<%=uyes("uid")%>">        
 <input type="hidden" name="delete" value="1">     
-<input type="image" src="images/del.png"  onclick="return confirm('Müþteri Hesabýný Silmek Ýstiyor Musunuz?')">
+<input type="image" src="images/del.png"  onclick="return confirm('MÃ¼ÅŸteri HesabÄ±nÄ± Silmek Ä°stiyor Musunuz?')">
 </td>
 
 </form>

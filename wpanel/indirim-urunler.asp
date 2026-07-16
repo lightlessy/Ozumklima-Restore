@@ -1,14 +1,14 @@
 <html>
  <head>
   <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css">
 </head>     
    
    
   <!--#include file="menu.asp"-->  
   
-<div class="baslik">İndirimli Ürünler </div>
+<div class="baslik">Ä°ndirimli ÃœrÃ¼nler </div>
            <BR><BR>
   
 <%

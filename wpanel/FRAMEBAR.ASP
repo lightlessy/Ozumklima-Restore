@@ -3,7 +3,8 @@
 
 <HTML>
 <HEAD>
-<TITLE>Dosya Yükleniyor</TITLE>
+<meta charset="utf-8">
+<TITLE>Dosya YÃ¼kleniyor</TITLE>
 <style type='text/css'>td {font-family:arial; font-size: 9pt }</style>
 </HEAD>
 
@@ -13,7 +14,7 @@
 frameborder=0 framespacing=10 width=369 height=65></IFRAME>
 <TABLE BORDER="0" WIDTH="100%" cellpadding="2" cellspacing="0">
   <TR><TD ALIGN="center">
-     Yüklemeyi iptal etmek için explorer pencerisinde <B>STOP</B> týklayýnýz.
+     YÃ¼klemeyi iptal etmek iÃ§in explorer pencerisinde <B>STOP</B> tÄ±klayÄ±nÄ±z.
   </TD></TR>
 </TABLE>
 </BODY>

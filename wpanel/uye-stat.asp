@@ -1,10 +1,11 @@
 <html>
 <head>                    
+<meta charset="utf-8">
   
  <script language="javascript" src="cal2.js"></script>
 <script language="javascript" src="cal_conf2.js"></script>
 
-<title>Müþteri Raporlarý</title>     
+<title>MÃ¼ÅŸteri RaporlarÄ±</title>     
 
 <% sira= request.querystring("sira")
 tp= request.querystring("tp")
@@ -25,7 +26,7 @@ t2=Request.form("t2")  %>
 <body>  
               <BR>
   
-<center><BR><font class=fontbig><b>Müþteri Raporlarý</b></font>   <BR><BR> 
+<center><BR><font class=fontbig><b>MÃ¼ÅŸteri RaporlarÄ±</b></font>   <BR><BR> 
 
  
    
@@ -44,7 +45,7 @@ t2=Request.form("t2")  %>
  <td width=170><b>Ad Soyad </td>
  <td width=170><b>Telefon </td>
  <td width=170><b>Adres </td>
-<td align=center><b>Toplam Sipariþ </td>   
+<td align=center><b>Toplam SipariÅŸ </td>   
                                                        
     </tr>
              

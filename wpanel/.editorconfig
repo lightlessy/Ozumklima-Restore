@@ -1,0 +1,9 @@
+root = false
+
+[*.asp]
+charset = utf-8
+insert_final_newline = true
+
+[*.{asa,htm,html,css,js,txt,xml,config,md}]
+charset = utf-8
+insert_final_newline = true

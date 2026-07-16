@@ -59,6 +59,7 @@ Response.Expires = -1
 %>
 <html>
 <head>
+<meta charset="utf-8">
 <title><% = strTxtUploadingFiles %></title>
 <style type="text/css">
 <!--

@@ -1,14 +1,14 @@
 <html>
  <head>
   <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css">
 </head>     
    
    
   <!--#include file="menu.asp"-->  
   
-<div class="baslik">Pasif Ürünler </div>
+<div class="baslik">Pasif ÃœrÃ¼nler </div>
            <BR><BR>
   
   
@@ -62,7 +62,7 @@ mods.Open rSQL, baglanti, 1, 3
 
 <tr class="menuoff" onmouseover="className='menuon';" onmouseout="className='menuoff';">
 <td><%=mods("isim")%></td>
-<td align=center><a href="edits.asp?id=<%=mods("AffiliateID")%>&g=<%=mods("anagrup")%>&tip=<%=mods("tip")%>"><img src="images/edit.png" width=20></a><td align=center> <a href="?psil2=1&id=<%=mods("AffiliateID")%>" onclick="return confirm('Kayıt silinecek. Onaylıyor Musunuz?')"><img src="images/del.png" width=20></a>
+<td align=center><a href="edits.asp?id=<%=mods("AffiliateID")%>&g=<%=mods("anagrup")%>&tip=<%=mods("tip")%>"><img src="images/edit.png" width=20></a><td align=center> <a href="?psil2=1&id=<%=mods("AffiliateID")%>" onclick="return confirm('KayÄ±t silinecek. OnaylÄ±yor Musunuz?')"><img src="images/del.png" width=20></a>
 </td>      
 </tr>
 <%   

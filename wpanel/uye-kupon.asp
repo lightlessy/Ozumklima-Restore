@@ -1,7 +1,7 @@
 <html>
 <head>    
-<title>Müşteri Hesabı Düzenle</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+<title>MÃ¼ÅŸteri HesabÄ± DÃ¼zenle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css">
 </head>   
 
@@ -63,9 +63,9 @@ rs.open sql, baglanti,1,3
 <form method="POST" action="uye-kupon.asp?id=request("id")" name="myForm" id="searchform">       
 
 <tr><td><b>Ad Soyad</b></td><td><%=rs("ad")%>&nbsp;<%=rs("soyad")%></td></tr>
-<tr><td><b>İndirim Kodu</b></td><td><input type="text" size="14" name="kodu" maxlength="8" >  </td>    </tr>
-<tr><td><b>Son Geçerlilik Tarihi</b></td><td><input type="date" size="14" name="bittar"  >  </td>    </tr>  
-<tr><td><b>İndirim Oranı</b></td><td>%<input type="text" size="5" name="oran" maxlength="2" >  </td>    </tr>
+<tr><td><b>Ä°ndirim Kodu</b></td><td><input type="text" size="14" name="kodu" maxlength="8" >  </td>    </tr>
+<tr><td><b>Son GeÃ§erlilik Tarihi</b></td><td><input type="date" size="14" name="bittar"  >  </td>    </tr>  
+<tr><td><b>Ä°ndirim OranÄ±</b></td><td>%<input type="text" size="5" name="oran" maxlength="2" >  </td>    </tr>
 
 
 <input type="hidden" name="uid"   value="<%=rs("uid")%>">
@@ -73,7 +73,7 @@ rs.open sql, baglanti,1,3
 <input type="hidden" name="add"    value="1">
  
 <tr><td colspan=4 align=center>
-<input type="submit" name="update" value="Tanımla"></td>
+<input type="submit" name="update" value="TanÄ±mla"></td>
 
 </form></tr>
 </table>      
@@ -83,9 +83,9 @@ rs.open sql, baglanti,1,3
  
 
 <table class=font align=center bgcolor=#F5F5F5 bordercolor=#EAEAEA cellpadding=3 cellspacing=3 width=400 border=1>   
-<tr><td colspan=6 align=center> <B>Üyenin Tüm Kodları</B></td></tr>     
+<tr><td colspan=6 align=center> <B>Ãœyenin TÃ¼m KodlarÄ±</B></td></tr>     
 
-<tr><td><b>İndirim Kodu</b></td><td><b>Son Geçerlilik Tarihi</b></td><td><b>İndirim Oranı</b></td> <td align=center><B>Sil</B></td></tr>
+<tr><td><b>Ä°ndirim Kodu</b></td><td><b>Son GeÃ§erlilik Tarihi</b></td><td><b>Ä°ndirim OranÄ±</b></td> <td align=center><B>Sil</B></td></tr>
 
 <%
 Set object = Server.CreateObject("ADODB.Recordset")

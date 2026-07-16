@@ -1,8 +1,9 @@
 <html>
 <head>      
+<meta charset="utf-8">
 <link rel="stylesheet" href="print.css"type="text/css" media="print" /> 
 
-<title>Sipariþler</title>
+<title>SipariÅŸler</title>
 
 
 
@@ -10,7 +11,7 @@
    
   <!--#include file="menu.asp"-->      
   
-  <div class="baslik">  Devam Eden Sipariþler </div>
+  <div class="baslik">  Devam Eden SipariÅŸler </div>
   
               
                
@@ -106,12 +107,12 @@ uyem.open sql, baglanti,1,3
 
  
 	
-Session.CodePage = 1254                      
+Session.CodePage = 65001                      
 kime=""&uyem("mail")&""
 kimden="form@keramikadenizli.com" 
 konu="Siparisiniz Kargoya Verildi"    
 isim="Keramika Denizli"
-mesajm="<table cellspacing=4 cellpadding=4 bgcolor=#EFEFEF width=800 style=""font-family:Open Sans; font-size:15px;"" border=0><tr><td><a href=http://keramikadenizli.com target=_blank><img src=http://keramikadenizli.com/images/logo.png border=0><BR><BR></td><td align=center><a href=http://keramikadenizli.com target=_blank style=""text-decoration: none""><font color=#619106 size=4><B>www.keramikadenizli.com</B></font></a></td></tr><tr><td bgcolor=#3E3E3E  colspan=2><font   color=#FFFFFF>Merhaba, Sipariþiniz Kargolandý.</font></td></tr><tr><td  colspan=2>Kargo Takip Barkod Numarasý: "& Rs("takip") &"  <BR> <a href=http://gonderitakip.ptt.gov.tr target=_blank><B>Kargo Takibi Ýçin Týklayýn</B> </a></td></tr><tr><td colspan=2>Sipariþinizdeki ürünlerin tamamý kargoya verilmiþtir. Kargonuzun durumunu web sitemizdeki sipariþlerim bölümünden takip edebilirsiniz. </td></tr><tr><td colspan=2><table width=750 cellspacing=0 cellpadding=0 border=1 bordercolor=#CACACA style=""padding:7px; font-size:13px"">"& mesaj &"</table></td></tr><tr><td bgcolor=#619106 colspan=2 height=35><a href=http://keramikadenizli.com target=_blank style=""text-decoration: none""><font color=#FFFFFF><B>Mutfaðýnýzýn, sofralarýnýzýn ve evinizin rengi... » www.keramikadenizli.com</B></font></a></td></tr><tr><td style=""font-size:12px""> Tel : "& ayars("tel") &"   <BR>Adres: DENÝZLÝ <BR> E-Posta: <a href=mailto:"& ayars("eposta") &" target=_blank>"& ayars("eposta") &"</a>       <BR>Sosyal Medya: <BR> <a href="& ayars("face") &" target=_Blank>Facebook</a>  <a href="& ayars("twit") &" target=_Blank>Twitter</a> <a href="& ayars("insta") &" target=_Blank>Instagram</a></td><td align=right><img src=http://keramikadenizli.com/images/logo.png border=0 width=150></td></tr></table>"    
+mesajm="<table cellspacing=4 cellpadding=4 bgcolor=#EFEFEF width=800 style=""font-family:Open Sans; font-size:15px;"" border=0><tr><td><a href=http://keramikadenizli.com target=_blank><img src=http://keramikadenizli.com/images/logo.png border=0><BR><BR></td><td align=center><a href=http://keramikadenizli.com target=_blank style=""text-decoration: none""><font color=#619106 size=4><B>www.keramikadenizli.com</B></font></a></td></tr><tr><td bgcolor=#3E3E3E  colspan=2><font   color=#FFFFFF>Merhaba, SipariÅŸiniz KargolandÄ±.</font></td></tr><tr><td  colspan=2>Kargo Takip Barkod NumarasÄ±: "& Rs("takip") &"  <BR> <a href=http://gonderitakip.ptt.gov.tr target=_blank><B>Kargo Takibi Ä°Ã§in TÄ±klayÄ±n</B> </a></td></tr><tr><td colspan=2>SipariÅŸinizdeki Ã¼rÃ¼nlerin tamamÄ± kargoya verilmiÅŸtir. Kargonuzun durumunu web sitemizdeki sipariÅŸlerim bÃ¶lÃ¼mÃ¼nden takip edebilirsiniz. </td></tr><tr><td colspan=2><table width=750 cellspacing=0 cellpadding=0 border=1 bordercolor=#CACACA style=""padding:7px; font-size:13px"">"& mesaj &"</table></td></tr><tr><td bgcolor=#619106 colspan=2 height=35><a href=http://keramikadenizli.com target=_blank style=""text-decoration: none""><font color=#FFFFFF><B>MutfaÄŸÄ±nÄ±zÄ±n, sofralarÄ±nÄ±zÄ±n ve evinizin rengi... Â» www.keramikadenizli.com</B></font></a></td></tr><tr><td style=""font-size:12px""> Tel : "& ayars("tel") &"   <BR>Adres: DENÄ°ZLÄ° <BR> E-Posta: <a href=mailto:"& ayars("eposta") &" target=_blank>"& ayars("eposta") &"</a>       <BR>Sosyal Medya: <BR> <a href="& ayars("face") &" target=_Blank>Facebook</a>  <a href="& ayars("twit") &" target=_Blank>Twitter</a> <a href="& ayars("insta") &" target=_Blank>Instagram</a></td><td align=right><img src=http://keramikadenizli.com/images/logo.png border=0 width=150></td></tr></table>"    
 
 	Set mektup = Server.Createobject("Persits.MailSender")
 	mektup.Host = "mail.keramikadenizli.com"
@@ -159,7 +160,7 @@ Sub postsms()
 	   "</oturum>"&_
 	   "<mesaj>"&_
 		  "<baslik>KERAMIKADNZ</baslik>"&_
-		  "<metin>Sipariþinizdeki ürünlerin tamamý kargoya verilmiþtir. Kargonuzun durumunu web sitemizdeki sipariþlerim bölümünden takip edebilirsiniz. </metin>"&_
+		  "<metin>SipariÅŸinizdeki Ã¼rÃ¼nlerin tamamÄ± kargoya verilmiÅŸtir. Kargonuzun durumunu web sitemizdeki sipariÅŸlerim bÃ¶lÃ¼mÃ¼nden takip edebilirsiniz. </metin>"&_
 		  "<alicilar>["&uyem("tel")&"]</alicilar>"&_
 	   "</mesaj>"&_
 	"</SMS>"
@@ -213,11 +214,11 @@ mods.open Sorgula,baglanti,1,3 %>
 
 <table bgcolor=#F2F2F2 cellpadding=8 cellspacing=8 align=center class=font border=0 align=center>   
      
- <tr> <td> Sipariþ Kodu: <B><%=mods("kod")%></B> <BR> <%=mods("tarih")%>      </td>
- <td align=center> <% if mods("takip") <>"" then %><a href="orders.asp?del=1&kod=<%=mods("kod")%>" onclick="return confirm('Sipariþ Kargolandý. Onaylýyor Musunuz?')">
- <div style="background-color:#008080; padding:8px"><font color="#FFFFFF" size=3>Sipariþi Tamamla</font>  </div></a>
+ <tr> <td> SipariÅŸ Kodu: <B><%=mods("kod")%></B> <BR> <%=mods("tarih")%>      </td>
+ <td align=center> <% if mods("takip") <>"" then %><a href="orders.asp?del=1&kod=<%=mods("kod")%>" onclick="return confirm('SipariÅŸ KargolandÄ±. OnaylÄ±yor Musunuz?')">
+ <div style="background-color:#008080; padding:8px"><font color="#FFFFFF" size=3>SipariÅŸi Tamamla</font>  </div></a>
  <% else %>      
-  <div style="background-color:#6A6A6A; padding:8px"><font color="#FFFFFF" size=2> Sipariþi Tamamlamak Ýçin Kargo Takip No Giriniz</font>  </div>
+  <div style="background-color:#6A6A6A; padding:8px"><font color="#FFFFFF" size=2> SipariÅŸi Tamamlamak Ä°Ã§in Kargo Takip No Giriniz</font>  </div>
  <% end if %>         </td></tr>   
 
       
@@ -232,7 +233,7 @@ Rsp.Open rSQL, baglanti, 1, 3  %>
 <% If Rsp.EOF And Rsp.BOF Then %>     
                       
 <font class=fy>
-<font color=#CE0000><B>Müþteriye Ulaþýlamadý !</B>
+<font color=#CE0000><B>MÃ¼ÅŸteriye UlaÅŸÄ±lamadÄ± !</B>
 
 <% else %>
 
@@ -243,14 +244,14 @@ Rsp.Open rSQL, baglanti, 1, 3  %>
 <table  class=font border=0 width=700 cellpadding=2 cellspacing=2 bgcolor=#FFFFFF bordercolor=#ACACAC >          
 <tr><td height=35 colspan=2 align=center>
 <B>            
-<% if mods("odeme")=0 then %> <div style="background-color:#939393; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;"> ÖDEME ÝLE ÝLGÝLÝ HERHANGÝ BÝR ÝÞLEMDE BULUNULMADI  </div><% end if %>
-<% if mods("odeme")=1 then %>  <div style="background-color:#008ED2; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;"> KREDÝ KARTI ÝLE ÖDEME ALINDI    </div><% end if %>
-<% if mods("odeme")=2 then %> <div style="background-color:#376088; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;"> BANKA HAVALESÝ / EFT ALINDI    </div><% end if %>
-<% if mods("odeme")=3 then %><div style="background-color:#376088; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;">  KAPIDA ÖDEME TALEBÝ ALINDI   </div> <% end if %>
+<% if mods("odeme")=0 then %> <div style="background-color:#939393; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;"> Ã–DEME Ä°LE Ä°LGÄ°LÄ° HERHANGÄ° BÄ°R Ä°ÅžLEMDE BULUNULMADI  </div><% end if %>
+<% if mods("odeme")=1 then %>  <div style="background-color:#008ED2; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;"> KREDÄ° KARTI Ä°LE Ã–DEME ALINDI    </div><% end if %>
+<% if mods("odeme")=2 then %> <div style="background-color:#376088; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;"> BANKA HAVALESÄ° / EFT ALINDI    </div><% end if %>
+<% if mods("odeme")=3 then %><div style="background-color:#376088; color:#FFFFFF; font-size:20px;  padding:15px; text-align:center;">  KAPIDA Ã–DEME TALEBÄ° ALINDI   </div> <% end if %>
 </B>
 
 </td></tr> 
-<tr bgcolor=#F3F3F3><td height=35 colspan=2> &nbsp;&nbsp; <B>TESLÝMAT ADRESÝ</B><BR></td></tr> 
+<tr bgcolor=#F3F3F3><td height=35 colspan=2> &nbsp;&nbsp; <B>TESLÄ°MAT ADRESÄ°</B><BR></td></tr> 
 <tr><td height=25>  &nbsp;&nbsp; Ad Soyad:</td><td ><%=Rsp("ad")%>&nbsp;<%=Rsp("soyad")%></td></tr>
 <tr><td height=25>       &nbsp;&nbsp; Adres:  </td><td> <%=Rsp("adres")%> / <%=Rsp("sehir")%></td></tr>      
 <tr><td height=25>  &nbsp;&nbsp; Tel:  </td><td><%=Rsp("tel")%></td></tr>   
@@ -313,15 +314,15 @@ Response.Redirect Request.ServerVariables("HTTP_REFERER")
 <div style="background-color:#0080C0; color:#FFFFFF; padding:4px; ">
 Kargo Takip No: <input type="text" size="10" name="takip" value="<%=mods("takip")%>">  
 <input type="hidden"  name="id" value="<%=request.querystring("ord") %>">            
- <input type="submit" name="1" value="Güncelle" />
+ <input type="submit" name="1" value="GÃ¼ncelle" />
  </div>
   </form>      
   
                     
 <table bgcolor=#FFFFFF class=font  border=0 cellspacing=4 cellpadding=4>  
-<tr><td><b>Sipariþ Listesi: </b></td></tr>             
+<tr><td><b>SipariÅŸ Listesi: </b></td></tr>             
  <tr bgcolor=#F3F3F3>
-<td height=19 width=485><B>Ürünler:</B></td>  
+<td height=19 width=485><B>ÃœrÃ¼nler:</B></td>  
 <td width=55><B>Fiyat:</B></td>    
 <td width=55><B>Miktar:</B></td>  
 <td align=right><B>Toplam:</B></td>
@@ -336,7 +337,7 @@ Sorgula = "Select * From products where AffiliateID = "& mods("product") &"  "
 sorad.open Sorgula,baglanti,1,3   
 
 if sorad.eof then %>
-<BR><BR><font color=#A40000><B>Ürüne Ulaþýlamýyor</B> </font><BR><BR>
+<BR><BR><font color=#A40000><B>ÃœrÃ¼ne UlaÅŸÄ±lamÄ±yor</B> </font><BR><BR>
 <% else
 
 
@@ -379,7 +380,7 @@ modss.open Sorgula,baglanti,1,3
        
 </table> 
 <BR>      
- <a href="orders.asp"><font color=#BF0000 size=2> «  Tüm Sipariþler </font></a>            
+ <a href="orders.asp"><font color=#BF0000 size=2> Â«  TÃ¼m SipariÅŸler </font></a>            
   
         </td></tr> 
        
@@ -417,7 +418,7 @@ mods1.open Sorgula,baglanti,1,3
 
 <TR><TD valign=top>   
                                 <BR><BR>
-<font class=fy><font color=#CE0000><B>Sipariþ Yok </B> </font></font>        
+<font class=fy><font color=#CE0000><B>SipariÅŸ Yok </B> </font></font>        
  
 </TD></TR>
 
@@ -434,11 +435,11 @@ mods1.open Sorgula,baglanti,1,3
 
 
 <table bgcolor=#FFFFFF width=500 cellpadding=5 cellspacing=5 align=center class=font border=0>   
-     <tr> <td>  Sipariþ Kodu: <B><%=mods1("kod")%></B> - <%=mods1("tarih")%>                   </td>
-<td align=center> <a href="order-sil.asp?sil=<%=mods1("kod")%>" onclick="return confirm('Kayýt silinecek. Onaylýyor Musunuz?')"><img src="images/del.png" width=20></a>
+     <tr> <td>  SipariÅŸ Kodu: <B><%=mods1("kod")%></B> - <%=mods1("tarih")%>                   </td>
+<td align=center> <a href="order-sil.asp?sil=<%=mods1("kod")%>" onclick="return confirm('KayÄ±t silinecek. OnaylÄ±yor Musunuz?')"><img src="images/del.png" width=20></a>
 </td></tr>   
                
-<tr><td height=20>          <a href="orders.asp?detail=1&ord=<%=mods1("kod")%>"><font color="#0080C0"><B>Sipariþ Dökümü »</B></font> </a>     </td></tr>                 
+<tr><td height=20>          <a href="orders.asp?detail=1&ord=<%=mods1("kod")%>"><font color="#0080C0"><B>SipariÅŸ DÃ¶kÃ¼mÃ¼ Â»</B></font> </a>     </td></tr>                 
 </table> 
  <BR>
  

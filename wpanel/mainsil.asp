@@ -1,14 +1,14 @@
 <html>
  <head>
   <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css">
 </head>     
 
    
   <!--#include file="menu.asp"-->  
  
- <div class="baslik"> Ana Kategori Düzenle</div> 
+ <div class="baslik"> Ana Kategori DÃ¼zenle</div> 
 
  <BR><BR>
   
@@ -81,8 +81,8 @@ mods.Open rSQL, baglanti, 1, 3
 
 
 <tr> 
-<td>Sıra:        <input type="text"  name="sira"   size="2" value="<%=mods("sira")%>"> </td>  
-<td> İsim:       <input type="text"  name="isim"   size="30" value="<%=mods("isim")%>"> </td>    
+<td>SÄ±ra:        <input type="text"  name="sira"   size="2" value="<%=mods("sira")%>"> </td>  
+<td> Ä°sim:       <input type="text"  name="isim"   size="30" value="<%=mods("isim")%>"> </td>    
 </tr>
 <tr><td colspan=2>  
 <input type="checkbox" name="durum"  value="1" <% if mods("durum")="1" then %> checked <% end if %>> Kategori Aktif
@@ -97,7 +97,7 @@ mods.Open rSQL, baglanti, 1, 3
 
  <input type="hidden" name="id" value="<%=mods("id")%>">  
  
-<tr><td colspan=2><input type="submit" name="update" value="Düzenle"></td>   
+<tr><td colspan=2><input type="submit" name="update" value="DÃ¼zenle"></td>   
 </form>                                                                                                            
 </tr></table>
                       
@@ -120,7 +120,7 @@ Do while not mods.Eof
 %>  
 <tr class="menuoff" onmouseover="className='menuon';" onmouseout="className='menuoff';">
 <td>           
-<%=mods("isim")%>   </td><td align=center><a href="?edit=yes&id=<%=mods("id")%>"><img src="images/edit.png" width=20></a><td align=center> <a href="?psil2=1&id=<%=mods("id")%>" onclick="return confirm('Kayıt silinecek. Onaylıyor Musunuz?')"><img src="images/del.png" width=20></a>
+<%=mods("isim")%>   </td><td align=center><a href="?edit=yes&id=<%=mods("id")%>"><img src="images/edit.png" width=20></a><td align=center> <a href="?psil2=1&id=<%=mods("id")%>" onclick="return confirm('KayÄ±t silinecek. OnaylÄ±yor Musunuz?')"><img src="images/del.png" width=20></a>
 </td>      
 </tr>
 <%  

@@ -1,14 +1,14 @@
 <html>
  <head>
   <title>PANEL </title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css">
 </head>     
    
    
   <!--#include file="menu.asp"-->  
   
-<div class="baslik">Haber Beklenen Ürünler</div>
+<div class="baslik">Haber Beklenen ÃœrÃ¼nler</div>
 <BR><BR>
 
 <%
@@ -84,7 +84,7 @@ Sub postsms()
 	   "</oturum>"&_
 	   "<mesaj>"&_
 		  "<baslik>KERAMIKADNZ</baslik>"&_
-		  "<metin>Merhaba. keramikadenizli.com web sitemizde beklediğiniz "& mods("isim") &" ürünü stoklarımızda!</metin>"&_
+		  "<metin>Merhaba. keramikadenizli.com web sitemizde beklediÄŸiniz "& mods("isim") &" Ã¼rÃ¼nÃ¼ stoklarÄ±mÄ±zda!</metin>"&_
 		  "<alicilar>"& a &"</alicilar>"&_
 	   "</mesaj>"&_
 	"</SMS>"
@@ -111,7 +111,7 @@ end if      %>
 
 
 <center><font class=fontbig>
-<B>Haber Beklenen Ürünler </B><BR><BR>
+<B>Haber Beklenen ÃœrÃ¼nler </B><BR><BR>
      
 </font>
                             
@@ -135,7 +135,7 @@ mods.Open rSQL, baglanti, 1, 3
 
 %>  
            
-<tr bgcolor=#F3F0E4><td ><B><%=mods1("isim")%></B>  <a href="urun-beklenen.asp?seri=<%=mods1("grup")%>&sil=1" onclick="return confirm('Kayıtlar Silinecek. Onaylıyor Musunuz?')"><div style="float:right; color:#D70000"> <B>Kayıtları Sil</B></div> </a></td></tr> 
+<tr bgcolor=#F3F0E4><td ><B><%=mods1("isim")%></B>  <a href="urun-beklenen.asp?seri=<%=mods1("grup")%>&sil=1" onclick="return confirm('KayÄ±tlar Silinecek. OnaylÄ±yor Musunuz?')"><div style="float:right; color:#D70000"> <B>KayÄ±tlarÄ± Sil</B></div> </a></td></tr> 
     
     
 <% 
@@ -151,7 +151,7 @@ Loop
 %>      
 </td></tr>   
 
-<tr bgcolor="#3F3F3F"><td><% if mods1("gitti")=1 then %> <font color=#FFFFFF>SMS Gönderildi </font><% else %> <a href="urun-beklenen.asp?seri=<%=mods1("grup")%>&sms=1" style="color:#FBBF44"><B>ÜRÜN GELDİ SMS GÖNDER</B> </a> <% end if %> </td></tr>  
+<tr bgcolor="#3F3F3F"><td><% if mods1("gitti")=1 then %> <font color=#FFFFFF>SMS GÃ¶nderildi </font><% else %> <a href="urun-beklenen.asp?seri=<%=mods1("grup")%>&sms=1" style="color:#FBBF44"><B>ÃœRÃœN GELDÄ° SMS GÃ–NDER</B> </a> <% end if %> </td></tr>  
 
 <tr><td><BR></td></tr>  
 

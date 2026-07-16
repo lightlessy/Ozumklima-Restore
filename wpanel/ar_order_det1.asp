@@ -2,6 +2,7 @@
 
 <html>
 <head>
+<meta charset="utf-8">
 <title>Detaylar</title>
 
 <link rel=stylesheet type="text/css" href="font.css">
@@ -22,7 +23,7 @@ mods.open Sorgula,baglanti,1,3 %>
      
  <tr bgcolor=#FFFFFF>
  <td colspan=2 height=25>  <font color=#BF0000>  
-Sipariþ Kodu: <B><%=mods("kod")%></B>   -  <%=mods("tarih")%>      
+SipariÅŸ Kodu: <B><%=mods("kod")%></B>   -  <%=mods("tarih")%>      
 <BR>
 Kargo Takip No:  <B><%=mods("takip")%></B>
 </td></tr>   
@@ -37,7 +38,7 @@ Rsp.Open rSQL, baglanti, 1, 3  %>
 <% If Rsp.EOF And Rsp.BOF Then %>     
                       
 <font class=fy>
-<font color=#CE0000><B>Müþteri Bulunamadý !</B>
+<font color=#CE0000><B>MÃ¼ÅŸteri BulunamadÄ± !</B>
 
 <% else %>
 
@@ -46,7 +47,7 @@ Rsp.Open rSQL, baglanti, 1, 3  %>
 
 
 <table bgcolor=#FFFFFF cellpadding=0 cellspacing=0 align=left class=font border=0 bordercolor=#ACACAC width=385>
-<tr bgcolor=#F3F3F3><td height=35 colspan=2><B>TESLÝMAT ADRESÝ</B></td></tr> 
+<tr bgcolor=#F3F3F3><td height=35 colspan=2><B>TESLÄ°MAT ADRESÄ°</B></td></tr> 
 <tr><td height=25 width=70>  Ad Soyad:</td><td><%=Rsp("ad")%>&nbsp;<%=Rsp("soyad")%></td></tr>
 <tr><td height=25>  Adres:  </td><td> <%=Rsp("adres")%> / <%=Rsp("sehir")%></td></tr>      
 <tr><td height=25>   Tel:  </td><td><%=Rsp("tel")%></td></tr>   
@@ -64,7 +65,7 @@ Rsp.Open rSQL, baglanti, 1, 3  %>
                     
 <table class=font  border=0 cellspacing=4 cellpadding=6 width=780>            
  <tr bgcolor=#F3F3F3>
-<td height=19><B>Ürünler:</B></td>  
+<td height=19><B>ÃœrÃ¼nler:</B></td>  
 <td width=55><B>Fiyat:</B></td>    
 <td width=55><B>Miktar:</B></td>  
 <td align=right><B>Toplam:</B></td>
@@ -95,7 +96,7 @@ end if
 
 
 if sorad.eof then %>
-<BR><BR><font color=#A40000><B>Ürüne Ulaþýlamýyor</B> </font><BR><BR>
+<BR><BR><font color=#A40000><B>ÃœrÃ¼ne UlaÅŸÄ±lamÄ±yor</B> </font><BR><BR>
 <% else
 
 

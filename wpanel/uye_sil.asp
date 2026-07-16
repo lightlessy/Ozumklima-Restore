@@ -14,7 +14,7 @@ rSQL = "Select * from user  where id = "& Request.Form("Veri"&i)
 Rs.Open rSQL, baglanti, 1, 3 
 
 Rs.Delete ' Sil
-Rs.Update ' Güncelle
+Rs.Update ' GÃ¼ncelle
 
 rs.close
 set rs = nothing 

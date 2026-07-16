@@ -1,6 +1,7 @@
 <html>
 <head>
-<title>Ýptal Sipariþler</title>
+<meta charset="utf-8">
+<title>Ä°ptal SipariÅŸler</title>
 
   <!--#include file="menu.asp"-->                     
                
@@ -10,7 +11,7 @@
 
 <body>  
 
-  <div class="baslik">Ýptal Sipariþler </div>   
+  <div class="baslik">Ä°ptal SipariÅŸler </div>   
 
 
 
@@ -39,7 +40,7 @@ mods1.open Sorgula,baglanti,1,3
      
  <tr bgcolor=#FFFFFF>
  <td colspan=2 class=onay>  
- <a href="iptal_order_det.asp?gun=<%=mods1("gun")%>"><font color=#BF0000>  <B><%=mods1("gun")%></B></font><font color=#4E4E4E> &nbsp; Tarihli Sipariþler   » </a>    </font>              
+ <a href="iptal_order_det.asp?gun=<%=mods1("gun")%>"><font color=#BF0000>  <B><%=mods1("gun")%></B></font><font color=#4E4E4E> &nbsp; Tarihli SipariÅŸler   Â» </a>    </font>              
 </td></tr>              
 
 

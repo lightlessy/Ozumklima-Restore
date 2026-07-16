@@ -8,9 +8,9 @@ Response.Cookies("ozum").Expires=Now()
 <CENTER>
 <font face=arial size=3>
 
-Oturum Kapatıldı.
+Oturum KapatÄ±ldÄ±.
 <BR><BR>
-Tarayıcınızı Kapatınız.   
+TarayÄ±cÄ±nÄ±zÄ± KapatÄ±nÄ±z.   
 
 </font>
 </CENTER>

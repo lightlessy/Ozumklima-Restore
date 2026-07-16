@@ -7,7 +7,7 @@
 '**  Web Wiz Rich Text Editor
 '**  http://www.richtexteditor.org
 '**                                                              
-'**  Copyright ©2001-2006 Web Wiz. All Rights Reserved.   
+'**  Copyright Â©2001-2006 Web Wiz. All Rights Reserved.   
 '**  
 '**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS UNDER LICENSE FROM 'WEB WIZ'. 
 '**  

@@ -1,6 +1,7 @@
 
 <html>
 <head>   
+<meta charset="utf-8">
 <script language=javascript>
 
 function CloseWindow()
@@ -14,7 +15,7 @@ window.close();
 }
 
 </script>
-<title>Foto Güncelle</title>
+<title>Foto GÃ¼ncelle</title>
 <meta http-eqiv="Content-Type" content="windows-1254">      
 <!--#INCLUDE FILE="menu.asp"-->  
 
@@ -54,9 +55,9 @@ Upload.Save Server.MapPath(StrUploadAdminPathName)
            
 <BR><BR><BR><CENTER>     
 <font face=arial size=4 color=#0080C0> 
-<b>Fotoðraf Güncellenmiþtir.
+<b>FotoÄŸraf GÃ¼ncellenmiÅŸtir.
 <BR><BR>
-<a href="galeri_edit.asp?gal_kat=<%=Session("gal_kat")%>">DEVAM ETMEK ÝÇÝN TIKLAYINIZ >>></a>  
+<a href="galeri_edit.asp?gal_kat=<%=Session("gal_kat")%>">DEVAM ETMEK Ä°Ã‡Ä°N TIKLAYINIZ >>></a>  
     </b>
 </CENTER>
 

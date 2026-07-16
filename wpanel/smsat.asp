@@ -2,7 +2,7 @@
   <!--#include file="menu.asp"-->  
  
 
-  <div class="baslik">SMS Gönder</div>    
+  <div class="baslik">SMS GÃ¶nder</div>    
                                                
 <% tip= request.querystring("tip") %>
 
@@ -72,7 +72,7 @@ postsms()
 %>                          
           
 <div class=font style="margin:0px auto; width:500px; text-align:center; margin-top:150px; font-size:1.2em; color:#0080C0">
-<B>SMS GÖNDERÝLDÝ</B>
+<B>SMS GÃ–NDERÄ°LDÄ°</B>
 <%=a%>
 </div>
 
@@ -87,10 +87,10 @@ postsms()
  
 
 <tr><td>    
-  <b> Alýcý </b>:   Tüm Üyeler</td></tr>       
+  <b> AlÄ±cÄ± </b>:   TÃ¼m Ãœyeler</td></tr>       
 
 <tr><td>    
-  <b> Mesaj Ýçeriði </b>:
+  <b> Mesaj Ä°Ã§eriÄŸi </b>:
   <BR><BR>
    
   <TEXTAREA cols=100 name="mesaj"  rows=5 required></TEXTAREA></td></tr>      
@@ -98,7 +98,7 @@ postsms()
 </tr>	     
    
   <tr><td colspan=4 align=center>
-  <input type="submit" name="1" value="GÖNDER" />
+  <input type="submit" name="1" value="GÃ–NDER" />
 </td></tr>
 </table>
       </form>       

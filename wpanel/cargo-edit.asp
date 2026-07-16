@@ -1,7 +1,7 @@
 
   <!--#include file="menu.asp"-->    
   
-     <div class="baslik">  Kargo Düzenleme</div>
+     <div class="baslik">  Kargo DÃ¼zenleme</div>
   
   <body>        
   
@@ -36,11 +36,11 @@ object.open Sorgula,baglanti,1,3
 
 <FORM  name="f"  action="cargo-edit.asp" method=post  >                    
 
-<tr><td>Genel Kargo Fiyatý</td><td>     <INPUT   style="WIDTH: 50px"  name="kargo" value="<%=object("kargo")%>">  TL     </td></tr> 
+<tr><td>Genel Kargo FiyatÄ±</td><td>     <INPUT   style="WIDTH: 50px"  name="kargo" value="<%=object("kargo")%>">  TL     </td></tr> 
 
 <tr><td>Bedava Limiti</td><td>     <INPUT   style="WIDTH: 50px"  name="bedava" value="<%=object("bedava")%>">  TL     </td></tr>
 
-<tr> <td colspan=2 align=center><input type="submit" value="Güncelle">   </td></tr>
+<tr> <td colspan=2 align=center><input type="submit" value="GÃ¼ncelle">   </td></tr>
 
  </FORM>
  </table>

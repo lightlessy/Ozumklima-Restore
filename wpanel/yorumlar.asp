@@ -25,7 +25,7 @@ Set Rs = Server.CreateObject("Adodb.Recordset")
 rSQL = "Select * from yorumlar where id = "& Request.Form("id")
 Rs.Open rSQL, baglanti, 1, 3 
 Rs.Delete ' Sil
-Rs.Update ' Güncelle
+Rs.Update ' GÃ¼ncelle
 
 rs.close
 set rs = nothing 
@@ -95,7 +95,7 @@ if not object.eof then
 <td align=center><b>Yorum</b></td>    
 <td align=center><font color=#729A25><b>Cevapla</b></font></td>
 <td align=center><font color=#0080C0><b>Onay</b></font></td>
-<td align=center><font color=#FF0000><b>SÝL</b></font></td></tr>      
+<td align=center><font color=#FF0000><b>SÄ°L</b></font></td></tr>      
 
 
 <%
@@ -123,7 +123,7 @@ if not object.eof then
 <TEXTAREA   style="WIDTH: 400px; HEIGHT: 90px"  name="cevap"><%=object("cevap") %></TEXTAREA>
 <input type="hidden" name="id" value="<%=sid%>">                               
 <input type="hidden" name="cevapla" value="1">   
-<input type="submit" value="Gönder" ></form>
+<input type="submit" value="GÃ¶nder" ></form>
 
 
 <% end if %>
@@ -134,14 +134,14 @@ if not object.eof then
 <td><a href="yorumlar.asp?cevap=1&sid=<%=object("id")%>"><font color=#729A25><b>CEVAPLA </b></font> </a></td>
 
 <td align=center width=100>  
-<% if object("onay")=1 then %>  <B>Yayýnda</B> 
+<% if object("onay")=1 then %>  <B>YayÄ±nda</B> 
 <% else %>
 <a href="yorumlar.asp?update=1&sid=<%=object("id")%>"><font color=#0080C0><b>ONAYLA </b></font> </a>
 <% end if %>
 </td>
 <td align=center><form action="yorumlar.asp" method="post" >
 <input type="hidden" name="id" value="<%=object("id")%>">        
-<input type="submit" value="SÝL" name="delete" onclick="return confirm('Kayýt Silinecek. Onaylýyor musunuz?')"></td></form>
+<input type="submit" value="SÄ°L" name="delete" onclick="return confirm('KayÄ±t Silinecek. OnaylÄ±yor musunuz?')"></td></form>
 </div>        
 
 
@@ -191,8 +191,8 @@ If intSagAltSinir <= intSayfaUstSiniri Then intSagAltSinir = intSayfaUstSiniri +
 
 <%
 If intGecerliSayfa >1 Then %>
-<a href="?sayfa=1" title="Ýlk Sayfa"><font color=#4E4E4E>[««]</a>
-<a href="?sayfa=<%=intGecerliSayfa-1%>" title="Previous Page"><font color=#4E4E4E>[«]</a><%
+<a href="?sayfa=1" title="Ä°lk Sayfa"><font color=#4E4E4E>[Â«Â«]</a>
+<a href="?sayfa=<%=intGecerliSayfa-1%>" title="Previous Page"><font color=#4E4E4E>[Â«]</a><%
 End If
 %>
 
@@ -252,8 +252,8 @@ Next
 
 <%
 If CInt(intGecerliSayfa) <>CInt(intSayfaSayisi) Then %>
-<a href="?sayfa=<%=intGecerliSayfa+1%>" title="Next Page"><font color=#4E4E4E>[»]</a>
-<a href="?sayfa=<%=intSayfaSayisi%>" title="Last Page"><font color=#4E4E4E>[»»]</a><%
+<a href="?sayfa=<%=intGecerliSayfa+1%>" title="Next Page"><font color=#4E4E4E>[Â»]</a>
+<a href="?sayfa=<%=intSayfaSayisi%>" title="Last Page"><font color=#4E4E4E>[Â»Â»]</a><%
 End If
 %>
 

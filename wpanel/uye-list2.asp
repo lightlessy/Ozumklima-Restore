@@ -3,7 +3,7 @@
   <title>PANEL </title> 
   <meta name="viewport" content="width=device-width, initial-scale=1">         
 
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css"> 
 
            
@@ -86,14 +86,14 @@ mods1.open Sorgula,baglanti,1,3
 
  If mods1.EOF And mods1.BOF Then %>     
 
- <BR><BR> <B> SİPARİŞ YOK </B>         
+ <BR><BR> <B> SÄ°PARÄ°Å YOK </B>         
 
 <% else %>
 
 <% Do while not mods1.Eof  %>        
 
  <a href="javascript:void(window.open('ar_order_det1.asp?id=<%=mods1("kod")%>','','width=900,height=600,left=400,top=0,resizable=no,menubar=no,centerscreen=yes,status=no,scrollbars=1'))" style="color:#00557D">
-<B><%=mods1("kod")%></B>  - <%=mods1("tarih")%> - <%=mods1("tfiyat")%> TL  <B> » Detay   </b></a>  
+<B><%=mods1("kod")%></B>  - <%=mods1("tarih")%> - <%=mods1("tfiyat")%> TL  <B> Â» Detay   </b></a>  
 <hr style="height: 1px;background-color: #B9B9B9; border:none;">       
 
  <%  
@@ -104,14 +104,14 @@ Loop
 <% end if %>
 </div>
 
-<td align=center width=70>  <a href="#inline<%=uyes("uid")%>" data-lity><font color=#800000><B>Siparişler</B> </font></a></td> 
+<td align=center width=70>  <a href="#inline<%=uyes("uid")%>" data-lity><font color=#800000><B>SipariÅŸler</B> </font></a></td> 
 
 
 
 <div id="indline<%=uyes("uid")%>" style="background:#fff; padding:15px; font-family:Open Sans; font-size:14px; color:#373737; width:500px; height:650px  " class="lity-hide">
 <IFRAME frameBorder=0 scrolling=no width=500 height=500 src="uye-kupon.asp?id=<%=uyes("uid")%>" ></IFRAME> 
 </div>
-<td align=center width=100> <a href="#indline<%=uyes("uid")%>" data-lity>İndirim Kuponu  </a></td>
+<td align=center width=100> <a href="#indline<%=uyes("uid")%>" data-lity>Ä°ndirim Kuponu  </a></td>
 
 
 <div id="inline2<%=uyes("uid")%>" style="background:#fff; padding:15px; font-family:Open Sans; font-size:14px; color:#373737; width:500px; height:650px  " class="lity-hide">
@@ -124,7 +124,7 @@ Loop
 <td align=center width=50>
 <input type="hidden" name="uid" value="<%=uyes("uid")%>">        
 <input type="hidden" name="delete" value="1">     
-<input type="image" src="images/del.png"  onclick="return confirm('Müşteri Hesabını Silmek İstiyor Musunuz?')">
+<input type="image" src="images/del.png"  onclick="return confirm('MÃ¼ÅŸteri HesabÄ±nÄ± Silmek Ä°stiyor Musunuz?')">
 </td>
 
 </form>

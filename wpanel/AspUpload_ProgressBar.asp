@@ -92,6 +92,7 @@ If strProgressBar = "" Then
 %>
 <html>
 <head>
+<meta charset="utf-8">
 <title>Upload Finished</title>
 <script language="JavaScript">
 function CloseMe()

@@ -1,7 +1,7 @@
 <html>
 <head>    
-<title>Müşteri Hesabı Düzenle</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">        
+<title>MÃ¼ÅŸteri HesabÄ± DÃ¼zenle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
 <link rel=stylesheet type="text/css" href="font.css">
 </head>   
 
@@ -62,11 +62,11 @@ rs.open sql, baglanti,1,3
   
   <tr><td><b>Ad Soyad</b></td><td><%=rs("ad")%>&nbsp;<%=rs("soyad")%></td></tr>
 
-  <tr><td><b>Kullanıcı</b></td><td><input type="text" size="30" name="kullanici" value="<%=rs("kullanici")%>"></td></tr>
-<tr><td><b>Şifre</b> </td><td> <input type="text" size="20"  name="sifre" value="<%=rs("sifre")%>"></td></tr>     
+  <tr><td><b>KullanÄ±cÄ±</b></td><td><input type="text" size="30" name="kullanici" value="<%=rs("kullanici")%>"></td></tr>
+<tr><td><b>Åifre</b> </td><td> <input type="text" size="20"  name="sifre" value="<%=rs("sifre")%>"></td></tr>     
     
 <tr>
-<td> <b>Adres</b></td><td><TEXTAREA  title="Lütfen adresinizi eksiksiz yazınız" style="WIDTH: 270px; HEIGHT: 55px"  name=adres><%=rs("adres")%></TEXTAREA></td></tr>
+<td> <b>Adres</b></td><td><TEXTAREA  title="LÃ¼tfen adresinizi eksiksiz yazÄ±nÄ±z" style="WIDTH: 270px; HEIGHT: 55px"  name=adres><%=rs("adres")%></TEXTAREA></td></tr>
 
 <tr><td><b>Tel</b></td><td>
  <input type="text" size="14" name="tel"  value="<%=rs("tel")%>" onkeypress="return numbersonly(this, event)">
@@ -80,7 +80,7 @@ rs.open sql, baglanti,1,3
 <input type="hidden" name="uid"   size="12" value="<%=rs("uid")%>">
  
 <tr><td colspan=4 align=center>
-<input type="submit" name="update" value="Güncelle"></td>
+<input type="submit" name="update" value="GÃ¼ncelle"></td>
 
 </form></tr>
 </table>

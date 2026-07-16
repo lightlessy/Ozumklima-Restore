@@ -1,7 +1,8 @@
 
 <HEAD>
+<meta charset="utf-8">
 
-<title>Foto Güncelle </title>
+<title>Foto GÃ¼ncelle </title>
 
 <%
 Set UploadProgress = Server.CreateObject("Persits.UploadProgress")
@@ -33,7 +34,7 @@ function ShowProgress()
 
 <!--#INCLUDE file="menu.asp"-->    
 
-    <div class="baslik">Fotoðraf Güncelle</div>     
+    <div class="baslik">FotoÄŸraf GÃ¼ncelle</div>     
 
               		<% Session("id") = request.querystring("id")  
               		Session("gal_kat") = request.querystring("gal_kat")           %>       
@@ -47,11 +48,11 @@ function ShowProgress()
 			<FORM NAME="MyForm" METHOD="POST" ENCTYPE="multipart/form-data" 
 		ACTION="updateimage_galeri.asp?<% = PID %>&gal_kat=<%=request("gal_kat")%>"
 		OnSubmit="return ShowProgress();"> 
-	     Fotoðraf:	<INPUT TYPE="FILE" SIZE="40" NAME="foto">
+	     FotoÄŸraf:	<INPUT TYPE="FILE" SIZE="40" NAME="foto">
 	     
 	     </td></tr>
   <tr><td colspan=2 align=center> 
-	<INPUT TYPE=SUBMIT VALUE="YÜKLE">
+	<INPUT TYPE=SUBMIT VALUE="YÃœKLE">
 	</FORM>               
 	</td></tr></table>    
 </CENTER>

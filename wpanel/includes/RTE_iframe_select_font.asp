@@ -1,4 +1,4 @@
-﻿<%
+<%
 '****************************************************************************************
 '**  Copyright Notice    
 '**
@@ -48,6 +48,7 @@ Response.CacheControl =	"Public"
 %>
 <html>
 <head>
+<meta charset="utf-8">
 <title>Fonts</title>
 <%
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******

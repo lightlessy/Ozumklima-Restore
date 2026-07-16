@@ -69,7 +69,7 @@
 		Set ObjPath = ObjFSO.GetFile(Server.MapPath("db/database.mdb"))
 			StrModified = ObjPath.DateLastModified
 
-			Response.Write "Son güncelleme : " & StrModified
+			Response.Write "Son gÃ¼ncelleme : " & StrModified
 
 		Set ObjFSO = Nothing
 		Set ObjPath = Nothing

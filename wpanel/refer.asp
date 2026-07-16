@@ -43,11 +43,11 @@ function ShowProgress()
  	   
  <table bgcolor=#F8F8F8  cellpadding=5 cellspacing=5 align=center width=700 class=font align=center> 
 
-<tr><td><b>Görsel Seç </b> <BR> <input type="file" name="resim" size="51"></td>	</tr>
- <tr><td><b>Gideceði Baðlantý </b> (opsiyonel) <BR> http://<input type="text" size="80" name="link"></td></tr>	
- <tr><td><b>Ýsim </b> <BR> <input type="text" size="80" name="isim"></td></tr>	
+<tr><td><b>GÃ¶rsel SeÃ§ </b> <BR> <input type="file" name="resim" size="51"></td>	</tr>
+ <tr><td><b>GideceÄŸi BaÄŸlantÄ± </b> (opsiyonel) <BR> http://<input type="text" size="80" name="link"></td></tr>	
+ <tr><td><b>Ä°sim </b> <BR> <input type="text" size="80" name="isim"></td></tr>	
  
-  <tr><td colspan=2 align=center><input type="submit" value="YÜKLE" class="admin_button"></td>
+  <tr><td colspan=2 align=center><input type="submit" value="YÃœKLE" class="admin_button"></td>
 </td></tr>      
 
 </table>

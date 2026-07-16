@@ -49,6 +49,7 @@ Response.CacheControl =	"Public"
 %>
 <html>
 <head>
+<meta charset="utf-8">
 <title>Font Format</title>
 <%
 '***** START WARNING - REMOVAL OR MODIFICATION OF THIS CODE WILL VIOLATE THE LICENSE AGREEMENT ******
