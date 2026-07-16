@@ -1,11 +1,13 @@
 /* Ozum Klima product listing cards
-   Keeps image frames, card bodies and actions aligned across listing pages. */
+   Product images, titles and actions cannot change card dimensions. */
 
 .kutularic {
+  --ozm-card-height: 490px;
+  --ozm-media-height: 285px;
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
-  align-items: stretch;
+  grid-auto-rows: var(--ozm-card-height) !important;
+  align-items: stretch !important;
   gap: clamp(18px, 2.2vw, 28px);
   width: 100%;
   max-width: 1200px;
@@ -17,21 +19,22 @@
 
 .kutularic > div {
   display: flex !important;
-  align-self: stretch;
+  align-self: stretch !important;
   flex-direction: column;
   width: auto !important;
   max-width: none !important;
   min-width: 0;
-  min-height: 0;
-  height: auto !important;
+  height: var(--ozm-card-height) !important;
+  min-height: var(--ozm-card-height) !important;
+  max-height: var(--ozm-card-height) !important;
   margin: 0 !important;
-  overflow: hidden;
+  overflow: hidden !important;
   background: #fff;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
   box-sizing: border-box;
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.045);
-  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 
 .kutularic > div:nth-child(2n),
@@ -43,75 +46,101 @@
   background: #fff;
   border-color: #1f9bb7;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
-  transform: translateY(-3px);
 }
 
 .kutularic > div > a {
-  display: flex;
+  display: flex !important;
   flex: 1 1 auto;
   flex-direction: column;
   width: 100%;
   min-width: 0;
   min-height: 0;
-  height: 100%;
+  height: 100% !important;
+  overflow: hidden;
   color: inherit;
 }
 
+/* A definite height is intentional here. aspect-ratio alone can still grow
+   from an image's intrinsic/min-content size in legacy flex layouts. */
 .kutularic .urRes {
-  position: relative;
+  position: relative !important;
   order: 1;
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  display: block !important;
+  flex: 0 0 var(--ozm-media-height) !important;
+  width: 100% !important;
   min-width: 0;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
+  height: var(--ozm-media-height) !important;
+  min-height: var(--ozm-media-height) !important;
+  max-height: var(--ozm-media-height) !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+  box-sizing: border-box;
   background-color: #f7f7f7;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   background-size: contain !important;
 }
 
 .kutularic .urRes > img {
-  display: block;
+  position: absolute !important;
+  inset: 0;
+  display: block !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain;
-  object-position: center;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  padding: 10px;
+  box-sizing: border-box;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.kutularic .urRes .yeni {
+  z-index: 2;
 }
 
 .kutularic .urRes .yeni img {
+  position: static !important;
   width: auto !important;
   height: auto !important;
-  max-width: 100%;
-  object-fit: initial;
+  max-width: 100% !important;
+  padding: 0 !important;
+  object-fit: initial !important;
 }
 
 .kutularic .urAd {
   order: 2;
-  display: flex;
-  flex: 1 1 auto;
-  align-items: flex-start;
+  display: -webkit-box !important;
+  flex: 0 0 84px !important;
+  width: 100%;
   min-width: 0;
-  min-height: 4.5em;
-  padding: 16px 18px 12px !important;
+  height: 84px !important;
+  min-height: 84px !important;
+  max-height: 84px !important;
+  padding: 15px 18px 10px !important;
+  overflow: hidden !important;
   box-sizing: border-box;
   line-height: 1.45 !important;
   overflow-wrap: anywhere;
   word-break: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .kutularic .yildiz {
   order: 3;
   float: none !important;
   display: flex;
-  flex: 0 0 auto;
+  flex: 0 0 36px !important;
   align-items: center;
-  flex-wrap: wrap;
-  min-height: 32px;
-  padding: 0 18px 12px !important;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 0 18px 8px !important;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -126,10 +155,13 @@
   padding: 10px 16px !important;
   border-radius: 4px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 @media only screen and (max-width: 980px) {
   .kutularic {
+    --ozm-card-height: 500px;
+    --ozm-media-height: 300px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
   }
@@ -137,25 +169,26 @@
 
 @media only screen and (max-width: 600px) {
   .kutularic {
+    --ozm-media-height: clamp(220px, 68vw, 310px);
+    --ozm-card-height: calc(var(--ozm-media-height) + 205px);
     grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: auto;
+    grid-auto-rows: var(--ozm-card-height) !important;
     gap: 16px;
     padding: 0 12px;
   }
 
-  .kutularic .urRes {
-    aspect-ratio: 16 / 10;
-  }
-
   .kutularic .urAd {
-    min-height: 0;
-    padding: 14px 15px 10px !important;
+    flex-basis: 82px !important;
+    height: 82px !important;
+    min-height: 82px !important;
+    max-height: 82px !important;
+    padding: 14px 15px 9px !important;
     font-size: 1.05em;
     text-align: left;
   }
 
   .kutularic .yildiz {
-    padding: 0 15px 10px !important;
+    padding: 0 15px 8px !important;
   }
 
   .kutularic .detayal {
