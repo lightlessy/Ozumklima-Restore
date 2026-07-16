@@ -1,11 +1,14 @@
 
+
+<!--#include file="dbase.asp"-->
+<!--#include file="menu.asp"-->      
+
 <html>
-<head>    
-<meta charset="utf-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <title>Müşteri Hesapları</title>     
  
 
-<!--#include file="menu.asp"-->      
 
        
                   <link rel="stylesheet" href="../css/lity.css">   
